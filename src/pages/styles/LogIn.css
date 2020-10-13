@@ -1,8 +1,8 @@
 @media screen and (min-width: 1024px) {    
-    #form-layout > #entries {
+    #form-layout > #form-entries {
         height: 325px;
     }    
-    #form-layout > #entries,
+    #form-layout > #form-entries,
     #form-header {
         justify-content: center;
     }

@@ -20,13 +20,13 @@
     margin: 10px 0;
 }
 
-#form-layout > #entries {
+#form-layout > #form-entries {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#entries > input {
+#form-entries > input {
     border: 2px solid black;
     border-radius: 5px;
     width: 240px;
@@ -37,12 +37,12 @@
     font-size: 1.1em;
 }
 
-#entries > input::placeholder {
+#form-entries > input::placeholder {
     color: black;
     text-align: center;
 }
 
-#entries > button {
+#form-entries > button {
     border: 2px solid black;
     height: 37px;
     width: 120px;
@@ -52,7 +52,7 @@
     margin-top: 10px;
 }
 
-#entries > p {
+#form-entries > p {
     font-weight: bold;
     text-align: center;
     margin: 7px 0;
@@ -83,11 +83,11 @@
         height: 180px;
     }
 
-    #form-layout > #entries {
+    #form-layout > #form-entries {
         margin-left: 50px;
     }
 
-    #entries > input {
+    #form-entries > input {
         height: 40px;
     }
 

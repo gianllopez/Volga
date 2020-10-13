@@ -1,4 +1,4 @@
-#entries > textarea {
+#form-entries > textarea {
     border: 2px solid black;
     border-radius: 5px;
     width: 220px;
@@ -8,7 +8,7 @@
     font-size: 1.1em;
 }
 
-#entries > textarea::placeholder {
+#form-entries > textarea::placeholder {
     color: black;
     text-align: center;
 }
