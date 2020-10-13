@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import LogIn from './pages/LogIn';
+import LogUp from './pages/LogUp';
 import './index.css';
 
 ReactDOM.render(
-  <LogIn/>,
+  <LogUp/>,
   document.getElementById('root')
 );
