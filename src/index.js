@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import LogUp from './pages/LogUp';
+import ShopTags from './pages/ShopTags';
 import './index.css';
 
-ReactDOM.render(<LogUp />, document.getElementById('root'));
+ReactDOM.render(<ShopTags/>, document.getElementById('root'));
