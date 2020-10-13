@@ -1,48 +1,3 @@
-#LogUp-Form {
-    display: flex;
-    flex-direction: column;
-    margin: 10px auto;
-}
-
-#form-header {
-    display: inherit;
-    flex-direction: inherit;
-}
-
-#form-header > img {
-    height: 130px;
-    padding: 10px 10px 0 10px;
-}
-
-#form-header > h2 {
-    font-size: 1.7em;  
-    text-align: center;
-    margin: 10px 0;
-}
-
-#LogUp-Form > #entries {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#entries > input {
-    border: 2px solid black;
-    border-radius: 5px;
-    width: 240px;
-    height: 35px;
-    margin-bottom: 10px;
-    text-align: center;
-    outline: none;
-    font-size: 1.1em;
-}
-
-#entries > input::placeholder,
-#entries > textarea::placeholder {
-    color: black;
-    text-align: center;
-}
-
 #entries > textarea {
     border: 2px solid black;
     border-radius: 5px;
@@ -53,53 +8,7 @@
     font-size: 1.1em;
 }
 
-#entries > button {
-    border: 2px solid black;
-    height: 37px;
-    width: 120px;
-    background: none;
-    border-radius: 5px;
-    font-size: 1.1em;
-    margin-top: 10px;
-}
-
-#entries > p {
-    font-weight: bold;
+#entries > textarea::placeholder {
+    color: black;
     text-align: center;
-    margin: 7px 0;
-    font-size: 1.1em;
-}
-
-@media screen and (min-width: 1024px) {
-    
-    #LogUp-Form {
-        flex-direction: row;
-        width: unset;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        align-items: end;
-    }
-
-    #form-header {
-        flex-direction: column;    
-        border-right: 2px solid black;
-        padding-right: 30px;
-        width: 265px;
-        height: 325px;
-    }
-
-    #form-header > h1 {
-        height: 180px;
-    }
-
-    #LogUp-Form > #entries {
-        margin-left: 50px;
-    }
-
-    #entries > input {
-        height: 40px;
-    }
-
 }
