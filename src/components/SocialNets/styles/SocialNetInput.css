@@ -1,0 +1,78 @@
+.social-network {
+    width: 300px;
+    height: 60px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.23);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    overflow-x: hidden;
+    position: relative;
+}
+
+#logo-wrapper {
+    height: 100%;
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    background-color: white;
+}
+
+#logo-wrapper > img {
+    height: 75%;
+}
+
+#div-line {
+    width: 2px;
+    background-color: black;
+    height: 70%;
+    position: relative;
+    z-index: 2;
+}
+
+.social-network > h1 {
+    width: calc(75% - 22px);
+    font-size: 1.7em;
+    padding-left: 20px;
+    transition: transform 1s;
+    overflow-wrap: break-word;
+}
+
+.header-anim {
+    transform: translateX(-100%);
+}
+
+#data-input {
+    height: 100%;
+    position: absolute;
+    width: calc(75% - 2px);
+    right: 2px;
+    display: flex;
+    align-items: center;
+    transition: transform 1s;
+    transform: translateX(-100%);
+    z-index: 1;
+}
+
+#data-input > input {
+    height: 50%;
+    width: 75%;
+    border: 2px solid black;
+    border-radius: 0 5px 5px 0;
+    outline: none;
+    text-align: center;
+    font-size: 1.1em;
+    padding-right: 15%;
+}
+
+#data-input > img {
+    height: 40%;
+    position: absolute;
+    right: 11%;
+}
+
+.data-input-anim {
+    transform: initial !important;
+}
