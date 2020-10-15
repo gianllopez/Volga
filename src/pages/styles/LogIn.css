@@ -1,8 +1,8 @@
-@media screen and (min-width: 1024px) {    
-    #form-layout > #form-entries {
+@media screen and (min-width: 1024px) {
+    #login-form > #form-entries {
         height: 325px;
-    }    
-    #form-layout > #form-entries,
+    }
+    #login-form > #form-entries,
     #form-header {
         justify-content: center;
     }

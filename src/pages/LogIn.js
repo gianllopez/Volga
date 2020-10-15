@@ -13,10 +13,11 @@ class LogIn extends Component {
                     <Fragment>
                         <input type='text' placeholder='Tienda o email' required/>
                         <input type='password' placeholder='Contraseña' required/>
-                        <button>Iniciar sesión</button>
+                        <button>Iniciar</button>
                         <p>¿No te has registrado?<br/>Regístrate</p>                    
                     </Fragment>
                 }
+                formId='login-form'
             />             
         );
     };

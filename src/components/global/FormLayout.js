@@ -3,16 +3,14 @@ import './styles/FormLayout.css';
 
 function FormLayout(props) {
     return (
-        <form id='form-layout'>
-            <div id="form-header">
-                <img src={props.headerImg} alt='form-hero'/>
-                {props.headerTitle}                
+        <form className='form-layout' id={props.formId}>
+            <div id='form-header'>
+                <img src={props.headerImg} alt='form-hero' />
+                {props.headerTitle}
             </div>
-            <div id='form-entries'>
-                {props.formEntries}
-            </div>
+            <div id='form-entries'>{props.formEntries}</div>
         </form>
     );
-};
+}
 
 export default FormLayout;
