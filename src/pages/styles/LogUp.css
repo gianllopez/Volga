@@ -6,6 +6,7 @@
     padding: 10px;
     resize: none;
     font-size: 1.1em;
+    text-align: center;
 }
 
 #form-entries > textarea::placeholder {
