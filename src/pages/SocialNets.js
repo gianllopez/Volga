@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, {Component, Fragment} from 'react';
 import SocialNetsInput from '../components/SocialNets/SocialNetInput';
 import './styles/SocialNets.css';
 
