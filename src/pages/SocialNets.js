@@ -8,9 +8,8 @@ class SocialNets extends Component {
             <div id='social-nets-form'>
                 <Fragment>
                     <h1>
-                        Redes sociales y<br />
-                        de contacto de tu
-                        <br />
+                        Redes sociales y<br/>
+                        de contacto de tu<br/>
                         tienda
                     </h1>
                     <div id='social-nets-wrapper'>
