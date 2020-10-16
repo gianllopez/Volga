@@ -9,7 +9,4 @@
     text-align: center;
 }
 
-#form-entries > textarea::placeholder {
-    color: black;
-    text-align: center;
-}
+

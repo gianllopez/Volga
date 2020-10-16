@@ -37,11 +37,6 @@
     font-size: 1.1em;
 }
 
-#form-entries > input::placeholder {
-    color: black;
-    text-align: center;
-}
-
 #form-entries > button {
     border: 2px solid black;
     height: 37px;

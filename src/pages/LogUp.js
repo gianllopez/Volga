@@ -89,14 +89,6 @@ class LogUp extends Component {
                 }                
             );
 
-            debugger
-
-
-
-
-            
-            
-            
             this.setState({
                 page_states: {
                     error_msg: response
@@ -121,7 +113,6 @@ class LogUp extends Component {
                             maxLength='40'
                             // required                            
                         />
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, repudiandae?</p>
                         <input
                             type='email'
                             name='email'
