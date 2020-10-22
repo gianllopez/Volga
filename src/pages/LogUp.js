@@ -10,19 +10,12 @@ import './styles/LogUp.css';
 
 class LogUp extends Component {
     state = {
-        // data: {
-        //     shop: 'The Drug Shop',
-        //     email: 'thedrugshop@email.com',
-        //     password: 'thedrugshop001',
-        //     location: 'Suan, Atlántico',
-        //     description: '1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890'
-        // },
         data: {
             shop: null,
             email: '1234512345123451234512345123451234512345@gmail.com',
             password: '',
             location: null,
-            description: null
+            description: ''
         },
         page_states: {
             loading: false,
@@ -73,8 +66,7 @@ class LogUp extends Component {
             }
         })
         .then(response => {
-            // debugger
-            let errors = Object.entries(response).map(
+            Object.entries(response).map(
                 error => {
                     let field = error[0]
                     let error_msg = error[1][0]                     
@@ -98,8 +90,7 @@ class LogUp extends Component {
                     });    
                 }
             )       
-        })
-        
+        })        
     };
 
     render() {

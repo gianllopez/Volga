@@ -1,26 +1,44 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './styles/Input.css';
 
-function Input(props) {
+class Input extends Component {
+    
+    isError = _ => Object.keys(this.props.errorsObject).includes(this.props.name)
+    
+    render() {
+        return (
+            <div className='input-wrapper' id={`${this.props.name}-input-wrapper`}>
+                <label htmlFor='password'>{this.props.label}</label>
+                <input
+                    type={this.props.type}
+                    name={this.props.name}
+                    onChange={this.props.onChange}
+                    maxLength={this.props.maxLength}
+                    // required
+                />
+                {this.isError() && (
+                    <span className='error-span'>
+                        {this.props.errorsObject[this.props.name]}
+                    </span>
+                )}                
+            </div>
+        );
+    };
 
-    return (
-        <div className='input-wrapper'>
-            <label htmlFor='password'>{props.label}</label>
-            <input
-                type={props.type}
-                name={props.name}
-                onChange={props.onChange}
-                maxLength={props.maxLength}
-                // required
-            />
-            {Object.keys(props.errorsObject).includes(props.name) && (
-                <span className='error-span'>
-                    {props.errorsObject[props.name]}
-                </span>
-            )}
-            
-        </div>
-    );
+    componentDidUpdate() {
+        if (this.isError()) {
+            let thisInputWrapper = document.querySelector(`#${this.props.name}-input-wrapper`);
+            setTimeout(
+                _ => {
+                    thisInputWrapper.querySelector('label')
+                        .style.color = '#f94e4e';
+                    thisInputWrapper.querySelector('input')
+                        .style.borderColor = '#f94e4e';
+                    thisInputWrapper.querySelector('span')
+                        .classList.add('show-error-span');                    
+                }, 1)
+        }
+    }
 };
 
 Input.defaultProps = {
