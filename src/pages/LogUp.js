@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import FormLayout from '../components/global/FormLayout';
 import Loader from '../components/global/Loader';
+import Input from '../components/LogUp/Input';
 
 import logupHero from '../assets/LogUp/logup-hero.svg';
 import './styles/LogUp.css';
@@ -26,7 +27,7 @@ class LogUp extends Component {
         page_states: {
             loading: false,
             error: false,
-            error_msg: undefined
+            error_messages: undefined
         }
     };
 
@@ -72,7 +73,7 @@ class LogUp extends Component {
             }
         })
         .then(response => {
-            
+            // debugger
             let errors = Object.entries(response).map(
                 error => {
                     let field = error[0]
@@ -80,20 +81,23 @@ class LogUp extends Component {
                     switch(error_msg) {
                         case 'This field may not be blank.':
                         case 'This field may not be null.':
-                            error_msg = 'Este campo no puede estar vacío.'
+                            error_msg = '*Este campo no puede estar vacío.'
                             break
                         case 'Ensure this field has no more than 40 characters.':
-                            error_msg = 'Asegúrate que este campo no tenga más de 40 caracteres.'
+                            error_msg = '*Este campo solo son 40 caracteres.'
                             break                        
                     }
-                }                
-            );
-
-            this.setState({
-                page_states: {
-                    error_msg: response
+                    this.setState({
+                        page_states: {                        
+                            ...this.state.page_states,
+                            error_messages: {
+                                ...this.state.page_states.error_messages,
+                                [field]: error_msg
+                            }                        
+                        }
+                    });    
                 }
-            })
+            )       
         })
         
     };
@@ -105,45 +109,38 @@ class LogUp extends Component {
                 headerTitle={<h2>Rellena lo datos para<br/>registrar tu tienda con<br/>nosotros</h2>}
                 formEntries={
                     <Fragment>
-                        <input
-                            type='text'
+                        <Input
+                            label='Tienda'
                             name='shop'
-                            placeholder='Tienda'
-                            onChange={this.handleChange}
-                            maxLength='40'
-                            // required                            
+                            onChange={this.handleChange}          
+                            errorsObject={this.state.page_states.error_messages}
                         />
-                        <input
+                        <Input
+                            label='Correo'
                             type='email'
                             name='email'
-                            placeholder='Correo'
-                            onChange={this.handleChange}
-                            maxLength='40'
-                            // required                            
+                            onChange={this.handleChange}              
+                            errorsObject={this.state.page_states.error_messages}
                         />
-                        <input
+                        <Input
+                            label='Contraseña'
                             type='password'
                             name='password'
-                            placeholder='Contraseña'
-                            onChange={this.handleChange}
-                            maxLength='40'
-                            // required                            
+                            onChange={this.handleChange}              
+                            errorsObject={this.state.page_states.error_messages}
                         />
-                        <input
-                            type='text'
+                        <Input
+                            label='Ubicación'
                             name='location'
-                            placeholder='Ubicación'
                             onChange={this.handleChange}
                             maxLength='50'
-                            // required                            
+                            errorsObject={this.state.page_states.error_messages}
                         />
                         <textarea
                             name='description'
                             placeholder='Descripción'
-                            maxLength='100'
-                            // required                            
+                            maxLength='100'              
                         />
-                        
 
                         {/* {this.state.page_states.loading ? 
                             <Loader /> :  */}
