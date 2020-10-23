@@ -38,20 +38,12 @@
 @media screen and (min-width: 1023px) {
     .form-layout {
         flex-direction: row;
-        width: unset;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        align-items: end;
     }
 
     #form-header {
         flex-direction: column;
-        border-right: 2px solid black;
-        padding-right: 30px;
-        width: 265px;
-        height: 325px;
+        border-right: 3px solid black;
+        padding-right: 30px;        
     }
 
     .form-layout > #form-entries {

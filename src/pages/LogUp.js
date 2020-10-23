@@ -96,6 +96,7 @@ class LogUp extends Component {
     render() {
         return (
             <FormLayout
+                formId='logup-form'
                 headerImg = {logupHero}
                 headerTitle={<h2>Rellena lo datos para<br/>registrar tu tienda con<br/>nosotros</h2>}
                 formEntries={
