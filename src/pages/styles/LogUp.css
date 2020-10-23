@@ -1,7 +1,7 @@
 #form-entries > textarea {
     border: 2px solid black;
     border-radius: 5px;
-    width: 220px;
+    width: 300px;
     height: 100px;
     padding: 10px;
     resize: none;
@@ -10,4 +10,8 @@
     margin-top: 10px;
 }
 
-
+@media screen and (max-width: 500px) {
+    #form-entries > textarea {
+        width: calc(80vw - 20px);
+    }
+}

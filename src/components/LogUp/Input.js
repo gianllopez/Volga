@@ -29,14 +29,8 @@ class Input extends Component {
         if (this.isError()) {
             let thisInputWrapper = document.querySelector(`#${this.props.name}-input-wrapper`);
             setTimeout(
-                _ => {
-                    thisInputWrapper.querySelector('label')
-                        .style.color = '#f94e4e';
-                    thisInputWrapper.querySelector('input')
-                        .style.borderColor = '#f94e4e';
-                    thisInputWrapper.querySelector('span')
-                        .classList.add('show-error-span');                    
-                }, 1)
+                _ => thisInputWrapper.querySelector('span')
+                    .classList.add('show-error-span'), 1)
         }
     }
 };
@@ -46,6 +40,5 @@ Input.defaultProps = {
     maxLength: '40',
     errorsObject: {}
 }
-
 
 export default Input;
