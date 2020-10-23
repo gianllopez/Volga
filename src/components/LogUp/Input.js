@@ -9,13 +9,21 @@ class Input extends Component {
         return (
             <div className='input-wrapper' id={`${this.props.name}-input-wrapper`}>
                 <label htmlFor='password'>{this.props.label}</label>
-                <input
-                    type={this.props.type}
-                    name={this.props.name}
-                    onChange={this.props.onChange}
-                    maxLength={this.props.maxLength}
-                    // required
-                />
+                {this.props.isTextArea ? (
+                    <textarea
+                        name={this.props.name}
+                        maxLength={this.props.maxLength}
+                        onChange={this.props.onChange}
+                    />
+                ) : (
+                    <input
+                        type={this.props.type}
+                        name={this.props.name}
+                        onChange={this.props.onChange}
+                        maxLength={this.props.maxLength}
+                        // required
+                    />
+                )}
                 {this.isError() && (
                     <span className='error-span'>
                         {this.props.errorsObject[this.props.name]}

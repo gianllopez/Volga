@@ -128,11 +128,14 @@ class LogUp extends Component {
                             maxLength='50'
                             errorsObject={this.state.page_states.error_messages}
                         />
-                        <textarea
+                        <Input
                             name='description'
-                            placeholder='Descripción'
-                            maxLength='100'              
-                        />
+                            label='Descripción'
+                            isTextArea={true}
+                            maxLength='100'
+                            onChange={this.handleChange}
+                            errorsObject={this.state.page_states.error_messages}
+                        />                        
 
                         {/* {this.state.page_states.loading ? 
                             <Loader /> :  */}
