@@ -1,9 +1,22 @@
-@media screen and (min-width: 1024px) {
-    #login-form > #form-entries {
-        height: 325px;
-    }
-    #login-form > #form-entries,
-    #form-header {
-        justify-content: center;
-    }
+#login-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#login-form button {
+    width: 110px;
+    height: 33px;
+    font-size: 1.1em;
+    background: none;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+#login-form p {
+    font-weight: bold;
+    text-align: center;
+    margin-top: 5px;
 }

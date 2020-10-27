@@ -11,11 +11,11 @@ import './styles/LogUp.css';
 class LogUp extends Component {
     state = {
         data: {
-            shop: null,
-            email: '1234512345123451234512345123451234512345@gmail.com',
-            password: '',
-            location: null,
-            description: ''
+            shop: undefined,
+            email: undefined,
+            password: undefined,
+            location: undefined,
+            description: undefined
         },
         page_states: {
             loading: false,
@@ -23,7 +23,6 @@ class LogUp extends Component {
             error_messages: undefined
         }
     };
-
     
     handleChange = event => {
         this.setState({
@@ -49,20 +48,18 @@ class LogUp extends Component {
             body: JSON.stringify(this.state.data)
         })
         .then(response => {
-            if (response.ok) {
+            this.setState({
+                page_states: {
+                    loading: false
+                }                    
+            });
+            if (!response.ok) {
                 this.setState({
                     page_states: {
-                        loading: false
+                        error: true
                     }                    
                 });
-            } else {
-                this.setState({
-                    page_states: {
-                        loading: false, 
-                        error: true
-                    }
-                });
-                return response.json()
+                return response.json()            
             }
         })
         .then(response => {
@@ -73,6 +70,7 @@ class LogUp extends Component {
                     switch(error_msg) {
                         case 'This field may not be blank.':
                         case 'This field may not be null.':
+                        case 'This field is required.':
                             error_msg = '*Este campo no puede estar vacío.'
                             break
                         case 'Ensure this field has no more than 40 characters.':
@@ -137,13 +135,13 @@ class LogUp extends Component {
                             errorsObject={this.state.page_states.error_messages}
                         />                        
 
-                        {/* {this.state.page_states.loading ? 
-                            <Loader /> :  */}
+                        {this.state.page_states.loading ? 
+                            <Loader width={110} height={35}/> :                               
                             <button type='submit'>
                                 Continuar
                             </button>
-                            {/* } */}
-
+                        }
+                            
                         <p>
                             ¿Ya tienes cuenta?<br/>
                             <Link to='/login'>Ingresa</Link>
