@@ -9,17 +9,17 @@ import logupHero from '../assets/LogUp/logup-hero.svg';
 import './styles/LogUp.css';
 
 class LogUp extends Component {
+    
     state = {
         data: {
-            shop: undefined,
-            email: undefined,
-            password: undefined,
-            location: undefined,
-            description: undefined
+            shop: undefined, // || 'myshop',
+            email: undefined || 'myshop01@gmail.com',
+            password: undefined, //  || 'myshop04',
+            location: undefined, //  || 'Arizona, EEUU',
+            description: undefined, //  || 'That is my shop description.'
         },
         page_states: {
             loading: false,
-            error: false,
             error_messages: undefined
         }
     };
@@ -34,61 +34,46 @@ class LogUp extends Component {
     };
 
     handleSubmit = event => {        
+        
         event.preventDefault();        
+        
         this.setState({
             page_states: {
+                ...this.state.page_states,
                 loading: true
             }
         });
+
         fetch('https://volga-rest.herokuapp.com/logup/', {
-            method: 'POST',
+            method: 'post',
             headers: {
-                'Content-Type': 'application/json',                
+                'Authorization': 'Token c0e03c9ce246125b4bf50cedf9d386f0bc517b23',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(this.state.data)
         })
-        .then(response => {
-            this.setState({
-                page_states: {
-                    loading: false
-                }                    
-            });
-            if (!response.ok) {
-                this.setState({
-                    page_states: {
-                        error: true
-                    }                    
-                });
-                return response.json()            
-            }
-        })
-        .then(response => {
-            Object.entries(response).map(
-                error => {
-                    let field = error[0]
-                    let error_msg = error[1][0]                     
-                    switch(error_msg) {
-                        case 'This field may not be blank.':
-                        case 'This field may not be null.':
-                        case 'This field is required.':
-                            error_msg = '*Este campo no puede estar vacío.'
-                            break
-                        case 'Ensure this field has no more than 40 characters.':
-                            error_msg = '*Este campo solo son 40 caracteres.'
-                            break                        
-                    }
+            .then(response => {
+                if (response.ok) {
                     this.setState({
-                        page_states: {                        
+                        page_states: {
                             ...this.state.page_states,
-                            error_messages: {
-                                ...this.state.page_states.error_messages,
-                                [field]: error_msg
-                            }                        
+                            loading: false
                         }
-                    });    
+                    })
+                } else {                    
+                    return response.json()
                 }
-            )       
-        })        
+            })
+                .then(json => {
+                    this.setState({
+                        page_states: {
+                            ...this.state.page_states,
+                            loading: false,
+                            error_messages: json
+                        }
+                    })
+                })
+            .catch(error => console.error(error))
     };
 
     render() {

@@ -40,6 +40,7 @@
     z-index: 1;
     border: 2px solid black;
     border-top: none;
+    text-align: center;
 }
 
 .show-error-span {
