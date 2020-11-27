@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import FormLayout from '../components/global/FormLayout';
-import Input from '../components/LogUp/Input';
+import Input from '../components/log-forms/Input';
 import loginHero from '../assets/LogIn/login-hero.svg';
 import './styles/LogIn.css';
 

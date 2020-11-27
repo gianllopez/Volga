@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import FormLayout from '../components/global/FormLayout';
 import Loader from '../components/global/Loader';
-import Input from '../components/LogUp/Input';
+import Input from '../components/log-forms/Input';
 
 import logupHero from '../assets/LogUp/logup-hero.svg';
 import './styles/LogUp.css';
@@ -19,7 +19,7 @@ class LogUp extends Component {
             description: undefined, //  || 'That is my shop description.'
         },
         page_states: {
-            loading: false,
+            loading: false,            
             error_messages: undefined
         }
     };
@@ -59,7 +59,7 @@ class LogUp extends Component {
                             ...this.state.page_states,
                             loading: false
                         }
-                    })
+                    }, _ => this.props.history.push('/login'));                    
                 } else {                    
                     return response.json()
                 }
@@ -140,12 +140,3 @@ class LogUp extends Component {
 }
 
 export default LogUp;
-
-
-
-// fields validations:
-    // shop: max_length(40), blank=False, null=True
-    // email: max_length(40), blank=False, null=True, unique=True
-    // password: max_length(40), blank=False, null=True
-    // location: max_length(50), blank=False, null=True
-    // description: max_length(100) blank=False, null=True
