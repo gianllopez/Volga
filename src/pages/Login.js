@@ -61,6 +61,7 @@ class Login extends Component {
                         , 1)
                     } else {
                         localStorage.setItem('shop-token', json.token)
+                        this.props.history.push(`${this.state.data.shop}/social-networks`)
                     }
                 })
     }
