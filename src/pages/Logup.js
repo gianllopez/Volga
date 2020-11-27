@@ -5,18 +5,18 @@ import FormLayout from '../components/global/FormLayout';
 import Loader from '../components/global/Loader';
 import Input from '../components/log-forms/Input';
 
-import logupHero from '../assets/LogUp/logup-hero.svg';
-import './styles/LogUp.css';
+import logupHero from '../assets/Logup/logup-hero.svg';
+import './styles/Logup.css';
 
-class LogUp extends Component {
+class Logup extends Component {
     
     state = {
         data: {
-            shop: undefined, // || 'myshop',
-            email: undefined || 'myshop01@gmail.com',
-            password: undefined, //  || 'myshop04',
-            location: undefined, //  || 'Arizona, EEUU',
-            description: undefined, //  || 'That is my shop description.'
+            shop: undefined,
+            email: undefined,
+            password: undefined,
+            location: undefined,
+            description: undefined
         },
         page_states: {
             loading: false,            
@@ -139,4 +139,4 @@ class LogUp extends Component {
     }
 }
 
-export default LogUp;
+export default Logup;
