@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import SocialNets from './pages/SocialNets';
 import ShopTags from './pages/ShopTags';
 import Logup from './pages/Logup';
-import LogIn from './pages/LogIn';
+import Login from './pages/Login';
 
 import './index.css';
 
@@ -15,7 +15,7 @@ ReactDOM.render(
             <Route exact path='/social-networks' component={SocialNets} />
             <Route exact path='/shop-tags' component={ShopTags} />
             <Route exact path='/logup' component={Logup} />
-            <Route exact path='/login' component={LogIn} />
+            <Route exact path='/login' component={Login} />
         </Switch>
     </BrowserRouter>,
     document.getElementById('root'),

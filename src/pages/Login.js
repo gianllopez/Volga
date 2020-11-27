@@ -2,10 +2,10 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import FormLayout from '../components/global/FormLayout';
 import Input from '../components/log-forms/Input';
-import loginHero from '../assets/LogIn/login-hero.svg';
-import './styles/LogIn.css';
+import loginHero from '../assets/Login/login-hero.svg';
+import './styles/Login.css';
 
-class LogIn extends Component {
+class Login extends Component {
     render() {
         return (
             <FormLayout
@@ -32,4 +32,4 @@ class LogIn extends Component {
     };
 };
 
-export default LogIn;
+export default Login;
