@@ -58,7 +58,7 @@ class SocialNets extends Component {
 
     render() {
         return (
-            <div id='social-nets-form'>
+            <form id='social-nets-form' onSubmit={this.handleSubmit}>
                 <Fragment>
                     <h1>
                         Redes sociales y<br/>
@@ -79,7 +79,7 @@ class SocialNets extends Component {
                         </button>
                     }
                 </Fragment>
-            </div>
+            </form>
         );
     }
 }
