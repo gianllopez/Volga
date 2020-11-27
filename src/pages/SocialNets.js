@@ -1,17 +1,19 @@
 import React, {Component, Fragment} from 'react';
 import SocialNetsInput from '../components/SocialNets/SocialNetInput';
+import Loader from '../components/global/Loader';
 import './styles/SocialNets.css';
 
 class SocialNets extends Component {
    
     state = {
         data: {
-            instagram: undefined,
-            facebook: undefined,
-            whatsapp: undefined,
-            twitter: undefined,
-            other: undefined,
+            instagram: undefined || 'thedrugshop_official',
+            facebook: undefined|| 'The Drug Shop',
+            whatsapp: undefined|| '3022365787',
+            twitter: undefined|| 'thedrugshop',
+            pinterest: undefined|| 'The Drug Shop',
         }, 
+        errors_messages: undefined,
         loading: false, 
         error: false
     }
@@ -23,6 +25,35 @@ class SocialNets extends Component {
                 [event.target.name]: event.target.value
             }
         });
+    };
+
+    handleSubmit = event => {
+        
+        event.preventDefault();
+
+        this.setState({ loading: true })
+        
+        const shop_token = localStorage.getItem('shop-token')
+
+        fetch(`https://volga-rest.herokuapp.com/social-networks/?token=${shop_token}`, {
+            method: 'post',
+            headers: {
+                'Authorization': 'Token c0e03c9ce246125b4bf50cedf9d386f0bc517b23',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(this.state.data)
+        })
+            .then(response => {
+                if (response.ok) {
+                    this.setState({ loading: false })
+                } else {
+                    return response.json()
+                }
+            })
+                .then(json => {
+                    this.setState({ errors_messages: json })
+                })
+
     };
 
     render() {
@@ -41,7 +72,12 @@ class SocialNets extends Component {
                         <SocialNetsInput onChange={this.handleChange} snName='twitter'/>                        
                         <SocialNetsInput onChange={this.handleChange} snName='pinterest'/>                        
                     </div>
-                    <button>Continuar</button>
+                    {this.state.loading ? 
+                        <Loader width={110} height={35}/> :                               
+                        <button type='submit'>
+                            Continuar
+                        </button>
+                    }
                 </Fragment>
             </div>
         );

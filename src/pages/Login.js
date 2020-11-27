@@ -11,7 +11,6 @@ class Login extends Component {
     state = {
         error: false,
         loading: false,
-        error_message: undefined,
         data: {
             shop: undefined,
             password: undefined
