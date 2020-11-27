@@ -4,7 +4,7 @@ import instagramIcon from '../../assets/SocialNets/instagram-icon.svg';
 import facebookIcon from '../../assets/SocialNets/facebook-icon.svg';
 import whatsappIcon from '../../assets/SocialNets/whatsapp-icon.svg';
 import twitterIcon from '../../assets/SocialNets/twitter-icon.svg';
-import otherIcon from '../../assets/SocialNets/other-icon.svg';
+import pinterestIcon from '../../assets/SocialNets/pinterest-icon.svg';
 import checkIcon from '../../assets/SocialNets/check-icon.svg';
 
 import './styles/SocialNetInput.css';
@@ -15,7 +15,7 @@ class SocialNetInput extends Component {
         facebook: facebookIcon,
         whatsapp: whatsappIcon,
         twitter: twitterIcon,
-        otra: otherIcon,
+        pinterest: pinterestIcon
     };
 
     name = this.props.snName;
@@ -26,9 +26,9 @@ class SocialNetInput extends Component {
         return (
             <div className='social-network'>
                 <figure id='logo-wrapper'>
-                    <img src={this.icons[this.name]} alt={`${this.name}-icon`} />
+                    <img src={this.icons[this.name]} alt={`${this.name}-icon`}/>
                 </figure>
-                <div id='div-line' />
+                <div id='div-line'/>
                 <div id='data-input'>
                     <input
                         type='text'
@@ -36,8 +36,9 @@ class SocialNetInput extends Component {
                         placeholder={this.Name()}
                         name={this.name}
                         autoComplete='off'
+                        onChange={this.props.onChange}
                     />
-                    <img src={checkIcon} alt='check-icon' />
+                    <img src={checkIcon} alt='check-icon'/>
                 </div>
                 <h1>{this.Name()}</h1>
             </div>
@@ -52,7 +53,7 @@ class SocialNetInput extends Component {
                     facebook: '#1877f2',
                     whatsapp: '#25d366',
                     twitter: '#1da1f2',
-                    otra: 'black',
+                    pinterest: '#c8232c',
                 };
 
                 socialNet[1].addEventListener('click', function () {
