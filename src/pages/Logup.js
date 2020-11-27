@@ -11,16 +11,14 @@ import './styles/Logup.css';
 class Logup extends Component {
     
     state = {
+        loading: false,            
+        errors_messages: undefined,
         data: {
             shop: undefined,
             email: undefined,
             password: undefined,
             location: undefined,
             description: undefined
-        },
-        page_states: {
-            loading: false,            
-            error_messages: undefined
         }
     };
     
@@ -37,12 +35,7 @@ class Logup extends Component {
         
         event.preventDefault();        
         
-        this.setState({
-            page_states: {
-                ...this.state.page_states,
-                loading: true
-            }
-        });
+        this.setState({ loading: true });
 
         fetch('https://volga-rest.herokuapp.com/logup/', {
             method: 'post',
@@ -54,23 +47,15 @@ class Logup extends Component {
         })
             .then(response => {
                 if (response.ok) {
-                    this.setState({
-                        page_states: {
-                            ...this.state.page_states,
-                            loading: false
-                        }
-                    }, _ => this.props.history.push('/login'));                    
+                    this.setState({ loading: false }, _ => this.props.history.push('/login'));                    
                 } else {                    
                     return response.json()
                 }
             })
                 .then(json => {
                     this.setState({
-                        page_states: {
-                            ...this.state.page_states,
-                            loading: false,
-                            error_messages: json
-                        }
+                        loading: false,
+                        errors_messages: json                        
                     })
                 })
             .catch(error => console.error(error))
@@ -88,28 +73,28 @@ class Logup extends Component {
                             label='Tienda'
                             name='shop'
                             onChange={this.handleChange}          
-                            errorsObject={this.state.page_states.error_messages}
+                            errorsObject={this.state.errors_messages}
                         />
                         <Input
                             label='Correo'
                             type='email'
                             name='email'
                             onChange={this.handleChange}              
-                            errorsObject={this.state.page_states.error_messages}
+                            errorsObject={this.state.errors_messages}
                         />
                         <Input
                             label='Contraseña'
                             type='password'
                             name='password'
                             onChange={this.handleChange}              
-                            errorsObject={this.state.page_states.error_messages}
+                            errorsObject={this.state.errors_messages}
                         />
                         <Input
                             label='Ubicación'
                             name='location'
                             onChange={this.handleChange}
                             maxLength='50'
-                            errorsObject={this.state.page_states.error_messages}
+                            errorsObject={this.state.errors_messages}
                         />
                         <Input
                             name='description'
@@ -117,10 +102,10 @@ class Logup extends Component {
                             isTextArea={true}
                             maxLength='100'
                             onChange={this.handleChange}
-                            errorsObject={this.state.page_states.error_messages}
+                            errorsObject={this.state.errors_messages}
                         />                        
 
-                        {this.state.page_states.loading ? 
+                        {this.state.loading ? 
                             <Loader width={110} height={35}/> :                               
                             <button type='submit'>
                                 Continuar
