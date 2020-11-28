@@ -9,7 +9,7 @@ import logupHero from '../assets/Logup/logup-hero.svg';
 import './styles/Logup.css';
 
 class Logup extends Component {
-    
+
     state = {
         loading: false,            
         errors_messages: undefined,
@@ -40,7 +40,7 @@ class Logup extends Component {
         fetch('https://volga-rest.herokuapp.com/logup/', {
             method: 'post',
             headers: {
-                'Authorization': 'Token c0e03c9ce246125b4bf50cedf9d386f0bc517b23',
+                'Authorization': 'Token 837b82d3853737c9f3ff691479027e92cb0ddb25',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(this.state.data)
@@ -53,10 +53,12 @@ class Logup extends Component {
                 }
             })
                 .then(json => {
-                    this.setState({
-                        loading: false,
-                        errors_messages: json                        
-                    })
+                    if (this._isMounted) {
+                        this.setState({
+                            loading: false,
+                            errors_messages: json                        
+                        })
+                    }
                 })
             .catch(error => console.error(error))
     };

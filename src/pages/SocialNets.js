@@ -7,11 +7,11 @@ class SocialNets extends Component {
    
     state = {
         data: {
-            instagram: undefined || 'thedrugshop_official',
-            facebook: undefined|| 'The Drug Shop',
-            whatsapp: undefined|| '3022365787',
-            twitter: undefined|| 'thedrugshop',
-            pinterest: undefined|| 'The Drug Shop',
+            instagram: undefined || 'thedrugshop_official2',
+            facebook: undefined|| 'The Drug Shop2',
+            whatsapp: undefined|| '30223657872',
+            twitter: undefined|| 'thedrugshop2',
+            pinterest: undefined|| 'The Drug Shop2',
         }, 
         errors_messages: undefined,
         loading: false, 
@@ -38,7 +38,7 @@ class SocialNets extends Component {
         fetch(`https://volga-rest.herokuapp.com/social-networks/?token=${shop_token}`, {
             method: 'post',
             headers: {
-                'Authorization': 'Token c0e03c9ce246125b4bf50cedf9d386f0bc517b23',
+                'Authorization': 'Token 837b82d3853737c9f3ff691479027e92cb0ddb25',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(this.state.data)
@@ -66,11 +66,11 @@ class SocialNets extends Component {
                         tienda
                     </h1>
                     <div id='social-nets-wrapper'>
-                        <SocialNetsInput onChange={this.handleChange} snName='instagram'/>
-                        <SocialNetsInput onChange={this.handleChange} snName='facebook'/>
-                        <SocialNetsInput onChange={this.handleChange} snName='whatsapp'/>
-                        <SocialNetsInput onChange={this.handleChange} snName='twitter'/>                        
-                        <SocialNetsInput onChange={this.handleChange} snName='pinterest'/>                        
+                        <SocialNetsInput onChange={this.handleChange} snName='instagram' errorsObject={this.state.errors_messages}/>
+                        <SocialNetsInput onChange={this.handleChange} snName='facebook' errorsObject={this.state.errors_messages}/>
+                        <SocialNetsInput onChange={this.handleChange} snName='whatsapp' errorsObject={this.state.errors_messages}/>
+                        <SocialNetsInput onChange={this.handleChange} snName='twitter' errorsObject={this.state.errors_messages}/> 
+                        <SocialNetsInput onChange={this.handleChange} snName='pinterest' errorsObject={this.state.errors_messages}/>                        
                     </div>
                     {this.state.loading ? 
                         <Loader width={110} height={35}/> :                               

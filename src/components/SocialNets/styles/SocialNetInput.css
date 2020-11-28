@@ -76,3 +76,8 @@
 .data-input-anim {
     transform: initial !important;
 }
+
+#sn-error-span {
+    position: absolute;
+    bottom: -40px;
+}

@@ -10,6 +10,7 @@ import checkIcon from '../../assets/SocialNets/check-icon.svg';
 import './styles/SocialNetInput.css';
 
 class SocialNetInput extends Component {
+    
     icons = {
         instagram: instagramIcon,
         facebook: facebookIcon,
@@ -21,6 +22,8 @@ class SocialNetInput extends Component {
     name = this.props.snName;
 
     Name = (str = this.name) => str.charAt(0).toUpperCase() + str.substring(1);
+
+    isError = _ => Object.keys(this.props.errorsObject || {}).includes(this.name)
 
     render() {
         return (
@@ -41,6 +44,11 @@ class SocialNetInput extends Component {
                     <img src={checkIcon} alt='check-icon'/>
                 </div>
                 <h1>{this.Name()}</h1>
+                {this.isError() && (
+                    <span id='sn-error-span'>
+                        {this.props.errorsObject[this.name]}
+                    </span>
+                )}
             </div>
         );
     }
