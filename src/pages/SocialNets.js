@@ -7,11 +7,11 @@ class SocialNets extends Component {
    
     state = {
         data: {
-            instagram: undefined || 'thedrugshop_official2',
-            facebook: undefined|| 'The Drug Shop2',
-            whatsapp: undefined|| '30223657872',
-            twitter: undefined|| 'thedrugshop2',
-            pinterest: undefined|| 'The Drug Shop2',
+            instagram: undefined || 'thedrugshop_officialx',
+            facebook: undefined|| 'The Drug Shopx',
+            whatsapp: undefined|| '3022365787x',
+            twitter: undefined|| 'thedrugshopx',
+            pinterest: undefined|| 'The Drug Shopx',
         }, 
         errors_messages: undefined,
         loading: false, 
@@ -38,7 +38,7 @@ class SocialNets extends Component {
         fetch(`https://volga-rest.herokuapp.com/social-networks/?token=${shop_token}`, {
             method: 'post',
             headers: {
-                'Authorization': 'Token 837b82d3853737c9f3ff691479027e92cb0ddb25',
+                'Authorization': 'Token 007071b38dae7a95425fa0eaf65db37566adfe41',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(this.state.data)
@@ -53,7 +53,6 @@ class SocialNets extends Component {
                 .then(json => {
                     this.setState({ errors_messages: json })
                 })
-
     };
 
     render() {

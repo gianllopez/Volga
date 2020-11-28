@@ -40,7 +40,7 @@ class Logup extends Component {
         fetch('https://volga-rest.herokuapp.com/logup/', {
             method: 'post',
             headers: {
-                'Authorization': 'Token 837b82d3853737c9f3ff691479027e92cb0ddb25',
+                'Authorization': 'Token 007071b38dae7a95425fa0eaf65db37566adfe41',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(this.state.data)
