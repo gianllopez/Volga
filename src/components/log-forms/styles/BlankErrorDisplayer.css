@@ -1,0 +1,16 @@
+#blank-error-displayer {    
+    position: absolute;
+    top: 0;
+    height: 10vh;
+    font-size: 1.5em;
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    background-color: #f94e4e;
+    color: #000;
+    border-style: solid;
+    border-width: 2px 0;
+    transition: .6s;
+    transform: translateY(-11vh);
+}
