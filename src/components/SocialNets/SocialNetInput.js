@@ -54,15 +54,17 @@ class SocialNetInput extends Component {
     }
 
     componentDidMount() {
+        
+        const colors = {
+            instagram: '#c32aa3',
+            facebook: '#1877f2',
+            whatsapp: '#25d366',
+            twitter: '#1da1f2',
+            pinterest: '#c8232c',
+        };
+
         Object.entries(document.getElementsByClassName('social-network')).map(
             (socialNet) => {
-                const colors = {
-                    instagram: '#c32aa3',
-                    facebook: '#1877f2',
-                    whatsapp: '#25d366',
-                    twitter: '#1da1f2',
-                    pinterest: '#c8232c',
-                };
 
                 socialNet[1].addEventListener('click', function () {
                     let header = this.querySelector('h1');

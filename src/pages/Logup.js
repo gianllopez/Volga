@@ -34,19 +34,19 @@ class Logup extends Component {
 	};
 
 	handleSubmit = event => {
-		
+
 		event.preventDefault();
 
 		this.setState({ loading: true })
-
+		
 		formValidator(
 			this.state.data,
-			() => {
+			() => {				
 				fetch('https://volga-rest.herokuapp.com/logup/', 
 					{
 						method: 'post',
 						headers: {
-							'Authorization': 'Token 629abde4ff2ffecb8c5448baa8c58454e19a2259',
+							'Authorization': 'Token d9be812eed5a7e14560d7adf975fbee2f2819190',
 							'Content-Type': 'application/json'
 						},
 						body: JSON.stringify(this.state.data)
@@ -58,10 +58,12 @@ class Logup extends Component {
 						return response.json();
 					}
 				}).then(json => {
-					this.setState({
-						loading: false,
-						errors_messages: json
-					});
+					if (this._isMounted) {
+						this.setState({
+							loading: false,
+							errors_messages: json
+						});
+					}
 				});
 			},
 			(fieldsErrors) => {
@@ -139,6 +141,16 @@ class Logup extends Component {
 			/>
 		);
 	};
+	
+	componentDidMount() {
+		this._isMounted = true;
+		document.title = 'Volga - Registro';
+	};
+
+	componentWillUnmount() {
+		this._isMounted = false;
+	};
+
 };
 
 export default Logup;
