@@ -1,20 +1,24 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
+
 import FormLayout from '../components/global/FormLayout';
 import Input from '../components/log-forms/Input';
 import Loader from '../components/global/Loader';
+import formValidator from '../utils/validators';
+
 import loginHero from '../assets/Login/login-hero.svg';
 import './styles/Login.css';
 
 class Login extends Component {
 
     state = {
+        data: {
+            shop: '',
+            password: ''
+        },
         error: false,
         loading: false,
-        data: {
-            shop: undefined,
-            password: undefined
-        }
+        errors_messages: {}
     };
 
     handleChange = event => {
@@ -30,39 +34,46 @@ class Login extends Component {
         
         event.preventDefault();
 
-        this.setState({
-            loading: true,
-            error: false
-        });
+        this.setState({ loading: true })
 
-        fetch('https://volga-rest.herokuapp.com/login/auth/', {
-            method: 'post',
-            headers: {
-                'Authorization': 'Token 007071b38dae7a95425fa0eaf65db37566adfe41',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(this.state.data)
-        })
-            .then(response => {
-                this.setState({ loading: false });
-                if (!response.ok) {
-                    this.setState({ error: true });
-                }
-                return response.json()
-            })
-                .then(json => {                    
-                    if (this.state.error) {
-                        this.setState({
-                            error_message: json.non_field_errors[0]
-                        })
-                        setTimeout(
-                            _ => document.getElementById('invcred-span').style.transform = 'initial'
-                        , 1)
-                    } else {
-                        localStorage.setItem('shop-token', json.token)
-                        this.props.history.push(`${this.state.data.shop}/social-networks`)
+        formValidator(
+            this.state.data,
+            () => {
+                fetch('https://volga-rest.herokuapp.com/login/auth/',                
+                    {
+                        method: 'post',
+                        headers: {
+                            'Authorization': 'Token d9be812eed5a7e14560d7adf975fbee2f2819190',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(this.state.data)
                     }
-                })
+                ).then(response => {
+                    this.setState({ loading: false });
+                    if (response.ok) {
+                        this.props.history.push(`${this.state.data.shop}/social-networks`);
+                    } else {
+                        this.setState({ error: true });
+                    };
+                    return response.json();
+                }).then(json => {
+                    if (this.state.error && this._isMounted) {
+                        this.setState({ errors_messages: json });
+                        const errorSpan = document.getElementById('invcred-span')
+                        if (errorSpan) { errorSpan.style.transform = 'initial' }
+                    } else {
+                        localStorage.setItem('shop-token', json.token);
+                    };
+                });
+            },
+            fieldsErrors => {
+                this.setState({
+                    loading: false,
+                    errors_messages: fieldsErrors
+                });
+            }
+        );
+        
     }
 
     render() {
@@ -75,7 +86,7 @@ class Login extends Component {
                         <h2>Inicia sesión<br/>con tu tienda</h2>
                         {this.state.error && (
                             <span id='invcred-span'>
-                                {this.state.error_message}
+                                {this.state.errors_messages.non_field_errors}
                             </span>
                         )}
                     </Fragment>                    
@@ -90,6 +101,7 @@ class Login extends Component {
                         />
                         <Input
                             name='password'
+                            type='password'
                             label='Contraseña'
                             onChange={this.handleChange}
                             errorsObject={this.state.errors_messages}
@@ -112,6 +124,16 @@ class Login extends Component {
             />             
         );
     };
+
+    componentDidMount() {
+        this._isMounted = true;
+        document.title = 'Volga - Iniciar sesión';
+    };
+
+    componentWillUnmount() {
+        this._isMounted = false;
+    };
+
 };
 
 export default Login;
