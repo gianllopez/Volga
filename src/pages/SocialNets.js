@@ -1,17 +1,22 @@
 import React, {Component, Fragment} from 'react';
+import ReactDOM from 'react-dom';
+
 import SocialNetsInput from '../components/SocialNets/SocialNetInput';
 import Loader from '../components/global/Loader';
+import ConfirmBlankModal from '../components/SocialNets/ConfirmBlankModal';
+import formValidator from '../utils/validators';
+
 import './styles/SocialNets.css';
 
 class SocialNets extends Component {
    
     state = {
         data: {
-            instagram: undefined || 'thedrugshop_officialx',
-            facebook: undefined|| 'The Drug Shopx',
-            whatsapp: undefined|| '3022365787x',
-            twitter: undefined|| 'thedrugshopx',
-            pinterest: undefined|| 'The Drug Shopx',
+            instagram: '',
+            facebook: '',
+            whatsapp: '',
+            twitter: '',
+            pinterest: '',
         }, 
         errors_messages: undefined,
         loading: false, 
@@ -31,29 +36,47 @@ class SocialNets extends Component {
         
         event.preventDefault();
 
-        this.setState({ loading: true })
+        this.setState({ loading: true });
         
-        const shop_token = localStorage.getItem('shop-token')
-
-        fetch(`https://volga-rest.herokuapp.com/social-networks/?token=${shop_token}`, {
-            method: 'post',
-            headers: {
-                'Authorization': 'Token 007071b38dae7a95425fa0eaf65db37566adfe41',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(this.state.data)
-        })
-            .then(response => {
+        const shop_token = localStorage.getItem('shop-token');
+        
+        const makeFetch = () => {
+            fetch(`https://volga-rest.herokuapp.com/social-networks/?token=${shop_token}`,
+                {
+                    method: 'post',
+                    headers: {
+                        'Authorization': 'Token d9be812eed5a7e14560d7adf975fbee2f2819190',
+                        'Content-Type': 'application/json'                        
+                    },
+                    body: JSON.stringify(this.state.data)
+                }
+            ).then(response => {
                 if (response.ok) {
-                    this.setState({ loading: false })
+                    // redirect to shop-tags
                 } else {
                     return response.json()
                 }
+            }).then(json => {
+                this.setState({
+                    errors_messages: json
+                });
             })
-                .then(json => {
-                    this.setState({ errors_messages: json })
-                })
-    };
+        };
+
+
+        formValidator(
+            this.state.data,
+            () => makeFetch(),
+            () => {
+                this.setState({
+                    blank_fields: true
+                });                
+            }
+
+        )
+        
+    }
+        
 
     render() {
         return (
@@ -76,7 +99,14 @@ class SocialNets extends Component {
                         <button type='submit'>
                             Continuar
                         </button>
-                    }
+                    }                    
+                    {this.state.blank_fields && (
+                        ReactDOM.createPortal(
+                            <ConfirmBlankModal/>,
+                            document.getElementById('root')
+                        )
+                    )}
+
                 </Fragment>
             </form>
         );
