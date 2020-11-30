@@ -1,9 +1,9 @@
 import React, {Component, Fragment} from 'react';
-import ReactDOM from 'react-dom';
+import swal from '@sweetalert/with-react';
 
 import SocialNetsInput from '../components/SocialNets/SocialNetInput';
 import Loader from '../components/global/Loader';
-import ConfirmBlankModal from '../components/SocialNets/ConfirmBlankModal';
+
 import formValidator from '../utils/validators';
 
 import './styles/SocialNets.css';
@@ -68,9 +68,25 @@ class SocialNets extends Component {
             this.state.data,
             () => makeFetch(),
             () => {
-                this.setState({
-                    blank_fields: true
-                });                
+                const blankmsg = (
+                    <Fragment>
+                        <h2>
+                            Las redes sociales son<br/>
+                            indispensables en el alcance<br/>
+                            de personas de tu tienda.
+                        </h2>
+                        <p>
+                            Te recomendamos rellenar o crear<br/>
+                            las redes sociales que te sugerimos.<br/>
+                        </p>
+                        <span>¿Deseas continuar sin rellenarlas todas?</span>
+                    </Fragment>
+                );
+                swal({
+                    title: 'Algunas redes sociales no se proveyeron.',
+                    content: blankmsg,
+                })          
+
             }
 
         )
@@ -99,14 +115,7 @@ class SocialNets extends Component {
                         <button type='submit'>
                             Continuar
                         </button>
-                    }                    
-                    {this.state.blank_fields && (
-                        ReactDOM.createPortal(
-                            <ConfirmBlankModal/>,
-                            document.getElementById('root')
-                        )
-                    )}
-
+                    }                                        
                 </Fragment>
             </form>
         );
