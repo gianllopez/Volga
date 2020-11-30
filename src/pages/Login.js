@@ -43,7 +43,7 @@ class Login extends Component {
                     {
                         method: 'post',
                         headers: {
-                            'Authorization': 'Token d9be812eed5a7e14560d7adf975fbee2f2819190',
+                            'Authorization': 'Token 3285f6bd9ea16b7dea063d3e98e3e0cec87df963',
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify(this.state.data)
@@ -51,7 +51,7 @@ class Login extends Component {
                 ).then(response => {
                     this.setState({ loading: false });
                     if (response.ok) {
-                        this.props.history.push(`${this.state.data.shop}/social-networks`);
+                        this.props.history.push(`/${this.state.data.shop}/social-networks`);
                     } else {
                         this.setState({ error: true });
                     };

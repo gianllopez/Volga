@@ -45,21 +45,20 @@ class SocialNets extends Component {
                 {
                     method: 'post',
                     headers: {
-                        'Authorization': 'Token d9be812eed5a7e14560d7adf975fbee2f2819190',
+                        'Authorization': 'Token 3285f6bd9ea16b7dea063d3e98e3e0cec87df963',
                         'Content-Type': 'application/json'                        
                     },
                     body: JSON.stringify(this.state.data)
                 }
             ).then(response => {
-                if (response.ok) {
-                    // redirect to shop-tags
+                this.setState({ loading: false });
+                if (response.ok) { 
+                    this.props.history.push('/shop-tags')
                 } else {
                     return response.json()
                 }
             }).then(json => {
-                this.setState({
-                    errors_messages: json
-                });
+                // i must to make something to display the error returned from the backend
             })
         };
 
@@ -68,28 +67,36 @@ class SocialNets extends Component {
             this.state.data,
             () => makeFetch(),
             () => {
-                const blankmsg = (
-                    <Fragment>
-                        <h2>
-                            Las redes sociales son<br/>
-                            indispensables en el alcance<br/>
-                            de personas de tu tienda.
-                        </h2>
-                        <p>
-                            Te recomendamos rellenar o crear<br/>
-                            las redes sociales que te sugerimos.<br/>
-                        </p>
-                        <span>¿Deseas continuar sin rellenarlas todas?</span>
-                    </Fragment>
+                this.setState({ loading: false });
+                const confirmBlankMsg = (
+                    <h2 style={{ marginTop: '-20px' }}>
+                        Las redes sociales son<br/>
+                        indispensables para el alcance<br/>
+                        de personas de tu tienda.<br/>
+                        <span style={{ color: '#e46519' }}>
+                            ¿Deseas continuar sin<br/>
+                            rellenarlas todas?
+                        </span>
+                    </h2>
                 );
                 swal({
                     title: 'Algunas redes sociales no se proveyeron.',
-                    content: blankmsg,
-                })          
-
+                    icon: 'warning',
+                    content: confirmBlankMsg,
+                    buttons : {
+                        cancel: 'No, rellenar',
+                        catch: {
+                            text: 'Si, continuar',
+                            value: true
+                        }
+                    }
+                }).then(allowBlank => {
+                    if (allowBlank) {                        
+                        makeFetch();
+                    };
+                })
             }
-
-        )
+        );
         
     }
         
@@ -104,11 +111,11 @@ class SocialNets extends Component {
                         tienda
                     </h1>
                     <div id='social-nets-wrapper'>
-                        <SocialNetsInput onChange={this.handleChange} snName='instagram' errorsObject={this.state.errors_messages}/>
-                        <SocialNetsInput onChange={this.handleChange} snName='facebook' errorsObject={this.state.errors_messages}/>
-                        <SocialNetsInput onChange={this.handleChange} snName='whatsapp' errorsObject={this.state.errors_messages}/>
-                        <SocialNetsInput onChange={this.handleChange} snName='twitter' errorsObject={this.state.errors_messages}/> 
-                        <SocialNetsInput onChange={this.handleChange} snName='pinterest' errorsObject={this.state.errors_messages}/>                        
+                        <SocialNetsInput onChange={this.handleChange} snName='instagram'/>
+                        <SocialNetsInput onChange={this.handleChange} snName='facebook'/>
+                        <SocialNetsInput onChange={this.handleChange} snName='whatsapp'/>
+                        <SocialNetsInput onChange={this.handleChange} snName='twitter'/> 
+                        <SocialNetsInput onChange={this.handleChange} snName='pinterest'/>                        
                     </div>
                     {this.state.loading ? 
                         <Loader width={110} height={35}/> :                               
