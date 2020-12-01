@@ -36,16 +36,18 @@ class SocialNets extends Component {
         
         event.preventDefault();
 
-        this.setState({ loading: true });
         
         const shop_token = localStorage.getItem('shop-token');
         
         const makeFetch = () => {
+            
+            this.setState({ loading: true });
+            
             fetch(`https://volga-rest.herokuapp.com/social-networks/?token=${shop_token}`,
                 {
                     method: 'post',
                     headers: {
-                        'Authorization': 'Token 3285f6bd9ea16b7dea063d3e98e3e0cec87df963',
+                        'Authorization': 'Token 861514f85144b2e674efc59ca4ddcf440ad59c34',
                         'Content-Type': 'application/json'                        
                     },
                     body: JSON.stringify(this.state.data)
@@ -58,7 +60,23 @@ class SocialNets extends Component {
                     return response.json()
                 }
             }).then(json => {
-                // i must to make something to display the error returned from the backend
+                let errormsgs = (
+                    <ul id='errors-list'>
+                        {Object.values(json).map((error, id) => 
+                            <li key={id}>
+                                {error}
+                            </li>
+                        )}
+                    </ul>
+                )
+                swal({
+                    title: 'Error en el registro de tus redes',
+                    icon: 'error',
+                    content: errormsgs,
+                    dangerMode: true,
+                    buttons: [false, 'Cerrar']
+                })
+                
             })
         };
 
@@ -83,11 +101,13 @@ class SocialNets extends Component {
                     title: 'Algunas redes sociales no se proveyeron.',
                     icon: 'warning',
                     content: confirmBlankMsg,
+                    dangerMode: true,
                     buttons : {
                         cancel: 'No, rellenar',
                         catch: {
                             text: 'Si, continuar',
-                            value: true
+                            value: true,
+                            className: 'allow-blank-btn'                         
                         }
                     }
                 }).then(allowBlank => {

@@ -27,6 +27,24 @@
     margin-top: 5px;
 }
 
+.allow-blank-btn {
+    background-color: #ea8041;
+}
+
+#errors-list {
+    list-style: none;
+    font-size: 1.3em;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#errors-list > li {
+    width: 250px;
+    margin: 2.5px 0;
+}
+
 @media screen and (min-width: 500px) {
     #social-nets-form {
         position: absolute;
