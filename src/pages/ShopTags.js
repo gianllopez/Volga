@@ -3,6 +3,7 @@ import shoptagsHero from '../assets/ShopTags/shop-tags-hero.svg';
 import './styles/ShopTags.css';
 
 class ShopTags extends Component {
+   
    render() {
       return (
          <div id='shop-tags-wrapper'>
@@ -18,6 +19,11 @@ class ShopTags extends Component {
          </div>
       );
    };
+
+   componentDidMount() {
+      document.getElementById('search-filter').focus();
+   };
+
 };
 
 export default ShopTags;

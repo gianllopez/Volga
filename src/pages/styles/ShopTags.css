@@ -35,11 +35,12 @@ button, input {
     text-align: center;
     border: 2px solid black;
     border-radius: 5px;
-    font-size: 1em;
+    font-size: 1em;    
+    box-shadow: 0px 0px 10px 2px rgb(161 211 240);
 }
 
 #search-filter::placeholder {
-    color: black;
+    color: #4d6a7a;
 }
 
 #shop-tags-wrapper > h3 {
@@ -55,9 +56,18 @@ button, input {
 
 #shop-tags-wrapper > button {
     margin-top: 10px;
-    width: 130px;
+    width: 100px;
     height: 35px;
     border: 2px solid black;
     border-radius: 5px;
     background: none;
+}
+
+@media screen and (min-height:550px) {
+    #shop-tags-wrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 }
