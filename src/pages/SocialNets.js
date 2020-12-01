@@ -35,14 +35,11 @@ class SocialNets extends Component {
     handleSubmit = event => {
         
         event.preventDefault();
-
         
         const shop_token = localStorage.getItem('shop-token');
         
-        const makeFetch = () => {
-            
-            this.setState({ loading: true });
-            
+        const makeFetch = () => {                            
+            this.setState({ loading: true });            
             fetch(`https://volga-rest.herokuapp.com/social-networks/?token=${shop_token}`,
                 {
                     method: 'post',
@@ -55,7 +52,7 @@ class SocialNets extends Component {
             ).then(response => {
                 this.setState({ loading: false });
                 if (response.ok) { 
-                    this.props.history.push('/shop-tags')
+                    this.props.history.push('/shop-tags');
                 } else {
                     return response.json()
                 }
@@ -68,18 +65,16 @@ class SocialNets extends Component {
                             </li>
                         )}
                     </ul>
-                )
+                );
                 swal({
                     title: 'Error en el registro de tus redes',
-                    icon: 'error',
                     content: errormsgs,
-                    dangerMode: true,
-                    buttons: [false, 'Cerrar']
-                })
-                
-            })
+                    icon: 'error',
+                    buttons: [false, 'Cerrar'],
+                    dangerMode: true
+                });                
+            });
         };
-
 
         formValidator(
             this.state.data,
@@ -114,12 +109,11 @@ class SocialNets extends Component {
                     if (allowBlank) {                        
                         makeFetch();
                     };
-                })
+                });
             }
         );
         
     }
-        
 
     render() {
         return (
@@ -146,7 +140,7 @@ class SocialNets extends Component {
                 </Fragment>
             </form>
         );
-    }
+    };
 }
 
 export default SocialNets;
