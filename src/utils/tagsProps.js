@@ -21,6 +21,8 @@ import multimedia_icon from '../assets/ShopTags/tags-icons/multimedia.svg';
 import jewelry_icon from '../assets/ShopTags/tags-icons/rings.svg';
 import clothes_icon from '../assets/ShopTags/tags-icons/clothes.svg';
 import services_icon from '../assets/ShopTags/tags-icons/services.svg';
+import florist_icon from '../assets/ShopTags/tags-icons/flower.svg'
+import botanic_icon from '../assets/ShopTags/tags-icons/plant.svg'
 
 const tagsProps = {
    'Vehículos': vehicles_icon,
@@ -28,24 +30,26 @@ const tagsProps = {
    'Mascotas': pets_icon,
    'Antigüedades': antiques_icon,
    'Arte': arts_icon,
-   'Papelería': stationery_icon,   
+   'Papelería': stationery_icon,  
+   'Venta de Plantas': botanic_icon,
    'Belleza': beauty_icon,
    'Boletas para espectáculos': ticketsales_icon,
    'Cámaras': cameras_icon,
    'Celulares': cellphones_icon,
    'Computación': computing_icon,
-   'Consolas/Videojuegos': consoles_icon,
-   'Deportes/Fitness': sports_icon,
-   'Electrodomésticos': homeappliances_icon,
-   'Herramientas/Construcción': constructools_icon,
-   'Hogar/Inmuebles': estates_icon,
+   'Consolas & Videojuegos': consoles_icon,
+   'Deportes & Fitness': sports_icon,
+   'Enseres': homeappliances_icon,
+   'Herramientas & Materiales': constructools_icon,
+   'Hogares e Inmuebles': estates_icon,
    'Instrumentos musicales': musicinstruments_icon,
-   'Juegos/Juguetes': toys_icon,
-   'Libros/Revistas/Comics': reading_icon,
-   'Música/Películas/Series': multimedia_icon,   
+   'Juegos & Juguetes': toys_icon,
+   'Libros, Revistas & Comics': reading_icon,
+   'Música, Películas & Series': multimedia_icon,   
    'Joyas': jewelry_icon,
-   'Ropa/Accesorios': clothes_icon,
-   'Servicios': services_icon
+   'Ropa & Accesorios': clothes_icon,
+   'Prestación de Servicios': services_icon,
+   'Floristería': florist_icon
 };
 
 export default tagsProps;

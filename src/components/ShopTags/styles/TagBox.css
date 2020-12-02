@@ -33,7 +33,7 @@
 .tagbox-wrapper label::before {
    content: '';
    position: absolute;
-   background: url('assets/blue-check.svg') no-repeat;
+   background: url('../../../assets/ShopTags/blue-check.svg') no-repeat;
    background-size: contain;
    width: 20px;
    height: 20px;
