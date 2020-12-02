@@ -10,19 +10,13 @@ class ShopTags extends Component {
          <div id='shop-tags-wrapper'>
             <div id='header'>
                <h1>¿Con qué etiquetas<br/>relacionarías tu tienda?</h1>
-               <h2>Selecciona 5-10</h2>
+               <h2>Seleccionalas</h2>
                <img src={shoptagsHero} alt="shop-tags-hero"/>
             </div>
-            <input type='text' placeholder='Buscar etiquetas' id='search-filter'/>
-            <h3>Etiquetas seleccionadas</h3>
-            <section id='selected-tags'/>
+            {/* // here go the new shop tags */}
             <button>Continuar</button>
          </div>
       );
-   };
-
-   componentDidMount() {
-      document.getElementById('search-filter').focus();
    };
 
 };
