@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import tagsProps from '../utils/tagsProps';
 import shoptagsHero from '../assets/ShopTags/shop-tags-hero.svg';
 import './styles/ShopTags.css';
 

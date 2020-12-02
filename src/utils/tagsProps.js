@@ -22,7 +22,7 @@ import jewelry_icon from '../assets/ShopTags/tags-icons/rings.svg';
 import clothes_icon from '../assets/ShopTags/tags-icons/clothes.svg';
 import services_icon from '../assets/ShopTags/tags-icons/services.svg';
 
-const tags_assets = {
+const tagsProps = {
    'Vehículos': vehicles_icon,
    'Alimentos': foods_icon,
    'Mascotas': pets_icon,
@@ -48,4 +48,4 @@ const tags_assets = {
    'Servicios': services_icon
 };
 
-export default tags_assets;
+export default tagsProps;

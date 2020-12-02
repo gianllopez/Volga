@@ -4,17 +4,18 @@ import './styles/TagBox.css';
 class TagBox extends Component {
   
    render() {
+      let name4jsx = this.props.name.toLowerCase().replace(' ', '-');
       return (
          <div class='tagbox-wrapper'>
          <input
             type='checkbox'
-            name={this.props.name}
-            id={`${this.props.name}-checkbox`}
-            value={this.props.value}
+            name={name4jsx}
+            id={`${name4jsx}-checkbox`}
+            value={this.props.name}
          />
-         <label htmlFor={`${this.props.name}-checkbox`}>
-            <img src='' alt=''/> // get the image from some place.
-            <h2>Lorem ipsum dolor sit amet.</h2>
+         <label htmlFor={`${name4jsx}-checkbox`}>
+            <img src={this.props.image} alt={`${name4jsx}-icon`}/>
+            <h2>{this.props.name}</h2>
          </label>
          </div>
       );
