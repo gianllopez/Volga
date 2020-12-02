@@ -6,6 +6,19 @@ import './styles/ShopTags.css';
 
 class ShopTags extends Component {
    
+   state = {
+      tags: []
+   }
+
+   handleChange = event => {      
+      this.setState({
+         tags: [
+            ...this.state.tags,
+            event.target.value
+         ]
+      });
+   };
+
    render() {
       return (
          <div id='shop-tags-wrapper'>
@@ -20,6 +33,7 @@ class ShopTags extends Component {
                      <TagBox
                         name={tagData[0]} 
                         image={tagData[1]}
+                        changeHandler={this.handleChange}
                      />
                   )
                })}
