@@ -143,6 +143,11 @@ class SocialNets extends Component {
             </form>
         );
     };
+
+    componentDidMount() {
+        document.title = `${this.props.match.params['shop']} - Redes Sociales`;
+     };
+
 }
 
 export default SocialNets;

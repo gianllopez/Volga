@@ -94,6 +94,10 @@ class ShopTags extends Component {
       );
    };
 
+   componentDidMount() {
+      document.title = `${this.props.match.params['shop']} - Tags`;
+   };
+
 };
 
 export default ShopTags;
