@@ -21,7 +21,6 @@ import multimedia_icon from '../assets/ShopTags/tags-icons/multimedia.svg';
 import jewelry_icon from '../assets/ShopTags/tags-icons/rings.svg';
 import clothes_icon from '../assets/ShopTags/tags-icons/clothes.svg';
 import services_icon from '../assets/ShopTags/tags-icons/services.svg';
-import florist_icon from '../assets/ShopTags/tags-icons/flower.svg'
 import botanic_icon from '../assets/ShopTags/tags-icons/plant.svg'
 
 const tagsProps = {
@@ -48,8 +47,7 @@ const tagsProps = {
    'Música, Películas & Series': multimedia_icon,   
    'Joyas': jewelry_icon,
    'Ropa & Accesorios': clothes_icon,
-   'Prestación de Servicios': services_icon,
-   'Floristería': florist_icon
+   'Prestación de Servicios': services_icon
 };
 
 export default tagsProps;

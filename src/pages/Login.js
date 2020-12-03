@@ -64,7 +64,7 @@ class Login extends Component {
                     } else {
                         localStorage.setItem('SHOPTOKEN', json.token);
                     };
-                });
+                }).catch(error => console.error(error));
             },
             fieldsErrors => {
                 this.setState({
@@ -108,7 +108,7 @@ class Login extends Component {
                         />
                         
                         {this.state.loading ? 
-                            <Loader width={110} height={35}/> :                               
+                            <Loader/>:
                             <button type='submit'>
                                 Iniciar
                             </button>

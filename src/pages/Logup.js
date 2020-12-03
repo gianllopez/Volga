@@ -64,7 +64,7 @@ class Logup extends Component {
 							errors_messages: json
 						});
 					}
-				});
+				}).catch(error => console.error(error));
 			},
 			(fieldsErrors) => {
 				this.setState({
@@ -127,7 +127,7 @@ class Logup extends Component {
 						/>
 
 						{this.state.loading ?
-							<Loader width={110} height={35} /> :
+							<Loader/>:
 							<button type='submit'>Continuar</button>
 						}
 

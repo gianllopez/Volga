@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import swal from '@sweetalert/with-react';
+import Loader from '../components/global/Loader';
 import TagBox from '../components/ShopTags/TagBox';
 import tagsProps from '../utils/tagsProps';
 import shoptagsHero from '../assets/ShopTags/shop-tags-hero.svg';
@@ -9,7 +10,8 @@ class ShopTags extends Component {
    
    state = {
       tags: [],
-      error: ''
+      error: '',
+      loading: false
    }
 
    handleChange = event => {      
@@ -22,6 +24,8 @@ class ShopTags extends Component {
    };
 
    handleSubmit = event => {
+
+      this.setState({ loading: true });
 
       event.preventDefault();
       
@@ -37,6 +41,7 @@ class ShopTags extends Component {
             body: JSON.stringify({tags: this.state.tags.join('/')})
          }
       ).then(response => {
+         this.setState({ loading: false });
          if (response.ok) {
             // this.props.history.push('') --> post a product.
          } else {
@@ -79,7 +84,12 @@ class ShopTags extends Component {
                   )
                })}
             </div>
-            <button type='submit'>Continuar</button>
+            {this.state.loading ? 
+               <Loader style={{width: 110, height: 35, marginTop: 20}}/>:
+               <button type='submit'>
+                  Continuar
+               </button>
+            }
          </form>
       );
    };

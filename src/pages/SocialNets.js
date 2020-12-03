@@ -75,7 +75,7 @@ class SocialNets extends Component {
                         dangerMode: true
                     });                
                 }
-            });
+            }).catch(error => console.error(error));
         };
 
         formValidator(
@@ -134,7 +134,7 @@ class SocialNets extends Component {
                         <SocialNetsInput onChange={this.handleChange} snName='pinterest'/>                        
                     </div>
                     {this.state.loading ? 
-                        <Loader width={110} height={35}/> :                               
+                        <Loader/>: 
                         <button type='submit'>
                             Continuar
                         </button>
