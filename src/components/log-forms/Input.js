@@ -21,7 +21,7 @@ class Input extends Component {
                         name={this.props.name}
                         onChange={this.props.onChange}
                         maxLength={this.props.maxLength}
-                        // required
+                        autoComplete='off'
                     />
                 )}
                 {this.isError() && (

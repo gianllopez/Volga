@@ -6,7 +6,7 @@ class TagBox extends Component {
    render() {
       let name4jsx = this.props.name.toLowerCase().replace(' ', '-');
       return (
-         <div class='tagbox-wrapper'>
+         <div className='tagbox-wrapper'>
          <input
             type='checkbox'
             name={name4jsx}

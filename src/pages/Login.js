@@ -43,7 +43,7 @@ class Login extends Component {
                     {
                         method: 'post',
                         headers: {
-                            'Authorization': 'Token 861514f85144b2e674efc59ca4ddcf440ad59c34',
+                            'Authorization': 'Token 2409658af6063bcb9bb3e95aad7cd38e5dbb51b0',
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify(this.state.data)
@@ -62,7 +62,7 @@ class Login extends Component {
                         const errorSpan = document.getElementById('invcred-span')
                         if (errorSpan) { errorSpan.style.transform = 'initial' }
                     } else {
-                        localStorage.setItem('shop-token', json.token);
+                        localStorage.setItem('SHOPTOKEN', json.token);
                     };
                 });
             },

@@ -36,7 +36,7 @@ class SocialNets extends Component {
         
         event.preventDefault();
         
-        const shop_token = localStorage.getItem('shop-token');
+        const shop_token = localStorage.getItem('SHOPTOKEN');
         
         const makeFetch = () => {                            
             this.setState({ loading: true });            
@@ -44,7 +44,7 @@ class SocialNets extends Component {
                 {
                     method: 'post',
                     headers: {
-                        'Authorization': 'Token 861514f85144b2e674efc59ca4ddcf440ad59c34',
+                        'Authorization': 'Token 2409658af6063bcb9bb3e95aad7cd38e5dbb51b0',
                         'Content-Type': 'application/json'                        
                     },
                     body: JSON.stringify(this.state.data)
@@ -52,27 +52,29 @@ class SocialNets extends Component {
             ).then(response => {
                 this.setState({ loading: false });
                 if (response.ok) { 
-                    this.props.history.push('/shop-tags');
+                    this.props.history.push(`/${this.props.match.params['shop']}/tags`);
                 } else {
                     return response.json()
                 }
             }).then(json => {
-                let errormsgs = (
-                    <ul id='errors-list'>
+                if (json) {
+                    let errormsgs = (
+                        <ul id='errors-list'>
                         {Object.values(json).map((error, id) => 
                             <li key={id}>
                                 {error}
                             </li>
                         )}
-                    </ul>
-                );
-                swal({
-                    title: 'Error en el registro de tus redes',
-                    content: errormsgs,
-                    icon: 'error',
-                    buttons: [false, 'Cerrar'],
-                    dangerMode: true
-                });                
+                        </ul>
+                    );
+                    swal({
+                        title: 'Error en el registro de tus redes',
+                        content: errormsgs,
+                        icon: 'error',
+                        buttons: [false, 'Cerrar'],
+                        dangerMode: true
+                    });                
+                }
             });
         };
 
