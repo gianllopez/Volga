@@ -13,7 +13,7 @@ class Login extends Component {
 
     state = {
         data: {
-            shop: '',
+            email: '',
             password: ''
         },
         error: false,
@@ -43,26 +43,27 @@ class Login extends Component {
                     {
                         method: 'post',
                         headers: {
-                            'Authorization': 'Token 2409658af6063bcb9bb3e95aad7cd38e5dbb51b0',
+                            'Authorization': 'Token 86d97d29eafeec948c5dbca2c611be0a6d4c8190',
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify(this.state.data)
                     }
                 ).then(response => {
                     this.setState({ loading: false });
-                    if (response.ok) {
-                        this.props.history.push(`/${this.state.data.shop}/social-networks`);
-                    } else {
+                    if (!response.ok) {
                         this.setState({ error: true });
-                    };
+                    }
                     return response.json();
                 }).then(json => {
                     if (this.state.error && this._isMounted) {
                         this.setState({ errors_messages: json });
-                        const errorSpan = document.getElementById('invcred-span')
-                        if (errorSpan) { errorSpan.style.transform = 'initial' }
+                        const errorSpan = document.getElementById('invcred-span');
+                        if (errorSpan) {
+                            errorSpan.style.transform = 'initial'
+                        };
                     } else {
-                        localStorage.setItem('SHOPTOKEN', json.token);
+                        localStorage.setItem('shoptoken', json.token);
+                        this.props.history.push(`/${json.credentials.shop}/social-networks`);
                     };
                 }).catch(error => console.error(error));
             },
@@ -94,8 +95,8 @@ class Login extends Component {
                 formEntries={
                     <Fragment>
                         <Input
-                            name='shop'
-                            label='Tienda'
+                            name='email'
+                            label='Correo'
                             onChange={this.handleChange}
                             errorsObject={this.state.errors_messages}
                         />

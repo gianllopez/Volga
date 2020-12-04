@@ -29,13 +29,13 @@ class ShopTags extends Component {
 
       event.preventDefault();
       
-      let shoptoken = localStorage.getItem('SHOPTOKEN');
+      let shoptoken = localStorage.getItem('shoptoken');
 
       fetch(`https://volga-rest.herokuapp.com/tags/?token=${shoptoken}`, 
          {
             method: 'post',
             headers: {
-               'Authorization': 'Token 2409658af6063bcb9bb3e95aad7cd38e5dbb51b0',
+               'Authorization': 'Token 86d97d29eafeec948c5dbca2c611be0a6d4c8190',
                'Content-Type': 'application/json'
             },
             body: JSON.stringify({tags: this.state.tags.join('/')})

@@ -1,7 +1,8 @@
 .input-wrapper {
     display: flex;
     flex-direction: column;
-    width: 325px;
+    width: 80vw;
+    max-width: 325px;
     font-weight: bold;
     margin-bottom: 7.5px;
 }
@@ -52,12 +53,3 @@
     color: #f94e4e;
     border-color: #f94e4e !important;
 }
-
-@media screen and (max-width: 500px) {
-    .input-wrapper {
-        width: 80vw;
-    }
-}
-
-
-

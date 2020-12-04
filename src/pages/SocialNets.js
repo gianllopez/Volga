@@ -36,7 +36,7 @@ class SocialNets extends Component {
         
         event.preventDefault();
         
-        const shop_token = localStorage.getItem('SHOPTOKEN');
+        const shop_token = localStorage.getItem('shoptoken');
         
         const makeFetch = () => {                            
             this.setState({ loading: true });            
@@ -44,7 +44,7 @@ class SocialNets extends Component {
                 {
                     method: 'post',
                     headers: {
-                        'Authorization': 'Token 2409658af6063bcb9bb3e95aad7cd38e5dbb51b0',
+                        'Authorization': 'Token 86d97d29eafeec948c5dbca2c611be0a6d4c8190',
                         'Content-Type': 'application/json'                        
                     },
                     body: JSON.stringify(this.state.data)
