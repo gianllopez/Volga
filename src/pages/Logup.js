@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Input from '../components/common/Input';
 import loguphero from '../assets/Logup/logup-hero.svg';
 import './styles/Logup.css';
 
@@ -13,6 +14,10 @@ class Logup extends Component {
 						tienda con<br/>
 						nosotros
 					</h2>
+				</div>
+				<div id="logup-entries">
+					<Input/>
+
 				</div>
 			</form>
 		);
