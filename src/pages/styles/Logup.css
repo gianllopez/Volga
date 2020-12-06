@@ -1,0 +1,23 @@
+#logup-form {
+   margin: 5vh;
+}
+
+#logup-header {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 10px;
+   border: 2px solid black;
+   border-radius: 7.5px;
+}
+
+#logup-header img {
+   width: 40%;
+   max-width: 200px;
+}
+
+#logup-header h2 {
+   width: 55%;
+   text-align: center;
+   font-size: 8vw; /* Hasta width de 500px */
+}
