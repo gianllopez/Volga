@@ -21,3 +21,36 @@
    text-align: center;
    font-size: 7vw; /* Hasta width de 500px */
 }
+
+#logup-entries {
+   box-shadow: 0 0 4px 1px #0000001a;
+   border-radius: 7.5px;
+   padding: 10px;
+   margin-top: 10px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   background-color: #efefef61;
+}
+
+#logup-entries .input-wrapper {
+   height: 55px;
+   margin: 5px auto;
+   width: 95%;
+}
+
+#logup-entries button {
+   width: 120px;
+   height: 35px;
+   background-color: #0069D9;
+   border: none;
+   border-radius: 4px;
+   color: white;
+   font-size: 1em;
+   margin-top: 7.5px;
+}
+
+#logup-entries p {
+   text-align: center;
+   margin-top: 5px;
+}

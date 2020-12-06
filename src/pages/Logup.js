@@ -16,9 +16,52 @@ class Logup extends Component {
 					</h2>
 				</div>
 				<div id="logup-entries">
-					<Input/>
-
+					<Input
+						label="Propietario(a)"
+						name="owner"
+					/>
+					<Input
+						label="Tienda"
+						name="shop"
+					/>
+					<Input
+						label="Ciudad"
+						name="city"
+					/>
+					<Input
+						label="País"
+						name="country"
+					/>
+					<Input
+						label="Dirección"
+						name="address"
+					/>
+					<Input
+						label="Fundación"
+						name="foundation"
+					/>
+					<Input
+						label="Correo"
+						name="email"
+					/>
+					<Input
+						label="Contraseña"
+						name="password"
+					/>
+					<Input
+						label="Confirmar contraseña"
+						name="confirm-password"
+					/>
+							
+					<button>Continuar</button>
+					
+					<p>
+						¿Ya tienes cuenta?<br/>
+						<a href="">Ingresa</a>
+					</p>
+					
 				</div>
+			
 			</form>
 		);
 	};
