@@ -10,9 +10,8 @@ class Logup extends Component {
 				<div id="logup-header">
 					<img src={loguphero} alt="logup-hero"/>
 					<h2>
-						Registra tu<br/>
-						tienda con<br/>
-						nosotros
+						Registra tu tienda<br/>
+						con nosotros
 					</h2>
 				</div>
 				<div id="logup-entries">
@@ -43,14 +42,17 @@ class Logup extends Component {
 					<Input
 						label="Correo"
 						name="email"
+						type="email"
 					/>
 					<Input
 						label="Contraseña"
 						name="password"
+						type="password"
 					/>
 					<Input
 						label="Confirmar contraseña"
 						name="confirm-password"
+						type="password"
 					/>
 							
 					<button>Continuar</button>

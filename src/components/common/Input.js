@@ -11,10 +11,15 @@ class Input extends Component {
             <input
                {...this.props}
                id={this.props.name}
+               autoComplete="off"
             />
          </div>
       );
    };
 };
+
+Input.defaultProps = {
+   type: 'text'
+}
 
 export default Input;

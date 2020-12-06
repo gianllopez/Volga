@@ -5,10 +5,21 @@
    align-items: center;
 }
 
+#logup-header {
+   text-align: center;
+   max-width: 325px;
+}
+
+#logup-header img {
+   width: 65%;
+}
+
+#logup-header h2 {
+   font-size: 1.7em;
+}
+
 #logup-entries {
-   border-radius: 7.5px;
-   padding: 10px;
-   margin-top: 10px;
+   margin-top: 7.5px;
    display: flex;
    flex-direction: column;
    align-items: center;
