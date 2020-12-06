@@ -6,7 +6,7 @@ class Input extends Component {
       return (
          <div className="input-wrapper">
             <label htmlFor={this.props.id}>
-               {this.props.label} <span style={{color: 'red'}}>*</span>
+               {this.props.label}: <span style={{color: 'red'}}>*</span>
             </label>
             <input
                {...this.props}

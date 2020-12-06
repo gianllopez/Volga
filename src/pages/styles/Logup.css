@@ -1,47 +1,29 @@
 #logup-form {
    margin: 5vh;
-}
-
-#logup-header {
    display: flex;
+   flex-direction: column;
    align-items: center;
-   justify-content: space-between;
-   padding: 15px;
-   box-shadow: 0 0 4px 1px #0000001a;
-   border-radius: 7.5px;
-}
-
-#logup-header img {
-   width: 35%;
-   max-width: 200px;
-}
-
-#logup-header h2 {
-   width: 60%;
-   text-align: center;
-   font-size: 7vw; /* Hasta width de 500px */
 }
 
 #logup-entries {
-   box-shadow: 0 0 4px 1px #0000001a;
    border-radius: 7.5px;
    padding: 10px;
    margin-top: 10px;
    display: flex;
    flex-direction: column;
    align-items: center;
-   background-color: #efefef61;
+   max-width: 325px;
+   width: 80vw;
 }
 
 #logup-entries .input-wrapper {
-   height: 55px;
-   margin: 5px auto;
+   margin: 3.5px auto;
    width: 95%;
 }
 
 #logup-entries button {
    width: 120px;
-   height: 35px;
+   height: 40px;
    background-color: #0069D9;
    border: none;
    border-radius: 4px;
@@ -53,4 +35,5 @@
 #logup-entries p {
    text-align: center;
    margin-top: 5px;
+   font-size: 1.1em;
 }
