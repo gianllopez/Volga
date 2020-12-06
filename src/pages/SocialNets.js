@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import swal from '@sweetalert/with-react';
 
 import SocialNetsInput from '../components/SocialNets/SocialNetInput';
-import Loader from '../components/global/Loader';
+import Loader from '../components/common/Loader';
 
 import formValidator from '../utils/validators';
 

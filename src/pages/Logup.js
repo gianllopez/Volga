@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
-import FormLayout from '../components/global/FormLayout';
-import Input from '../components/log-forms/Input';
-import Loader from '../components/global/Loader';
+import FormLayout from '../components/common/FormLayout';
+import Input from '../components/common/Input';
+import Loader from '../components/common/Loader';
 
 import formValidator from '../utils/validators';
 

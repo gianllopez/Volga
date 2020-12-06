@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import swal from '@sweetalert/with-react';
-import Loader from '../components/global/Loader';
+import Loader from '../components/common/Loader';
 import TagBox from '../components/ShopTags/TagBox';
 import tagsProps from '../utils/tagsProps';
 import shoptagsHero from '../assets/ShopTags/shop-tags-hero.svg';
