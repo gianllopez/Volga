@@ -5,14 +5,14 @@ class DateInput extends Component {
 
    months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
              'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre',
-             'Diciembre']
+             'Diciembre'];
 
    maxLengthValidator(event) {
       let inputValue = event.target.value;
       const maxLength = event.target.maxLength;
       if (inputValue.length > maxLength) {
-         event.target.value = inputValue.slice(0, maxLength)
-      }
+         event.target.value = inputValue.slice(0, maxLength);
+      };
    };
 
    render() {
@@ -20,7 +20,7 @@ class DateInput extends Component {
          <div id="date-input">
             <label>Fundación: <span style={{color: 'red'}}>*</span></label>
             <div id="date-input-entries">
-               <select name="month" required>
+               <select name="month" required onChange={this.props.onChange}>
                   <option value="" disabled selected>Mes</option>
                   {this.months.map((month, i) => (
                      <option value={month} key={i}>
@@ -36,13 +36,15 @@ class DateInput extends Component {
                   max="31"
                   maxLength="2"
                   onInput={this.maxLengthValidator}
-                  />
+                  onChange={this.props.onChange}
+               />
                <input
                   type="number"
                   name="year"
                   placeholder="Año"
                   maxLength="4"
                   onInput={this.maxLengthValidator}
+                  onChange={this.props.onChange}
                />
             </div>
          </div>

@@ -1,6 +1,4 @@
-
-// no empty fields validator:
-function formValidator(data, onSuccess, onError) {
+function noBlank(data, onSuccess, onError) {
 
    let invalidForm;
    const formData = Object.entries(data);
@@ -17,4 +15,4 @@ function formValidator(data, onSuccess, onError) {
 
 }
 
-export default formValidator;
+export default noEmpty;
