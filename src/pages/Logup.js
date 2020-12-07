@@ -22,6 +22,44 @@ class Logup extends Component {
 		
 		event.preventDefault();
 
+		const {month, day, year} = this.state.data;
+
+		this.setState({
+			loading: true,
+			error: false,
+			errors: {},
+			data: {
+				...this.state.data,
+				foundation: `${month} ${day} de ${year}`
+			}
+		});
+
+		fetch('http://127.0.0.1:8000/logup/',
+			{
+				method: 'post',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(this.state.data)
+			}
+		).then(response => {
+			this.setState({ loading: false });
+			if (response.ok) {
+				console.log('redirect to social nets');
+			} else {
+				this.setState({ error: true });
+			}
+			return response.json();
+		}).then(json => {
+			if (this.state.error) {
+				this.setState({
+					errors: json
+				});
+			} else {
+				console.log(json);
+			}
+		});
+
 	};
 
 	render() {
@@ -46,13 +84,13 @@ class Logup extends Component {
 						onChange={this.changeHandler}
 					/>
 					<Input
-						label="Ciudad"
-						name="city"
+						label="País"
+						name="country"
 						onChange={this.changeHandler}
 					/>
 					<Input
-						label="País"
-						name="country"
+						label="Ciudad"
+						name="city"
 						onChange={this.changeHandler}
 					/>
 					<Input

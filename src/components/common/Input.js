@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './styles/Input.css';
 
 class Input extends Component {
+   
    render() {
       return (
          <div className="input-wrapper">
@@ -15,9 +16,22 @@ class Input extends Component {
                id={this.props.name}
                autoComplete="off"
             />
+            {this.props.badentry && (
+               <span>
+                  {this.props.errorsobj[this.props.name]}
+               </span>
+            )}
          </div>
       );
    };
+
+   componentDidUpdate() {
+      const badEntry = Object.keys(this.props.errorsobj || {}).includes(this.props.name);
+      if (badEntry) {
+         this.setState({ badentry: true });
+      };
+   };
+
 };
 
 Input.defaultProps = {
