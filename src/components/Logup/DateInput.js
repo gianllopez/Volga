@@ -20,14 +20,22 @@ class DateInput extends Component {
          <div id="date-input">
             <label>Fundación: <span style={{color: 'red'}}>*</span></label>
             <div id="date-input-entries">
-               <select name="month" required onChange={this.props.onChange} defaultValue="">
+               
+               <select
+                  name="month"
+                  onChange={this.props.onChange}
+                  defaultValue=""
+               >
+                  
                   <option value="" disabled>Mes</option>
                   {this.months.map((month, i) => (
                      <option value={month} key={i}>
                         {month}
                      </option>
                   ))}
+               
                </select>
+               
                <input
                   type="number"
                   name="day"
@@ -38,6 +46,7 @@ class DateInput extends Component {
                   onInput={this.maxLengthValidator}
                   onChange={this.props.onChange}
                />
+               
                <input
                   type="number"
                   name="year"
@@ -46,6 +55,7 @@ class DateInput extends Component {
                   onInput={this.maxLengthValidator}
                   onChange={this.props.onChange}
                />
+
             </div>
          </div>
       );

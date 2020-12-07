@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import logupContext from '../../utils/contexts';
 import './styles/Input.css';
 
 class Input extends Component {
-   
+
+   state = {};
+
+   static contextType = logupContext;
+
    render() {
       return (
          <div className="input-wrapper">
@@ -16,9 +21,9 @@ class Input extends Component {
                id={this.props.name}
                autoComplete="off"
             />
-            {this.props.badentry && (
+            {this.error && (
                <span>
-                  {this.props.errorsobj[this.props.name]}
+                  {this.context.errors[this.props.name]}
                </span>
             )}
          </div>
@@ -26,9 +31,11 @@ class Input extends Component {
    };
 
    componentDidUpdate() {
-      const badEntry = Object.keys(this.props.errorsobj || {}).includes(this.props.name);
-      if (badEntry) {
-         this.setState({ badentry: true });
+      let bad = Object.keys(this.context.errors).includes(this.props.name);
+      if (bad) {
+         //this.setState({ error: true });
+         console.log(document.querySelector('.input-wrapper span'))
+            
       };
    };
 
