@@ -1,0 +1,46 @@
+#date-input {
+   width: 95%;
+   margin: 3.5px auto;
+}
+
+#date-input label {
+   font-size: 1.1em;
+}
+
+#date-input-entries {
+   display: flex;
+   justify-content: space-between;
+} 
+
+#date-input select,
+#date-input input {
+   border: 2px solid black;
+   border-radius: 4px;
+   font-size: 1.1em;
+   outline: none;
+}
+
+#date-input select {
+   height: 44px;
+   width: 50%;
+   background: none;
+   text-align-last: center;
+}
+
+#date-input select:required:invalid {
+   color: #777777;
+}
+
+#date-input select option[value=""][disabled] {
+   display: none;
+}
+
+#date-input select option {
+   color: black;
+}
+   
+#date-input input {
+   height: 40px;
+   width: 20%;
+   text-align: center;
+}

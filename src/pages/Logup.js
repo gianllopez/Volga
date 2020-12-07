@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Input from '../components/common/Input';
+import DateInput from '../components/Logup/DateInput'
 import loguphero from '../assets/Logup/logup-hero.svg';
 import './styles/Logup.css';
 
@@ -35,10 +36,7 @@ class Logup extends Component {
 						label="Dirección"
 						name="address"
 					/>
-					<Input
-						label="Fundación"
-						name="foundation"
-					/>
+					<DateInput/>
 					<Input
 						label="Correo"
 						name="email"
