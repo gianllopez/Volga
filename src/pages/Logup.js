@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Input from '../components/common/Input';
-import DateInput from '../components/Logup/DateInput'
+import DateInput from '../components/Logup/DateInput';
+import Loader from '../components/common/Loader';
 import loguphero from '../assets/Logup/logup-hero.svg';
 import './styles/Logup.css';
 
@@ -17,9 +18,15 @@ class Logup extends Component {
 		});			
 	};
 
+	submitHandler = event => {
+		
+		event.preventDefault();
+
+	};
+
 	render() {
 		return (
-			<form id="logup-form">
+			<form id="logup-form" onSubmit={this.submitHandler}>
 				<div id="logup-header">
 					<img src={loguphero} alt="logup-hero"/>
 					<h2>
@@ -74,8 +81,13 @@ class Logup extends Component {
 						type="password"
 						onChange={this.changeHandler}
 					/>
-							
-					<button>Continuar</button>
+					
+					{this.state.loading ? 
+						<Loader style={{width: 120, height: 40, marginTop: 7.5}}/>:
+						<button>
+							Continuar
+						</button>
+					}
 					
 					<p>
 						¿Ya tienes cuenta?<br/>

@@ -20,8 +20,8 @@ class DateInput extends Component {
          <div id="date-input">
             <label>Fundación: <span style={{color: 'red'}}>*</span></label>
             <div id="date-input-entries">
-               <select name="month" required onChange={this.props.onChange}>
-                  <option value="" disabled selected>Mes</option>
+               <select name="month" required onChange={this.props.onChange} defaultValue="">
+                  <option value="" disabled>Mes</option>
                   {this.months.map((month, i) => (
                      <option value={month} key={i}>
                         {month}
