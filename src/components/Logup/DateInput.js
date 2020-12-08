@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import logupContext from '../../utils/contexts';
 import './styles/DateInput.css';
 
 class DateInput extends Component {
@@ -18,7 +19,7 @@ class DateInput extends Component {
    render() {
       return (
          <div id="date-input">
-            <label>Fundación: <span style={{color: 'red'}}>*</span></label>
+            <label>Fundación:</label>
             <div id="date-input-entries">
                
                <select
