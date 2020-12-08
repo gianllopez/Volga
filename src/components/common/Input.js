@@ -4,7 +4,9 @@ import './styles/Input.css';
 
 class Input extends Component {
 
-   state = {};
+   state = {
+      error: false,
+   };
 
    static contextType = logupContext;
 
@@ -21,7 +23,7 @@ class Input extends Component {
                id={this.props.name}
                autoComplete="off"
             />
-            {this.error && (
+            {this.state.error && (
                <span>
                   {this.context.errors[this.props.name]}
                </span>
@@ -32,13 +34,11 @@ class Input extends Component {
 
    componentDidUpdate() {
       let bad = Object.keys(this.context.errors).includes(this.props.name);
-      if (bad) {
-         //this.setState({ error: true });
-         console.log(document.querySelector('.input-wrapper span'))
-            
+      if (bad && !this.state.error) {
+         this.setState({ error: true });                     
       };
    };
-
+   
 };
 
 Input.defaultProps = {
