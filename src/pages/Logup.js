@@ -65,7 +65,7 @@ class Logup extends Component {
 			return response.json();
 		}).then(json => {
 			if (this.state.error) {
-				this.setState({errors: json})
+				this.setState({errors: json});
 			} else {
 				console.log(json);
 			}
@@ -84,7 +84,7 @@ class Logup extends Component {
 					</h2>
 				</div>
 				<div id="logup-entries">
-					<logupContext.Provider value={{errors: this.state.errors || {}}}>
+					<logupContext.Provider value={{errors: this.state.errors}}>
 						<Input
 							label="Propietario(a)"
 							name="owner"

@@ -1,5 +1,5 @@
 import { Component, createContext } from 'react';
 
-const logupContext = createContext({});
+const errorsContext = createContext({});
 
-export default logupContext;
+export default errorsContext;
