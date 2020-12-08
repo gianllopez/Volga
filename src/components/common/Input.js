@@ -24,7 +24,7 @@ class Input extends Component {
                autoComplete="off"
             />
             {this.state.error && (
-               <span>
+               <span className={`${this.props.name}-error`}>
                   {this.context.errors[this.props.name]}
                </span>
             )}
@@ -35,7 +35,11 @@ class Input extends Component {
    componentDidUpdate() {
       let bad = Object.keys(this.context.errors).includes(this.props.name);
       if (bad && !this.state.error) {
-         this.setState({ error: true });                     
+         this.setState({ error: true }, () => {
+            setTimeout(
+               () => document.querySelector(`.${this.props.name}-error`)
+                        .style.transform = 'initial', 1)
+         });              
       };
    };
    
