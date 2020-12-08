@@ -4,6 +4,10 @@ import './styles/DateInput.css';
 
 class DateInput extends Component {
 
+   state = {};
+   
+   static contextType = logupContext;
+
    months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
              'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre',
              'Diciembre'];
@@ -19,7 +23,9 @@ class DateInput extends Component {
    render() {
       return (
          <div id="date-input">
-            <label>Fundación:</label>
+            <label>
+               Fundación: <span style={{color: 'red'}}>*</span>
+            </label>
             <div id="date-input-entries">
                
                <select
@@ -55,12 +61,30 @@ class DateInput extends Component {
                   maxLength="4"
                   onInput={this.maxLengthValidator}
                   onChange={this.props.onChange}
-               />
-
-            </div>
+                  />
+               
+               </div>
+               {this.state.error  &&
+                  <span className='foundation-error'>
+                     {this.context.errors['foundation']}
+                  </span>            
+               }
          </div>
       );
    };
+
+   componentDidUpdate() {
+      let bad = Object.keys(this.context.errors).includes('foundation');
+      if (bad && !this.state.error) {
+         this.setState({ error: true }, () => {
+            setTimeout(
+               () => document.querySelector('.foundation-error')
+                        .style.transform = 'initial', 1)
+         });              
+      };
+   };
+
+
 };
 
 export default DateInput;

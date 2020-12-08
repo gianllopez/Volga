@@ -5,7 +5,7 @@ import './styles/Input.css';
 class Input extends Component {
 
    state = {
-      error: false,
+      error: false
    };
 
    static contextType = logupContext;
@@ -15,8 +15,7 @@ class Input extends Component {
          <div className={`input-wrapper ${this.props.name}`}>
             <label htmlFor={this.props.id}>
                {this.props.label}: {this.props.name !== 'address' && 
-                  <span style={{color: 'red'}}>*</span>
-               }
+                  <span style={{color: 'red'}}>*</span>}
             </label>
             <input
                {...this.props}
