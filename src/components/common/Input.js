@@ -3,9 +3,11 @@ import logupContext from '../../utils/contexts';
 import './styles/Input.css';
 
 class Input extends Component {
-   
-   isError = () => Object.keys(this.context.errors || {}).includes(this.props.name);
-   
+
+   state = {
+      error: false,
+   };
+
    static contextType = logupContext;
 
    render() {
@@ -21,7 +23,7 @@ class Input extends Component {
                id={this.props.name}
                autoComplete="off"
             />
-            {this.isError() && (
+            {this.state.error && (
                <span>
                   {this.context.errors[this.props.name]}
                </span>
@@ -30,15 +32,13 @@ class Input extends Component {
       );
    };
 
-   componentDidUpdate() {      
-      if (this.isError()) {
-         setTimeout(
-            () => document.querySelector(`.${this.props.name} > span`)
-                     .style.transform = 'initial', 100
-            );
+   componentDidUpdate() {
+      let bad = Object.keys(this.context.errors).includes(this.props.name);
+      if (bad && !this.state.error) {
+         this.setState({ error: true });                     
       };
    };
-
+   
 };
 
 Input.defaultProps = {
