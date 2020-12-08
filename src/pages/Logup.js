@@ -3,6 +3,7 @@ import Input from '../components/common/Input';
 import DateInput from '../components/Logup/DateInput';
 import Loader from '../components/common/Loader';
 import logupContext from '../utils/contexts';
+import blankValidator from '../utils/validators';
 import loguphero from '../assets/Logup/logup-hero.svg';
 import './styles/Logup.css';
 
@@ -10,19 +11,13 @@ class Logup extends Component {
 
 	state = {
 		data: {
-			owner: '',
-			shop: '',
-			city: '',
-			country: '',
-			address: '',
-			foundation: '',
-			email: '',
-			password: '',
-			confpassword: ''
+			owner: '', shop: '', country: '',
+			city: '', address: '', foundation: '',
+			email: '', password: '', confirmpwd: ''
 		}
 	};
 
-	changeHandler = event => {
+	changeHandler = event => {		
 		this.setState({
 			data: {
 				...this.state.data,
@@ -34,42 +29,34 @@ class Logup extends Component {
 	submitHandler = event => {
 		
 		event.preventDefault();
+		
+		const {isValid, errors} = blankValidator(this.state.data, ['address']);
 
-		const {month, day, year} = this.state.data;
+		if (isValid) {
 
-		this.setState({
-			loading: true,
-			error: false,
-			errors: {},
-			data: {
-				...this.state.data,
-				foundation: `${month} ${day} de ${year}`
-			}
-		});
-
-		fetch('http://localhost:8000/logup/',
-			{
-				method: 'post',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify(this.state.data)
-			}
-		).then(response => {
-			this.setState({ loading: false });
-			if (response.ok) {
-				console.log('redirect to social nets');
-			} else {
-				this.setState({ error: true });
-			}
-			return response.json();
-		}).then(json => {
-			if (this.state.error) {
-				this.setState({errors: json});
-			} else {
-				console.log(json);
-			}
-		});
+			this.setState({ loading: true, errors: {} });
+	
+			fetch('http://localhost:8000/logup/',
+				{
+					method: 'post',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(this.state.data)
+				}).then(response => {
+						this.setState({ loading: false });
+						response.ok ? 
+							console.log('/socialnets redirect...') :
+							this.setState({ error: true });
+						return response.json();
+					}).then(json => {
+							this.state.error ? 
+								this.setState({errors: json}) :
+								console.log(json)
+							});
+		} else {
+			this.setState({ errors: errors });
+		}
 
 	};
 
@@ -127,7 +114,7 @@ class Logup extends Component {
 						/>
 						<Input
 							label="Confirmar contraseña"
-							name="confirm-password"
+							name="confirmpwd"
 							type="password"
 							onChange={this.changeHandler}
 						/>

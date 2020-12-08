@@ -29,22 +29,18 @@
    background-color: white;
 }
 
-#date-input select:required:invalid {
-   color: #777777;
-}
-
 #date-input select option[value=""][disabled] {
    display: none;
-}
-
-#date-input select option {
-   color: black;
 }
    
 #date-input input {
    height: 40px;
    width: 20%;
    text-align: center;
+}
+
+#date-input input::placeholder {
+   color: black;
 }
 
 #date-input-entries,
