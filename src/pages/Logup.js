@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Input from '../components/common/Input';
-import DateInput from '../components/Logup/DateInput';
 import Loader from '../components/common/Loader';
 import logupContext from '../utils/contexts';
 import blankValidator from '../utils/validators';
@@ -9,13 +8,7 @@ import './styles/Logup.css';
 
 class Logup extends Component {
 
-	state = {
-		data: {
-			owner: '', shop: '', country: '',
-			city: '', address: '', foundation: '',
-			email: '', password: '', confirmpwd: ''
-		}
-	};
+	state = {};
 
 	changeHandler = event => {		
 		this.setState({
@@ -55,7 +48,7 @@ class Logup extends Component {
 								console.log(json)
 						});
 		} else {
-			this.setState({ errors: errors });
+			this.setState({ errors });
 		}
 
 	};
@@ -97,7 +90,9 @@ class Logup extends Component {
 							name="address"
 							onChange={this.changeHandler}
 						/>
-						<DateInput
+						<Input
+							label="Fundación"
+							name="foundation"
 							onChange={this.changeHandler}
 						/>
 						<Input

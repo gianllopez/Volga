@@ -13,12 +13,13 @@ class Input extends Component {
    render() {
       return (
          <div className={`input-wrapper ${this.props.name}`}>
-            <label htmlFor={this.props.id}>
+            <label htmlFor={this.props.name}>
                {this.props.label}: {this.props.name !== 'address' && 
                   <span style={{color: 'red'}}>*</span>}
             </label>
             <input
                {...this.props}
+               type={this.props.name !== 'foundation' ? this.props.type : 'date'}
                id={this.props.name}
                autoComplete="off"
             />
