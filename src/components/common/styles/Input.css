@@ -5,6 +5,7 @@
 
 .input-wrapper label {
     font-size: 1.1em;
+    font-weight: bold;
 }
 
 .input-wrapper input,
@@ -21,6 +22,8 @@
     border-radius: 3px;
     font-size: 1.1em;
     z-index: 1;
+    max-width: 325px;
+    width: 75vw;
 }
 
 .input-wrapper span {
@@ -28,4 +31,8 @@
     transform: translateY(-25px);
     transition: .7s transform;
     color: red;
+}
+
+.input-wrapper input[type="date"] {
+    background-color: white;
 }

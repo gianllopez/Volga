@@ -2,13 +2,19 @@ import React, { Component } from 'react';
 import Input from '../components/common/Input';
 import Loader from '../components/common/Loader';
 import logupContext from '../utils/contexts';
-import blankValidator from '../utils/validators';
+import {blankValidator, passwordValid} from '../utils/validators';
 import loguphero from '../assets/Logup/logup-hero.svg';
 import './styles/Logup.css';
 
 class Logup extends Component {
 
-	state = {};
+	state = {
+		data: {
+			owner: '', shop: '', country: '',
+			city: '', address: '', foundation: '',
+			email: '', password: '', confirmpwd: ''
+		}
+	};
 
 	changeHandler = event => {		
 		this.setState({
@@ -28,8 +34,11 @@ class Logup extends Component {
 		if (isValid) {
 
 			this.setState({ loading: true, errors: {} });
-	
-			fetch('http://localhost:8000/logup/',
+			
+			const pwdIsValid = passwordValid(this.state.data.password, this.state.data.confirmpwd)
+
+			if (pwdIsValid) {
+				fetch('http://localhost:8000/logup/',
 				{
 					method: 'post',
 					headers: {
@@ -44,9 +53,19 @@ class Logup extends Component {
 						return response.json();
 					}).then(json => {
 							this.state.error ? 
-								this.setState({errors: json}) :
-								console.log(json)
+							this.setState({errors: json}) :
+							console.log(json)
 						});
+			} else {
+				const errormsg = 'Las contraseñas no coinciden.';
+				this.setState({
+					errors: {
+						confirmpwd: errormsg,
+						password: errormsg
+					},
+					loading: false
+				})
+			}
 		} else {
 			this.setState({ errors });
 		}
@@ -94,6 +113,7 @@ class Logup extends Component {
 							label="Fundación"
 							name="foundation"
 							onChange={this.changeHandler}
+							value="2000-00-00"				
 						/>
 						<Input
 							label="Correo"
@@ -131,6 +151,7 @@ class Logup extends Component {
 			</form>
 		);
 	};
+
 };
 
 export default Logup;

@@ -1,4 +1,4 @@
-function blankValidator(data, alloweds) {
+export function blankValidator(data, alloweds) {
    let isValid = true;
    const formData = Object.entries(data);
    let errors = {};
@@ -11,4 +11,6 @@ function blankValidator(data, alloweds) {
    return {isValid, errors}
 }
 
-export default blankValidator;
+export const passwordValid = (pwd, confpwd) => {
+   return pwd === confpwd ? true : false; 
+};

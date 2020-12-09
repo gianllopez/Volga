@@ -42,6 +42,13 @@ class Input extends Component {
          });              
       };
    };
+
+   componentDidMount() {
+      if (this.props.name === 'foundation') {
+         document.querySelector('input[type="date"]')
+			.valueAsDate = new Date();
+      }
+	};
    
 };
 
