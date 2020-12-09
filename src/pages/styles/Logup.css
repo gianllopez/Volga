@@ -7,16 +7,20 @@
 
 #logup-header {
    text-align: center;
+   width: 80vw;
    max-width: 325px;
 }
 
 #logup-header img {
-   width: 65%;
+   width: 60%;
 }
 
-#logup-header h2 {
-   font-size: 1.7em;
-   font-weight: bold;
+#logup-header h1 {
+   font-size: 1.5em;
+}
+
+#logup-header p {
+   font-size: 1.1em;
 }
 
 #logup-entries {
@@ -25,11 +29,11 @@
    flex-direction: column;
    align-items: center;
    max-width: 325px;
-   width: 75vw;
+   width: 80vw;
 }
 
 #logup-entries .input-wrapper {
-   margin: 3.5px auto;
+   margin: 2.5px auto;
    width: 95%;
 }
 
