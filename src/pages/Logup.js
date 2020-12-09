@@ -113,7 +113,6 @@ class Logup extends Component {
 							label="Fundación"
 							name="foundation"
 							onChange={this.changeHandler}
-							value="2000-00-00"				
 						/>
 						<Input
 							label="Correo"
