@@ -77,10 +77,8 @@ class Logup extends Component {
 			<form id="logup-form" onSubmit={this.submitHandler}>
 				<div id="logup-header">
 					<img src={loguphero} alt="logup-hero"/>
-					<h2>
-						Registra tu tienda<br/>
-						con nosotros
-					</h2>
+					<h1>Crea tu cuenta de Volga</h1>
+					<p>Registra tu tienda con nosotros</p>
 				</div>
 				<div id="logup-entries">
 					<logupContext.Provider value={{errors: this.state.errors || {}}}>
