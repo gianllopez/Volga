@@ -24,6 +24,8 @@
    display: flex;
    flex-direction: column;
    align-items: center;
+   max-width: 325px;
+   width: 75vw;
 }
 
 #logup-entries .input-wrapper {
