@@ -53,7 +53,7 @@ class Logup extends Component {
 							this.state.error ? 
 								this.setState({errors: json}) :
 								console.log(json)
-							});
+						});
 		} else {
 			this.setState({ errors: errors });
 		}
