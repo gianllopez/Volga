@@ -16,7 +16,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
+    /* position: relative; */
     z-index: 2;
     background-color: white;
 }
@@ -29,12 +29,12 @@
     width: 2px;
     background-color: black;
     height: 70%;
-    position: relative;
+    /* position: relative; */
     z-index: 2;
 }
 
 .social-network > h1 {
-    width: calc(75% - 22px);
+    /* width: calc(75% - 22px); */
     font-size: 1.7em;
     padding-left: 20px;
     transition: transform 1s;
@@ -53,7 +53,7 @@
     display: flex;
     align-items: center;
     transition: transform 1s;
-    transform: translateX(-101%);
+    transform: translateX(-100%);
     z-index: 1;
 }
 
