@@ -52,7 +52,7 @@
     display: flex;
     align-items: center;
     transition: transform 1s;
-    transform: translateX(-100%);
+    transform: translateX(-101%);
     z-index: 1;
 }
 
