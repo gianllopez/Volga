@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logupContext from '../../utils/contexts';
 import './styles/Input.css';
 
 class Input extends Component {
@@ -7,8 +6,6 @@ class Input extends Component {
    state = {
       error: false
    };
-
-   static contextType = logupContext;
 
    render() {
       return (
@@ -25,7 +22,7 @@ class Input extends Component {
             />
             {this.state.error && (
                <span className={`${this.props.name}-error`}>
-                  {this.context.errors[this.props.name]}
+                  {this.props.errors[this.props.name]}
                </span>
             )}
          </div>
@@ -33,7 +30,7 @@ class Input extends Component {
    };
 
    componentDidUpdate() {
-      let bad = Object.keys(this.context.errors).includes(this.props.name);
+      let bad = Object.keys(this.props.errors || {}).includes(this.props.name);
       if (bad && !this.state.error) {
          this.setState({ error: true }, () => {
             setTimeout(

@@ -4,6 +4,18 @@ import loginhero from '../assets/Login/login-hero.svg';
 import './styles/Login.css';
 
 class Login extends Component {
+
+	state = {};
+
+	changeHandler = event => {
+		this.setState({
+			data: {
+				...this.state.data,
+				[event.target.name]: event.target.value
+			}
+		});
+	};
+
 	render() {
 		return (
 			<form id="login-form">
@@ -18,11 +30,13 @@ class Login extends Component {
 					<Input
 						label="Tienda o Email"
 						name="shoporemail"
+						onChange={this.changeHandler}
 					/>
 					<Input
 						label="Contraseña"
 						name="password"
 						type="password"
+						onChange={this.changeHandler}
 					/>
 					<button>Iniciar</button>
 					<p>
