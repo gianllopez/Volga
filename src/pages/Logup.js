@@ -38,24 +38,7 @@ class Logup extends Component {
 			const pwdIsValid = passwordValid(this.state.data.password, this.state.data.confirmpwd)
 
 			if (pwdIsValid) {
-				fetch('http://localhost:8000/logup/',
-				{
-					method: 'post',
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					body: JSON.stringify(this.state.data)
-				}).then(response => {
-						this.setState({ loading: false });
-						response.ok ? 
-							console.log('/socialnets redirect...') :
-							this.setState({ error: true });
-						return response.json();
-					}).then(json => {
-							this.state.error ? 
-							this.setState({errors: json}) :
-							console.log(json)
-						});
+				console.log('FETCH...');
 			} else {
 				const errormsg = 'Las contraseñas no coinciden.';
 				this.setState({
@@ -68,7 +51,7 @@ class Logup extends Component {
 			}
 		} else {
 			this.setState({ errors });
-		}
+		};
 
 	};
 
