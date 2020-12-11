@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Input from '../components/common/Input';
 import Loader from '../components/common/Loader';
-import logupContext from '../utils/contexts';
 import {blankValidator, passwordValid} from '../utils/validators';
 import loguphero from '../assets/Logup/logup-hero.svg';
 import './styles/Logup.css';
@@ -63,57 +62,64 @@ class Logup extends Component {
 					<h1>Crea tu cuenta de Volga</h1>
 					<p>Registra tu tienda con nosotros</p>
 				</div>
-				<div id="logup-entries">
-					<logupContext.Provider value={{errors: this.state.errors || {}}}>
-						<Input
-							label="Propietario(a)"
-							name="owner"
-							onChange={this.changeHandler}
-						/>
-						<Input
-							label="Tienda"
-							name="shop"
-							onChange={this.changeHandler}
-						/>
-						<Input
-							label="País"
-							name="country"
-							onChange={this.changeHandler}
-						/>
-						<Input
-							label="Ciudad"
-							name="city"
-							onChange={this.changeHandler}
-						/>
-						<Input
-							label="Dirección"
-							name="address"
-							onChange={this.changeHandler}
-						/>
-						<Input
-							label="Fundación"
-							name="foundation"
-							onChange={this.changeHandler}
-						/>
-						<Input
-							label="Correo"
-							name="email"
-							type="email"
-							onChange={this.changeHandler}
-						/>
-						<Input
-							label="Contraseña"
-							name="password"
-							type="password"
-							onChange={this.changeHandler}
-						/>
-						<Input
-							label="Confirmar contraseña"
-							name="confirmpwd"
-							type="password"
-							onChange={this.changeHandler}
-						/>
-					</logupContext.Provider>
+				<div id="logup-entries">					
+					<Input
+						label="Propietario(a)"
+						name="owner"
+						onChange={this.changeHandler}
+						errors={this.state.errors}
+					/>
+					<Input
+						label="Tienda"
+						name="shop"
+						onChange={this.changeHandler}
+						errors={this.state.errors}
+					/>
+					<Input
+						label="País"
+						name="country"
+						onChange={this.changeHandler}
+						errors={this.state.errors}
+					/>
+					<Input
+						label="Ciudad"
+						name="city"
+						onChange={this.changeHandler}
+						errors={this.state.errors}
+					/>
+					<Input
+						label="Dirección"
+						name="address"
+						onChange={this.changeHandler}
+						errors={this.state.errors}
+					/>
+					<Input
+						label="Fundación"
+						name="foundation"
+						onChange={this.changeHandler}
+						errors={this.state.errors}
+					/>
+					<Input
+						label="Correo"
+						name="email"
+						type="email"
+						onChange={this.changeHandler}
+						errors={this.state.errors}
+					/>
+					<Input
+						label="Contraseña"
+						name="password"
+						type="password"
+						onChange={this.changeHandler}
+						errors={this.state.errors}
+					/>
+					<Input
+						label="Confirmar contraseña"
+						name="confirmpwd"
+						type="password"
+						onChange={this.changeHandler}
+						errors={this.state.errors}
+					/>
 					
 					{this.state.loading ? 
 						<Loader style={{width: 120, height: 40, marginTop: 7.5}}/>:
