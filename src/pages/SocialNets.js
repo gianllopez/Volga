@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import SocialNetInput from '../components/SocialNets/SocialNetInput';
 import {blankValidator} from '../utils/validators';
 import swal from '@sweetalert/with-react';
@@ -25,12 +25,29 @@ class SocialNets extends Component {
 	submitHandler = event => {
 		event.preventDefault();
 		this.setState({ loading: true, error: false });
-		const {isValid, errors} = blankValidator(this.state.data);
+		const {isValid} = blankValidator(this.state.data);
 		if (isValid) {
 			console.log('MAKE FETCH...')
 		} else {
 			swal({
-				title: 'Alguna redes no se rellenaron'
+				title: 'Alguna redes no se rellenaron.',
+				content: (
+					<Fragment>					
+						<p> 
+							El número de redes sociales de tu tienda
+							es proporcional al alcance de personas de
+							las misma, recomendamos que tu tienda
+							tenga las que te sugerimos.<br/>
+							<span>
+								¿Deseas continuar<br/>
+								sin rellenarlas todas?
+							</span>
+						</p>
+					</Fragment>
+				),
+				icon: 'warning',
+				dangerMode: true,
+				buttons: ['No, dejame rellenar', 'Si, continuar']
 			});
 		};
 	};
