@@ -27,7 +27,7 @@ class SocialNets extends Component {
 		this.setState({ loading: true, error: false });
 		const {isValid} = blankValidator(this.state.data);
 		if (isValid) {
-			console.log('MAKE FETCH...')
+			console.log('FETCH...');
 		} else {
 			swal({
 				title: 'Alguna redes no se rellenaron.',
@@ -48,7 +48,11 @@ class SocialNets extends Component {
 				icon: 'warning',
 				dangerMode: true,
 				buttons: ['No, dejame rellenar', 'Si, continuar']
-			});
+			}).then(option => {
+				if (option) {
+					console.log('MAKE FETCH...')
+				};
+			})
 		};
 	};
 	

@@ -31,7 +31,7 @@ class SocialNetInput extends Component {
             <h1>{this.Name}</h1>
          </div>
       );
-   }
+   };
    
    componentDidMount() {
       const socialnetworks = document.getElementsByClassName('social-network');
