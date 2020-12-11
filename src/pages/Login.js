@@ -1,11 +1,17 @@
 import React, {Component} from 'react';
 import Input from '../components/common/Input';
+import {blankValidator} from '../utils/validators';
 import loginhero from '../assets/Login/login-hero.svg';
 import './styles/Login.css';
 
 class Login extends Component {
 
-	state = {};
+	state = {
+		data: {
+			shoporemail: '',
+			password: ''
+		}
+	};
 
 	changeHandler = event => {
 		this.setState({
@@ -16,9 +22,25 @@ class Login extends Component {
 		});
 	};
 
+	submitHandler = event => {
+		
+		event.preventDefault();
+
+		const {isValid, errors} = blankValidator(this.state.data);
+
+		if (isValid) {
+			console.log('MAKE FETCH...');
+		} else {
+			this.setState({
+				errors
+			});
+		}
+
+	};
+
 	render() {
 		return (
-			<form id="login-form">
+			<form id="login-form" onSubmit={this.submitHandler}>
 				<div id="login-header">
 					<img src={loginhero} alt="login-hero"/>
 					<div id="header-text">
@@ -30,13 +52,16 @@ class Login extends Component {
 					<Input
 						label="Tienda o Email"
 						name="shoporemail"
+						type="email"
 						onChange={this.changeHandler}
-					/>
+						errors={this.state.errors}
+						/>
 					<Input
 						label="Contraseña"
 						name="password"
 						type="password"
 						onChange={this.changeHandler}
+						errors={this.state.errors}
 					/>
 					<button>Iniciar</button>
 					<p>
