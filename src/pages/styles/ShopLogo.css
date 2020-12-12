@@ -31,6 +31,7 @@
 #header-text p {
    font-size: 1.2em;
    width: max-content;
+   margin-top: 5px;
 }
 
 #shoplogo-form button {
@@ -38,6 +39,7 @@
    border: none;
    border-radius: 5px;
    outline: none;
+   color: white;
 }
 
 #shoplogo-form #upload-btn {
@@ -51,7 +53,6 @@
 #action-btns button {
    width: 100px;
    height: 35px;
-   color: white;
 }
 
 #action-btns #skip {

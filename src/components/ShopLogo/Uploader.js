@@ -1,7 +1,7 @@
 import React from 'react';
-import './styles/ProgressBar.css';
+import './styles/Uploader.css';
 
-function ProgressBar(props) {
+function Uploader(props) {
    return (
       <div id="progress-bar">
          <div id="filler"
@@ -13,4 +13,4 @@ function ProgressBar(props) {
    );
 };
 
-export default ProgressBar;
+export default Uploader;

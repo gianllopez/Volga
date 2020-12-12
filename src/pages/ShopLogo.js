@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ProgressBar from '../components/ShopLogo/ProgressBar';
+import Uploader from '../components/ShopLogo/Uploader';
 import shoplogohero from '../assets/ShopLogo/shoplogo-hero.svg';
 import './styles/ShopLogo.css';
 
@@ -15,12 +15,6 @@ class ShopLogo extends Component {
                </div>
             </div>
             <button id="upload-btn">Subir imagen</button>
-            <ProgressBar/>
-            <div id="action-btns">
-               <button id="skip">Omitir</button>
-               <button id="continue">Continuar</button>
-            </div>
-
          </form>
       );
    };
