@@ -3,50 +3,74 @@
    flex-direction: column;
    align-items: center;
    text-align: center;
+   margin: 5vh 0;
 }
 
-#shoplogo-form img {
+#shoplogo-header img {
    width: 55vw;
-   max-width: 300px;
+   max-width: 215px;
 }
 
-#shoplogo-form h1 {
-   font-size: 10vw;
+#header-text {
+   text-align: left;
+   border-left: 2px solid black;
+   padding-left: 5px;
+   margin-top: 5px;
+}
+
+#header-text h1 {
+   font-size: 8vw;
    width: max-content;
+   line-height: 1;
 }
 
-#shoplogo-form p {
+#header-text p {
    font-size: 1.2em;
    width: max-content;
 }
 
-#shoplogo-form #upload-btn {
+#shoplogo-form button {
    margin: 15px 0;
+   border: none;
+   border-radius: 5px;
+   outline: none;
+}
+
+#shoplogo-form #upload-btn {
    width: 60vw;
    height: 45px;
    max-width: 300px;
    background-color: #00B8ED;
    font-size: 1.1em;
-   border: none;
-   border-radius: 5px;
-   outline: none;
 }
 
-#shoplogo-form button:not(#upload-btn) {
-   outline: none;
-   margin-top: 15px;
+#action-btns button {
    width: 100px;
    height: 35px;
-   background-color: #0069D9;
-   border: none;
    color: white;
-   border-radius: 5px;
 }
 
+#action-btns #skip {
+   margin-right: 30px;
+   background-color: #6c757dcc;
+}
 
+#action-btns #continue {
+   background-color: #0069D9;
+}
 
 @media screen and (min-width:500px) {
    #shoplogo-form h1 {
-      font-size: 2.3em;
+      font-size: 2em;
+   }
+}
+
+@media screen and (min-height:600px) {
+   #shoplogo-form {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -55%);
    }
 }

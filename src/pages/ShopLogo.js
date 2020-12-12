@@ -7,12 +7,19 @@ class ShopLogo extends Component {
    render() {
       return (
          <form id="shoplogo-form" encType="multipart/form-data">
-            <img src={shoplogohero} alt="shoplogo-hero"/>
-            <h1>Selecciona un logo<br/>para tu tienda</h1>
-            <p>Haz que tus clientes la reconozcan</p>
+            <div id="shoplogo-header">
+               <img src={shoplogohero} alt="shoplogo-hero"/>
+               <div id="header-text">
+                  <h1>Selecciona un logo<br/>para tu tienda</h1>
+                  <p>Haz que tus clientes <br/> la reconozcan</p>
+               </div>
+            </div>
             <button id="upload-btn">Subir imagen</button>
             <ProgressBar/>
-            <button>Continuar</button>
+            <div id="action-btns">
+               <button id="skip">Omitir</button>
+               <button id="continue">Continuar</button>
+            </div>
 
          </form>
       );
