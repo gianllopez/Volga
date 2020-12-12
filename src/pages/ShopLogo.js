@@ -13,8 +13,8 @@ class ShopLogo extends Component {
                   <h1>Selecciona un logo<br/>para tu tienda</h1>
                   <p>Haz que tus clientes <br/> la reconozcan</p>
                </div>
-            </div>
-            <button id="upload-btn">Subir imagen</button>
+            </div>            
+            <Uploader/>
          </form>
       );
    };

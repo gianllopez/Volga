@@ -34,36 +34,6 @@
    margin-top: 5px;
 }
 
-#shoplogo-form button {
-   margin: 15px 0;
-   border: none;
-   border-radius: 5px;
-   outline: none;
-   color: white;
-}
-
-#shoplogo-form #upload-btn {
-   width: 60vw;
-   height: 45px;
-   max-width: 300px;
-   background-color: #00B8ED;
-   font-size: 1.1em;
-}
-
-#action-btns button {
-   width: 100px;
-   height: 35px;
-}
-
-#action-btns #skip {
-   margin-right: 30px;
-   background-color: #6c757dcc;
-}
-
-#action-btns #continue {
-   background-color: #0069D9;
-}
-
 @media screen and (min-width:500px) {
    #shoplogo-form h1 {
       font-size: 2em;

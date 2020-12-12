@@ -1,0 +1,21 @@
+#upload-btn {
+   height: 9vh;
+   max-height: 55px;
+   width: 60vw;
+   max-width: 250px;
+   margin: 15px 0;
+   border: none;
+   border-radius: 5px;
+   outline: none;
+   color: white;
+   background-color: #00B8ED;
+   font-size: 1.1em;
+}
+
+#loader-wrapper {
+   margin: 0 auto;
+}
+
+#loader-wrapper > #loader {
+   transition: transform .5s;
+}
