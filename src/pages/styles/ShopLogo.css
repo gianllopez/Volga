@@ -18,9 +18,13 @@
    margin-top: 5px;
 }
 
+#header-text h1,
+#header-text p {
+   width: max-content;
+}
+
 #header-text h1 {
    font-size: 8vw;
-   width: max-content;
    line-height: 1;
 }
 
