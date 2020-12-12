@@ -1,0 +1,52 @@
+#shoplogo-form {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   text-align: center;
+}
+
+#shoplogo-form img {
+   width: 55vw;
+   max-width: 300px;
+}
+
+#shoplogo-form h1 {
+   font-size: 10vw;
+   width: max-content;
+}
+
+#shoplogo-form p {
+   font-size: 1.2em;
+   width: max-content;
+}
+
+#shoplogo-form #upload-btn {
+   margin: 15px 0;
+   width: 60vw;
+   height: 45px;
+   max-width: 300px;
+   background-color: #00B8ED;
+   font-size: 1.1em;
+   border: none;
+   border-radius: 5px;
+   outline: none;
+}
+
+#shoplogo-form button:not(#upload-btn) {
+   outline: none;
+   margin-top: 15px;
+   width: 100px;
+   height: 35px;
+   background-color: #0069D9;
+   border: none;
+   color: white;
+   border-radius: 5px;
+}
+
+
+
+@media screen and (min-width:500px) {
+   #shoplogo-form h1 {
+      font-size: 2.3em;
+   }
+}
