@@ -9,19 +9,18 @@ class ShopLogo extends Component {
          <form id="shoplogo-form" encType="multipart/form-data">
             <div id="shoplogo-header">
                <img src={shoplogohero} alt="shoplogo-hero"/>
-               <div id="header-text">
-                  <h1>Selecciona un logo<br/>para tu tienda</h1>
-                  <p>Haz que tus clientes <br/> la reconozcan</p>
-               </div>
+               <h1>Selecciona un logo<br/>para tu tienda</h1>               
             </div>
             <div id="actions-btns">
                <Uploader/>
-               <button id="skip">
-                  Omitir
-               </button>
-               <button id="continue">
-                  Continuar
-               </button>
+               <div id="page-actions">
+                  <button id="skip">
+                     Omitir
+                  </button>
+                  <button id="continue">
+                     Continuar
+                  </button>
+               </div>
             </div>
          </form>
       );

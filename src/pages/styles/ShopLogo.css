@@ -11,31 +11,15 @@
    max-width: 215px;
 }
 
-#header-text {
-   text-align: left;
-   border-left: 2px solid black;
-   padding-left: 5px;
-   margin-top: 5px;
-}
-
-#header-text h1,
-#header-text p {
-   width: max-content;
-}
-
-#header-text h1 {
-   font-size: 8vw;
+#shoplogo-header h1 {
+   font-size: 6vw;
    line-height: 1;
-}
-
-#header-text p {
-   font-size: 1.2em;
-   width: max-content;
-   margin-top: 5px;
+   margin: 7.5px 0;
 }
 
 #actions-btns button:not(#upload-btn) {
    width: 30vw;
+   outline: none;
    max-width: 120px;
    height: 8vh;
    max-height: 40px;
@@ -64,6 +48,6 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -55%);
+      transform: translate(-50%, -65%);
    }
 }
