@@ -14,7 +14,15 @@ class ShopLogo extends Component {
                   <p>Haz que tus clientes <br/> la reconozcan</p>
                </div>
             </div>
-            <Uploader/>
+            <div id="actions-btns">
+               <Uploader/>
+               <button id="skip">
+                  Omitir
+               </button>
+               <button id="continue">
+                  Continuar
+               </button>
+            </div>
          </form>
       );
    };
