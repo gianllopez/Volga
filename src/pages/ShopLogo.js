@@ -4,6 +4,15 @@ import shoplogohero from '../assets/ShopLogo/shoplogo-hero.svg';
 import './styles/ShopLogo.css';
 
 class ShopLogo extends Component {
+   
+   state = {};
+
+   changeHandler = event => {
+      this.setState({
+         logo: event.target.files[0]
+      })
+   };
+
    render() {
       return (
          <form id="shoplogo-form" encType="multipart/form-data">
@@ -12,7 +21,7 @@ class ShopLogo extends Component {
                <h1>Selecciona un logo<br/>para tu tienda</h1>               
             </div>
             <div id="actions-btns">
-               <Uploader/>
+               <Uploader onChange={this.changeHandler}/>
                <div>
                   <button id="skip">
                      Omitir

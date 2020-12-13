@@ -17,6 +17,12 @@
    margin: 7.5px 0;
 }
 
+#actions-btns {
+   display: inherit;
+   flex-direction: inherit;
+   align-items: center;
+}
+
 #actions-btns button {
    outline: none;
    border: none;
