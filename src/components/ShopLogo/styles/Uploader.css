@@ -11,11 +11,3 @@
    background-color: #00B8ED;
    font-size: 1.1em;
 }
-
-#loader-wrapper {
-   margin: 0 auto;
-}
-
-#loader-wrapper > #loader {
-   transition: transform .5s;
-}
