@@ -1,13 +1,9 @@
 #upload-btn {
    height: 9vh;
-   max-height: 55px;
    width: 65vw;
+   max-height: 55px;
    max-width: 250px;
-   margin: 15px;
-   border: none;
-   border-radius: 5px;
-   outline: none;
-   color: white;
+   margin: 15px 0;
    background-color: #00B8ED;
    font-size: 1.1em;
 }

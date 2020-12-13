@@ -13,7 +13,7 @@ class ShopLogo extends Component {
             </div>
             <div id="actions-btns">
                <Uploader/>
-               <div id="page-actions">
+               <div>
                   <button id="skip">
                      Omitir
                   </button>
