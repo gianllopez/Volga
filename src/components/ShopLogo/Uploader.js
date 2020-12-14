@@ -11,11 +11,8 @@ function Uploader(props) {
    
    return (
       <div id="uploader-wrapper">
-
          <img src={uploadicon} alt="upload-icon"/>
-    
-         {/* Some shit */}
-         
+         <button id="loadlogo-btn">Cargar logo</button>         
          <input
             type="file"
             name="logo" 
@@ -25,6 +22,7 @@ function Uploader(props) {
          />
       </div>
    );
+
 };
 
 export default Uploader;

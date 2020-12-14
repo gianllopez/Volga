@@ -28,9 +28,6 @@
    border: none;
    border-radius: 5px;
    color: white;
-}
-
-#actions-btns button:not(#upload-btn) {
    width: 30vw;
    max-width: 120px;
    height: 40px;
@@ -57,6 +54,6 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -65%);
+      transform: translate(-50%, -50%);
    }
 }
