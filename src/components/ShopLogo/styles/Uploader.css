@@ -10,17 +10,31 @@
    flex-direction: column;
 }
 
-#uploader-wrapper img {
-   width: 25vw;
-   max-width: 125px;
-}
-
 #uploader-wrapper #loadlogo-btn {
+   display: flex;
+   align-items: center;
+   height: 45px;
    max-width: unset;
    width: 100%;
-   margin-top: 10px;
-   color: black;
+   color: #656565;
    border: 2px solid grey;
-   position: relative;
    overflow: hidden;
+   font-weight: bold;
+   font-size: 1.1em;
+}
+
+#loadlogo-btn figure {
+   height: calc(100% - 4px);
+   display: inherit;
+   align-items: inherit;
+   padding: 2px;
+   border-right: 2px solid grey;
+}
+
+#loadlogo-btn figure img {
+   height: 95%;
+}
+
+#loadlogo-btn span {
+   width: calc(100% - 40px);
 }

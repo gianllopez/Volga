@@ -1,28 +1,36 @@
-import React from 'react';
+import React, { Component } from 'react';
 import uploadicon from '../../assets/ShopLogo/upload-icon.svg';
 import './styles/Uploader.css';
 
-function Uploader(props) {
+class Uploader extends Component {
 
-   const uploaderTrigger = event => {
+   uploaderTrigger = event => {
       event.preventDefault();
       document.getElementById('logo').click();
    };
    
-   return (
-      <div id="uploader-wrapper">
-         <img src={uploadicon} alt="upload-icon"/>
-         <button id="loadlogo-btn">Cargar logo</button>         
-         <input
-            type="file"
-            name="logo" 
-            id="logo"
-            hidden
-            {...props}
-         />
-      </div>
-   );
-
+   render() {
+      return (
+         <div id="uploader-wrapper">            
+            <button id="loadlogo-btn">
+               <figure>
+                  <img src={uploadicon} alt="upload-icon"/>
+               </figure>
+               <span>
+                  Cargar logo
+               </span>
+            </button>
+            <input
+               type="file"
+               name="logo" 
+               id="logo"
+               hidden
+               {...this.props}
+            />
+         </div>
+      );
+   };
+   
 };
 
 export default Uploader;
