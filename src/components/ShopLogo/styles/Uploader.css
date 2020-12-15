@@ -21,6 +21,23 @@
    overflow: hidden;
    font-weight: bold;
    font-size: 1.1em;
+   position: relative;
+}
+
+#loadlogo-btn::before {
+   content: 'Logo cargado';
+   position: absolute;
+   top: 0;
+   left: -100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding-left: 40px;
+   height: 100%;
+   width: calc(100% - 40px);
+   transition: left .6s;
+   left: 0;
+   background-color: #00E077  
 }
 
 #loadlogo-btn figure {
@@ -29,6 +46,8 @@
    align-items: inherit;
    padding: 2px;
    border-right: 2px solid grey;
+   z-index: 1;
+   /* background: #efefef; */
 }
 
 #loadlogo-btn figure img {
