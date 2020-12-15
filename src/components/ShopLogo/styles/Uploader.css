@@ -24,36 +24,51 @@
    position: relative;
 }
 
-#loadlogo-btn::before {
-   content: 'Logo cargado';
-   position: absolute;
-   top: 0;
-   left: -100%;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   padding-left: 40px;
-   height: 100%;
-   width: calc(100% - 40px);
-   transition: left .6s;
-   left: 0;
-   background-color: #00E077  
-}
-
 #loadlogo-btn figure {
    height: calc(100% - 4px);
    display: inherit;
    align-items: inherit;
    padding: 2px;
    border-right: 2px solid grey;
-   z-index: 1;
-   /* background: #efefef; */
+
+}
+
+#loadlogo-btn span {
+   transition: transform .6s;
 }
 
 #loadlogo-btn figure img {
    height: 95%;
+   transition: transform 1s;
 }
 
 #loadlogo-btn span {
    width: calc(100% - 40px);
+}
+
+.on-success {
+   height: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background-color: #00E077;
+   color: white;
+}
+
+@keyframes span-animation {
+   50% {
+      transform: translateX(calc(-100% - 40px));
+   }
+   100% {
+      transform: initial;
+   }
+}
+
+@keyframes img-animation {
+   50% {
+      transform: translateY(100%);
+   }
+   100% {
+      transform: initial;
+   }
 }
