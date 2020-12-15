@@ -21,7 +21,7 @@ class ShopLogo extends Component {
                <h1>Selecciona un logo<br/>para tu tienda</h1>               
             </div>
             <div id="actions-btns">
-               <Uploader onChange={this.changeHandler}/>
+               <Uploader onChange={this.changeHandler} isLoaded={this.state.logo || false}/>
                <div>
                   <button id="skip">
                      Omitir

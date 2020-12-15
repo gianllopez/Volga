@@ -10,23 +10,6 @@ class Uploader extends Component {
    }
 
    uploaderTrigger = () => document.getElementById('logo').click();
-   
-   inputHandler = event => {
-      this.setState({
-         logo: event.target.files[0]
-      }, () => {
-         const loadimg = document.querySelector('#loadlogo-btn figure img');
-         const loadspan = document.querySelector('#loadlogo-btn span')
-         loadimg.style.animation = 'img-animation 1s';
-         loadspan.style.animation = 'span-animation 1s';
-         setTimeout(() => {
-            loadimg.src = checkicon
-            loadimg.parentElement.style.backgroundColor = '#00E077'
-            loadspan.innerText = 'Logo cargado'
-            loadspan.classList.add('on-success')
-         }, 500);
-      })
-   };
 
    render() {
       return (
@@ -41,12 +24,26 @@ class Uploader extends Component {
                type="file"
                name="logo" 
                id="logo"
-               onInput={this.inputHandler}
+               onInput={this.props.onChange}
                hidden
-               {...this.props}
             />
          </div>
       );
+   };
+
+   componentDidUpdate() {
+      if (this.props.isLoaded) {
+         const loadimg = document.querySelector('#loadlogo-btn figure img');
+         const loadspan = document.querySelector('#loadlogo-btn span')
+         loadimg.style.animation = 'img-animation 1s';
+         loadspan.style.animation = 'span-animation 1s';
+         setTimeout(() => {
+            loadimg.src = checkicon
+            loadimg.parentElement.style.backgroundColor = '#00E077'
+            loadspan.innerText = 'Logo cargado'
+            loadspan.classList.add('on-success')
+         }, 500);
+      }
    };
    
 };
