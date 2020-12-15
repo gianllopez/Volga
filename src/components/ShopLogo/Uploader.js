@@ -34,16 +34,16 @@ class Uploader extends Component {
    componentDidUpdate() {
       if (this.props.isLoaded) {
          const loadimg = document.querySelector('#loadlogo-btn figure img');
-         const loadspan = document.querySelector('#loadlogo-btn span')
+         const loadspan = document.querySelector('#loadlogo-btn span');
          loadimg.style.animation = 'img-animation 1s';
          loadspan.style.animation = 'span-animation 1s';
          setTimeout(() => {
-            loadimg.src = checkicon
-            loadimg.parentElement.style.backgroundColor = '#00E077'
-            loadspan.innerText = 'Logo cargado'
-            loadspan.classList.add('on-success')
+            loadimg.src = checkicon;
+            loadimg.parentElement.style.backgroundColor = '#00E077';
+            loadspan.innerText = 'Logo cargado';
+            loadspan.classList.add('on-success');
          }, 500);
-      }
+      };
    };
    
 };
