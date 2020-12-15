@@ -6,18 +6,32 @@ import './styles/Uploader.css';
 class Uploader extends Component {
 
    state = {
-      success: false
+      logo: ''
    }
 
-   uploaderTrigger = event => {
-      event.preventDefault();
-      document.getElementById('logo').click();
-   };
+   uploaderTrigger = () => document.getElementById('logo').click();
    
+   inputHandler = event => {
+      this.setState({
+         logo: event.target.files[0]
+      }, () => {
+         const loadimg = document.querySelector('#loadlogo-btn figure img');
+         const loadspan = document.querySelector('#loadlogo-btn span')
+         loadimg.style.animation = 'img-animation 1s';
+         loadspan.style.animation = 'span-animation 1s';
+         setTimeout(() => {
+            loadimg.src = checkicon
+            loadimg.parentElement.style.backgroundColor = '#00E077'
+            loadspan.innerText = 'Logo cargado'
+            loadspan.classList.add('on-success')
+         }, 500);
+      })
+   };
+
    render() {
       return (
          <div id="uploader-wrapper">            
-            <button id="loadlogo-btn">
+            <button id="loadlogo-btn" type="button" onClick={this.uploaderTrigger}>
                <figure>
                   <img src={uploadicon} alt="loader-icon"/>
                </figure>
@@ -27,25 +41,12 @@ class Uploader extends Component {
                type="file"
                name="logo" 
                id="logo"
+               onInput={this.inputHandler}
                hidden
                {...this.props}
             />
          </div>
       );
-   };
-
-   componentDidUpdate() {
-      if (this.state.success) {
-         const loadimg = document.querySelector('#loadlogo-btn figure img');
-         const loadspan = document.querySelector('#loadlogo-btn span')
-         loadimg.style.animation = 'img-animation 1s';
-         loadspan.style.animation = 'span-animation 1s';
-         setTimeout(() => {
-            loadimg.src = checkicon
-            loadspan.innerText = 'Logo cargado'
-            loadspan.classList.add('on-success')
-         }, 500);
-      }
    };
    
 };
