@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './styles/TagBox.css';
+import './TagBox.css';
 
 class TagBox extends Component {  
    render() {

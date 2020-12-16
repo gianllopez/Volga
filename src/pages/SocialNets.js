@@ -1,6 +1,6 @@
-import React, {Component, Fragment} from 'react';
-import SocialNetInput from '../components/SocialNets/SocialNetInput';
-import {blankValidator} from '../utils/validators';
+import React, { Component, Fragment } from 'react';
+import { SocialNetInput } from './components/';
+import { blankValidator } from '../utils/validators';
 import swal from '@sweetalert/with-react';
 import './styles/SocialNets.css';
 

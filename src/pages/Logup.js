@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Input from '../components/common/Input';
-import Loader from '../components/common/Loader';
+import { Input, Loader } from './components/';
 import { blankValidator, passwordValid } from '../utils/validators';
 import loguphero from '../assets/Logup/logup-hero.svg';
 import './styles/Logup.css';
