@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import animationSetter from './local.utils';
-import checkIcon from '../../assets/SocialNets/check-icon.svg';
-import { snicons } from '../../assets/';
+import React, { Component } from 'react';
+import { SNInputAnimationSetter } from '../local-utils';
+import checkIcon from '../../../assets/SocialNets/check-icon.svg';
+import { snicons } from '../../../assets/';
 import './styles/SocialNetInput.css';
 
 class SocialNetInput extends Component {
@@ -36,7 +36,7 @@ class SocialNetInput extends Component {
    componentDidMount() {
       const socialnetworks = document.getElementsByClassName('social-network');
       Object.entries(socialnetworks).map(
-         socialnet => animationSetter(socialnet)
+         socialnet => SNInputAnimationSetter(socialnet)
       );
    };
 

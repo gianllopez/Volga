@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './styles/TagBox.css';
 
 class TagBox extends Component {  

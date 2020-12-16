@@ -1,6 +1,8 @@
-// The next function triggers the SocialNetInput animation:
+import checkicon from '../../assets/ShopLogo/check-icon.svg';
 
-function animationSetter(element) {
+// The next function handles the SocialNetInput Component animations:
+
+export function SNInputAnimationSetter(element) {
    const colors = {
       instagram: '#c32aa3',
       facebook: '#1877f2',
@@ -32,4 +34,17 @@ function animationSetter(element) {
    });
 };
 
-export default animationSetter;
+// The next function handles the Uploader Component animations:
+
+export function successAnimationsTrigger() {
+   const loadimg = document.querySelector('#loadlogo-btn figure img');
+   const loadspan = document.querySelector('#loadlogo-btn span');
+   loadimg.style.animation = 'img-animation 1s';
+   loadspan.style.animation = 'span-animation 1s';
+   setTimeout(() => {
+      loadimg.src = checkicon;
+      loadimg.parentElement.style.backgroundColor = '#00E077';
+      loadspan.innerText = 'Logo cargado';
+      loadspan.classList.add('on-success');
+   }, 500);
+};

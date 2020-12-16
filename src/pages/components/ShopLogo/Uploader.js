@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import uploadicon from '../../assets/ShopLogo/upload-icon.svg';
-import checkicon from '../../assets/ShopLogo/check-icon.svg';
-import './styles/Uploader.css';
+import { successAnimationsTrigger } from '../local-utils';
+import uploadicon from '../../../assets/ShopLogo/upload-icon.svg';
+import './Uploader.css';
 
 class Uploader extends Component {
 
@@ -33,16 +33,7 @@ class Uploader extends Component {
 
    componentDidUpdate() {
       if (this.props.isLoaded) {
-         const loadimg = document.querySelector('#loadlogo-btn figure img');
-         const loadspan = document.querySelector('#loadlogo-btn span');
-         loadimg.style.animation = 'img-animation 1s';
-         loadspan.style.animation = 'span-animation 1s';
-         setTimeout(() => {
-            loadimg.src = checkicon;
-            loadimg.parentElement.style.backgroundColor = '#00E077';
-            loadspan.innerText = 'Logo cargado';
-            loadspan.classList.add('on-success');
-         }, 500);
+         successAnimationsTrigger();
       };
    };
    
