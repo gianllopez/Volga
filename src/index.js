@@ -6,6 +6,7 @@ import SocialNets from './pages/SocialNets';
 import ShopTags from './pages/ShopTags';
 import ShopLogo from './pages/ShopLogo';
 import Login from './pages/Login';
+import ShopProfile from './pages/ShopProfile';
 import './index.css';
 
 ReactDOM.render(
@@ -16,6 +17,7 @@ ReactDOM.render(
          <Route exact path='/:shop/tags' component={ShopTags}/>
          <Route exact path='/:shop/logo' component={ShopLogo}/>
          <Route exact path='/login' component={Login}/>
+         <Route exact path='/shops/:shop' component={ShopProfile}/>
       </Switch>
    </BrowserRouter>,
    document.getElementById('root')
