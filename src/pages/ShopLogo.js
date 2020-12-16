@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Uploader from '../components/ShopLogo/Uploader';
 import swal from '@sweetalert/with-react';
 import shoplogohero from '../assets/ShopLogo/shoplogo-hero.svg';

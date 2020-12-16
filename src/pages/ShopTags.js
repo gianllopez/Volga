@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import TagBox from '../components/ShopTags/TagBox';
-import {tagsProps} from '../utils/assets-exports';
+import { tagsProps } from '../assets/';
 import tagsheader from '../assets/ShopTags/shop-tags-hero.svg';
 import './styles/ShopTags.css';
 

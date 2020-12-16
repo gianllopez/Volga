@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import animationSetter from './local.utils';
 import checkIcon from '../../assets/SocialNets/check-icon.svg';
-import {snicons} from '../../utils/assets-exports';
+import { snicons } from '../../assets/';
 import './styles/SocialNetInput.css';
 
 class SocialNetInput extends Component {
