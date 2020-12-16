@@ -1,0 +1,17 @@
+#tags-header {
+   text-align: center;
+}
+
+#tags-header img {
+   height: 200px;
+}
+
+#tags-entries {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+}
+
+#tags-entries .tagbox-wrapper {
+   margin: 15px;
+}

@@ -41,7 +41,7 @@ export const snicons = {
 };
 
 // ---------- ShopTags (Page) Assets Exports ---------- //
-export const tagsProps = {
+export const tagsProps = Object.entries({
    'Vehículos': vehicles_icon,
    'Alimentos': foods_icon,
    'Mascotas': pets_icon,
@@ -66,4 +66,4 @@ export const tagsProps = {
    'Joyas': jewelry_icon,
    'Ropa & Accesorios': clothes_icon,
    'Prestación de Servicios': services_icon
-};
+});

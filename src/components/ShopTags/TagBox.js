@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './styles/TagBox.css';
 
-class TagBox extends Component {
-  
+class TagBox extends Component {  
    render() {
       let name4jsx = this.props.name.toLowerCase().replace(' ', '-');
       return (
@@ -12,7 +11,7 @@ class TagBox extends Component {
             name={name4jsx}
             id={`${name4jsx}-checkbox`}
             value={this.props.name}
-            onChange={this.props.changeHandler}
+            onChange={this.props.onChange}
          />
          <label htmlFor={`${name4jsx}-checkbox`}>
             <img src={this.props.image} alt={`${name4jsx}-icon`}/>
@@ -21,7 +20,6 @@ class TagBox extends Component {
          </div>
       );
    };
-
 };
 
 export default TagBox;
