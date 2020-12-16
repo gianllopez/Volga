@@ -1,3 +1,11 @@
+// ---------- SocialNetInput (Component) Assets Imports ---------- //
+import instagramIcon from '../assets/SocialNets/instagram-icon.svg';
+import facebookIcon from '../assets/SocialNets/facebook-icon.svg';
+import whatsappIcon from '../assets/SocialNets/whatsapp-icon.svg';
+import twitterIcon from '../assets/SocialNets/twitter-icon.svg';
+import pinterestIcon from '../assets/SocialNets/pinterest-icon.svg';
+
+// ---------- ShopTags (Page) Assets Imports ---------- //
 import vehicles_icon from '../assets/ShopTags/tags-icons/car.svg';
 import foods_icon from '../assets/ShopTags/tags-icons/food-basket.svg';
 import pets_icon from '../assets/ShopTags/tags-icons/dog.svg';
@@ -23,7 +31,17 @@ import clothes_icon from '../assets/ShopTags/tags-icons/clothes.svg';
 import services_icon from '../assets/ShopTags/tags-icons/services.svg';
 import botanic_icon from '../assets/ShopTags/tags-icons/plant.svg'
 
-const tagsProps = {
+// ---------- SocialNetInput (Component) Assets Exports ---------- //
+export const snicons = {
+   instagram: instagramIcon,
+   facebook: facebookIcon,
+   whatsapp: whatsappIcon,
+   twitter: twitterIcon,
+   pinterest: pinterestIcon
+};
+
+// ---------- ShopTags (Page) Assets Exports ---------- //
+export const tagsProps = {
    'Vehículos': vehicles_icon,
    'Alimentos': foods_icon,
    'Mascotas': pets_icon,
@@ -49,5 +67,3 @@ const tagsProps = {
    'Ropa & Accesorios': clothes_icon,
    'Prestación de Servicios': services_icon
 };
-
-export default tagsProps;
