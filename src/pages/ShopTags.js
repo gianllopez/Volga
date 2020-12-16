@@ -34,8 +34,9 @@ class ShopTags extends Component {
 				</div>
 				<div id="tags-entries">
 					{tagsProps.map(
-						tagdata => (
+						(tagdata, i) => (
 							<TagBox
+								key={i}
 								name={tagdata[0]}
 								image={tagdata[1]}
 								onChange={this.changeHandler}
@@ -43,6 +44,7 @@ class ShopTags extends Component {
 						)
 					)}
 				</div>
+				<button>Continuar</button>
 			</form>
 		);
 	};

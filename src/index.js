@@ -10,13 +10,13 @@ import Login from './pages/Login';
 import './index.css';
 
 ReactDOM.render(
-    <BrowserRouter>
-        <Switch>
-            <Route exact path='/:shop/social-networks' component={SocialNets} />
-            <Route exact path='/:shop/tags' component={ShopTags} />
-            <Route exact path='/logup' component={Logup} />
-            <Route exact path='/login' component={Login} />
-        </Switch>
-    </BrowserRouter>,
-    document.getElementById('root'),
+   <BrowserRouter>
+      <Switch>
+         <Route exact path='/:shop/social-networks' component={SocialNets} />
+         <Route exact path='/:shop/tags' component={ShopTags} />
+         <Route exact path='/logup' component={Logup} />
+         <Route exact path='/login' component={Login} />
+      </Switch>
+   </BrowserRouter>,
+   document.getElementById('root'),
 );
