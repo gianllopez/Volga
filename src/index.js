@@ -18,6 +18,8 @@ ReactDOM.render(
          <Route exact path='/:shop/logo' component={ShopLogo}/>
          <Route exact path='/login' component={Login}/>
          <Route exact path='/shops/:shop' component={ShopProfile}/>
+         {/* <Route exact path='/:shop/:product' component={Product}/> */}
+         {/* <Route exact path='/' component={Home}/> */}
       </Switch>
    </BrowserRouter>,
    document.getElementById('root')
