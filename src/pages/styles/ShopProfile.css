@@ -8,7 +8,8 @@
 
 #profile-header,
 #shop-stats,
-#shop-products {
+#shop-products,
+#shop-opinions {
    display: inherit;
    flex-direction: inherit;
    align-items: inherit;
@@ -62,7 +63,8 @@
 }
 
 #shop-stats,
-#shop-products {
+#shop-products,
+#shop-opinions {
    margin-top: 15px;
 }
 
@@ -73,20 +75,25 @@
    }
 }
 
-#shop-products h3 {
+#shop-products > h3,
+#shop-opinions > h3 {
    font-size: 6vw;
+   margin-bottom: 5px;
 }
 
 @media screen and (min-width:600px) {
-   #shop-products h3 {
+   #shop-products h3,
+   #shop-opinions h3 {
       font-size: 1.7em;
    }
 }
 
-#products {
+#products,
+#opinions {
    display: inherit;
    flex-wrap: wrap;
    justify-content: center;
    width: 100%;
-   margin-top: 4vh;
+   max-width: 720px;
 }
+

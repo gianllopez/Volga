@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ShopStats } from './components/';
 import { ProductCard } from './components/';
+import { UserOpinion } from './components/'
 import './styles/ShopProfile.css';
 
 class ShopProfile extends Component {
@@ -35,6 +36,17 @@ class ShopProfile extends Component {
                   <ProductCard/>
                   <ProductCard/>
                   <ProductCard/>
+                  <ProductCard/>
+               </div>               
+            </section>
+            <section id="shop-opinions">
+               <h3>Los clientes opinan:</h3>
+               <div id="opinions">
+                  <UserOpinion/>
+                  <UserOpinion/>
+                  <UserOpinion/>
+                  <UserOpinion/>
+                  <UserOpinion/>
                </div>
             </section>
          </div>

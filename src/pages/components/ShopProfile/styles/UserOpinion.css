@@ -1,0 +1,25 @@
+.opinion {
+   display: flex;
+   align-items: center;
+   box-shadow: 0px 0px 3px 0px #00000036;
+   padding: 10px 20px;
+   width: calc(90% - 40px);
+   border-radius: 10px;
+   max-width: 300px;
+   margin: 7.5px;
+}
+
+.opinion img {
+   width: 65px;
+   height: 65px;
+   object-fit: cover;
+   border-radius: 50%;
+   margin-right: 15px;
+}
+
+.opinion-content {
+   font-size: 0.8em;
+   display: inherit;
+   flex-direction: column;
+   justify-content: center;
+}
