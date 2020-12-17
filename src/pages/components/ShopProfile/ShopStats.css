@@ -1,0 +1,35 @@
+.stat {
+   display: flex;
+   align-items: center;
+   justify-content: space-evenly;
+   text-align: center;
+   height: calc(90px - 20px);
+   width: calc(90% - 20px);
+   padding: 10px;
+   box-shadow: 0px 0px 3px 0px #00000036;
+   border-radius: 10px;
+   margin: 7.5px 0;
+   max-width: 350px;
+}
+
+.stat figure img {
+   height: 65px;
+}
+
+.stat span {
+   width: 35%;
+   font-weight: bold;
+   font-size: 1.1em;
+}
+
+@media screen and (min-width:768px) {
+   .stat {
+      flex-direction: column;
+      height: max-content;
+      width: 100px;
+      margin: 0 10px;
+   }
+   .stat span {
+      width: auto;
+   }
+}

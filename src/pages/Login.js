@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Input from '../components/common/Input';
+import { Input } from './components/';
 import { blankValidator } from '../utils/validators';
 import loginhero from '../assets/Login/login-hero.svg';
 import './styles/Login.css';

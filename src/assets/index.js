@@ -31,6 +31,11 @@ import clothes_icon from './ShopTags/tags-icons/clothes.svg';
 import services_icon from './ShopTags/tags-icons/services.svg';
 import botanic_icon from './ShopTags/tags-icons/plant.svg'
 
+// ---------- ShopProfile (Page) Imports ---------- //
+import starIcon from './ShopProfile/star.svg';
+import followerIcon from './ShopProfile/follower.svg';
+import productIcon from './ShopProfile/product.svg';
+
 // ---------- SocialNetInput (Component) Exports ---------- //
 export const snicons = {
    instagram: instagramIcon,
@@ -67,3 +72,10 @@ export const tagsProps = Object.entries({
    'Ropa & Accesorios': clothes_icon,
    'Prestación de Servicios': services_icon
 });
+
+// ---------- ShopProfile (Page) Exports ---------- //
+export const statsicons = {
+   rating: starIcon,
+   followers: followerIcon,
+   products: productIcon
+};

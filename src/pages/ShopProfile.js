@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ShopStats } from './components/';
 import './styles/ShopProfile.css';
 
 class ShopProfile extends Component {
@@ -18,10 +19,13 @@ class ShopProfile extends Component {
                      Lorem ipsum dolor sit amet consectetur adipisicing e
                   </p>               
                </div>
-               <section id="interaction-btns">
+               <div id="interaction-btns">
                   <button>Mensaje</button>
                   <button>Seguir</button>
-               </section>
+               </div>
+            </section>
+            <section id="shop-stats">
+               <ShopStats/>
             </section>
          </div>
       );

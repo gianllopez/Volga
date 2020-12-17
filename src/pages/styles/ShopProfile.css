@@ -6,7 +6,8 @@
    padding: 3vh 0;
 }
 
-#profile-header {
+#profile-header,
+#shop-stats {
    display: inherit;
    flex-direction: inherit;
    align-items: inherit;
@@ -57,4 +58,15 @@
    background-color: #0978e8;
    color: white;
    margin-left: 15px;
+}
+
+#shop-stats {
+   margin-top: 15px;
+}
+
+@media screen and (min-width:768px) {
+   #shop-stats {
+      flex-direction: row;
+      justify-content: center;
+   }
 }
