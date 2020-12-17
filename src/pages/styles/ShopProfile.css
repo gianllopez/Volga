@@ -73,6 +73,16 @@
    }
 }
 
+#shop-products h3 {
+   font-size: 6vw;
+}
+
+@media screen and (min-width:600px) {
+   #shop-products h3 {
+      font-size: 1.7em;
+   }
+}
+
 #products {
    display: inherit;
    flex-wrap: wrap;
