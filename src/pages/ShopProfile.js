@@ -32,6 +32,9 @@ class ShopProfile extends Component {
                <h3>Aquí puedes encontrar:</h3>
                <div id="products">
                   <ProductCard/>
+                  <ProductCard/>
+                  <ProductCard/>
+                  <ProductCard/>
                </div>
             </section>
          </div>

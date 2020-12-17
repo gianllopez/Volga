@@ -1,13 +1,13 @@
 .product-card {
    width: calc(90% - 40px);
-   max-width: 350px;
+   max-width: 300px;
    padding: 20px;
    border-radius: 10px;
    box-shadow: 0px 0px 3px 0px #00000036;
    text-align: center;
-   height: 260px;
    position: relative;
    overflow: hidden;
+   margin: 10px;
 }
 
 .product-card figure img {
@@ -38,8 +38,13 @@
 
 .to-page button {
    width: 150px;
+   font-weight: bold;
    height: 40px;
    border: 2px solid gray;
    border-radius: 7.5px;
    outline: none;
+}
+
+.show-to-page {
+   transform: initial;
 }
