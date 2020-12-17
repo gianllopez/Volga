@@ -17,6 +17,16 @@
    object-fit: contain;
 }
 
+#productpage-info {
+   max-width: 400px;
+}
+
+@media screen and (min-width:768px) {   
+   #productpage-info {
+      font-size: 1.3em;
+   }
+}
+
 #iproduct-btns {
    margin-top: 15px;
 }
@@ -31,6 +41,19 @@
 }
 
 #iproduct-btns button:last-child {
-   background-color: black;
+   background-color: #cbcbcb;
+   color: initial;
    margin-left: 15px;
+}
+
+@media screen and (min-width:1023px) {
+   #product {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+   }
+
+   #product figure {
+      height: 75vh;
+   }
 }
