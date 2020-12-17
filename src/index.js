@@ -8,6 +8,7 @@ import ShopLogo from './pages/ShopLogo';
 import Login from './pages/Login';
 import ShopProfile from './pages/ShopProfile';
 import ProductPage from './pages/ProductPage';
+import Home from './pages/Home';
 import './index.css';
 
 ReactDOM.render(
@@ -20,7 +21,7 @@ ReactDOM.render(
          <Route exact path='/login' component={Login}/>
          <Route exact path='/shops/:shop' component={ShopProfile}/>
          <Route exact path='/:shop/:product' component={ProductPage}/>
-         {/* <Route exact path='/' component={Home}/> */}
+         <Route exact path='/' component={Home}/>
       </Switch>
    </BrowserRouter>,
    document.getElementById('root')
