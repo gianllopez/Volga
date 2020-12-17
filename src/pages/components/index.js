@@ -6,3 +6,4 @@ export { default as Uploader } from './ShopLogo/Uploader';
 export { default as TagBox } from './ShopTags/TagBox';
 export { default as SocialNetInput } from './SocialNets/SocialNetInput';
 export { default as ShopStats } from './ShopProfile/ShopStats';
+export { default as ProductCard } from './ShopProfile/ProductCard';

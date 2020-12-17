@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ShopStats } from './components/';
+import { ProductCard } from './components/';
 import './styles/ShopProfile.css';
 
 class ShopProfile extends Component {
@@ -26,6 +27,12 @@ class ShopProfile extends Component {
             </section>
             <section id="shop-stats">
                <ShopStats/>
+            </section>
+            <section id="shop-products">
+               <h3>Aquí puedes encontrar:</h3>
+               <div id="products">
+                  <ProductCard/>
+               </div>
             </section>
          </div>
       );
