@@ -58,7 +58,7 @@
    border-radius: 5px;
 }
 
-#interaction-btns button:last-child {
+#interaction-btns #follow {
    background-color: #0978e8;
    color: white;
    margin-left: 15px;

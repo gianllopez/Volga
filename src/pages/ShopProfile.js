@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { ShopStats } from './components/';
 import { ProductCard } from './components/';
 import { UserOpinion } from './components/';
@@ -6,6 +7,9 @@ import { SocialNetLink } from './components/';
 import './styles/ShopProfile.css';
 
 class ShopProfile extends Component {
+   
+   contactScroll = () => document.getElementById('social-networks').scrollIntoView();   
+   
    render() {
       return (
          <div id="shop-profile">
@@ -23,8 +27,8 @@ class ShopProfile extends Component {
                   </p>               
                </div>
                <div id="interaction-btns">
-                  <button>Mensaje</button>
-                  <button>Seguir</button>
+                  <button onClick={this.contactScroll}>Contactar</button>
+                  <button id="follow">Seguir</button>
                </div>
             </section>
             <section id="shop-stats">
@@ -51,7 +55,7 @@ class ShopProfile extends Component {
                </div>
             </section>
             <section id="shop-social-networks">
-               <h3>Conéctate con *shop*:</h3>
+               <h3>Contacta a *shop*:</h3>
                <div id="social-networks">
                   <SocialNetLink name="instagram"/>
                   <SocialNetLink name="facebook"/>
