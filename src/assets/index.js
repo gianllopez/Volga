@@ -1,9 +1,9 @@
 // ---------- SocialNetInput (Component) Imports ---------- //
-import instagramIcon from './SocialNets/instagram-icon.svg';
-import facebookIcon from './SocialNets/facebook-icon.svg';
-import whatsappIcon from './SocialNets/whatsapp-icon.svg';
-import twitterIcon from './SocialNets/twitter-icon.svg';
-import pinterestIcon from './SocialNets/pinterest-icon.svg';
+import instagramLogo from './SocialNets/instagram-icon.svg';
+import facebookLogo from './SocialNets/facebook-icon.svg';
+import whatsappLogo from './SocialNets/whatsapp-icon.svg';
+import twitterLogo from './SocialNets/twitter-icon.svg';
+import pinterestLogo from './SocialNets/pinterest-icon.svg';
 
 // ---------- ShopTags (Page) Imports ---------- //
 import vehicles_icon from './ShopTags/tags-icons/car.svg';
@@ -35,14 +35,19 @@ import botanic_icon from './ShopTags/tags-icons/plant.svg'
 import starIcon from './ShopProfile/star.svg';
 import followerIcon from './ShopProfile/follower.svg';
 import productIcon from './ShopProfile/product.svg';
+import instagramIcon from './ShopProfile/social-networks/instagram.svg';
+import facebookIcon from './ShopProfile/social-networks/facebook.svg';
+import whatsappIcon from './ShopProfile/social-networks/whatsapp.svg';
+import twitterIcon from './ShopProfile/social-networks/twitter.svg';
+import pinterestIcon from './ShopProfile/social-networks/pinterest.svg';
 
 // ---------- SocialNetInput (Component) Exports ---------- //
 export const snicons = {
-   instagram: instagramIcon,
-   facebook: facebookIcon,
-   whatsapp: whatsappIcon,
-   twitter: twitterIcon,
-   pinterest: pinterestIcon
+   instagram: instagramLogo,
+   facebook: facebookLogo,
+   whatsapp: whatsappLogo,
+   twitter: twitterLogo,
+   pinterest: pinterestLogo
 };
 
 // ---------- ShopTags (Page) Exports ---------- //
@@ -79,3 +84,11 @@ export const statsicons = {
    followers: followerIcon,
    products: productIcon
 };
+
+export const snprofileicons = {
+   instagram: instagramIcon,
+   facebook: facebookIcon,
+   whatsapp: whatsappIcon,
+   twitter: twitterIcon,
+   pinterest: pinterestIcon
+}

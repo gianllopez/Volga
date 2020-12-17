@@ -9,7 +9,8 @@
 #profile-header,
 #shop-stats,
 #shop-products,
-#shop-opinions {
+#shop-opinions,
+#shop-social-networks {
    display: inherit;
    flex-direction: inherit;
    align-items: inherit;
@@ -42,6 +43,7 @@
 #shop-info p {  
    max-width: 300px;
    margin: 5px auto;
+   padding: 0 10px;
 }
 
 #interaction-btns {
@@ -64,7 +66,8 @@
 
 #shop-stats,
 #shop-products,
-#shop-opinions {
+#shop-opinions,
+#shop-social-networks {
    margin-top: 15px;
 }
 
@@ -97,3 +100,10 @@
    max-width: 720px;
 }
 
+#social-networks {
+   width: 75%;
+   max-width: 325px;
+   display: flex;
+   justify-content: space-evenly;
+   margin-top: 10px;
+}

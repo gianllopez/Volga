@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { ShopStats } from './components/';
 import { ProductCard } from './components/';
-import { UserOpinion } from './components/'
+import { UserOpinion } from './components/';
+import { SocialNetLink } from './components/';
 import './styles/ShopProfile.css';
 
 class ShopProfile extends Component {
@@ -47,6 +48,16 @@ class ShopProfile extends Component {
                   <UserOpinion/>
                   <UserOpinion/>
                   <UserOpinion/>
+               </div>
+            </section>
+            <section id="shop-social-networks">
+               <h3>Conéctate con *shop*:</h3>
+               <div id="social-networks">
+                  <SocialNetLink name="instagram"/>
+                  <SocialNetLink name="facebook"/>
+                  <SocialNetLink name="whatsapp"/>
+                  <SocialNetLink name="twitter"/>
+                  <SocialNetLink name="pinterest"/>
                </div>
             </section>
          </div>
