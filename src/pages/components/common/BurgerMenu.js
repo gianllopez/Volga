@@ -21,6 +21,7 @@ class BurgerMenu extends Component {
             bgmenu.querySelector(`.${blade}`)
                .classList.toggle(`${blade}-animation`);
          });
+         this.props.clickCallback();
       });
    };
 

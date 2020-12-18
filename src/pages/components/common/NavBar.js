@@ -15,19 +15,25 @@ function NavBar(props) {
       );
    };
 
+   const linksAnimations = () => {
+      document.getElementById('navbar-links')
+         .classList
+            .toggle('show-links');
+   };
+
    return (
       <div id="navbar-wrapper">
-         <BurgerMenu/>
+         <BurgerMenu clickCallback={linksAnimations}/>
          <figure>
             <img src={volgalogo} alt="volga-logo"/>
          </figure>
-         {/* <ul>
+         <ul id="navbar-links">
             <NavBarLink to='/' label='Inicio'/>
-            <NavBarLink to='/shops/explore' label='Explorar'/>
             <NavBarLink to='/shops/search' label='Buscar'/>
-            <NavBarLink to='/logup' label='Registrar mi tienda'/>
+            <NavBarLink to='/shops/explore' label='Explorar'/>
+            <NavBarLink to='/logup' label='Registrar'/>
             <NavBarLink to='/login' label='Iniciar sesión'/>
-         </ul> */}
+         </ul>
       </div>
    );
 };

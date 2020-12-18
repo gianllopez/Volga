@@ -1,12 +1,11 @@
 #navbar-wrapper {
-   width: calc(100% - 20px);
    height: 65px;
    display: flex;
    background-color: #36393F;
    justify-content: space-between;
    padding: 5px 10px;
    align-items: center;
-   position: fixed;
+   position: relative;
 }
 
 #navbar-wrapper figure {
@@ -16,4 +15,38 @@
 
 #navbar-wrapper figure img {
    width: 100%;
+}
+
+#navbar-links {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   list-style: none;
+   height: calc(100vh - 75px);
+   margin-top: 75px;
+   width: calc(50vw - 10px);
+   position: absolute;
+   border-right: 2px solid #36393f;
+   left: 0;
+   top: 0;
+   font-size: 1.4em;
+   background-color: #36393fd9;
+   padding-left: 10px;
+   transition: transform .6s;
+   transform: translateX(-100%);
+}
+
+#navbar-links li {
+   margin-bottom: 10px;
+   border-left: 3px solid #36393f;
+   padding: 5px;
+}
+
+#navbar-links li a {
+   text-decoration: none;
+   color: #ffffff;
+}
+
+.show-links {
+   transform: initial !important;
 }
