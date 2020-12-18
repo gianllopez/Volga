@@ -41,6 +41,11 @@ import whatsappIcon from './ShopProfile/social-networks/whatsapp.svg';
 import twitterIcon from './ShopProfile/social-networks/twitter.svg';
 import pinterestIcon from './ShopProfile/social-networks/pinterest.svg';
 
+// ---------- Home (Page) Imports ---------- //
+import favIcon from './common/product-interaction/heart.svg';
+import wishlistIcon from './common/product-interaction/wishlist.svg';
+import askforpriceIcon from './common/product-interaction/ask-for-price.svg';
+
 // ---------- SocialNetInput (Component) Exports ---------- //
 export const snicons = {
    instagram: instagramLogo,
@@ -92,3 +97,11 @@ export const snprofileicons = {
    twitter: twitterIcon,
    pinterest: pinterestIcon
 }
+
+// ---------- Home (Page) Exports ---------- //
+
+export const ibtnsicons = {
+   fav: favIcon,
+   wishlist: wishlistIcon,
+   askforprice: askforpriceIcon
+};
