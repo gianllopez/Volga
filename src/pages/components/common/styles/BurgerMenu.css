@@ -30,3 +30,9 @@
 .blade-3-animation {
    transform: rotate(-45deg) translateY(-10px);
 }
+
+@media screen and (min-width:768px) {
+   #burger-menu {
+      display: none;
+   }
+}
