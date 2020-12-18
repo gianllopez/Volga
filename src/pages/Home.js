@@ -9,14 +9,14 @@ class Home extends Component {
             <NavBar/>
             <div id="feed">
                <div id="feed-products">
-                  <ShopProduct shop="ovo"/>
-                  <ShopProduct shop="ovo"/>
-                  <ShopProduct shop="ovo"/>
-                  <ShopProduct shop="ovo"/>
-                  <ShopProduct shop="ovo"/>
-                  <ShopProduct shop="ovo"/>
-                  <ShopProduct shop="ovo"/>
-                  <ShopProduct shop="ovo"/>
+                  <ShopProduct shop="ovo" history={this.props.history}/>
+                  <ShopProduct shop="ovo" history={this.props.history}/>
+                  <ShopProduct shop="ovo" history={this.props.history}/>
+                  <ShopProduct shop="ovo" history={this.props.history}/>
+                  <ShopProduct shop="ovo" history={this.props.history}/>
+                  <ShopProduct shop="ovo" history={this.props.history}/>
+                  <ShopProduct shop="ovo" history={this.props.history}/>
+                  <ShopProduct shop="ovo" history={this.props.history}/>
                </div>
             </div>
          </Fragment>      
