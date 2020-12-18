@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { NavBar } from './components/';
 
 class Home extends Component {
    render() {
       return (
-         <div></div>
+         <Fragment>
+            <NavBar/>
+         </Fragment>      
       );
    };
 };

@@ -1,0 +1,32 @@
+#burger-menu {
+   width: 50px;
+   height: 50px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+.blade {
+   width: 95%;
+   height: 20%;
+   background-color: white;
+   border-radius: 3px;
+   transition: all .5s;
+}
+
+.blade:not(:last-child) {
+   margin-bottom: 5px;
+}
+
+.blade-1-animation {
+   transform: rotate(45deg) translateY(10px);
+}
+
+.blade-2-animation {
+   display: none;
+}
+
+.blade-3-animation {
+   transform: rotate(-45deg) translateY(-10px);
+}

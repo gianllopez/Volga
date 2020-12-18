@@ -24,7 +24,7 @@ class ProductCard extends Component {
    };
 
    componentDidMount() {
-      const product = this._reactInternalFiber.child.stateNode;      
+      const product = this._reactInternalFiber.child.stateNode;
       const show2page = () => {
          product.querySelector('.to-page')
             .classList
