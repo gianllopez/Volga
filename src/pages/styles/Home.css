@@ -2,4 +2,9 @@
    display: flex;
    margin-top: 15px;
    justify-content: center;
+   flex-wrap: wrap;
+}
+
+#feed-products .product {
+   margin: 10px;
 }

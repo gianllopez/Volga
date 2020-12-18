@@ -19,9 +19,9 @@ class ShopProduct extends Component {
    render() {
       return (
          <div className={`product ${this.props.shop}-product`}>
-            <div className="shop">
+            <div className="product-shop">
             <img className="logo" src="https://i.pinimg.com/originals/77/b6/6f/77b66fa7469f75773d5eb443056f2f8f.jpg" alt="shop-logo"/>
-               <div className="info">
+               <div className="product-shop-info">
                   <h2>ovotheshop</h2>
                   <span>Drake lorem lorem</span>
                </div>
@@ -33,9 +33,7 @@ class ShopProduct extends Component {
             />
             <div className="product-footer">
                <span>Hoodie OVO 2020</span>
-               <p className="product-description">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt harum maxime illum. Possimus, debi
-               </p>
+               <p>$500</p>
             </div>
          </div>
       );

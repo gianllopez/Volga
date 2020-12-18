@@ -1,17 +1,17 @@
-.shop {
+.product-shop {
    display: flex;
    align-items: center;
    justify-content: start;
 }
 
-.shop .logo {
+.product-shop .logo {
    height: 45px;
    width: 45px;
    border-radius: 50%;
    object-fit: cover;
    margin-right: 10px;
 }
-.shop .info {
+.product-shop .product-shop-info {
    font-size: 0.8em;
    height: 45px;
 }
@@ -19,6 +19,7 @@
 .product {
    width: calc(90vw - 20px);
    max-height: 425px;
+   max-width: 275px;
    border: 2px solid black;
    padding: 10px;
    border-radius: 10px;
@@ -31,6 +32,11 @@
    height: 265px;
    object-fit: contain;
    align-self: center;
+}
+
+.product-footer {
+   border-left: 2px solid black;
+   padding: 5px;
 }
 
 .product-footer span {

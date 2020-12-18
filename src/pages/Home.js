@@ -10,6 +10,13 @@ class Home extends Component {
             <div id="feed">
                <div id="feed-products">
                   <ShopProduct shop="ovo"/>
+                  <ShopProduct shop="ovo"/>
+                  <ShopProduct shop="ovo"/>
+                  <ShopProduct shop="ovo"/>
+                  <ShopProduct shop="ovo"/>
+                  <ShopProduct shop="ovo"/>
+                  <ShopProduct shop="ovo"/>
+                  <ShopProduct shop="ovo"/>
                </div>
             </div>
          </Fragment>      
