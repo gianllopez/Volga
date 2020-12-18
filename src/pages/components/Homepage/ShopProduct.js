@@ -26,16 +26,12 @@ class ShopProduct extends Component {
                   <span>Drake lorem lorem</span>
                </div>
             </div>
-            <figure>
-               <img src="https://magic-custom.com/8693-large_default/ovo-hoodie-black-original-owl-by-drake.jpg" alt="here goes the product formated name"/>
-            </figure>
+            <img src="https://magic-custom.com/8693-large_default/ovo-hoodie-black-original-owl-by-drake.jpg" alt="here goes the product formated name"/>
             <div className="product-footer">
+               <span>Hoodie OVO 2020</span>
                <p className="product-description">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt harum maxime illum. Possimus, debi
                </p>
-               <this.InteractionButton type="fav"/>
-               <this.InteractionButton type="wishlist"/>
-               <this.InteractionButton type="askforprice"/>      
             </div>
          </div>
       );
