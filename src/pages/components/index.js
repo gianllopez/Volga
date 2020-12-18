@@ -10,3 +10,4 @@ export { default as ProductCard } from './ShopProfile/ProductCard';
 export { default as UserOpinion } from './ShopProfile/UserOpinion';
 export { default as SocialNetLink } from './ShopProfile/SocialNetLink';
 export { default as NavBar } from './common/NavBar';
+export { default as ShopProduct } from './Homepage/ShopProduct';
