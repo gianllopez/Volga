@@ -25,6 +25,7 @@
    border-radius: 10px;
    display: inherit;
    flex-direction: column;
+   position: relative;
 }
 
 .product .product-img {
@@ -42,4 +43,10 @@
 .product-footer span {
    font-weight: bold;
    font-size: 1.3em;
+}
+
+.product .fav-icon {
+   position: absolute;
+   right: 0;
+   padding-right: 10px;
 }

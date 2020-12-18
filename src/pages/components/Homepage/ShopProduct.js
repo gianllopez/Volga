@@ -1,21 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { ibtnsicons } from '../../../assets/'
+import { FavButton } from '../';
 import './ShopProduct.css';
 
-class ShopProduct extends Component {
-   
-   InteractionButton = props => {
-      return (
-         <Link>
-            <img
-               src={ibtnsicons[props.type]}
-               alt={`${props.type}-icon`}
-            />
-         </Link>
-      );
-   };
-   
+class ShopProduct extends Component {   
    render() {
       return (
          <div className={`product ${this.props.shop}-product`}>
@@ -35,6 +22,7 @@ class ShopProduct extends Component {
                <span>Hoodie OVO 2020</span>
                <p>$500</p>
             </div>
+            <FavButton success={false}/>       
          </div>
       );
    };
