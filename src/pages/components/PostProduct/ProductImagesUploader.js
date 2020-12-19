@@ -8,7 +8,7 @@ class ProductImagesUploader extends Component {
    render() {
       return (
          <div id="piu-wrapper">
-            <span>Imágenes (máx. 4) de tu producto: <p>*</p></span>
+            <span>Imágenes (máx. 4): <p>*</p></span>
             <div id="product-image-uploader">
                <button
                   type="button"

@@ -1,6 +1,8 @@
 #piu-wrapper span {
    display: flex;
+   justify-content: center;
 }
+
 #piu-wrapper span p {
    margin-left: 5px;
    color: red;
