@@ -9,20 +9,12 @@
 }
 
 #product-image-uploader {
-   height: 175px;
+   height: 185px;
    border: 2px solid black;
    margin-top: 7px;
    display: flex;
-   justify-content: center;
+   justify-content: space-evenly;
    align-items: center;
    border-radius: 5px;
-}
-
-#product-image-uploader button {
-   width: 130px;
-   height: 40px;
-   border: 2px solid black;
-   border-radius: 5px;
-   background-color: #e48e66;
-   outline: none;
+   flex-wrap: wrap;
 }
