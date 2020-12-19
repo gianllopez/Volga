@@ -36,11 +36,13 @@ class PostProduct extends Component {
                <Input
                   label="Precio"
                   name="price"
+                  type="number"
                />
                <div id="product-description">
-                  <label htmlFor="description">Describelo (100 caracteres):</label>
+                  <label htmlFor="description">Descripción (100 caracteres):</label>
                   <textarea name="description" maxLength="100"/>
                </div>
+               <button>Postear</button>
             </div>
          </form>
       );
