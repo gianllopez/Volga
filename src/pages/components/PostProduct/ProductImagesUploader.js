@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './ProductImagesUploader.css';
 
 class ProductImagesUploader extends Component {
-   
+
    loaderTrigger = () => document.querySelector('input[type="file"]').click();
 
    render() {

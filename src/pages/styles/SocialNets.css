@@ -38,36 +38,3 @@
       margin: 0;
    }
 }
-
-/* Sweet alert styles mods */
-
-.swal-icon, .swal-title {
-   margin-bottom: 0;
-}
-
-.swal-title {
-   max-width: 350px;
-   margin: 0 auto;
-}
-
-.swal-content {
-   margin-top: 5px;
-}
-
-.swal-content p {
-   border-left: 2px solid black;
-   text-align: left;
-   padding: 5px 0 5px 10px;
-   font-size: 6vw;
-   max-width: 350px;
-   margin: 0 auto;
-}
-
-.swal-content p span {
-   font-weight: bold;
-}
-@media screen and (min-width: 500px) {
-   .swal-content p {
-      font-size: 1.5em;
-   }
-}

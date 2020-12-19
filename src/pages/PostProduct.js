@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import prodboxicon from '../assets/PostProduct/product-box.svg';
+import swal from 'sweetalert';
 import { ProductImagesUploader } from './components/';
+import prodboxicon from '../assets/PostProduct/product-box.svg';
 import './styles/PostProduct.css';
 
 class PostProduct extends Component {
@@ -31,6 +32,15 @@ class PostProduct extends Component {
          </form>
       );
    };
+
+   componentDidUpdate() {
+      if ((this.state.data.loaded || '').length > 4) {
+         swal({
+            title: ''
+         });
+      }
+   }
+
 };
 
 export default PostProduct;
