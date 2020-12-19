@@ -1,19 +1,17 @@
-.image-uploader-btn {
+.imgloader-btn {
    width: 45%;   
    height: 45%;
-   background: url('../../../../assets/PostProduct/upload-icon.svg') center no-repeat;
-   background-size: contain;
    border: 2px solid black;
    border-radius: 3px;
    margin: 5px;
    outline: none;
 }
 
-.image-uploader-btn img {
-   height: 75px;
+.imgloader-btn img {
+   height: 90%;
 }
 
-.image-uploader-btn h2 {
+.imgloader-btn h2 {
    font-size: 1.2em;
    margin-top: -5px;
 }

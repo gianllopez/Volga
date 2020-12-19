@@ -8,18 +8,25 @@ class PostProduct extends Component {
    
    state = {
       data: {
-         loadedimgs: []
+         imgs: []
       }
    };
 
    inputHandler = event => {
       if (event.target.name === 'product-images') {         
-         this.setState({
-            data: {
-               ...this.state.data,
-               loadedimgs: this.state.data.loadedimgs.concat(event.target.files[0])
-            }
-         })         
+         let reader = new FileReader();
+         let file = event.target.files[0];
+         reader.onload = () => {
+            let newimgs = this.state.data.imgs.concat(reader.result);
+            this.setState({
+               data: {
+                  ...this.state.data,
+                  imgs: newimgs
+               },
+               
+            });
+         };
+         reader.readAsDataURL(file);
       } else {
          // Evaluate fields
       };
@@ -52,6 +59,15 @@ class PostProduct extends Component {
             </div>
          </form>
       );
+   };
+
+   componentDidUpdate() {
+      const btns = document.getElementsByClassName('imgloader-btn');
+      const {imgs} = this.state.data;
+      imgs.forEach(img => {
+         let i = imgs.indexOf(img);
+         btns[i].querySelector('img').src = imgs[i]
+      });
    };
 
 };
