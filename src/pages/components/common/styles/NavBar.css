@@ -5,7 +5,9 @@
    justify-content: space-between;
    padding: 5px 10px;
    align-items: center;
-   position: relative;
+   position: fixed;
+   width: calc(100% - 20px);
+   z-index: 1;
 }
 
 #navbar-wrapper figure {
@@ -22,8 +24,8 @@
    flex-direction: column;
    justify-content: center;
    list-style: none;
-   height: calc(100vh - 75px);
-   margin-top: 75px;
+   height: calc(100vh - 70px);
+   margin-top: 70px;
    width: calc(40vw - 10px);
    position: absolute;
    border-right: 2px solid #36393f;
