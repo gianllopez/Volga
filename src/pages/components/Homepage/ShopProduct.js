@@ -4,8 +4,19 @@ import './ShopProduct.css';
 
 class ShopProduct extends Component {   
    
+   state = {
+      fav: false
+   };
+
+   favCallback = (event) => {
+      event.stopPropagation();
+      this.setState({
+         fav: this.state.fav ? false : true
+      });
+   };
+
    redirectToPP = () => this.props.history.push('ovo/hoodie');
-   
+
    render() {
       return (
          <div className={`product ${this.props.shop}-product`} onClick={this.redirectToPP}>
@@ -25,7 +36,10 @@ class ShopProduct extends Component {
                <span>Hoodie OVO 2020</span>
                <p>$500</p>
             </div>
-            <FavButton success={false}/>       
+            <FavButton
+               success={this.state.fav}
+               fetchCallback={this.favCallback}
+            />
          </div>
       );
    };
