@@ -44,7 +44,6 @@ class PostProduct extends Component {
                <Input
                   label="Producto"
                   name="product"
-
                />
                <PriceInput
                   label="Precio"
@@ -67,6 +66,7 @@ class PostProduct extends Component {
       imgs.forEach(img => {
          let i = imgs.indexOf(img);
          btns[i].querySelector('img').src = imgs[i]
+         debugger
       });
    };
 
