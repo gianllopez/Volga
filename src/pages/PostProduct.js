@@ -13,23 +13,19 @@ class PostProduct extends Component {
    };
 
    inputHandler = event => {
-      if (event.target.name === 'product-images') {         
-         let reader = new FileReader();
+      if (event.target.name.includes('prodimg')) {
+         const reader = new FileReader();
          let file = event.target.files[0];
+         reader.readAsDataURL(file);
          reader.onload = () => {
-            let newimgs = this.state.data.imgs.concat(reader.result);
             this.setState({
                data: {
                   ...this.state.data,
-                  imgs: newimgs
-               },
-               
-            });
+                  imgs: this.state.data.imgs.concat(reader.result)
+               }
+            })
          };
-         reader.readAsDataURL(file);
-      } else {
-         // Evaluate fields
-      };
+      }
    };
    
    render() {
@@ -66,7 +62,6 @@ class PostProduct extends Component {
       imgs.forEach(img => {
          let i = imgs.indexOf(img);
          btns[i].querySelector('img').src = imgs[i]
-         debugger
       });
    };
 
