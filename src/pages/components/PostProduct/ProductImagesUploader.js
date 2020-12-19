@@ -17,6 +17,7 @@ class ProductImagesUploader extends Component {
                   type="file"
                   name="product-images"
                   onInput={this.props.inputHandler}
+                  accept=".png, .jpg, .jpeg"
                   hidden
                   multiple
                />
