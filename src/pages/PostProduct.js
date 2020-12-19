@@ -4,6 +4,20 @@ import { ProductImagesUploader } from './components/';
 import './styles/PostProduct.css';
 
 class PostProduct extends Component {
+   
+   state = {
+      data: {}
+   };
+
+   inputHandler = event => {
+      this.setState({
+         data: {
+            ...this.state.data,
+            loaded: event.target.files
+         }
+      })
+   };
+   
    render() {
       return (
          <form id="post-product">            
@@ -12,7 +26,7 @@ class PostProduct extends Component {
             </figure>
             <h2>Postea tu producto</h2>
             <div id="post-product-form">
-               <ProductImagesUploader/>
+               <ProductImagesUploader inputHandler={this.inputHandler}/>
             </div>
          </form>
       );
