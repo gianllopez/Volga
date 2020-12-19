@@ -12,3 +12,4 @@ export { default as SocialNetLink } from './ShopProfile/SocialNetLink';
 export { default as NavBar } from './common/NavBar';
 export { default as ShopProduct } from './Homepage/ShopProduct';
 export { default as FavButton } from './common/FavButton';
+export { default as ProductImagesUploader } from './PostProduct/ProductImagesUploader';

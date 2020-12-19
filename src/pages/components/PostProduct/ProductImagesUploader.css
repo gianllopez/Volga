@@ -1,0 +1,27 @@
+#piu-wrapper span {
+   display: flex;
+}
+#piu-wrapper span p {
+   margin-left: 5px;
+   color: red;
+}
+
+#product-image-uploader {
+   height: 175px;
+   border: 2px solid black;
+   margin-top: 7px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 5px;
+}
+
+#product-image-uploader button {
+   width: 150px;
+   height: 40px;
+   border: none;
+   border-radius: 5px;
+   background-color: #0069d9;
+   color: white;
+   outline: none;
+}

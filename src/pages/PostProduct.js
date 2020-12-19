@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import prodboxicon from '../assets/PostProduct/product-box.svg';
+import { ProductImagesUploader } from './components/';
 import './styles/PostProduct.css';
 
 class PostProduct extends Component {
@@ -11,7 +12,7 @@ class PostProduct extends Component {
             </figure>
             <h2>Postea tu producto</h2>
             <div id="post-product-form">
-         
+               <ProductImagesUploader/>
             </div>
          </form>
       );
