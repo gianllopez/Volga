@@ -11,7 +11,7 @@ class PostProduct extends Component {
             </figure>
             <h2>Postea tu producto</h2>
             <div id="post-product-form">
-
+         
             </div>
          </form>
       );
