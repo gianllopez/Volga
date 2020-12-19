@@ -1,17 +1,17 @@
-#product {
+#product-page-wrapper {
    height: 100vh;
    border-left: 15px solid #cbcbcb;
    padding: 20px;
 }
 
-#product figure {
+#product-page-wrapper figure {
    max-width: 650px;
    height: 45vh;
    display: flex;
    align-items: center;
 }
 
-#product figure img {
+#product-page-wrapper figure img {
    width: 100%;
    height: 100%;
    object-fit: contain;
@@ -47,13 +47,13 @@
 }
 
 @media screen and (min-width:1023px) {
-   #product {
+   #product-page-wrapper {
       display: flex;
       flex-direction: row-reverse;
       align-items: center;
    }
 
-   #product figure {
+   #product-page-wrapper figure {
       height: 75vh;
    }
 }

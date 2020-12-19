@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import swal from '@sweetalert/with-react';
-import { ProductImagesUploader } from './components/';
+import { Input, ProductImagesUploader } from './components/';
 import prodboxicon from '../assets/PostProduct/product-box.svg';
 import './styles/PostProduct.css';
 
@@ -28,6 +28,16 @@ class PostProduct extends Component {
             <h2>Postea tu producto</h2>
             <div id="post-product-form">
                <ProductImagesUploader inputHandler={this.inputHandler}/>
+               <Input
+                  label="Producto"
+                  name="product"
+
+               />
+               <Input
+                  label="Precio"
+                  name="price"
+               />
+               <textarea name="description"/>
             </div>
          </form>
       );

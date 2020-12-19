@@ -4,7 +4,7 @@ import './styles/ProductPage.css';
 class ProductPage extends Component {
    render() {
       return (
-         <div id="product">
+         <div id="product-page-wrapper">
             <figure>
                <img src="https://cdn.shopify.com/s/files/1/0237/2580/1549/products/2_3d9041e2-f964-4885-af28-497fc3678cd1.png?v=1564329267" alt="product-image"/>
             </figure>

@@ -19,7 +19,7 @@ class ShopProduct extends Component {
 
    render() {
       return (
-         <div className={`product ${this.props.shop}-product`} onClick={this.redirectToPP}>
+         <div className={`product-wrapper ${this.props.shop}-product`} onClick={this.redirectToPP}>
             <div className="product-shop">
             <img className="logo" src="https://i.pinimg.com/originals/77/b6/6f/77b66fa7469f75773d5eb443056f2f8f.jpg" alt="shop-logo"/>
                <div className="product-shop-info">
