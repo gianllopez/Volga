@@ -7,16 +7,22 @@ import './styles/PostProduct.css';
 class PostProduct extends Component {
    
    state = {
-      data: {}
+      data: {
+         loadedimgs: []
+      }
    };
 
    inputHandler = event => {
-      this.setState({
-         data: {
-            ...this.state.data,
-            loaded: event.target.files
-         }
-      })
+      if (event.target.name === 'product-images') {         
+         this.setState({
+            data: {
+               ...this.state.data,
+               loadedimgs: this.state.data.loadedimgs.concat(event.target.files[0])
+            }
+         })         
+      } else {
+         // Evaluate fields
+      };
    };
    
    render() {
@@ -46,23 +52,6 @@ class PostProduct extends Component {
             </div>
          </form>
       );
-   };
-
-   componentDidUpdate() {
-      let nloaded = (this.state.data.loaded || '').length;
-      if (nloaded > 4) {      
-         swal({
-            title: 'Deben ser máximo 4 imágenes',
-            content: (
-               <p>
-                  Haz cargado {nloaded} imágenes y solo son admitidas 4.<br/>
-                  Por favor, elimina algunas.
-               </p>
-            ),
-            icon: 'error',
-            dangerMode: true
-         });
-      };
    };
 
 };
