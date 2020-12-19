@@ -10,7 +10,7 @@ class ImgUploaderButton extends Component {
    render() {
       return (
          <div className="imguploader-wrapper" onClick={this.loaderTrigger}>
-            <button className="imgloader-btn" type="button">
+            <button id={`imgloaderbtn-${this.props.index}`} type="button">
                <img src={uploadicon} alt="upload-icon"/>
             </button>
             <input
@@ -23,6 +23,16 @@ class ImgUploaderButton extends Component {
          </div>
       );
    };
+
+   componentDidUpdate() {
+      const btn = document.querySelector(`#imgloaderbtn-${this.props.index}`);
+      const input = btn.parentElement.querySelector('input');
+      const imgs = this.props.imgs;
+      if (input.value) {
+         btn.querySelector('img').src = imgs[parseInt(this.props.index)];
+      }
+   };
+
 };
 
 export default ImgUploaderButton;

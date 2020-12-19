@@ -36,7 +36,10 @@ class PostProduct extends Component {
             </figure>
             <h2>Postea tu producto</h2>
             <div id="post-product-form">
-               <ProductImagesUploader inputHandler={this.inputHandler}/>
+               <ProductImagesUploader
+                  inputHandler={this.inputHandler}
+                  imgs={this.state.data.imgs}
+               />
                <Input
                   label="Producto"
                   name="product"
@@ -54,15 +57,6 @@ class PostProduct extends Component {
             </div>
          </form>
       );
-   };
-
-   componentDidUpdate() {
-      const btns = document.getElementsByClassName('imgloader-btn');
-      const {imgs} = this.state.data;
-      imgs.forEach(img => {
-         let i = imgs.indexOf(img);
-         btns[i].querySelector('img').src = imgs[i]
-      });
    };
 
 };
