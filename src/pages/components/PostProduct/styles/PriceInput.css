@@ -1,0 +1,19 @@
+#price-input {
+   display: flex;
+   align-items: flex-end;
+   justify-content: space-between;
+}
+
+#price-input .input-wrapper {
+   width: 55%;
+}
+
+#price-input select {
+   text-align-last: center;
+   width: 40%;
+   height: 44px;
+   border: 2px solid black;
+   background: none;
+   border-radius: 3px;
+   outline: none;
+}

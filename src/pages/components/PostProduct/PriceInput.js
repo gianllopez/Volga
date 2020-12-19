@@ -6,10 +6,10 @@ function PriceInput(props) {
    return (
       <div id="price-input">
          <Input {...props}/>
-         <select name="price-type" id="price-type" defaultValue="USD">
-            <option value="COP">Pesos Colombianos</option>
-            <option value="USD">Dólares</option>
-            <option value="€">Euros</option>            
+         <select name="price-type" id="price-type" defaultValue="COP">
+            <option value="COP">COP</option>
+            <option value="USD">USD</option>
+            <option value="€">EUR</option>            
          </select>
       </div>
    );
