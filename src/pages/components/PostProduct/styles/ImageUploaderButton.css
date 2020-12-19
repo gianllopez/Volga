@@ -1,6 +1,6 @@
 .image-uploader-btn {
-   width: 80px;   
-   height: 80px;
+   width: 45%;   
+   height: 45%;
    background: url('../../../../assets/PostProduct/upload-icon.svg') center no-repeat;
    background-size: contain;
    border: 2px solid black;
