@@ -35,9 +35,6 @@ class PostProduct extends Component {
 
    componentDidUpdate() {
       if ((this.state.data.loaded || '').length > 4) {
-         swal({
-            title: ''
-         });
       }
    }
 
