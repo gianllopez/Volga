@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './ProductImagesUploader.css';
+import './styles/ProductImagesUploader.css';
 
 class ProductImagesUploader extends Component {
 

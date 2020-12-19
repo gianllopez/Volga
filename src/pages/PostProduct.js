@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import swal from '@sweetalert/with-react';
-import { Input, ProductImagesUploader } from './components/';
+import { ProductImagesUploader, Input, PriceInput } from './components/';
 import prodboxicon from '../assets/PostProduct/product-box.svg';
 import './styles/PostProduct.css';
 
@@ -33,7 +33,7 @@ class PostProduct extends Component {
                   name="product"
 
                />
-               <Input
+               <PriceInput
                   label="Precio"
                   name="price"
                   type="number"
