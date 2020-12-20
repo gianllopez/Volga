@@ -1,34 +1,10 @@
 import React, { Component } from 'react';
-import { ProductImagesUploader, Input, PriceInput } from './components/';
+import { ImageUploaderButton, Input, PriceInput } from './components/';
 import prodboxicon from '../assets/PostProduct/product-box.svg';
 import './styles/PostProduct.css';
 
 class PostProduct extends Component {
-   
-   state = {
-      data: {}
-   };
 
-   inputHandler = event => {
-      if (event.target.name.includes('prodimg')) {
-         const reader = new FileReader();
-         let file = event.target.files[0];
-         let imgindex = event.target.name[7];
-         reader.readAsDataURL(file);
-         reader.onload = () => {
-            this.setState({
-               data: {
-                  ...this.state.data,
-                  images: {
-                     ...this.state.data.images,
-                     [imgindex]: reader.result
-                  }
-               }
-            });
-         };
-      };
-   };
-   
    render() {
       return (
          <form id="post-product">            
@@ -37,10 +13,7 @@ class PostProduct extends Component {
             </figure>
             <h2>Postea tu producto</h2>
             <div id="post-product-form">
-               <ProductImagesUploader
-                  inputHandler={this.inputHandler}
-                  loadedImages={this.state.data.images}
-               />
+               
                <Input
                   label="Producto"
                   name="product"
