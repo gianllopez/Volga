@@ -3,7 +3,6 @@
    display: flex;
    flex-direction: column;
    align-items: center;
-   /* width: 90vw; */
 }
 
 #post-product figure {
@@ -13,10 +12,6 @@
 #post-product figure img {
    width: 100%;
 }
-
-/* #post-product h2 {
-   text-align: center;
-} */
 
 #post-product-form {
    width: 85vw;
