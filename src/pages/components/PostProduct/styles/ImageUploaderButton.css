@@ -2,7 +2,7 @@
    width: 45%;   
    height: 45%;
    margin: 5px;
-   position: relative;
+   /* position: relative; */
 }
 
 .imguploader-wrapper button {
