@@ -5,17 +5,20 @@ import './styles/ImageUploaderButton.css';
 
 class ImgUploaderButton extends Component {
    
-   loaderTrigger = () => document.querySelector(`input[name="prodimg${this.props.index}"]`).click()
+   index = this.props.index;
+   
+   loaderTrigger = () => document.querySelector(`.prodimg${this.index}`).click();
    
    render() {
       return (
          <div className="imguploader-wrapper" onClick={this.loaderTrigger}>
-            <button id={`imgloaderbtn-${this.props.index}`} type="button">
+            <button id={`imgloaderbtn-${this.index}`} type="button">
                <img src={uploadicon} alt="upload-icon"/>
             </button>
             <input
                type="file"
-               name={`prodimg${this.props.index}`}
+               name={`prodimg${this.index}`}
+               className={`prodimg${this.index}`}
                onInput={this.props.inputHandler}
                accept=".png, .jpg, .jpeg"
                hidden               
@@ -25,12 +28,12 @@ class ImgUploaderButton extends Component {
    };
 
    componentDidUpdate() {
-      const btn = document.querySelector(`#imgloaderbtn-${this.props.index}`);
+      const btn = document.querySelector(`#imgloaderbtn-${this.index}`);
       const input = btn.parentElement.querySelector('input');
       const imgs = this.props.imgs;
       if (input.value) {
-         btn.querySelector('img').src = imgs[parseInt(this.props.index)];
-      }
+         btn.querySelector('img').src = imgs[parseInt(this.index)];
+      };
    };
 
 };

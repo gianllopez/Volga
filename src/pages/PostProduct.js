@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import swal from '@sweetalert/with-react';
 import { ProductImagesUploader, Input, PriceInput } from './components/';
 import prodboxicon from '../assets/PostProduct/product-box.svg';
 import './styles/PostProduct.css';
@@ -7,13 +6,10 @@ import './styles/PostProduct.css';
 class PostProduct extends Component {
    
    state = {
-      data: {
-         imgs: []
-      }
+      data: {}
    };
 
    inputHandler = event => {
-      debugger
       if (event.target.name.includes('prodimg')) {
          const reader = new FileReader();
          let file = event.target.files[0];
@@ -23,14 +19,14 @@ class PostProduct extends Component {
             this.setState({
                data: {
                   ...this.state.data,
-                  imgs: {
-                     ...this.state.data.imgs,
+                  images: {
+                     ...this.state.data.images,
                      [imgindex]: reader.result
                   }
                }
             });
          };
-      }
+      };
    };
    
    render() {
@@ -43,7 +39,7 @@ class PostProduct extends Component {
             <div id="post-product-form">
                <ProductImagesUploader
                   inputHandler={this.inputHandler}
-                  imgs={this.state.data.imgs}
+                  loadedImages={this.state.data.images}
                />
                <Input
                   label="Producto"
