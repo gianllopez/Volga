@@ -10,8 +10,21 @@ class PostProduct extends Component {
    };
    
    inputHandler = event => {
-      let index = event.target.parentElement.id[4];
-      console.log(index);
+      const index = event.target.parentElement.id[4];
+      let file = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload = () => {
+         this.setState({
+            data: {
+               ...this.state.data,
+               loadedImages: {
+                  ...this.state.data.loadedImages,
+                  [index]: reader.result
+               }
+            }
+         });
+      };
+      reader.readAsDataURL(file);
    };
 
    render() {
