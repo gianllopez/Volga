@@ -5,6 +5,15 @@ import './styles/PostProduct.css';
 
 class PostProduct extends Component {
 
+   state = {
+      data: {}
+   };
+   
+   inputHandler = event => {
+      let index = event.target.parentElement.id[4];
+      console.log(index);
+   };
+
    render() {
       return (
          <form id="post-product">            
@@ -18,10 +27,22 @@ class PostProduct extends Component {
                      Sube fotos (4) de tu producto: <p>*</p>
                   </span>
                   <div id="product-image-uploader">
-                     <ImageUploaderButton/>
-                     <ImageUploaderButton/>
-                     <ImageUploaderButton/>
-                     <ImageUploaderButton/>
+                     <ImageUploaderButton
+                        index="1"
+                        inputHandler={this.inputHandler}
+                     />
+                     <ImageUploaderButton
+                        index="2"
+                        inputHandler={this.inputHandler}
+                     />
+                     <ImageUploaderButton
+                        index="3"
+                        inputHandler={this.inputHandler}
+                     />
+                     <ImageUploaderButton
+                        index="4"
+                        inputHandler={this.inputHandler}
+                     />
                   </div>
                </div>
                <Input
