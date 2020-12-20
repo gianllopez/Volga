@@ -13,7 +13,17 @@ class PostProduct extends Component {
             </figure>
             <h2>Postea tu producto</h2>
             <div id="post-product-form">
-               
+               <div id="piu-wrapper">
+                  <span>
+                     Sube fotos (4) de tu producto: <p>*</p>
+                  </span>
+                  <div id="product-image-uploader">
+                     <ImageUploaderButton/>
+                     <ImageUploaderButton/>
+                     <ImageUploaderButton/>
+                     <ImageUploaderButton/>
+                  </div>
+               </div>
                <Input
                   label="Producto"
                   name="product"
