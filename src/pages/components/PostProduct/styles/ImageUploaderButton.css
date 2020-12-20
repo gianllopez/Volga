@@ -2,6 +2,7 @@
    width: 45%;   
    height: 45%;
    margin: 5px;
+   position: relative;
 }
 
 .imguploader > button {
@@ -15,4 +16,11 @@
 
 .imguploader img:first-child {
    height: 90%;
+}
+
+.imguploader > img {
+   width: 20px;
+   position: absolute;
+   right: 0;
+   margin: -7px;
 }
