@@ -13,17 +13,22 @@ class PostProduct extends Component {
    };
 
    inputHandler = event => {
+      debugger
       if (event.target.name.includes('prodimg')) {
          const reader = new FileReader();
          let file = event.target.files[0];
+         let imgindex = event.target.name[7];
          reader.readAsDataURL(file);
          reader.onload = () => {
             this.setState({
                data: {
                   ...this.state.data,
-                  imgs: this.state.data.imgs.concat(reader.result)
+                  imgs: {
+                     ...this.state.data.imgs,
+                     [imgindex]: reader.result
+                  }
                }
-            })
+            });
          };
       }
    };
