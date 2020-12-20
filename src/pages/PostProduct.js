@@ -43,18 +43,22 @@ class PostProduct extends Component {
                      <ImageUploaderButton
                         index="1"
                         inputHandler={this.inputHandler}
+                        images={this.state.data.loadedImages}
                      />
                      <ImageUploaderButton
                         index="2"
                         inputHandler={this.inputHandler}
+                        images={this.state.data.loadedImages}
                      />
                      <ImageUploaderButton
                         index="3"
                         inputHandler={this.inputHandler}
+                        images={this.state.data.loadedImages}
                      />
                      <ImageUploaderButton
                         index="4"
                         inputHandler={this.inputHandler}
+                        images={this.state.data.loadedImages}
                      />
                   </div>
                </div>

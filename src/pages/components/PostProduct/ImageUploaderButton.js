@@ -25,6 +25,17 @@ class ImgUploaderButton extends Component {
          </div>
       );
    };
+
+   componentDidUpdate() {
+      let images = this.props.images || {};
+      const JSX = document.querySelector(`#btn-${this.props.index}`);
+      let btnimg = JSX.querySelector('button > img');
+      let input = JSX.querySelector('input[type="file"]');
+      if (input.value) {
+         btnimg.src = images[parseInt(this.props.index)];
+      };
+   };
+
 };
 
 export default ImgUploaderButton;
