@@ -5,6 +5,8 @@ import './styles/ImageUploaderButton.css';
 
 class ImgUploaderButton extends Component {
    
+   state = { loaded: false };
+   
    index = this.props.index;
    
    loaderTrigger = () => document.querySelector(`.prodimg${this.index}`).click();
@@ -14,6 +16,9 @@ class ImgUploaderButton extends Component {
          <div className="imguploader-wrapper" onClick={this.loaderTrigger}>
             <button id={`imgloaderbtn-${this.index}`} type="button">
                <img src={uploadicon} alt="upload-icon"/>
+               {this.state.loaded && (
+                  <di className={`removebtn removebtn-${this.index}`}/>
+               )}
             </button>
             <input
                type="file"
@@ -30,9 +35,12 @@ class ImgUploaderButton extends Component {
    componentDidUpdate() {
       const btn = document.querySelector(`#imgloaderbtn-${this.index}`);
       const input = btn.parentElement.querySelector('input');
-      const imgs = this.props.imgs;
+      const images = this.props.loadedImages;
       if (input.value) {
-         btn.querySelector('img').src = imgs[parseInt(this.index)];
+         btn.querySelector('img').src = images[parseInt(this.index)];
+         if (!this.state.loaded) {
+            this.setState({ loaded: true });
+         };
       };
    };
 
