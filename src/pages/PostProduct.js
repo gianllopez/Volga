@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ImageUploaderButton, Input, PriceInput } from './components/';
+import uploadicon from '../assets/PostProduct/upload-icon.svg';
 import prodboxicon from '../assets/PostProduct/product-box.svg';
 import './styles/PostProduct.css';
 
@@ -27,6 +28,11 @@ class PostProduct extends Component {
       reader.readAsDataURL(file);
    };
 
+
+   removeUploadedPhoto = event => {
+      event.stopPropagation();
+   };
+
    render() {
       return (
          <form id="post-product">            
@@ -43,21 +49,25 @@ class PostProduct extends Component {
                      <ImageUploaderButton
                         index="1"
                         inputHandler={this.inputHandler}
+                        removeHandler={this.removeUploadedPhoto}
                         images={this.state.data.loadedImages}
                      />
                      <ImageUploaderButton
                         index="2"
                         inputHandler={this.inputHandler}
+                        removeHandler={this.removeUploadedPhoto}
                         images={this.state.data.loadedImages}
                      />
                      <ImageUploaderButton
                         index="3"
                         inputHandler={this.inputHandler}
+                        removeHandler={this.removeUploadedPhoto}
                         images={this.state.data.loadedImages}
                      />
                      <ImageUploaderButton
                         index="4"
                         inputHandler={this.inputHandler}
+                        removeHandler={this.removeUploadedPhoto}
                         images={this.state.data.loadedImages}
                      />
                   </div>

@@ -27,7 +27,7 @@ class ImgUploaderButton extends Component {
                hidden
             />
             {this.state.loaded && (
-               <img src={closeicon}/>
+               <img src={closeicon} onClick={this.props.removeHandler}/>
             )}
          </div>
       );
