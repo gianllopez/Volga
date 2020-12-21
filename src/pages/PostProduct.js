@@ -28,13 +28,15 @@ class PostProduct extends Component {
       reader.readAsDataURL(file);
    };
 
-
    removeUploadedPhoto = event => {
       event.stopPropagation();
       const rmid = parseInt(event.target.parentElement.id[4]);
       let state = this.state;
       delete state.data.loadedImages[rmid];
-      this.setState(state);
+      this.setState(state, () => {
+         debugger
+         document.querySelector(`#btn-${rmid} button img`).src = uploadicon;
+      });
    };
 
    render() {
