@@ -31,6 +31,10 @@ class PostProduct extends Component {
 
    removeUploadedPhoto = event => {
       event.stopPropagation();
+      const rmid = parseInt(event.target.parentElement.id[4]);
+      let state = this.state;
+      delete state.data.loadedImages[rmid];
+      this.setState(state);
    };
 
    render() {
