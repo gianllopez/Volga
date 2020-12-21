@@ -34,8 +34,8 @@ class PostProduct extends Component {
       let state = this.state;
       delete state.data.loadedImages[rmid];
       this.setState(state, () => {
-         debugger
          document.querySelector(`#btn-${rmid} button img`).src = uploadicon;
+         document.querySelector(`#btn-${rmid} > img`).remove()
       });
    };
 
