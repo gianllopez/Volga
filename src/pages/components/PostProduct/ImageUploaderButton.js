@@ -35,9 +35,7 @@ class ImgUploaderButton extends Component {
 
    componentDidUpdate() {
       let images = this.props.images || {};
-      const JSX = document.querySelector(`#btn-${this.props.index}`);
-      let btnimg = JSX.querySelector('button > img');
-      let input = JSX.querySelector('input[type="file"]');
+      const btnimg = document.querySelector(`#btn-${this.props.index} > button > img`);
       const image = images[parseInt(this.props.index)]; 
       if (image) {
          btnimg.src = image;

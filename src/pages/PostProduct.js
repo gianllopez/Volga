@@ -13,7 +13,6 @@ class PostProduct extends Component {
    changeHandler = event => {
       const index = event.target.parentElement.id[4];
       let file = event.target.files[0];
-      //debugger
       const reader = new FileReader();
       reader.onloadend = () => {
          this.setState({
