@@ -36,11 +36,15 @@ class ImgUploaderButton extends Component {
    componentDidUpdate() {
       let images = this.props.images || {};
       const btnimg = document.querySelector(`#btn-${this.props.index} > button > img`);
-      const image = images[parseInt(this.props.index)]; 
+      const image = images[parseInt(this.props.index)];
       if (image) {
          btnimg.src = image;
          if (!this.state.loaded) {
             this.setState({ loaded: true });
+         };
+      } else {
+         if (this.state.loaded) {
+            this.setState({ loaded: false });
          };
       };
    };

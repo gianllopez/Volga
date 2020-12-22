@@ -14,7 +14,7 @@ class PostProduct extends Component {
       const index = event.target.parentElement.id[4];
       let file = event.target.files[0];
       const reader = new FileReader();
-      reader.onloadend = () => {
+      reader.onload = () => {
          this.setState({
             data: {
                ...this.state.data,
