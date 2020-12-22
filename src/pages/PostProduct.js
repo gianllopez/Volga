@@ -13,8 +13,9 @@ class PostProduct extends Component {
    changeHandler = event => {
       const index = event.target.parentElement.id[4];
       let file = event.target.files[0];
+      //debugger
       const reader = new FileReader();
-      reader.onload = () => {
+      reader.onloadend = () => {
          this.setState({
             data: {
                ...this.state.data,
@@ -25,7 +26,10 @@ class PostProduct extends Component {
             }
          });
       };
-      reader.readAsDataURL(file);
+      if (file) {
+         reader.readAsDataURL(file);
+         event.target.value = '';
+      };
    };
 
    removeUploadedPhoto = event => {
