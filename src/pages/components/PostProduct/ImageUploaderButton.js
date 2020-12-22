@@ -23,7 +23,7 @@ class ImgUploaderButton extends Component {
             <input
                type="file"
                accept=".png, .jpg, .jpeg"
-               onInput={this.props.inputHandler}
+               onChange={this.props.onChange}
                hidden
             />
             {this.state.loaded && (
@@ -39,6 +39,7 @@ class ImgUploaderButton extends Component {
       let btnimg = JSX.querySelector('button > img');
       let input = JSX.querySelector('input[type="file"]');
       if (input.value) {
+         debugger
          btnimg.src = images[parseInt(this.props.index)];
          if (!this.state.loaded) {
             this.setState({ loaded: true });

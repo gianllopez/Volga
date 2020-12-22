@@ -10,7 +10,7 @@ class PostProduct extends Component {
       data: {}
    };
    
-   inputHandler = event => {
+   changeHandler = event => {
       const index = event.target.parentElement.id[4];
       let file = event.target.files[0];
       const reader = new FileReader();
@@ -35,7 +35,6 @@ class PostProduct extends Component {
       delete state.data.loadedImages[rmid];
       this.setState(state, () => {
          document.querySelector(`#btn-${rmid} button img`).src = uploadicon;
-         document.querySelector(`#btn-${rmid} > img`).remove()
       });
    };
 
@@ -54,25 +53,25 @@ class PostProduct extends Component {
                   <div id="product-image-uploader">
                      <ImageUploaderButton
                         index="1"
-                        inputHandler={this.inputHandler}
+                        onChange={this.changeHandler}
                         removeHandler={this.removeUploadedPhoto}
                         images={this.state.data.loadedImages}
                      />
                      <ImageUploaderButton
                         index="2"
-                        inputHandler={this.inputHandler}
+                        onChange={this.changeHandler}
                         removeHandler={this.removeUploadedPhoto}
                         images={this.state.data.loadedImages}
                      />
                      <ImageUploaderButton
                         index="3"
-                        inputHandler={this.inputHandler}
+                        onChange={this.changeHandler}
                         removeHandler={this.removeUploadedPhoto}
                         images={this.state.data.loadedImages}
                      />
                      <ImageUploaderButton
                         index="4"
-                        inputHandler={this.inputHandler}
+                        onChange={this.changeHandler}
                         removeHandler={this.removeUploadedPhoto}
                         images={this.state.data.loadedImages}
                      />
