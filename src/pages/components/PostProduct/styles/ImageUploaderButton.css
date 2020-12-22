@@ -12,15 +12,21 @@
    border-radius: 3px;
    position: relative;
    outline: none;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }
 
 .imguploader img:first-child {
    height: 90%;
+   width: 90%;
+   object-fit: contain;
 }
 
 .imguploader > img {
    width: 20px;
    position: absolute;
+   top: 0;
    right: 0;
    margin: -7px;
 }
