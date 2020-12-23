@@ -6,7 +6,7 @@ function PriceInput(props) {
    return (
       <div id="price-input">
          <Input {...props}/>
-         <select name="price-type" id="price-type" defaultValue="COP">
+         <select name="pricetype" id="price-type" defaultValue="COP" onChange={props.onChange}>
             <option value="COP">COP</option>
             <option value="USD">USD</option>
             <option value="€">EUR</option>            

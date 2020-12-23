@@ -7,10 +7,12 @@ import './styles/PostProduct.css';
 class PostProduct extends Component {
 
    state = {
-      data: {}
+      data: {
+         pricetype: 'COP'
+      }
    };
    
-   changeHandler = event => {
+   imageLoaderHandler = event => {
       const index = event.target.parentElement.id[4];
       let file = event.target.files[0];
       const reader = new FileReader();
@@ -31,7 +33,16 @@ class PostProduct extends Component {
       };
    };
 
-   removeUploadedPhoto = event => {
+   changeHandler = event => {
+      this.setState({
+         data: {
+            ...this.state.data,
+            [event.target.name]: event.target.value
+         }
+      });
+   };
+
+   removeUploadedImage = event => {
       event.stopPropagation();
       const rmid = parseInt(event.target.parentElement.id[4]);
       let state = this.state;
@@ -56,26 +67,26 @@ class PostProduct extends Component {
                   <div id="product-image-uploader">
                      <ImageUploaderButton
                         index="1"
-                        onChange={this.changeHandler}
-                        removeHandler={this.removeUploadedPhoto}
+                        imageLoader={this.imageLoaderHandler}
+                        removeHandler={this.removeUploadedImage}
                         images={this.state.data.loadedImages}
                      />
                      <ImageUploaderButton
                         index="2"
-                        onChange={this.changeHandler}
-                        removeHandler={this.removeUploadedPhoto}
+                        imageLoader={this.imageLoaderHandler}
+                        removeHandler={this.removeUploadedImage}
                         images={this.state.data.loadedImages}
                      />
                      <ImageUploaderButton
                         index="3"
-                        onChange={this.changeHandler}
-                        removeHandler={this.removeUploadedPhoto}
+                        imageLoader={this.imageLoaderHandler}
+                        removeHandler={this.removeUploadedImage}
                         images={this.state.data.loadedImages}
                      />
                      <ImageUploaderButton
                         index="4"
-                        onChange={this.changeHandler}
-                        removeHandler={this.removeUploadedPhoto}
+                        imageLoader={this.imageLoaderHandler}
+                        removeHandler={this.removeUploadedImage}
                         images={this.state.data.loadedImages}
                      />
                   </div>
@@ -83,15 +94,17 @@ class PostProduct extends Component {
                <Input
                   label="Producto"
                   name="product"
+                  onChange={this.changeHandler}
                />
                <PriceInput
                   label="Precio"
                   name="price"
                   type="number"
+                  onChange={this.changeHandler}
                />
                <div id="product-description">
                   <label htmlFor="description">Descripción (100 caracteres):</label>
-                  <textarea name="description" maxLength="100"/>
+                  <textarea name="description" maxLength="100" onChange={this.changeHandler}/>
                </div>
                <button>Postear</button>
             </div>

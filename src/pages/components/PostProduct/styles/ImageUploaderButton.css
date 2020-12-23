@@ -20,7 +20,6 @@
 .imguploader img:first-child {
    height: 90%;
    width: 90%;
-   object-fit: contain;
 }
 
 .imguploader > img {
@@ -29,4 +28,5 @@
    top: 0;
    right: 0;
    margin: -7px;
+   cursor: pointer;
 }

@@ -23,7 +23,7 @@ class ImgUploaderButton extends Component {
             <input
                type="file"
                accept=".png, .jpg, .jpeg"
-               onChange={this.props.onChange}
+               onChange={this.props.imageLoader}
                hidden
             />
             {this.state.loaded && (
