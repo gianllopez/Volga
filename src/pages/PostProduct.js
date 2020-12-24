@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { ImageUploaderButton, Input, PriceInput } from './components/';
+import React, { Component, Fragment } from 'react';
+import { ImageUploaderButton, Input, PriceInput, NavBar } from './components/';
 import uploadicon from '../assets/PostProduct/upload-icon.svg';
 import prodboxicon from '../assets/PostProduct/product-box.svg';
 import './styles/PostProduct.css';
@@ -54,61 +54,64 @@ class PostProduct extends Component {
 
    render() {
       return (
-         <form id="post-product">            
-            <figure>
-               <img src={prodboxicon} alt="product-box-icon"/>
-            </figure>
-            <h2>Postea tu producto</h2>
-            <div id="post-product-form">
-               <div id="piu-wrapper">
-                  <span>
-                     Sube fotos (4) de tu producto: <p>*</p>
-                  </span>
-                  <div id="product-image-uploader">
-                     <ImageUploaderButton
-                        index="1"
-                        imageLoader={this.imageLoaderHandler}
-                        removeHandler={this.removeUploadedImage}
-                        images={this.state.data.loadedImages}
-                     />
-                     <ImageUploaderButton
-                        index="2"
-                        imageLoader={this.imageLoaderHandler}
-                        removeHandler={this.removeUploadedImage}
-                        images={this.state.data.loadedImages}
-                     />
-                     <ImageUploaderButton
-                        index="3"
-                        imageLoader={this.imageLoaderHandler}
-                        removeHandler={this.removeUploadedImage}
-                        images={this.state.data.loadedImages}
-                     />
-                     <ImageUploaderButton
-                        index="4"
-                        imageLoader={this.imageLoaderHandler}
-                        removeHandler={this.removeUploadedImage}
-                        images={this.state.data.loadedImages}
-                     />
+         <Fragment>
+            <NavBar/>
+            <form id="post-product">            
+               <figure>
+                  <img src={prodboxicon} alt="product-box-icon"/>
+               </figure>
+               <h2>Postea tu producto</h2>
+               <div id="post-product-form">
+                  <div id="piu-wrapper">
+                     <span>
+                        Sube fotos (4) de tu producto: <p>*</p>
+                     </span>
+                     <div id="product-image-uploader">
+                        <ImageUploaderButton
+                           index="1"
+                           imageLoader={this.imageLoaderHandler}
+                           removeHandler={this.removeUploadedImage}
+                           images={this.state.data.loadedImages}
+                        />
+                        <ImageUploaderButton
+                           index="2"
+                           imageLoader={this.imageLoaderHandler}
+                           removeHandler={this.removeUploadedImage}
+                           images={this.state.data.loadedImages}
+                        />
+                        <ImageUploaderButton
+                           index="3"
+                           imageLoader={this.imageLoaderHandler}
+                           removeHandler={this.removeUploadedImage}
+                           images={this.state.data.loadedImages}
+                        />
+                        <ImageUploaderButton
+                           index="4"
+                           imageLoader={this.imageLoaderHandler}
+                           removeHandler={this.removeUploadedImage}
+                           images={this.state.data.loadedImages}
+                        />
+                     </div>
                   </div>
+                  <Input
+                     label="Producto"
+                     name="product"
+                     onChange={this.changeHandler}
+                  />
+                  <PriceInput
+                     label="Precio"
+                     name="price"
+                     type="number"
+                     onChange={this.changeHandler}
+                  />
+                  <div id="product-description">
+                     <label htmlFor="description">Descripción (100 caracteres):</label>
+                     <textarea name="description" maxLength="100" onChange={this.changeHandler}/>
+                  </div>
+                  <button>Postear</button>
                </div>
-               <Input
-                  label="Producto"
-                  name="product"
-                  onChange={this.changeHandler}
-               />
-               <PriceInput
-                  label="Precio"
-                  name="price"
-                  type="number"
-                  onChange={this.changeHandler}
-               />
-               <div id="product-description">
-                  <label htmlFor="description">Descripción (100 caracteres):</label>
-                  <textarea name="description" maxLength="100" onChange={this.changeHandler}/>
-               </div>
-               <button>Postear</button>
-            </div>
-         </form>
+            </form>
+         </Fragment>
       );
    };
 
