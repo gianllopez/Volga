@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Input, Loader } from './components/';
+import React, { Component, Fragment } from 'react';
+import { NavBar, Input, Loader } from './components/';
 import { blankValidator, passwordValid } from '../utils/validators';
 import loguphero from '../assets/Logup/logup-hero.svg';
 import './styles/Logup.css';
@@ -55,85 +55,88 @@ class Logup extends Component {
 
 	render() {
 		return (
-			<form id="logup-form" onSubmit={this.submitHandler}>
-				<div id="logup-header">
-					<img src={loguphero} alt="logup-hero"/>
-					<h1>Crea tu cuenta de Volga</h1>
-					<p>Registra tu tienda con nosotros</p>
-				</div>
-				<div id="logup-entries">					
-					<Input
-						label="Propietario(a)"
-						name="owner"
-						onChange={this.changeHandler}
-						errors={this.state.errors}
-					/>
-					<Input
-						label="Tienda"
-						name="shop"
-						onChange={this.changeHandler}
-						errors={this.state.errors}
-					/>
-					<Input
-						label="País"
-						name="country"
-						onChange={this.changeHandler}
-						errors={this.state.errors}
-					/>
-					<Input
-						label="Ciudad"
-						name="city"
-						onChange={this.changeHandler}
-						errors={this.state.errors}
-					/>
-					<Input
-						label="Dirección"
-						name="address"
-						onChange={this.changeHandler}
-						errors={this.state.errors}
-					/>
-					<Input
-						label="Fundación"
-						name="foundation"
-						onChange={this.changeHandler}
-						errors={this.state.errors}
-					/>
-					<Input
-						label="Correo"
-						name="email"
-						type="email"
-						onChange={this.changeHandler}
-						errors={this.state.errors}
-					/>
-					<Input
-						label="Contraseña"
-						name="password"
-						type="password"
-						onChange={this.changeHandler}
-						errors={this.state.errors}
-					/>
-					<Input
-						label="Confirmar contraseña"
-						name="confirmpwd"
-						type="password"
-						onChange={this.changeHandler}
-						errors={this.state.errors}
-					/>
-					
-					{this.state.loading ? 
-						<Loader style={{width: 120, height: 40, marginTop: 7.5}}/>:
-						<button>
-							Continuar
-						</button>
-					}
-					
-					<p>
-						¿Ya tienes cuenta?<br/>
-						<a href="">Ingresa</a>
-					</p>					
-				</div>
-			
-			</form>
+         <Fragment>
+            <NavBar/>
+            <form id="logup-form" onSubmit={this.submitHandler}>
+               <div id="logup-header">
+                  <img src={loguphero} alt="logup-hero"/>
+                  <h1>Crea tu cuenta de Volga</h1>
+                  <p>Registra tu tienda con nosotros</p>
+               </div>
+               <div id="logup-entries">					
+                  <Input
+                     label="Propietario(a)"
+                     name="owner"
+                     onChange={this.changeHandler}
+                     errors={this.state.errors}
+                  />
+                  <Input
+                     label="Tienda"
+                     name="shop"
+                     onChange={this.changeHandler}
+                     errors={this.state.errors}
+                  />
+                  <Input
+                     label="País"
+                     name="country"
+                     onChange={this.changeHandler}
+                     errors={this.state.errors}
+                  />
+                  <Input
+                     label="Ciudad"
+                     name="city"
+                     onChange={this.changeHandler}
+                     errors={this.state.errors}
+                  />
+                  <Input
+                     label="Dirección"
+                     name="address"
+                     onChange={this.changeHandler}
+                     errors={this.state.errors}
+                  />
+                  <Input
+                     label="Fundación"
+                     name="foundation"
+                     onChange={this.changeHandler}
+                     errors={this.state.errors}
+                  />
+                  <Input
+                     label="Correo"
+                     name="email"
+                     type="email"
+                     onChange={this.changeHandler}
+                     errors={this.state.errors}
+                  />
+                  <Input
+                     label="Contraseña"
+                     name="password"
+                     type="password"
+                     onChange={this.changeHandler}
+                     errors={this.state.errors}
+                  />
+                  <Input
+                     label="Confirmar contraseña"
+                     name="confirmpwd"
+                     type="password"
+                     onChange={this.changeHandler}
+                     errors={this.state.errors}
+                  />
+                  
+                  {this.state.loading ? 
+                     <Loader style={{width: 120, height: 40, marginTop: 7.5}}/>:
+                     <button>
+                        Continuar
+                     </button>
+                  }
+                  
+                  <p>
+                     ¿Ya tienes cuenta?<br/>
+                     <a href="">Ingresa</a>
+                  </p>					
+               </div>
+            
+            </form>
+         </Fragment>
 		);
 	};
 
