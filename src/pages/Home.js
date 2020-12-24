@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { NavBar, ShopProduct } from './components/';
+import { Footer, NavBar, ShopProduct } from './components/';
 import './styles/Home.css';
 
 class Home extends Component {
@@ -19,6 +19,7 @@ class Home extends Component {
                   <ShopProduct shop="ovo" history={this.props.history}/>
                </div>
             </div>
+            <Footer/>
          </Fragment>      
       );
    };
