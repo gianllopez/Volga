@@ -5,9 +5,8 @@
    justify-content: space-between;
    padding: 5px 10px;
    align-items: center;
-   position: fixed;
-   width: calc(100% - 20px);
-   z-index: 1;
+   position: relative;
+   z-index: 2;
 }
 
 #navbar-wrapper figure {
@@ -25,14 +24,14 @@
    justify-content: center;
    list-style: none;
    height: calc(100vh - 70px);
-   margin-top: 70px;
+   margin-top: 75px;
    width: calc(40vw - 10px);
    position: absolute;
    border-right: 2px solid #36393f;
    left: 0;
    top: 0;
    font-size: 1.4em;
-   background-color: #36393fd9;
+   background-color: #36393ff0;
    padding-left: 10px;
    transition: transform .6s;
    transform: translateX(-100%);
@@ -54,9 +53,9 @@
 }
 
 @media screen and (min-width:768px) {
+   
    #navbar-wrapper {
       justify-content: center;
-      height: 50px;
    }
 
    #navbar-links {      
@@ -65,10 +64,7 @@
       flex-direction: row;
       padding: 0;
       border: none;
-      margin: 0;
       left: unset;
-      top: unset;
-      bottom: -45px;
       align-items: center;
       justify-content: space-evenly;
       font-size: 1.2em;

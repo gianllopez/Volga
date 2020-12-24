@@ -1,5 +1,9 @@
 #login-form {
-   margin: 5vh 0;
+   margin-top: 25px;
+}
+
+#header-text {
+   text-align: center;
 }
 
 #login-header {
@@ -27,7 +31,7 @@
 
 #login-entries p {
    text-align: center;
-   font-size: 1.1em;
+   font-size: 1em;
    font-weight: bold;
    margin-top: 5px;
 }
@@ -47,13 +51,13 @@
 @media screen and (min-width:768px) {
    
    #login-form {
+      margin: 0;
       display: flex;
-      align-items: center;   
+      align-items: center;
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      margin: 0;  
    }
 
    #login-header{   
