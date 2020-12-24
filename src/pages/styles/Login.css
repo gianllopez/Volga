@@ -1,5 +1,5 @@
 #login-form {
-   margin-top: 25px;
+   padding-top: calc(75px + 25px) ; /* NavBar height + x Padding */
 }
 
 #header-text {
