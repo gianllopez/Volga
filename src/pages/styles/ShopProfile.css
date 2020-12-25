@@ -3,7 +3,7 @@
    flex-direction: column;
    align-items: center;
    background-color: #d5d5e040;
-   padding: 3vh 0;
+   padding-top: calc(75px + 25px);
 }
 
 #profile-header,
@@ -97,7 +97,6 @@
    flex-wrap: wrap;
    justify-content: center;
    width: 100%;
-   max-width: 720px;
 }
 
 #social-networks {
@@ -106,4 +105,10 @@
    display: flex;
    justify-content: space-evenly;
    margin-top: 10px;
+}
+
+@media screen and (min-width:768px) {
+   #shop-profile {
+      padding-top: calc(120px + 20px);
+   }
 }
