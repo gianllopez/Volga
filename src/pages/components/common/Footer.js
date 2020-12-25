@@ -7,16 +7,16 @@ function Footer(props={}) {
       <div id="footer-wrapper">
          <section id="my-social-contact">
             <Link to="">
-               <i class="fab fa-twitter-square"/>
+               <i className="fab fa-twitter-square"/>
             </Link>
             <Link to="">
-               <i class="fab fa-github-square"/>
+               <i className="fab fa-github-square"/>
             </Link>
             <Link to="">
-               <i class="fab fa-facebook-square"/>
+               <i className="fab fa-facebook-square"/>
             </Link>
             <Link to="">
-               <i class="fab fa-instagram-square"/>
+               <i className="fab fa-instagram-square"/>
             </Link>
          </section>
          <div id="contact-me">
