@@ -11,13 +11,14 @@
 #shop-products,
 #shop-opinions,
 #shop-social-networks {
-   display: inherit;
-   flex-direction: inherit;
-   align-items: inherit;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
    background-color: white;
    width: 90%;
    padding: 4vh 0;
    border-radius: 10px;
+   margin: auto;
 }
 
 #profile-header figure img {
@@ -109,6 +110,47 @@
 
 @media screen and (min-width:768px) {
    #shop-profile {
+      display: grid;
+      grid-template-columns: 30% 55%;
       padding-top: calc(120px + 20px);
+      justify-content: center;
+      align-items: unset;
+   }
+   #shop-stats {
+      grid-row: 2;
+   }
+   #shop-products {
+      grid-row: 1/4;
+      margin: 0;
+      min-width: 770px;
+   }
+}
+
+@media (min-width:768px) and (max-width:1400px) {
+   #interaction-btns {
+      display: inherit;
+      flex-direction: column;
+   }
+   #interaction-btns #follow {
+      margin: 7.5px 0;
+   }
+   #shop-stats {
+      flex-direction: column;
+   }
+   #shop-stats .stat {
+      margin: 7px 0;
+   }
+   #shop-opinions h3 {
+      text-align: center;
+   }
+   #opinions .opinion {
+      flex-direction: column;
+   }
+   .opinion img {
+      margin: 5px 0;
+   }
+   .opinion .opinion-content {
+      border-left: 2px solid black;
+      padding: 5px;
    }
 }
