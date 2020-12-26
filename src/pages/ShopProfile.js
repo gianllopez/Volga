@@ -9,14 +9,12 @@ import './styles/ShopProfile.css';
 
 class ShopProfile extends Component {
    
-   contactScroll = () => document.getElementById('social-networks').scrollIntoView();   
-   
    render() {
       return (
          <Fragment>
             <NavBar/>
             <div id="shop-profile">
-               <section id="profile-header">
+               <section id="profile-header" className="profile-section">
                   <figure>
                      <img src="https://i.pinimg.com/originals/77/b6/6f/77b66fa7469f75773d5eb443056f2f8f.jpg" alt="shop-logo"/>
                   </figure>
@@ -30,15 +28,15 @@ class ShopProfile extends Component {
                      </p>               
                   </div>
                   <div id="interaction-btns">
-                     <button onClick={this.contactScroll}>Contactar</button>
+                     <button>Contactar</button>
                      <button id="follow">Seguir</button>
                   </div>
                </section>
-               <section id="shop-stats">
+               <section id="shop-stats" className="profile-section">
                   <ShopStats/>
                </section>
-               <section id="shop-products">
-                  <h3>Aquí puedes encontrar:</h3>
+               <section id="shop-products" className="profile-section">
+                  <h3 className="section-title">Aquí puedes encontrar:</h3>
                   <div id="products">
                      <ProductCard/>
                      <ProductCard/>
@@ -47,8 +45,8 @@ class ShopProfile extends Component {
                      <ProductCard/>
                   </div>               
                </section>
-               <section id="shop-opinions">
-                  <h3>Los clientes opinan:</h3>
+               <section id="shop-opinions" className="profile-section">
+                  <h3 className="section-title">Los clientes opinan:</h3>
                   <div id="opinions">
                      <UserOpinion/>
                      <UserOpinion/>

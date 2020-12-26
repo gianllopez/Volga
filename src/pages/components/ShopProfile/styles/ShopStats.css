@@ -3,7 +3,7 @@
    align-items: center;
    justify-content: space-evenly;
    text-align: center;
-   height: calc(90px - 20px);
+   height: 70px;
    width: calc(90% - 20px);
    padding: 10px;
    box-shadow: 0px 0px 3px 0px #00000036;
