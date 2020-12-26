@@ -29,7 +29,7 @@ class ShopProfile extends Component {
                   </div>
                   <div id="interaction-btns">
                      <button>Contactar</button>
-                     <button id="follow">Seguir</button>
+                     <button>Seguir</button>
                   </div>
                </section>
                <section id="shop-stats" className="profile-section">

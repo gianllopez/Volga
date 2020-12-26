@@ -26,3 +26,16 @@
    border-left: 2px solid black;
    padding: 5px;
 }
+
+@media (min-width:768px) and (max-width:1400px) {
+   .opinion {
+      flex-direction: column;
+   }
+   .opinion img {
+      margin: 5px 0;
+   }
+   .opinion-content {
+      border-left: 2px solid black;
+      padding: 5px;
+   }
+}
