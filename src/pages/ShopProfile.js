@@ -1,11 +1,10 @@
 import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
 import {
    ShopStats,
    ProductCard,
    UserOpinion,
-   SocialNetLink,
-   NavBar } from './components/';
+   NavBar,
+   Footer } from './components/';
 import './styles/ShopProfile.css';
 
 class ShopProfile extends Component {
@@ -59,6 +58,7 @@ class ShopProfile extends Component {
                   </div>
                </section>
             </div>
+            <Footer/>
          </Fragment>
       );
    };

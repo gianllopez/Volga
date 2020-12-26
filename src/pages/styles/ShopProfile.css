@@ -3,7 +3,7 @@
    flex-direction: column;
    align-items: center;
    background-color: #d5d5e040;
-   padding-top: calc(75px + 25px);
+   padding-top: calc(75px + 15px);
 }
 
 #profile-header,
@@ -100,12 +100,8 @@
    width: 100%;
 }
 
-#social-networks {
-   width: 75%;
-   max-width: 325px;
-   display: flex;
-   justify-content: space-evenly;
-   margin-top: 10px;
+#shop-opinions {
+   margin-bottom: 20px;
 }
 
 @media screen and (min-width:768px) {
