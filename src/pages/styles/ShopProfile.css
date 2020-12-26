@@ -1,7 +1,7 @@
 #shop-profile {
-   display: flex;
+   /* display: flex;
    flex-direction: column;
-   align-items: center;
+   align-items: center; */
    background-color: #d5d5e040;
    padding-top: calc(75px + 15px);
 }
@@ -82,7 +82,7 @@
 #shop-products > h3,
 #shop-opinions > h3 {
    font-size: 6vw;
-   margin-bottom: 5px;
+   /* margin-bottom: 5px; */
 }
 
 @media screen and (min-width:600px) {
@@ -91,17 +91,28 @@
       font-size: 1.7em;
    }
 }
+#products {
+   flex-wrap: wrap;
+   justify-content: center;
+}
+#products .product-card {
+   width: calc(90% - 40px);
+   max-width: 300px;
+   margin: 10px;
+}
 
 #products,
 #opinions {
    display: inherit;
-   flex-wrap: wrap;
-   justify-content: center;
-   width: 100%;
+   /* flex-wrap: wrap; */   
+   /* width: 100%; */
 }
-
 #shop-opinions {
    margin-bottom: 20px;
+}
+#opinions {
+   flex-direction: column;
+   align-items: center;
 }
 
 @media screen and (min-width:768px) {

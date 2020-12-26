@@ -24,7 +24,7 @@
    flex-direction: column;
    justify-content: center;
    list-style: none;
-   height: calc(100vh - 70px);
+   height: calc(100vh - 65px);
    margin-top: 65px;
    width: calc(40vw - 10px);
    max-width: 160px;
