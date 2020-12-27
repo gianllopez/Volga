@@ -2,6 +2,7 @@
    margin: 5vh 0;
    display: flex;
    flex-direction: column;
+   align-items: center;
 }
 
 #tags-header {
@@ -13,6 +14,7 @@
 }
 
 #tags-entries {
+   max-width: 575px;
    display: flex;
    flex-wrap: wrap;
    justify-content: center;
