@@ -1,0 +1,23 @@
+#shop-opinions {
+   padding-top: 80px;
+}
+
+#shop-opinions h2 {
+   text-align: center;
+   max-width: 300px;
+   margin: auto;
+}
+
+#users-opinions {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   max-width: 775px;
+   margin: 10px auto;
+}
+
+@media screen and (min-width:768px) {
+   #shop-opinions {
+      padding-top: 135px;
+   }
+}
