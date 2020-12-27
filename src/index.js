@@ -11,6 +11,7 @@ import ProductPage from './pages/ProductPage';
 import Home from './pages/Home';
 import PostProduct from './pages/PostProduct';
 import NewOpinion from './pages/NewOpinion';
+import ShopOpinions from './pages/ShopOpinions';
 import './index.css';
 
 ReactDOM.render(
@@ -25,6 +26,7 @@ ReactDOM.render(
          <Route exact path='/:shop/:product' component={ProductPage}/>
          <Route exact path='/' component={Home}/>
          <Route exact path='/:shop/products/new' component={PostProduct}/>
+         <Route exact path='/:shop/opinions' component={ShopOpinions}/>
          <Route exact path='/:shop/opinions/new' component={NewOpinion}/>
       </Switch>
    </BrowserRouter>,
