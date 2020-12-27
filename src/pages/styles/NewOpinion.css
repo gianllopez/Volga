@@ -1,5 +1,9 @@
 #opinion-form {
    padding-top: calc(65px + 15px);
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding-bottom: 25px;
 }
 
 #op-header {
@@ -10,9 +14,48 @@
 
 #op-header figure {
    width: 45%;
-   max-width: 250px;
+   max-width: 400px;
 }
 
 #op-header figure img {
    width: 100%;
+}
+
+#op-comment {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 85vw;
+   max-width: 350px;
+}
+
+#op-comment label {
+   font-weight: bold;
+   font-size: 1.2em;   
+   padding: 2px;
+   align-self: baseline;
+}
+
+#op-comment textarea {
+   padding: 7.5px;
+   font-size: 1.1em;
+   width: calc(100% - 15px);
+   height: 85px;
+   resize: none;
+   border: 2px solid black;
+   border-radius: 5px;
+   outline: none;
+}
+
+#op-comment textarea::placeholder {
+   text-align: center;
+}
+
+#opinion-form button {
+   width: 100px;
+   height: 37px;
+   background: none;
+   border: 2px solid black;
+   border-radius: 5px;
+   margin-top: 10px;
 }

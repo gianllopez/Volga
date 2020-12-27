@@ -23,17 +23,16 @@ class RatingSelector extends Component {
    componentDidUpdate() {
       let rating = parseFloat(this.props.currentRating);
       let rtview = document.getElementById('rating-view');
-      let bgColor = '';
+      let bgColor = '';      
       if (rating < 3.0) {
-         bgColor = '#FF5722'
+         bgColor = '#FF5722';
       } if (rating >= 3.0 && rating <= 4.0) {
-         bgColor = '#ffcd29'
+         bgColor = '#ffcd29';
       } if (rating > 4.0) {
-         bgColor = '#6dcc6d'
+         bgColor = '#6dcc6d';
       };
       rtview.style.backgroundColor = bgColor;
    };
-
 
 };
 

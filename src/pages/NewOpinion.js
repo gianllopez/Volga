@@ -32,13 +32,15 @@ class NewOpinion extends Component {
                   <h2>Opina sobre *shop*</h2>
                   <p>Déjalos saber que piensas</p>
                </div>
-               <div id="op-entries">
-                  <RatingSelector
-                     currentRating={this.state.data.rating}
-                     changeHandler={this.changeHandler}
-                  />
-
-               </div>            
+               <RatingSelector
+                  currentRating={this.state.data.rating}
+                  changeHandler={this.changeHandler}
+               />
+               <div id="op-comment">
+                  <label htmlFor="comment">Comentario:</label>
+                  <textarea name="comment" placeholder="..." maxLength="150"/>
+               </div>
+               <button>Continuar</button>          
             </form>
          </Fragment>
       );
