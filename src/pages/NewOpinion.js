@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { NavBar, RatingSelector } from './components';
+import { NavBar, RatingSelector, Footer } from './components';
 import opsheader from '../assets/NewOpinion/users-opinions.svg';
 import './styles/NewOpinion.css';
 
@@ -42,6 +42,7 @@ class NewOpinion extends Component {
                </div>
                <button>Continuar</button>          
             </form>
+            <Footer/>
          </Fragment>
       );
    };
