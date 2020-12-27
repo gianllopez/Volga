@@ -1,9 +1,25 @@
 import React, { Component, Fragment } from 'react';
-import { NavBar } from './components';
+import { NavBar, RatingSelector } from './components';
 import opsheader from '../assets/NewOpinion/users-opinions.svg';
 import './styles/NewOpinion.css';
 
 class NewOpinion extends Component {
+   
+   state = {
+      data: {
+         rating: 5.0
+      }
+   };
+   
+   changeHandler = event => {
+      this.setState({
+         data: {
+            ...this.state.data,
+            [event.target.name]: event.target.value
+         }
+      });
+   };
+   
    render() {
       return (
          <Fragment>
@@ -17,7 +33,10 @@ class NewOpinion extends Component {
                   <p>Déjalos saber que piensas</p>
                </div>
                <div id="op-entries">
-                  
+                  <RatingSelector
+                     currentRating={this.state.data.rating}
+                     changeHandler={this.changeHandler}
+                  />
 
                </div>            
             </form>
