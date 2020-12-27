@@ -2,11 +2,11 @@
    display: flex;
    flex-direction: column;
    align-items: center;
-   background-color: white;
    width: 90%;
    padding: 4vh 0;
-   border-radius: 10px;
    margin: auto;
+   border-radius: 10px;
+   background-color: white;
 }
 
 .section-title {
@@ -33,15 +33,11 @@
 
 #shop-info {
    text-align: center;
-}
-
-#shop-info h4,
-#shop-info p {
    color: #4f4f4f;
 }
 
-#shop-info h4 {
-   font-weight: lighter;   
+#shop-info h2 {
+   color: initial;   
 }
 
 #shop-info p {  
@@ -56,7 +52,7 @@
 
 #interaction-btns button {
    width: 100px;
-   height: 35px;
+   height: 37px;
    border: none;
    outline: none;
    border-radius: 5px;
@@ -65,22 +61,22 @@
 #interaction-btns button:nth-child(2) {
    background-color: #0978e8;
    color: white;
-   margin-left: 15px;
+   margin-left: 10px;
+}
+
+#products, #opinions {
+   display: inherit;
 }
 
 #products {
    flex-wrap: wrap;
    justify-content: center;
 }
+
 #products .product-card {
    width: calc(90% - 40px);
    max-width: 300px;
    margin: 10px;
-}
-
-#products,
-#opinions {
-   display: inherit;
 }
 
 #opinions {
@@ -108,11 +104,8 @@
    }
    #shop-profile #shop-products {
       grid-row: 1/4;
-      margin: 0;
-      min-width: 770px;
-      margin-bottom: 20px;
       margin-top: 0;
-      height: max-content;
+      min-width: 770px;
    }
 }
 
@@ -123,6 +116,7 @@
    }
    #interaction-btns button:nth-child(2) {
       margin-left: 0;
+      margin-top: 7.5px;
    }
 }
 
@@ -133,9 +127,6 @@
 }
 
 @media (min-width:768px) and (max-width:1400px) {
-   #interaction-btns button:nth-child(2) {
-      margin-top: 7.5px;
-   }
    #shop-stats {
       flex-direction: column;
    }
