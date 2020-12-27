@@ -15,3 +15,4 @@ export { default as ShopProduct } from './Homepage/ShopProduct';
 export { default as FavButton } from './common/FavButton';
 export { default as ImageUploaderButton } from './PostProduct/ImageUploaderButton';
 export { default as PriceInput } from './PostProduct/PriceInput';
+export { default as RatingSelector } from './NewOpinion/RatingSelector';

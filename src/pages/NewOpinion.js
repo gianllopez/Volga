@@ -15,7 +15,11 @@ class NewOpinion extends Component {
                   </figure>
                   <h2>Opina sobre *shop*</h2>
                   <p>Déjalos saber que piensas</p>
-               </div>               
+               </div>
+               <div id="op-entries">
+                  
+
+               </div>            
             </form>
          </Fragment>
       );
