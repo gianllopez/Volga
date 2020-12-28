@@ -21,14 +21,14 @@ class SocialNetInput extends Component {
                <input
                   type='text'
                   maxLength='30'
-                  placeholder={this.Name}
+                  placeholder={this.Name !== 'Email' ? this.Name : 'Correo electrónico'}
                   name={this.name}
                   autoComplete='off'
                   onChange={this.props.onChange}
                />
                <img src={checkIcon} alt='check-icon'/>
             </div>
-            <h1>{this.Name}</h1>
+            <h1>{this.name !== 'email' ? this.Name : 'Correo'}</h1>
          </div>
       );
    };

@@ -78,7 +78,7 @@ class SocialNets extends Component {
 						onChange={this.changeHandler}
 					/>
 					<SocialNetInput
-						name="pinterest"
+						name="email"
 						onChange={this.changeHandler}
 					/>
 				</div>

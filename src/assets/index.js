@@ -3,7 +3,7 @@ import instagramLogo from './SocialNets/instagram-icon.svg';
 import facebookLogo from './SocialNets/facebook-icon.svg';
 import whatsappLogo from './SocialNets/whatsapp-icon.svg';
 import twitterLogo from './SocialNets/twitter-icon.svg';
-import pinterestLogo from './SocialNets/pinterest-icon.svg';
+import emailLogo from './SocialNets/email-icon.svg';
 
 // ---------- ShopTags (Page) Imports ---------- //
 import vehicles_icon from './ShopTags/tags-icons/car.svg';
@@ -47,7 +47,7 @@ export const snicons = {
    facebook: facebookLogo,
    whatsapp: whatsappLogo,
    twitter: twitterLogo,
-   pinterest: pinterestLogo
+   email: emailLogo
 };
 
 // ---------- ShopTags (Page) Exports ---------- //

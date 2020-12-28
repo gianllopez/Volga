@@ -12,7 +12,11 @@ class ShopContact extends Component {
                   ¿Por donde deseas contactar con *shop*?
                </h2>
                <div id="contact-ways">
-                  <SocialNetLink/>
+                  <SocialNetLink for="instagram"/>
+                  <SocialNetLink for="facebook"/>
+                  <SocialNetLink for="whatsapp"/>
+                  <SocialNetLink for="twitter"/>
+                  <SocialNetLink for="email"/>
                </div>
             </div>
             <Footer/>
