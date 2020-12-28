@@ -3,12 +3,15 @@ import './styles/UserOpinion.css';
 
 function UserOpinion(props) {
    return (
-      <div className="opinion">
-         <img src="https://elintra.com.ar/wp-content/uploads/2020/10/LeBron-James-10.jpg" alt="user-photo"/>
-         <div className="opinion-content">
-            <h2>LeBron James</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, sunt.</p>
-         </div>
+      <div className="opinion">         
+         <div className="opinion-title">
+            <p>LeBron James</p>
+            <span className="gray-content">●</span>
+            <p className="gray-content">27/02/2020</p>
+         </div>   
+         <p className="gray-content">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, sunt.
+         </p>
       </div>
    );
 };
