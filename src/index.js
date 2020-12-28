@@ -12,6 +12,7 @@ import Home from './pages/Home';
 import PostProduct from './pages/PostProduct';
 import NewOpinion from './pages/NewOpinion';
 import ShopOpinions from './pages/ShopOpinions';
+import ShopContact from './pages/ShopContact';
 import './index.css';
 
 ReactDOM.render(
@@ -28,6 +29,7 @@ ReactDOM.render(
          <Route exact path='/:shop/products/new' component={PostProduct}/>
          <Route exact path='/:shop/opinions' component={ShopOpinions}/>
          <Route exact path='/:shop/opinions/new' component={NewOpinion}/>
+         <Route exact path='/:shop/contact' component={ShopContact}/>
       </Switch>
    </BrowserRouter>,
    document.getElementById('root')
