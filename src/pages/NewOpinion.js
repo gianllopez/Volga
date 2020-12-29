@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { NavBar, RatingSelector, Footer } from './components';
+import { NavBar, RatingSelector, Input, Footer } from './components';
 import opsheader from '../assets/NewOpinion/users-opinions.svg';
 import './styles/NewOpinion.css';
 
@@ -36,8 +36,17 @@ class NewOpinion extends Component {
                   currentRating={this.state.data.rating}
                   changeHandler={this.changeHandler}
                />
+               <Input
+                  label="Nombre"
+                  name="user-name"
+               />
+               <Input
+                  label="Correo"
+                  name="user-email"
+                  type="email"               
+               />
                <div id="op-comment">
-                  <label htmlFor="comment">Comentario:</label>
+                  <label htmlFor="comment">Comentario: <p>*</p> </label>
                   <textarea name="comment" placeholder="..." maxLength="150"/>
                </div>
                <button>Continuar</button>          
