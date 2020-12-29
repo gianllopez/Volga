@@ -17,6 +17,7 @@ class ShopContact extends Component {
                   <SocialNetLink for="whatsapp"/>
                   <SocialNetLink for="twitter"/>
                   <SocialNetLink for="email"/>
+                  <SocialNetLink for="pinterest"/>
                </div>
             </div>
             <Footer/>

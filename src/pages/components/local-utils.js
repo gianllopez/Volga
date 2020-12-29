@@ -2,13 +2,19 @@ import checkicon from '../../assets/ShopLogo/check-icon.svg';
 
 // The next function handles the SocialNetInput Component animations:
 
+export const sncolors = {
+   facebook: '#2D88FF',
+   whatsapp: '#00E676',
+   twitter: '#1DA1F2',
+   email: '#FFCE00',
+   pinterest: '#C8232C',
+   email: '#FFC217'
+};
+
 export function SNInputAnimationSetter(element) {
    const colors = {
       instagram: '#c32aa3',
-      facebook: '#1877f2',
-      whatsapp: '#25d366',
-      twitter: '#1da1f2',
-      pinterest: '#c8232c',
+      ...sncolors
    };
    element[1].addEventListener('click', function () {
       let header = this.querySelector('h1');

@@ -5,9 +5,10 @@
    position: relative;
    padding: 10px;
    border-radius: 10px;
-   box-shadow: 0 5px 15px 10px rgba(0, 0, 0, 0.1);
+   box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.1);
    overflow: hidden;
    transition: color .5s;
+   color: black;
 }
 
 .sn-link i {
@@ -15,23 +16,23 @@
    font-size: 4em;
 }
 
+.sn-link i,
+.sn-link h3 {
+   position: inherit;
+   z-index: 1;
+}
+
 .sn-link:hover {
    color: white;
 }
 
-.sn-link::before {
+.fake-before {
    content: '';
    position: absolute;
    transition: all .5s;
    transition-timing-function: cubic-bezier(
       0.310, -0.105,
       0.430, 1.590
-   );
-   background: linear-gradient(
-      90deg,
-      #845ec2 0%,
-      #d65db1 50%,
-      #ff6f91 100%
    );
    transform: rotate(45deg);
    top: 90%;
@@ -41,7 +42,7 @@
    border-radius: inherit;
 }
 
-.sn-link:hover::before {
+.sn-link:hover .fake-before {
    top: -18%;
    left: -18%;
 }

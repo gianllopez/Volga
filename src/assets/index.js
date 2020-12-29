@@ -4,6 +4,7 @@ import facebookLogo from './SocialNets/facebook-icon.svg';
 import whatsappLogo from './SocialNets/whatsapp-icon.svg';
 import twitterLogo from './SocialNets/twitter-icon.svg';
 import emailLogo from './SocialNets/email-icon.svg';
+import pinterestLogo from './SocialNets/pinterest-icon.svg';
 
 // ---------- ShopTags (Page) Imports ---------- //
 import vehicles_icon from './ShopTags/tags-icons/car.svg';
@@ -35,11 +36,6 @@ import botanic_icon from './ShopTags/tags-icons/plant.svg'
 import starIcon from './ShopProfile/star.svg';
 import followerIcon from './ShopProfile/follower.svg';
 import productIcon from './ShopProfile/product.svg';
-import instagramIcon from './ShopProfile/social-networks/instagram.svg';
-import facebookIcon from './ShopProfile/social-networks/facebook.svg';
-import whatsappIcon from './ShopProfile/social-networks/whatsapp.svg';
-import twitterIcon from './ShopProfile/social-networks/twitter.svg';
-import pinterestIcon from './ShopProfile/social-networks/pinterest.svg';
 
 // ---------- SocialNetInput (Component) Exports ---------- //
 export const snicons = {
@@ -47,7 +43,8 @@ export const snicons = {
    facebook: facebookLogo,
    whatsapp: whatsappLogo,
    twitter: twitterLogo,
-   email: emailLogo
+   email: emailLogo,
+   pinterest: pinterestLogo
 };
 
 // ---------- ShopTags (Page) Exports ---------- //
@@ -84,11 +81,3 @@ export const statsicons = {
    followers: followerIcon,
    products: productIcon
 };
-
-export const snprofileicons = {
-   instagram: instagramIcon,
-   facebook: facebookIcon,
-   whatsapp: whatsappIcon,
-   twitter: twitterIcon,
-   pinterest: pinterestIcon
-}
