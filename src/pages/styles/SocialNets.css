@@ -6,27 +6,35 @@
 }
 
 #socialnets-form h2 {
-   width: calc(90vw - 7px);
-   max-width: 293px;
    font-size: 1.7em;
-   border-left: 2px solid black;
-   padding-left: 5px;
    margin-bottom: 20px;
+   text-align: center;
 }
 
 #socialnets-entries .social-network {
    margin-bottom: 10px;
 }
 
-#socialnets-form button {
+#sn-interaction-btns button {
    width: 115px;
    height: 45px;
    border: none;
    border-radius: 5px;
    margin-top: 7.5px;
-   background-color: #0069D9;
    color: white;
    font-size: 1.1em;
+   background-color: #0069D9;
+}
+
+#sn-interaction-btns {
+   width: 90%;
+   display: inherit;
+   justify-content: space-evenly;
+}
+
+#sn-interaction-btns button:first-child {
+   background-color: #00000021;
+   color: black;
 }
 
 @media screen and (min-height: 625px) {

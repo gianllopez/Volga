@@ -14,15 +14,15 @@ class SocialNetInput extends Component {
    render() {
       return (
          <div className='social-network'>
-            <figure id='logo-wrapper'>
+            <figure className='logo-wrapper'>
                <img src={snicons[this.name]} alt={`${this.name}-icon`}/>
             </figure>
-            <div id='div-line'/>
-            <div id='data-input'>
+            <div className='div-line'/>
+            <div className='data-input'>
                <input
                   type='text'
                   maxLength='30'
-                  placeholder={this.Name !== 'Email' ? this.Name : 'Correo electrónico'}
+                  placeholder={this.Name !== 'Email' ? this.Name : 'Correo'}
                   name={this.name}
                   autoComplete='off'
                   onChange={this.props.onChange}
@@ -35,10 +35,8 @@ class SocialNetInput extends Component {
    };
    
    componentDidMount() {
-      const socialnetworks = document.getElementsByClassName('social-network');
-      Object.entries(socialnetworks).map(
-         socialnet => SNInputAnimationSetter(socialnet)
-      );
+      const snwrapper = this._reactInternalFiber.child.stateNode;
+      SNInputAnimationSetter(snwrapper);
    };
 
 };

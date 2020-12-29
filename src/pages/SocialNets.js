@@ -59,7 +59,10 @@ class SocialNets extends Component {
 	render() {
 		return (
 			<form id="socialnets-form" onSubmit={this.submitHandler}>
-					<h2>Redes sociales y de<br/>contacto de tu tienda</h2>
+            <h2>
+               Redes sociales para<br/>
+               el contacto de tu tienda
+            </h2>
 				<div id="socialnets-entries">
 					<SocialNetInput
 						name="instagram"
@@ -82,7 +85,10 @@ class SocialNets extends Component {
 						onChange={this.changeHandler}
 					/>
 				</div>
-				<button>Continuar</button>
+            <div id="sn-interaction-btns">
+				   <button>Omitir</button>
+				   <button>Continuar</button>
+            </div>
 			</form>
 		);
 	};

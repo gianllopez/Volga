@@ -13,14 +13,14 @@ export const sncolors = {
 
 export function SNInputAnimationSetter(element) {
    const colors = {
-      instagram: '#c32aa3',
+      instagram: '#C32AA3',
       ...sncolors
    };
-   element[1].addEventListener('click', function () {
+   element.addEventListener('click', function () {
       let header = this.querySelector('h1');
-      let dataInput = this.querySelector('#data-input');
+      let dataInput = this.querySelector('.data-input');
       let input = this.querySelector('input');
-      let checkBtn = this.querySelector('#data-input > img');
+      let checkBtn = this.querySelector('.data-input > img');
       let isFocused = input === document.activeElement;
       if (!isFocused) {
          header.classList.toggle('header-anim');
@@ -28,7 +28,7 @@ export function SNInputAnimationSetter(element) {
       }
       checkBtn.addEventListener('click', function (event) {
          event.stopPropagation();
-         let name = input.placeholder;
+         let name = input.placeholder !== 'Correo' ? input.placeholder : 'email';
          header.classList.remove('header-anim');
          dataInput.classList.remove('data-input-anim');
          let value = input.value;
