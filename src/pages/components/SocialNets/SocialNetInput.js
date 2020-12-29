@@ -35,8 +35,15 @@ class SocialNetInput extends Component {
    };
    
    componentDidMount() {
-      const snwrapper = this._reactInternalFiber.child.stateNode;
-      SNInputAnimationSetter(snwrapper);
+      const snwrapper = this._reactInternalFiber.child.stateNode,
+            snQuery = q => snwrapper.querySelector(q),
+      childs = {
+         header: snQuery('h1'),
+         dataInput: snQuery('.data-input'),
+         input: snQuery('input'),
+         checkBtn: snQuery('.data-input > img')
+      };
+      SNInputAnimationSetter(snwrapper, childs);
    };
 
 };

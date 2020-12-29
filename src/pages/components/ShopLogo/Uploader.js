@@ -33,7 +33,9 @@ class Uploader extends Component {
 
    componentDidUpdate() {
       if (this.props.isLoaded) {
-         successAnimationsTrigger();
+         const loadimg = document.querySelector('#loadlogo-btn figure img'),
+               loadspan = document.querySelector('#loadlogo-btn span');
+         successAnimationsTrigger(loadimg, loadspan);
       };
    };
    

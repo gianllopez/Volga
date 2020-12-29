@@ -5,28 +5,27 @@ import checkicon from '../../assets/ShopLogo/check-icon.svg';
 export const sncolors = {
    facebook: '#2D88FF',
    whatsapp: '#00E676',
-   twitter: '#1DA1F2',
+   twitter: '#6CC9F3',
    email: '#FFCE00',
    pinterest: '#C8232C',
    email: '#FFC217'
 };
 
-export function SNInputAnimationSetter(element) {
+export function SNInputAnimationSetter(element, elementChilds) {
    const colors = {
       instagram: '#C32AA3',
       ...sncolors
    };
-   element.addEventListener('click', function () {
-      let header = this.querySelector('h1');
-      let dataInput = this.querySelector('.data-input');
-      let input = this.querySelector('input');
-      let checkBtn = this.querySelector('.data-input > img');
-      let isFocused = input === document.activeElement;
-      if (!isFocused) {
+   element.addEventListener('click', () => {
+      const {
+         header, dataInput,
+         input, checkBtn
+      } = elementChilds;
+      if (input !== document.activeElement) {
          header.classList.toggle('header-anim');
          dataInput.classList.toggle('data-input-anim');
-      }
-      checkBtn.addEventListener('click', function (event) {
+      };
+      checkBtn.addEventListener('click', event => {
          event.stopPropagation();
          let name = input.placeholder !== 'Correo' ? input.placeholder : 'email';
          header.classList.remove('header-anim');
@@ -42,15 +41,13 @@ export function SNInputAnimationSetter(element) {
 
 // The next function handles the Uploader Component animations:
 
-export function successAnimationsTrigger() {
-   const loadimg = document.querySelector('#loadlogo-btn figure img');
-   const loadspan = document.querySelector('#loadlogo-btn span');
-   loadimg.style.animation = 'img-animation 1s';
-   loadspan.style.animation = 'span-animation 1s';
+export function successAnimationsTrigger(img, span) {
+   img.style.animation = 'img-animation 1s';
+   span.style.animation = 'span-animation 1s';
    setTimeout(() => {
-      loadimg.src = checkicon;
-      loadimg.parentElement.style.backgroundColor = '#00E077';
-      loadspan.innerText = 'Logo cargado';
-      loadspan.classList.add('on-success');
+      img.src = checkicon;
+      img.parentElement.style.backgroundColor = '#00E077';
+      span.innerText = 'Logo cargado';
+      span.classList.add('on-success');
    }, 500);
 };
