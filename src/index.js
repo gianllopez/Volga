@@ -10,8 +10,8 @@ import './index.css';
 
 ReactDOM.render(
    <BrowserRouter>
-      <Switch>
-         <NavBar/>
+      <NavBar/>
+         <Switch>
             <Route exact path='/' component={Home}/>
             <Route exact path='/logup' component={Logup}/>
             <Route exact path='/login' component={Login}/>
@@ -21,7 +21,9 @@ ReactDOM.render(
             <Route exact path='/:shop/opinions' component={ShopOpinions}/>
             <Route exact path='/:shop/opinions/new' component={NewOpinion}/>
             <Route exact path='/:shop/contact' component={ShopContact}/>
-         <Footer/>
+         </Switch>
+      <Footer/>
+      <Switch>
          <Route exact path='/:shop/social-networks' component={SocialNets}/>
          <Route exact path='/:shop/tags' component={ShopTags}/>
          <Route exact path='/:shop/logo' component={ShopLogo}/>
