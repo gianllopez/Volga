@@ -17,3 +17,9 @@
    justify-content: center;
    margin: 10px 0;
 }
+
+@media screen and (min-width: 768px) {
+   #contact-form {
+      padding: 135px 0 40px 0;
+   }
+}

@@ -6,7 +6,6 @@ import './SocialNetLink.css';
 class SocialNetLink extends Component {
 
    for = this.props.for !== 'email' ? this.props.for : 'Correo';
-   For = this.for.charAt(0).toUpperCase() + this.for.substring(1);
 
    render() {
       return (
@@ -17,14 +16,13 @@ class SocialNetLink extends Component {
                   'fas fa-envelope-open-text'
             }/>
             <div className="fake-before"/>
-            <h3>{this.For}</h3>
+            <h3>{this.for.charAt(0).toUpperCase() + this.for.substring(1)}</h3>
          </Link>
       );
    };
 
    componentDidMount() {
       const link = document.querySelector(`.${this.for}-link`);
-      const fakebfr = link.querySelector('.fake-before');
       let bg = '';
       if (this.for !== 'instagram') {
          bg = sncolors[this.props.for];
@@ -36,7 +34,7 @@ class SocialNetLink extends Component {
                   #ff6f91 100%
                )`;
       };
-      fakebfr.style.background = bg;
+      link.querySelector('.fake-before').style.background = bg;
    };
 }
 
