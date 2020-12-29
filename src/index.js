@@ -1,18 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Logup from './pages/Logup';
-import SocialNets from './pages/SocialNets';
-import ShopTags from './pages/ShopTags';
-import ShopLogo from './pages/ShopLogo';
-import Login from './pages/Login';
-import ShopProfile from './pages/ShopProfile';
-import ProductPage from './pages/ProductPage';
-import Home from './pages/Home';
-import PostProduct from './pages/PostProduct';
-import NewOpinion from './pages/NewOpinion';
-import ShopOpinions from './pages/ShopOpinions';
-import ShopContact from './pages/ShopContact';
+import { Logup, SocialNets, ShopTags, ShopLogo,
+         Login, ShopProfile, ProductPage, Home,
+         PostProduct, NewOpinion, ShopOpinions,
+         ShopContact } from './pages/';
+import { NavBar, Footer } from './pages/components';
 import './index.css';
 
 ReactDOM.render(
