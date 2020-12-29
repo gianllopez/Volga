@@ -1,22 +1,23 @@
 import React, { Component, ReactNodeArray } from "react";
 import { Link } from 'react-router-dom';
-import { sncolors } from '../../components/local-utils';
-import './SocialNetLink.css';
+import { capitalize } from '../../../utils/tools';
+import { sncolors } from '../local-utils';
+import './ContactLink.css';
 
-class SocialNetLink extends Component {
+class ContactLink extends Component {
 
-   for = this.props.for !== 'email' ? this.props.for : 'Correo';
+   for = this.props.for;
 
    render() {
       return (
-         <Link className={`sn-link ${this.for}-link`} to="/">
+         <Link className={`contact-link ${this.for}-link`} to="/">
             <i className={
-               this.for !== 'Correo' ?
-                  `fab fa-${this.props.for}` :
+               this.for !== 'email' ?
+                  `fab fa-${this.for}` :
                   'fas fa-envelope-open-text'
             }/>
             <div className="fake-before"/>
-            <h3>{this.for.charAt(0).toUpperCase() + this.for.substring(1)}</h3>
+            <h3>{capitalize(this.for)}</h3>
          </Link>
       );
    };
@@ -25,7 +26,7 @@ class SocialNetLink extends Component {
       const link = document.querySelector(`.${this.for}-link`);
       let bg = '';
       if (this.for !== 'instagram') {
-         bg = sncolors[this.props.for];
+         bg = sncolors[this.for];
       } else {
          bg = `linear-gradient(
                   90deg, 
@@ -36,6 +37,7 @@ class SocialNetLink extends Component {
       };
       link.querySelector('.fake-before').style.background = bg;
    };
-}
 
-export default SocialNetLink;
+};
+
+export default ContactLink;

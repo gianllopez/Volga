@@ -1,4 +1,4 @@
-.sn-link {
+.contact-link {
    text-align: center;
    text-decoration: none;
    position: relative;
@@ -10,17 +10,17 @@
    color: black;
 }
 
-.sn-link i {
+.contact-link i {
    font-size: 4em;
 }
 
-.sn-link i,
-.sn-link h3 {
+.contact-link i,
+.contact-link h3 {
    position: inherit;
    z-index: 1;
 }
 
-.sn-link:hover {
+.contact-link:hover {
    color: white;
 }
 
@@ -40,7 +40,7 @@
    border-radius: inherit;
 }
 
-.sn-link:hover .fake-before {
+.contact-link:hover .fake-before {
    top: -18%;
    left: -18%;
 }

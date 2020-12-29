@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { NavBar, SocialNetLink, Footer } from './components';
+import { NavBar, ContactLink, Footer } from './components';
 import './styles/ShopContact.css';
 
 class ShopContact extends Component {
@@ -12,12 +12,12 @@ class ShopContact extends Component {
                   ¿Por donde deseas contactar con *shop*?
                </h2>
                <div id="contact-ways">
-                  <SocialNetLink for="instagram"/>
-                  <SocialNetLink for="facebook"/>
-                  <SocialNetLink for="whatsapp"/>
-                  <SocialNetLink for="twitter"/>
-                  <SocialNetLink for="email"/>
-                  <SocialNetLink for="pinterest"/>
+                  <ContactLink for="instagram"/>
+                  <ContactLink for="facebook"/>
+                  <ContactLink for="whatsapp"/>
+                  <ContactLink for="twitter"/>
+                  <ContactLink for="email"/>
+                  <ContactLink for="pinterest"/>
                </div>
             </div>
             <Footer/>

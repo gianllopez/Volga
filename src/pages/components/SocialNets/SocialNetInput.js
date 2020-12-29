@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { SNInputAnimationSetter } from '../local-utils';
+import { capitalize } from '../../../utils/tools';
 import checkIcon from '../../../assets/SocialNets/check-icon.svg';
 import { snicons } from '../../../assets/';
 import './SocialNetInput.css';
@@ -8,8 +9,8 @@ class SocialNetInput extends Component {
 
    name = this.props.name;
 
-   Name = this.name.charAt(0).toUpperCase() + this.name.substring(1);
-
+   Name = capitalize(this.name);
+   
    render() {
       return (
          <div className='social-network'>
