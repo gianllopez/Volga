@@ -34,39 +34,36 @@ class Login extends Component {
 
    render() {
       return (
-         <Fragment>
-            <NavBar/>
-            <form id="login-form" onSubmit={this.submitHandler}>
-               <div id="login-header">
-                  <img src={loginhero} alt="login-hero" />
-                  <div id="header-text">
-                     <h1>Inicia sesión</h1>
-                     <p>Mantente al día con tu tienda</p>
-               </div>
-               </div>
-               <div id="login-entries">
-                  <Input
-                     label="Tienda o Email"
-                     name="shoporemail"
-                     type="email"
-                     onChange={this.changeHandler}
-                     errors={this.state.errors}
-                  />
-                  <Input
-                     label="Contraseña"
-                     name="password"
-                     type="password"
-                     onChange={this.changeHandler}
-                     errors={this.state.errors}
-                  />
-                  <button>Iniciar</button>
-                  <p>
-                     ¿No has registrado tu tienda?<br/>
-                     <a href="">Regístrala</a>
-                  </p>
-               </div>
-            </form>
-         </Fragment>
+         <form id="login-form" onSubmit={this.submitHandler}>
+            <div id="login-header">
+               <img src={loginhero} alt="login-hero" />
+               <div id="header-text">
+                  <h1>Inicia sesión</h1>
+                  <p>Mantente al día con tu tienda</p>
+            </div>
+            </div>
+            <div id="login-entries">
+               <Input
+                  label="Tienda o Email"
+                  name="shoporemail"
+                  type="email"
+                  onChange={this.changeHandler}
+                  errors={this.state.errors}
+               />
+               <Input
+                  label="Contraseña"
+                  name="password"
+                  type="password"
+                  onChange={this.changeHandler}
+                  errors={this.state.errors}
+               />
+               <button>Iniciar</button>
+               <p>
+                  ¿No has registrado tu tienda?<br/>
+                  <a href="">Regístrala</a>
+               </p>
+            </div>
+         </form>
       );
    };
 };

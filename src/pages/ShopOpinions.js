@@ -5,25 +5,21 @@ import './styles/ShopOpinions.css';
 class ShopOpinions extends Component {
    render() {
       return (
-         <Fragment>
-            <NavBar/>
-            <div id="shop-opinions">
-               <h2>Esto es lo que opinan de *shop* sus clientes:</h2>
-               <div id="users-opinions">
-                  <UserOpinion/>
-                  <UserOpinion/>
-                  <UserOpinion/>
-                  <UserOpinion/>
-                  <UserOpinion/>
-                  <UserOpinion/>
-                  <UserOpinion/>
-                  <UserOpinion/>
-                  <UserOpinion/>
-                  <UserOpinion/>
-               </div>
+         <div id="shop-opinions">
+            <h2>Esto es lo que opinan de *shop* sus clientes:</h2>
+            <div id="users-opinions">
+               <UserOpinion/>
+               <UserOpinion/>
+               <UserOpinion/>
+               <UserOpinion/>
+               <UserOpinion/>
+               <UserOpinion/>
+               <UserOpinion/>
+               <UserOpinion/>
+               <UserOpinion/>
+               <UserOpinion/>
             </div>
-            <Footer/>
-         </Fragment>
+         </div>
       );
    };
 };
