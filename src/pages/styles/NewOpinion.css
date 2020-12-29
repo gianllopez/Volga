@@ -60,10 +60,13 @@
 
 @media screen and (min-width: 768px) {
    #opinion-form {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -65%);
       display: grid;
       grid-template-columns: min-content min-content;
       justify-content: center;
-      padding-top: 135px;
       max-width: 900px;
       margin: auto;
    }   
