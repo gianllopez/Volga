@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FavButton } from '../';
+import { FavButton } from '..';
 import './ShopProduct.css';
 
 class ShopProduct extends Component {   
@@ -29,7 +29,7 @@ class ShopProduct extends Component {
             </div>
             <img
                className="product-img"
-               src="https://magic-custom.com/8693-large_default/ovo-hoodie-black-original-owl-by-drake.jpg"
+               src="https://nosw.com.mx/wp-content/uploads/2020/03/Nike-Air-Yeezy-2-Red-October-NOSW-NOStalgia-streetWear-front.jpg"
                alt="here goes the product formated name"
             />
             <div className="product-footer">
