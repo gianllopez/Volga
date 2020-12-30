@@ -4,22 +4,6 @@ import opsheader from '../assets/NewOpinion/users-opinions.svg';
 import './styles/NewOpinion.css';
 
 class NewOpinion extends Component {
-   
-   state = {
-      data: {
-         rating: 5.0
-      }
-   };
-   
-   changeHandler = event => {
-      this.setState({
-         data: {
-            ...this.state.data,
-            [event.target.name]: event.target.value
-         }
-      });
-   };
-   
    render() {
       return (
          <form id="opinion-form">
@@ -30,10 +14,7 @@ class NewOpinion extends Component {
                <h2>Opina sobre *shop*</h2>
                <p>Déjalos saber que piensas</p>
             </div>
-            <RatingSelector
-               currentRating={this.state.data.rating}
-               changeHandler={this.changeHandler}
-            />
+            <RatingSelector/>
             <Input
                label="Nombre"
                name="user-name"
@@ -46,8 +27,7 @@ class NewOpinion extends Component {
             <div id="op-comment">
                <label htmlFor="comment">Comentario: <p>*</p> </label>
                <textarea name="comment" placeholder="..." maxLength="150"/>
-            </div>
-            <button>Continuar</button>          
+            </div>        
          </form>
       );
    };

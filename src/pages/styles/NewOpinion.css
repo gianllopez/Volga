@@ -7,9 +7,9 @@
 }
 
 #op-header {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
+   display: inherit;
+   flex-direction: inherit;
+   align-items: inherit;
    width: 80vw;
    max-width: 350px;
 }
@@ -58,16 +58,6 @@
 
 #op-comment textarea::placeholder {
    text-align: center;
-}
-
-#opinion-form button {
-   width: 100px;
-   height: 37px;
-   background: none;
-   border: 2px solid black;
-   border-radius: 5px;
-   margin-top: 10px;
-   outline: none;
 }
 
 @media screen and (min-width: 768px) {
