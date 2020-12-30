@@ -5,7 +5,7 @@ import './styles/ShopOpinions.css';
 class ShopOpinions extends Component {
    render() {
       return (
-         <div id="shop-opinions">
+         <div id="shop-opinions-page">
             <h2>Esto es lo que opinan de *shop* sus clientes:</h2>
             <div id="users-opinions">
                <UserOpinion/>

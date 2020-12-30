@@ -1,8 +1,8 @@
-#shop-opinions {
+#shop-opinions-page {
    padding-top: 80px;
 }
 
-#shop-opinions h2 {
+#shop-opinions-page h2 {
    text-align: center;
    max-width: 300px;
    margin: auto;
@@ -17,7 +17,7 @@
 }
 
 @media screen and (min-width:768px) {
-   #shop-opinions {
+   #shop-opinions-page {
       padding-top: 135px;
    }
 }

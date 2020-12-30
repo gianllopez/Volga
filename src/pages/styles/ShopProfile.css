@@ -1,3 +1,13 @@
+#shop-profile {
+   background-color: #d5d5e040;
+   padding-top: calc(75px + 15px);
+   padding-bottom: 25px;
+}
+
+#shop-profile section:not(:first-child) {
+   margin-top: 15px;
+}
+
 .profile-section {
    display: flex;
    flex-direction: column;
@@ -12,16 +22,6 @@
 .section-title {
    font-size: 6vw;
    margin-bottom: 5px;
-}
-
-#shop-profile {
-   background-color: #d5d5e040;
-   padding-top: calc(75px + 15px);
-   padding-bottom: 25px;
-}
-
-#shop-profile section:not(:first-child) {
-   margin-top: 15px;
 }
 
 #profile-header figure img {
@@ -53,7 +53,6 @@
 #interaction-btns button {
    width: 100px;
    height: 37px;
-   border: none;
    outline: none;
    border-radius: 5px;
    border: 2px solid black;
@@ -75,12 +74,6 @@
    justify-content: center;
 }
 
-#products .product-card {
-   width: calc(90% - 40px);
-   max-width: 300px;
-   margin: 10px;
-}
-
 #opinions {
    flex-direction: column;
    align-items: center;
@@ -100,9 +93,17 @@
       padding-top: calc(120px + 15px);
    }
    #shop-stats {
-      justify-content: center;
       flex-direction: row;
       grid-row: 2;
+   }
+   .profile-section {
+      margin: 0 auto;
+   }
+   .opinion {
+      width: calc(90% - 10px);
+   }
+   .section-title {
+      font-size: 1.3em;
    }
    #shop-profile #shop-products {
       grid-row: 1/4;

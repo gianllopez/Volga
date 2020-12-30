@@ -43,13 +43,13 @@ class ShopProfile extends Component {
             </section>
             <section id="shop-opinions" className="profile-section">
                <h3 className="section-title">Los clientes opinan:</h3>
-               <div id="opinions">
                   <UserOpinion/>
                   <UserOpinion/>
                   <UserOpinion/>
                   <UserOpinion/>
                   <UserOpinion/>
-               </div>
+               {/* <div id="opinions">
+               </div> */}
             </section>
          </div>
       );
