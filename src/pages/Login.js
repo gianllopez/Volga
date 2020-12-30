@@ -1,5 +1,6 @@
-import React, { Component, Fragment } from 'react';
-import { NavBar, Input } from './components/';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { Input } from './components/';
 import { blankValidator } from '../utils/validators';
 import loginhero from '../assets/Login/login-hero.svg';
 import './styles/Login.css';
@@ -60,7 +61,9 @@ class Login extends Component {
                <button>Iniciar</button>
                <p>
                   ¿No has registrado tu tienda?<br/>
-                  <a href="">Regístrala</a>
+                  <Link to="/logup">
+                     Regístrala
+                  </Link>
                </p>
             </div>
          </form>

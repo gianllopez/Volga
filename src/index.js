@@ -1,11 +1,11 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Logup, SocialNets, ShopTags, ShopLogo,
          Login, ShopProfile, ProductPage, Home,
          PostProduct, NewOpinion, ShopOpinions,
          ShopContact } from './pages/';
-import { NavBar, Footer, SomeRoutesLayout } from './pages/components';
+import { SomeRoutesLayout } from './pages/components';
 import './index.css';
 
 ReactDOM.render(

@@ -8,7 +8,7 @@ class ProductCard extends Component {
       return (
          <div className="product-card">
             <figure>
-               <img src="https://http2.mlstatic.com/D_NQ_NP_806395-MCO44222237959_122020-O.webp" alt="product-image"/>
+               <img src="https://http2.mlstatic.com/D_NQ_NP_806395-MCO44222237959_122020-O.webp" alt="product"/>
             </figure>
             <div id="product-info">
                <h2>Air Jordan de J Balvin</h2>

@@ -6,9 +6,8 @@ export const sncolors = {
    facebook: '#2D88FF',
    whatsapp: '#00E676',
    twitter: '#6CC9F3',
-   email: '#FFCE00',
+   email: '#FFC217',
    pinterest: '#C8232C',
-   email: '#FFC217'
 };
 
 export function SNInputAnimationSetter(element, elementChilds) {

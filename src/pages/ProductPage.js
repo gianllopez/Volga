@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import { NavBar } from './components';
 import './styles/ProductPage.css';
 
 class ProductPage extends Component {
@@ -8,7 +7,7 @@ class ProductPage extends Component {
          <Fragment>
             <div id="product-page-wrapper">
                <figure>
-                  <img src="https://cdn.shopify.com/s/files/1/0237/2580/1549/products/2_3d9041e2-f964-4885-af28-497fc3678cd1.png?v=1564329267" alt="product-image"/>
+                  <img src="https://cdn.shopify.com/s/files/1/0237/2580/1549/products/2_3d9041e2-f964-4885-af28-497fc3678cd1.png?v=1564329267" alt="product"/>
                </figure>
                <div id="productpage-info">
                   <h2>Air Yeezy 2 "Red October"</h2>

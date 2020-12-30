@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import { NavBar, UserOpinion, Footer } from './components/'
+import React, { Component } from 'react';
+import { UserOpinion } from './components/'
 import './styles/ShopOpinions.css';
 
 class ShopOpinions extends Component {

@@ -1,10 +1,8 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import {
    ShopStats,
    ProductCard,
-   UserOpinion,
-   NavBar,
-   Footer } from './components/';
+   UserOpinion } from './components/';
 import './styles/ShopProfile.css';
 
 class ShopProfile extends Component {

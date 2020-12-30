@@ -1,4 +1,4 @@
-import React, { Component, ReactNodeArray } from "react";
+import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import { capitalize } from '../../../utils/tools';
 import { sncolors } from '../local-utils';

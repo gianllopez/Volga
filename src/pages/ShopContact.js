@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import { NavBar, ContactLink, Footer } from './components';
+import React, { Component } from 'react';
+import { ContactLink } from './components';
 import './styles/ShopContact.css';
 
 class ShopContact extends Component {

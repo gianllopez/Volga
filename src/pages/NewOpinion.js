@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import { NavBar, RatingSelector, Input, Footer } from './components';
+import React, { Component } from 'react';
+import { RatingSelector, Input } from './components';
 import opsheader from '../assets/NewOpinion/users-opinions.svg';
 import './styles/NewOpinion.css';
 

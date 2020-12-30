@@ -1,4 +1,5 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Input, Loader } from './components/';
 import { blankValidator, passwordValid } from '../utils/validators';
 import loguphero from '../assets/Logup/logup-hero.svg';
@@ -129,7 +130,9 @@ class Logup extends Component {
                
                <p>
                   ¿Ya tienes cuenta?<br/>
-                  <a href="">Ingresa</a>
+                  <Link to="/login">
+                     Ingresa
+                  </Link>
                </p>					
             </div>
          </form>

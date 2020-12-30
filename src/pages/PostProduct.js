@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import { ImageUploaderButton, Input, PriceInput, NavBar } from './components/';
+import React, { Component } from 'react';
+import { ImageUploaderButton, Input, PriceInput } from './components/';
 import uploadicon from '../assets/PostProduct/upload-icon.svg';
 import prodboxicon from '../assets/PostProduct/product-box.svg';
 import './styles/PostProduct.css';
