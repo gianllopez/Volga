@@ -1,6 +1,6 @@
 #shoplogo-form {
-   display: flex;
-   flex-direction: column;
+   /* display: flex;
+   flex-direction: column; */
    text-align: center;
    margin: 5vh 0;
 }
@@ -16,11 +16,11 @@
    margin: 7.5px 0;
 }
 
-#actions-btns {
+/* #actions-btns {
    display: inherit;
    flex-direction: inherit;
    align-items: center;
-}
+} */
 
 #actions-btns button {
    outline: none;
