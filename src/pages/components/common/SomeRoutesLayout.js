@@ -18,11 +18,12 @@ class SomeRoutesLayout extends Component {
    };
    
    componentDidMount() {
-      const noFooterPaths = ['/logup', '/login'];
-      if (!noFooterPaths.includes(this.props.location.pathname)) {
-         this.setState({
-            footer: true
-         });
+      const noKeys = ['logup', 'login', 'catalog'];
+      const path = this.props.location.pathname;
+      for (let key of noKeys) {
+         if (!path.includes(key)) {
+            this.setState({ footer: false });
+         }
       };
    };
 
