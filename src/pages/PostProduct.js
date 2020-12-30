@@ -33,15 +33,6 @@ class PostProduct extends Component {
       };
    };
 
-   changeHandler = event => {
-      this.setState({
-         data: {
-            ...this.state.data,
-            [event.target.name]: event.target.value
-         }
-      });
-   };
-
    removeUploadedImage = event => {
       event.stopPropagation();
       const rmid = parseInt(event.target.parentElement.id[4]);
@@ -60,36 +51,34 @@ class PostProduct extends Component {
             </figure>
             <h2>Postea tu producto</h2>
             <div id="post-product-form">
-               <div id="piu-wrapper">
-                  <span>
-                     Sube fotos (4) de tu producto: <p>*</p>
-                  </span>
-                  <div id="product-image-uploader">
-                     <ImageUploaderButton
-                        index="1"
-                        imageLoader={this.imageLoaderHandler}
-                        removeHandler={this.removeUploadedImage}
-                        images={this.state.data.loadedImages}
-                     />
-                     <ImageUploaderButton
-                        index="2"
-                        imageLoader={this.imageLoaderHandler}
-                        removeHandler={this.removeUploadedImage}
-                        images={this.state.data.loadedImages}
-                     />
-                     <ImageUploaderButton
-                        index="3"
-                        imageLoader={this.imageLoaderHandler}
-                        removeHandler={this.removeUploadedImage}
-                        images={this.state.data.loadedImages}
-                     />
-                     <ImageUploaderButton
-                        index="4"
-                        imageLoader={this.imageLoaderHandler}
-                        removeHandler={this.removeUploadedImage}
-                        images={this.state.data.loadedImages}
-                     />
-                  </div>
+               <span>
+                  Sube fotos (4) de tu producto: <p>*</p>
+               </span>
+               <div id="product-image-uploader">
+                  <ImageUploaderButton
+                     index="1"
+                     imageLoader={this.imageLoaderHandler}
+                     removeHandler={this.removeUploadedImage}
+                     images={this.state.data.loadedImages}
+                  />
+                  <ImageUploaderButton
+                     index="2"
+                     imageLoader={this.imageLoaderHandler}
+                     removeHandler={this.removeUploadedImage}
+                     images={this.state.data.loadedImages}
+                  />
+                  <ImageUploaderButton
+                     index="3"
+                     imageLoader={this.imageLoaderHandler}
+                     removeHandler={this.removeUploadedImage}
+                     images={this.state.data.loadedImages}
+                  />
+                  <ImageUploaderButton
+                     index="4"
+                     imageLoader={this.imageLoaderHandler}
+                     removeHandler={this.removeUploadedImage}
+                     images={this.state.data.loadedImages}
+                  />
                </div>
                <Input
                   label="Producto"
@@ -106,7 +95,6 @@ class PostProduct extends Component {
                   <label htmlFor="description">Descripción (100 caracteres):</label>
                   <textarea name="description" maxLength="100" onChange={this.changeHandler}/>
                </div>
-               <button>Postear</button>
             </div>
          </form>
       );

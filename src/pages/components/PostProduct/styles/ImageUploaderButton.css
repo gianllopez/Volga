@@ -6,12 +6,9 @@
 }
 
 .imguploader > button {
-   width: 100%;
    height: 100%;
    border: 2px solid black;
    border-radius: 3px;
-   position: relative;
-   outline: none;
    display: flex;
    align-items: center;
    justify-content: center;

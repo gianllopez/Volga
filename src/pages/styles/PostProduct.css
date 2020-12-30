@@ -43,25 +43,12 @@
    margin-top: 2px;
 }
 
-#post-product-form > button {
-   width: 120px;
-   height: 8vh;
-   max-height: 40px;
-   min-height: 35px;
-   border: none;
-   border-radius: 3px;
-   background-color: #0069d9;
-   color: white;
-   margin-top: 7px;
-   align-self: center;
-}
-
-#piu-wrapper span {
+#post-product-form > span {
    display: flex;
    justify-content: center;
 }
 
-#piu-wrapper span p {
+#post-product-form > span p {
    margin-left: 5px;
    color: red;
 }
@@ -79,6 +66,6 @@
 
 @media screen and (min-width:768px) {
    #post-product {
-      padding-top: calc(120px + 15px);
+      padding-top: 135px;
    }
 }
