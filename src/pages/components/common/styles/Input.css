@@ -20,7 +20,7 @@
     border: 2px solid black;
     border-radius: 3px;
     font-size: 1.1em;
-    z-index: 1;
+    /* z-index: 1; */
 }
 
 .input-wrapper span {
@@ -30,7 +30,7 @@
     color: red;
 }
 
-.input-wrapper input[type="date"] {
+/* .input-wrapper input[type="date"] {
     background-color: white;
     width: calc(100% - 9px);
-}
+} */
