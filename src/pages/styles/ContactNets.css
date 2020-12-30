@@ -1,18 +1,18 @@
-#socialnets-form {
+#contactnets-form {
    display: flex;
    flex-direction: column;
    align-items: center;
    margin: 10vh 0;
 }
 
-#socialnets-form h2 {
-   font-size: 1.7em;
+#contactnets-form h2 {
    margin-bottom: 20px;
+   font-size: 1.7em;
    text-align: center;
 }
 
-#socialnets-entries .social-network {
-   margin-bottom: 10px;
+#contactnets-form .contact-net {
+   margin-bottom: 12.5px;
 }
 
 #sn-interaction-btns button {
@@ -20,16 +20,16 @@
    height: 45px;
    border: none;
    border-radius: 5px;
-   margin-top: 7.5px;
    color: white;
    font-size: 1.1em;
    background-color: #0069D9;
 }
 
 #sn-interaction-btns {
-   width: 90%;
    display: inherit;
    justify-content: space-evenly;
+   width: 90%;
+   margin-top: 7.5px;
 }
 
 #sn-interaction-btns button:first-child {
@@ -38,7 +38,7 @@
 }
 
 @media screen and (min-height: 625px) {
-   #socialnets-form {
+   #contactnets-form {
       position: absolute;
       top: 50%;
       left: 50%;

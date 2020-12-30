@@ -1,6 +1,6 @@
 import checkicon from '../../assets/ShopLogo/check-icon.svg';
 
-// The next function handles the SocialNetInput Component animations:
+// The next function handles the ContactNetInput Component animations:
 
 export const sncolors = {
    facebook: '#2D88FF',
@@ -34,6 +34,14 @@ export function SNInputAnimationSetter(element, elementChilds) {
          header.style.color = value
             ? colors[name.toLowerCase()]
             : 'initial';
+         const fsizeOnOflow = {
+            instagram: 16,
+            facebook: 13,
+            email: 10
+         };
+         if (header.offsetHeight > 75) {
+            header.style.fontSize = `${fsizeOnOflow[name.toLowerCase()]}px`;
+         };
       });
    });
 };

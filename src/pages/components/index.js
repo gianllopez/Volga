@@ -6,7 +6,7 @@ export { default as Footer } from './common/Footer';
 export { default as SomeRoutesLayout } from './common/SomeRoutesLayout';
 export { default as Uploader } from './ShopLogo/Uploader';
 export { default as TagBox } from './ShopTags/TagBox';
-export { default as SocialNetInput } from './SocialNets/SocialNetInput';
+export { default as ContactNetInput } from './ContactNets/ContactNetInput';
 export { default as ShopStats } from './ShopProfile/ShopStats';
 export { default as ProductCard } from './ShopProfile/ProductCard';
 export { default as UserOpinion } from './ShopProfile/UserOpinion';
