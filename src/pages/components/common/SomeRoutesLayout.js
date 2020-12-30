@@ -1,14 +1,31 @@
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import { NavBar, Footer } from '..'
 
-function SomeRoutesLayout(props) {
-   return (
-      <Fragment>
-         <NavBar/>
-         { props.children }
-         <Footer/>
-      </Fragment>
-   );
+class SomeRoutesLayout extends Component {
+
+   state = {};
+
+   render() {
+      return (
+         <Fragment>
+            <NavBar/>
+            { this.props.children }
+            {this.state.footer && 
+               <Footer/>
+            }
+         </Fragment>
+      );
+   };
+   
+   componentDidMount() {
+      const noFooterPaths = ['/logup', '/login'];
+      if (!noFooterPaths.includes(this.props.location.pathname)) {
+         this.setState({
+            footer: true
+         });
+      };
+   };
+
 };
 
 export default SomeRoutesLayout;
