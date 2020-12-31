@@ -10,7 +10,7 @@ class ShopProfile extends Component {
    render() {
       return (
          <div id="shop-profile">
-            <section id="profile-header" className="profile-section">
+            <section id="profile-header" className="profile-section sub-sections">
                <img src="https://i.pinimg.com/originals/77/b6/6f/77b66fa7469f75773d5eb443056f2f8f.jpg" alt="shop-logo"/>
                <div id="shop-info">
                   <h2>ovotheshop</h2>
@@ -26,7 +26,7 @@ class ShopProfile extends Component {
                   <button>Seguir</button>
                </div>
             </section>
-            <section id="shop-stats" className="profile-section">
+            <section id="shop-stats" className="profile-section sub-sections">
                <ShopStats/>
             </section>
             <section id="shop-products" className="profile-section">
@@ -39,15 +39,13 @@ class ShopProfile extends Component {
                   <ProductCard/>
                </div>               
             </section>
-            <section id="shop-opinions" className="profile-section">
+            <section id="shop-opinions" className="profile-section sub-sections">
                <h3 className="section-title">Los clientes opinan:</h3>
                   <UserOpinion/>
                   <UserOpinion/>
                   <UserOpinion/>
                   <UserOpinion/>
                   <UserOpinion/>
-               {/* <div id="opinions">
-               </div> */}
             </section>
          </div>
       );
