@@ -11,9 +11,7 @@ function ShopStats(props) {
       let {stat, label, value} = props;
       return (
          <div className={`stat ${stat}`}>
-            <figure>
-               <img src={statsicons[stat]} alt={`${stat}-icon`}/>
-            </figure>
+            <img src={statsicons[stat]} alt={`${stat}-icon`}/>
             <span>
                {label}
                <p>{value}</p>

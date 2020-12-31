@@ -11,8 +11,7 @@
    margin: 7.5px 0;
    max-width: 250px;
 }
-
-.stat figure img {
+.stat img {
    height: 65px;
 }
 
@@ -26,7 +25,7 @@
    .stat {
       flex-direction: column;
       height: max-content;
-      width: 100px;
+      max-width: 150px;
       margin: 0 10px;
    }
    .stat span {

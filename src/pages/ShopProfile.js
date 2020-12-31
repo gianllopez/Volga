@@ -11,9 +11,7 @@ class ShopProfile extends Component {
       return (
          <div id="shop-profile">
             <section id="profile-header" className="profile-section">
-               <figure>
-                  <img src="https://i.pinimg.com/originals/77/b6/6f/77b66fa7469f75773d5eb443056f2f8f.jpg" alt="shop-logo"/>
-               </figure>
+               <img src="https://i.pinimg.com/originals/77/b6/6f/77b66fa7469f75773d5eb443056f2f8f.jpg" alt="shop-logo"/>
                <div id="shop-info">
                   <h2>ovotheshop</h2>
                   <h4>Aubrey Drake Graham</h4>                  

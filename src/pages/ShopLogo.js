@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Uploader } from './components/';
-import swal from '@sweetalert/with-react';
 import shoplogohero from '../assets/ShopLogo/shoplogo-hero.svg';
 import './styles/ShopLogo.css';
 
