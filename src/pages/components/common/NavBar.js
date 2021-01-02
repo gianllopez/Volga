@@ -6,15 +6,6 @@ import './styles/NavBar.css';
 
 function NavBar(props) {
 
-
-   const NavBarLink = props => {
-      return (
-         <li>
-            <Link to={props.to}>{props.label}</Link>
-         </li>
-      );
-   };
-
    const linksAnimations = () => {
       document.getElementById('navbar-links')
          .classList
@@ -27,12 +18,12 @@ function NavBar(props) {
          <figure>
             <img src={volgalogo} alt="volga-logo"/>
          </figure>
-         <ul id="navbar-links">
-            <NavBarLink to='/' label='Inicio'/>
-            <NavBarLink to='/shops/search' label='Buscar'/>
-            <NavBarLink to='/shops/explore' label='Explorar'/>
-            <NavBarLink to='/logup' label='Registrar'/>
-            <NavBarLink to='/login' label='Iniciar sesión'/>
+         <ul id="navbar-links">            
+            <Link to='/'>Inicio</Link>
+            <Link to='/shops/search'>Buscar</Link>
+            <Link to='/shops/explore'>Explorar</Link>
+            <Link to='/logup'>Registrar</Link>
+            <Link to='/login'>Iniciar sesión</Link>
          </ul>
       </div>
    );

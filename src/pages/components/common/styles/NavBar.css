@@ -39,13 +39,10 @@
    transform: translateX(-100%);
 }
 
-#navbar-links li {
+#navbar-links a {
    margin-bottom: 10px;
    border-left: 3px solid #36393f;
    padding: 5px;
-}
-
-#navbar-links li a {
    text-decoration: none;
    color: #ffffff;
 }
@@ -75,13 +72,13 @@
       max-width: unset;
    }
 
-   #navbar-links li {
+   #navbar-links a {
       padding: 0;
       margin: 0;
       border: none;
    }
    
-   #navbar-links li a:hover {
+   #navbar-links a:hover {
       color: #c7c7c7;
    }
 }

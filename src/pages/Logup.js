@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Input } from './components/';
+import { Input, ButtonLoader } from './components/';
 import loguphero from '../assets/Logup/logup-hero.svg';
 import './styles/Logup.css';
 
@@ -52,17 +52,18 @@ class Logup extends Component {
                   label="Confirmar contraseña"
                   name="confirmpwd"
                   type="password"
-               />
+               />               
+            </div>
                
-               {/* Button & Loader Component */}
+               <ButtonLoader/>
                
                <p>
                   ¿Ya tienes cuenta?<br/>
                   <Link to="/login">
                      Ingresa
                   </Link>
-               </p>					
-            </div>
+               </p>		
+               
          </form>
 		);
 	};

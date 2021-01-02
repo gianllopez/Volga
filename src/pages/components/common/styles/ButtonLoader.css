@@ -1,0 +1,30 @@
+#btnloader-wrapper {
+    width: 35vw;
+    height: 40px;
+    background-color: #0069d9cc;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    max-width: 120px;
+    margin: 7.5px 0;
+    outline: none;
+}
+
+#loader {
+    width: 10px;
+    height: 10px;
+    margin: auto;
+    border-radius: 50%;
+    border: 5px solid #ffffff29;
+    border-top-color: white;
+    animation: 1s loader-spin infinite;
+}
+
+@keyframes loader-spin {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
