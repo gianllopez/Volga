@@ -12,6 +12,7 @@ class TagBox extends Component {
             id={`${name4jsx}-checkbox`}
             value={this.props.name}
             onChange={this.props.onChange}
+            hidden
          />
          <label htmlFor={`${name4jsx}-checkbox`}>
             <img src={this.props.image} alt={`${name4jsx}-icon`}/>
