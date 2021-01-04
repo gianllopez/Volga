@@ -30,7 +30,7 @@
     color: red;
 }
 
-/* .input-wrapper input[type="date"] {
+.input-wrapper input[type="date"] {
     background-color: white;
     width: calc(100% - 9px);
-} */
+}

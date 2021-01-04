@@ -25,27 +25,21 @@
 }
 
 #logup-entries {
-   /* display: flex;
-   flex-direction: column;
-   align-items: center; */
-   margin-top: 7.5px;
    max-width: 325px;
    width: 90vw;
 }
 
 #logup-entries .input-wrapper {
    margin: 5px auto;
-   /* width: 95%; */
 }
 
-#logup-entries p {
+#logup-form > p {
    text-align: center;
-   margin-top: 5px;
    font-size: 1.1em;
 }
 
 @media screen and (min-width: 768px) {
    #logup-form {
-      padding-top: 135px;
+      padding-top: 125px;
    }
 }

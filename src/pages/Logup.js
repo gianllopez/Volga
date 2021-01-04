@@ -52,7 +52,7 @@ class Logup extends Component {
                   label="Confirmar contraseña"
                   name="confirmpwd"
                   type="password"
-               />               
+               />
             </div>
                
                <ButtonLoader/>
