@@ -1,6 +1,7 @@
 import React, { Component, createContext } from 'react';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
+import { logUpFormValidator } from '../utils/validators';
 import { LogupInput, ButtonLoader } from './components/';
 import loguphero from '../assets/Logup/logup-hero.svg';
 import './styles/Logup.css';
@@ -30,17 +31,27 @@ class Logup extends Component {
 
    submitHandler = event => {
       event.preventDefault();
-      this.setState({ loading: true });
-      Axios.post('http://127.0.0.1:8000/api/shops/logup/', this.state.data)
-         .then(response => {
-            debugger
+      logUpFormValidator(this.state.data, ['address', 'foundation'])
+         .then(isValid => {
+            if (isValid) {
+               this.setState({
+                  loading: true,
+                  errors: {}
+               });
+               Axios.post('http://127.0.0.1:8000/api/shops/logup/', this.state.data)
+                  .then(response => {
+                     localStorage.setItem('shop-token', response.data.token);
+                  })
+                  .catch(errors => {
+                     this.setState({
+                        errors: errors.response.data,
+                        loading: false
+                     });
+                  });
+            }
+         }).catch(errors => {
+            this.setState({ errors });
          })
-         .catch(error => {
-            this.setState({
-               errors: error.response.data,
-               loading: false
-            });
-         });
    };
 
 	render() {

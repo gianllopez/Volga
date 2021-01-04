@@ -1,4 +1,4 @@
-export function blankValidator(data, alloweds) {
+export function noBlankValidator(data, alloweds) {
    let isValid = true;
    const formData = Object.entries(data);
    let errors = {};
@@ -9,8 +9,22 @@ export function blankValidator(data, alloweds) {
       }
    };
    return {isValid, errors};
-}
+};
 
-export const passwordValid = (pwd, confpwd) => {
-   return pwd === confpwd ? true : false; 
+export function logUpFormValidator(data, alloweds) {
+   return new Promise((resolve, reject) => {
+      let {isValid, errors} = noBlankValidator(data, alloweds),
+      {password, confirmpwd} = data;
+      if (!isValid) {
+         reject(errors);
+      };
+      if (password !== confirmpwd) {
+         let msg = 'Las contraseñas no coinciden.';
+         errors.password = msg;
+         errors.confirmpwd = msg;
+         reject(errors);
+      } else {
+         resolve(isValid);
+      };
+   });
 };
