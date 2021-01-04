@@ -8,7 +8,7 @@ class LogupInput extends Component {
 
    render = () => (
       <Input
-         onChange={this.context.changeHandler}
+         changeHandler={this.context.changeHandler}
          errors={this.context.errors}
          {...this.props}
       />

@@ -8,17 +8,18 @@ class Input extends Component {
    };
    
    render() {
-      const {name, type, label, allowBlank} = this.props;
+      const {name, type, label, allowblank, changeHandler} = this.props;
       return (
          <div className={`input-wrapper ${name}`}>
             <label htmlFor={this.props.name}>
-               {label}: {!allowBlank && <span>*</span>}
+               {label}: {!allowblank && <span>*</span>}
             </label>
             <input
                type={type || 'text'}
                id={name}
                autoComplete="off"
-               {...this.props}
+               onChange={changeHandler}
+               name={name}
             />
             {this.state.error && (
                <span className={`${this.props.name}-error`}>

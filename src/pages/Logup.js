@@ -1,5 +1,6 @@
 import React, { Component, createContext } from 'react';
 import { Link } from 'react-router-dom';
+import Axios from 'axios';
 import { LogupInput, ButtonLoader } from './components/';
 import loguphero from '../assets/Logup/logup-hero.svg';
 import './styles/Logup.css';
@@ -11,8 +12,8 @@ class Logup extends Component {
    state = {
       data: {
          owner: '', shop: '', country: '',
-         address: '', foundation: '', email: '',
-         password: '', confirmpwd: ''
+         city: '', address: '', foundation: '',
+         email: '', password: '', confirmpwd: ''
       },
       errors: {},
       loading: false
@@ -27,13 +28,28 @@ class Logup extends Component {
       });
    };
 
+   submitHandler = event => {
+      event.preventDefault();
+      this.setState({ loading: true });
+      Axios.post('http://127.0.0.1:8000/api/shops/logup/', this.state.data)
+         .then(response => {
+            debugger
+         })
+         .catch(error => {
+            this.setState({
+               errors: error.response.data,
+               loading: false
+            });
+         });
+   };
+
 	render() {
       const contextContent = {
          changeHandler: this.changeHandler,
          errors: this.state.errors
       };
 		return (
-         <form id="logup-form">
+         <form id="logup-form" onSubmit={this.submitHandler}>
             <div id="logup-header">
                <img src={loguphero} alt="logup-hero"/>
                <h1>Crea tu cuenta de Volga</h1>
@@ -60,13 +76,13 @@ class Logup extends Component {
                   <LogupInput
                      label="Dirección"
                      name="address"
-                     allowBlank
+                     allowblank="true"
                   />
                   <LogupInput
                      label="Fundación"
                      name="foundation"
                      type="date"
-                     allowBlank
+                     allowblank="true"
                   />
                   <LogupInput
                      label="Correo"
@@ -86,7 +102,7 @@ class Logup extends Component {
                </logupContext.Provider>
             </div>
                
-               <ButtonLoader/>
+               <ButtonLoader isLoading={this.state.loading}/>
                
                <p>
                   ¿Ya tienes cuenta?<br/>
