@@ -8,17 +8,17 @@ class Input extends Component {
    };
    
    render() {
+      const {name, type, label, allowBlank} = this.props;
       return (
-         <div className={`input-wrapper ${this.props.name}`}>
+         <div className={`input-wrapper ${name}`}>
             <label htmlFor={this.props.name}>
-               {this.props.label}: {this.props.name !== 'address' && 
-                  <span style={{color: 'red'}}>*</span>}
+               {label}: {!allowBlank && <span>*</span>}
             </label>
             <input
-               {...this.props}
-               type={this.props.name !== 'foundation' ? this.props.type : 'date'}
-               id={this.props.name}
+               type={type || 'text'}
+               id={name}
                autoComplete="off"
+               {...this.props}
             />
             {this.state.error && (
                <span className={`${this.props.name}-error`}>
@@ -30,21 +30,21 @@ class Input extends Component {
    };
 
    componentDidUpdate() {
-      let bad = Object.keys(this.props.errors || {}).includes(this.props.name);
-      if (bad && !this.state.error) {
-         this.setState({ error: true }, () => {
-            setTimeout(
-               () => document.querySelector(`.${this.props.name}-error`)
-                        .style.transform = 'initial', 1)
-         });              
+      let gotError = this.props.errors[this.props.name];
+      if (gotError && !this.state.error) {
+         this.setState({ error: true });
+         setTimeout(() => {
+            document.querySelector(`.${this.props.name}-error`)
+               .style.transform = 'initial';
+         }, 1);
       };
    };
 
    componentDidMount() {
       if (this.props.name === 'foundation') {
-         document.querySelector('input[type="date"]')
+         document.querySelector(`.${this.props.name} input[type="date"]`)
             .valueAsDate = new Date();
-       }
+      };
    };
    
 };

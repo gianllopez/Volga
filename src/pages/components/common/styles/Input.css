@@ -24,10 +24,13 @@
 }
 
 .input-wrapper span {
+    color: red;
+}
+
+.input-wrapper > span {
     z-index: 0;
     transform: translateY(-25px);
     transition: .7s transform;
-    color: red;
 }
 
 .input-wrapper input[type="date"] {

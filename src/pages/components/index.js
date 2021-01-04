@@ -4,6 +4,7 @@ export { default as Input } from './common/Input';
 export { default as ButtonLoader } from './common/ButtonLoader';
 export { default as Footer } from './common/Footer';
 export { default as SomeRoutesLayout } from './common/SomeRoutesLayout';
+export { default as LogupInput } from './Logup/LogupInput';
 export { default as Uploader } from './ShopLogo/Uploader';
 export { default as TagBox } from './ShopTags/TagBox';
 export { default as ContactNetInput } from './ContactNets/ContactNetInput';
