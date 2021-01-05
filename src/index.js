@@ -11,7 +11,7 @@ import './index.css';
 ReactDOM.render(
    <BrowserRouter>
       <Switch>
-         <Route exact path='/:shop/social-networks' component={ContactNets}/>
+         <Route exact path='/:shop/contact-networks' component={ContactNets}/>
          <Route exact path='/:shop/tags' component={ShopTags}/>
          <Route exact path='/:shop/logo' component={ShopLogo}/>
          <SomeRoutesLayout>
