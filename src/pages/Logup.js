@@ -13,9 +13,9 @@ class Logup extends Component {
 
    state = {
       data: {
-         owner: '', shop: '', country: '',
-         city: '', address: '', foundation: '',
-         email: '', password: '', confirmpwd: ''
+         owner: '', country: '', city: '',
+         address: '', email: '', password: '',
+         confirmpwd: ''
       },
       errors: {},
       loading: false
@@ -23,14 +23,12 @@ class Logup extends Component {
 
    changeHandler = ({target}) => {
       let {name, value} = target;
-      if (name === 'shop') {
-         target.value = value
-            .replace(/\s/g, '')
-            .replace(/[^\w\s]+/, '');
+      const regsexs = {
+         name: /(?!.*\s{2})^[a-zA-ZÀ-úñÑ\s]+$/,
+         username: /^[a-z0-9]*$/
       };
-      if (name === 'owner') {
-         const regex = new RegExp(/^[ a-zA-ZÀ-ÿ\u00f1\u00d1]*$/g)
-         if (!regex.test(value)) {
+      if (name === 'username' || name === 'name') {
+         if (!regsexs[name].test(value)) {
             target.value = value.substring(0, (value.length - 1));
          };
       };
@@ -58,7 +56,7 @@ class Logup extends Component {
          }).catch(errors => this.setState({ errors }));
    };
 
-   shopNameConditionsModal = event => {
+   UsernameConditionsModal = event => {
       const conditions = [
          'Solo letras y números.',
          'Solo letras minúsculas.',
@@ -73,8 +71,8 @@ class Logup extends Component {
          let jsxcontent = (
             <div>
                <span>
-                  Para registrar tu tienda aquí, debes tener en cuenta algunas condiciones
-                  a la hora de nombrarla:
+                  Para registrarte aquí, debes tener en cuenta algunas condiciones
+                  a la hora de escoger un nombre de usuario:
                </span>
                <ul>
                   {conditions.map((condition, i) => 
@@ -84,9 +82,9 @@ class Logup extends Component {
             </div>
          );
          swal({
-            title: 'Condiciones para el nombre de la tienda:',
+            title: 'Condiciones para el nombre de usuario:',
             content: jsxcontent,
-            className: 'shopname-conditions'
+            className: 'username-conditions'
          });      
       };
    };
@@ -101,20 +99,20 @@ class Logup extends Component {
             <div id="logup-header">
                <img src={loguphero} alt="logup-hero"/>
                <h1>Crea tu cuenta de Volga</h1>
-               <p>Registra tu tienda con nosotros</p>
+               <p>Vende tus productos con nosotros</p>
             </div>
             <div id="logup-entries">
                <logupContext.Provider value={contextContent}>
                   <LogupInput
-                     label="Propietario(a)"
-                     name="owner"
+                     label="Nombre completo"
+                     name="name"
                      maxLength="45"
                   />
                   <LogupInput
-                     label="Tienda"
-                     name="shop"
-                     maxLength="35"
-                     onKeyDown={this.shopNameConditionsModal}
+                     label="Usuario(a)"
+                     name="username"
+                     maxLength="45"
+                     onKeyDown={this.UsernameConditionsModal}
                   />
                   <LogupInput
                      label="País"
@@ -125,18 +123,6 @@ class Logup extends Component {
                      label="Ciudad"
                      name="city"
                      maxLength="50"
-                  />
-                  <LogupInput
-                     label="Dirección"
-                     name="address"
-                     allowblank="true"
-                     maxLength="45"
-                  />
-                  <LogupInput
-                     label="Fundación"
-                     name="foundation"
-                     type="date"
-                     allowblank="true"                     
                   />
                   <LogupInput
                      label="Correo"
