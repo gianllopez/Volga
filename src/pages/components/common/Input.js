@@ -18,7 +18,9 @@ class Input extends Component {
                type={type || 'text'}
                id={name}
                autoComplete="off"
+               spellCheck="false"
                onChange={changeHandler}
+               onKeyDown={this.props.onKeyDown || undefined}
                name={name}
             />
             {this.state.error && (

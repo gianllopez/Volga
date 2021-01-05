@@ -1,6 +1,7 @@
 import React, { Component, createContext } from 'react';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
+import swal from '@sweetalert/with-react';
 import { logUpFormValidator } from '../utils/validators';
 import { LogupInput, ButtonLoader } from './components/';
 import loguphero from '../assets/Logup/logup-hero.svg';
@@ -21,6 +22,14 @@ class Logup extends Component {
    };
 
    changeHandler = event => {
+      if (event.target.name === 'shop') {
+         event.target.value = event.target.value
+            .replace(/\s/g, '')
+            .replace(/_+/g, '')
+            .replace(/^_/g, '')
+            .replace(/[^\w\s]+/, '')
+            
+      };
       this.setState({
          data: {
             ...this.state.data,
@@ -54,6 +63,39 @@ class Logup extends Component {
          })
    };
 
+   shopNameConditionsModal = event => {
+      const conditions = [
+         'Solo letras y números.',
+         'Solo letras minúsculas.',
+         'No puede contener espacios.',
+         'Ningún carácter especial es válido.',
+         'Este debe ser único.'
+      ],
+      isFocused = event.target === document.activeElement,
+      isModalShowed = this.state.shopConditionModal
+      if (isFocused && !isModalShowed) {
+         this.setState({ shopConditionModal: true });
+         let jsxcontent = (
+            <div>
+               <span>
+                  Para registrar tu tienda aquí, debes tener en cuenta algunas condiciones
+                  a la hora de nombrarla:
+               </span>
+               <ul>
+                  {conditions.map((condition, i) => 
+                     <li key={i}>{condition}</li>
+                  )}
+               </ul>
+            </div>
+         );
+         swal({
+            title: 'Condiciones para el nombre de la tienda:',
+            content: jsxcontent,
+            className: 'shopname-conditions'
+         });      
+      };
+   };
+
 	render() {
       const contextContent = {
          changeHandler: this.changeHandler,
@@ -75,6 +117,7 @@ class Logup extends Component {
                   <LogupInput
                      label="Tienda"
                      name="shop"
+                     onKeyDown={this.shopNameConditionsModal}
                   />
                   <LogupInput
                      label="País"

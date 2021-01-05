@@ -43,3 +43,35 @@
       padding-top: 125px;
    }
 }
+
+.input-wrapper.shop input[name="shop"] {
+   text-transform: lowercase;
+}
+
+.shopname-conditions .swal-title {
+   display: none;
+}
+
+.shopname-conditions .swal-content {
+   text-align: left;
+   margin-top: 50px;
+}
+
+.shopname-conditions .swal-content span {
+   font-weight: bold;
+   font-size: 5vw;
+}
+.shopname-conditions .swal-content ul {
+   margin-top: 10px;
+   list-style-position: inside;
+   border-left: 2px solid black;
+   padding-left: 10px;
+   font-size: 4vw;
+}
+
+@media (min-width:450px) {
+   .shopname-conditions .swal-content span,
+   .shopname-conditions .swal-content ul {
+      font-size: 1.4em;
+   }
+}
