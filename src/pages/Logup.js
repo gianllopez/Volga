@@ -33,7 +33,7 @@ class Logup extends Component {
       this.setState({
          data: {
             ...this.state.data,
-            [event.target.name]: event.target.value
+            [event.target.name]: event.target.value.trim()
          }
       });
    };
@@ -50,6 +50,7 @@ class Logup extends Component {
                Axios.post('http://127.0.0.1:8000/api/shops/logup/', this.state.data)
                   .then(response => {
                      localStorage.setItem('shop-token', response.data.token);
+                     this.props.history.push(`${this.state.data.shop}/social-networks`)
                   })
                   .catch(errors => {
                      this.setState({
@@ -113,45 +114,53 @@ class Logup extends Component {
                   <LogupInput
                      label="Propietario(a)"
                      name="owner"
+                     maxLength="45"
                   />
                   <LogupInput
                      label="Tienda"
                      name="shop"
+                     maxLength="35"
                      onKeyDown={this.shopNameConditionsModal}
                   />
                   <LogupInput
                      label="País"
                      name="country"
+                     maxLength="30"
                   />
                   <LogupInput
                      label="Ciudad"
                      name="city"
+                     maxLength="50"
                   />
                   <LogupInput
                      label="Dirección"
                      name="address"
                      allowblank="true"
+                     maxLength="45"
                   />
                   <LogupInput
                      label="Fundación"
                      name="foundation"
                      type="date"
-                     allowblank="true"
+                     allowblank="true"                     
                   />
                   <LogupInput
                      label="Correo"
                      name="email"
                      type="email"
+                     maxLength="75"
                   />
                   <LogupInput
                      label="Contraseña"
                      name="password"
                      type="password"
+                     maxLength="30"
                   />
                   <LogupInput
                      label="Confirmar contraseña"
                      name="confirmpwd"
                      type="password"
+                     maxLength="30"
                   />
                </logupContext.Provider>
             </div>

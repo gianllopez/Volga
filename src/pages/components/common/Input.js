@@ -8,7 +8,7 @@ class Input extends Component {
    };
    
    render() {
-      const {name, type, label, allowblank, changeHandler} = this.props;
+      const {name, type, label, allowblank, changeHandler, onKeyDown} = this.props;
       return (
          <div className={`input-wrapper ${name}`}>
             <label htmlFor={this.props.name}>
@@ -20,8 +20,9 @@ class Input extends Component {
                autoComplete="off"
                spellCheck="false"
                onChange={changeHandler}
-               onKeyDown={this.props.onKeyDown || undefined}
+               onKeyDown={onKeyDown}
                name={name}
+               maxLength={this.props.maxLength}
             />
             {this.state.error && (
                <span className={`${this.props.name}-error`}>
