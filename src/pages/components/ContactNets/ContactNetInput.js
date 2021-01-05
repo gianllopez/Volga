@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SNInputAnimationSetter } from '../local-utils';
+import { ContactNetInputAnimationSetter } from '../local-utils';
 import { capitalize } from '../../../utils/tools';
 import checkIcon from '../../../assets/ContactNets/check-icon.svg';
 import { snicons } from '../../../assets';
@@ -7,27 +7,24 @@ import './ContactNetInput.css';
 
 class ContactNetInput extends Component {
 
+   state = {}
 
-
-   state = {x: false}
-   name = this.props.name;
-
-   Name = capitalize(this.name);
-   
    render() {
+      const {name} = this.props,
+      Name = capitalize(name);
+      this.name = name;
       return (
          <div className='contact-net'>
             <figure className='logo-wrapper'>
-               <img src={snicons[this.name]} alt={`${this.name}-icon`}/>
+               <img src={snicons[name]} alt={`${name}-icon`}/>
             </figure>
             <div className='div-line'/>
             <div className='data-input'>
                <input
                   type='text'
-                  name={this.name}
+                  name={name}
                   autoComplete='off'
-                  placeholder={this.Name !== 'Email' ? this.Name : 'Correo'}
-                  onChange={this.props.onChange}
+                  placeholder={Name !== 'Email' ? Name : 'Correo'}
                   {...this.props}
                />
                <img src={checkIcon} alt='check-icon'/>
@@ -38,28 +35,15 @@ class ContactNetInput extends Component {
    };
    
    componentDidMount() {
-      let snwrapper = this._reactInternalFiber.child.stateNode;
-      this.snQuery = q => snwrapper.querySelector(q);
+      let cntctWrapper = this._reactInternalFiber.child.stateNode;
+      this.cntctQuery = q => cntctWrapper.querySelector(q);
       const childs = {
-         header: this.snQuery('h1'),
-         dataInput: this.snQuery('.data-input'),
-         input: this.snQuery('input'),
-         checkBtn: this.snQuery('.data-input > img')
+         header: this.cntctQuery('h1'),
+         dataInput: this.cntctQuery('.data-input'),
+         input: this.cntctQuery('input'),
+         checkBtn: this.cntctQuery('.data-input > img')
       };
-      SNInputAnimationSetter(snwrapper, childs);
-   };
-
-   componentDidUpdate() {
-      const fsizeOnOflow = {
-         instagram: 16,
-         facebook: 13,
-         email: 10
-      };
-      let h1 = this.snQuery('h1');
-      if (h1.offsetHeight > 75) {
-         h1.style.fontSize = fsizeOnOflow[this.name]
-      };
-
+      ContactNetInputAnimationSetter(cntctWrapper, childs);
    };
 
 };
