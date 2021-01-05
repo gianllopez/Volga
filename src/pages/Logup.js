@@ -21,19 +21,23 @@ class Logup extends Component {
       loading: false
    };
 
-   changeHandler = event => {
-      if (event.target.name === 'shop') {
-         event.target.value = event.target.value
+   changeHandler = ({target}) => {
+      let {name, value} = target;
+      if (name === 'shop') {
+         target.value = value
             .replace(/\s/g, '')
-            .replace(/_+/g, '')
-            .replace(/^_/g, '')
-            .replace(/[^\w\s]+/, '')
-            
+            .replace(/[^\w\s]+/, '');
+      };
+      if (name === 'owner') {
+         const regex = new RegExp(/^[ a-zA-ZÀ-ÿ\u00f1\u00d1]*$/g)
+         if (!regex.test(value)) {
+            target.value = value.substring(0, (value.length - 1));
+         };
       };
       this.setState({
          data: {
             ...this.state.data,
-            [event.target.name]: event.target.value.trim()
+            [target.name]: target.value.trim()
          }
       });
    };
