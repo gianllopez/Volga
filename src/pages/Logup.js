@@ -47,25 +47,15 @@ class Logup extends Component {
       logUpFormValidator(this.state.data, ['address', 'foundation'])
          .then(isValid => {
             if (isValid) {
-               this.setState({
-                  loading: true,
-                  errors: {}
-               });
+               this.setState({ loading: true, errors: {} });
                Axios.post('http://127.0.0.1:8000/api/shops/logup/', this.state.data)
                   .then(response => {
                      localStorage.setItem('shop-token', response.data.token);
                      this.props.history.push(`${this.state.data.shop}/social-networks`)
                   })
-                  .catch(errors => {
-                     this.setState({
-                        errors: errors.response.data,
-                        loading: false
-                     });
-                  });
-            }
-         }).catch(errors => {
-            this.setState({ errors });
-         })
+                  .catch(errors => this.setState({ errors: errors.response.data, loading: false }));
+            };
+         }).catch(errors => this.setState({ errors }));
    };
 
    shopNameConditionsModal = event => {

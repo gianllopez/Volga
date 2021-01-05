@@ -19,10 +19,8 @@ class Input extends Component {
                id={name}
                autoComplete="off"
                spellCheck="false"
-               onChange={changeHandler}
-               onKeyDown={onKeyDown}
-               name={name}
-               maxLength={this.props.maxLength}
+               {...this.props}
+               errors={undefined}
             />
             {this.state.error && (
                <span className={`${this.props.name}-error`}>

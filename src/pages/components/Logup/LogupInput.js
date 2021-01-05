@@ -10,7 +10,6 @@ class LogupInput extends Component {
       <Input
          changeHandler={this.context.changeHandler}
          errors={this.context.errors}
-         maxLength={this.props.maxLength}
          {...this.props}
       />
    );
