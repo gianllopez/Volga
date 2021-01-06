@@ -13,8 +13,8 @@ class Logup extends Component {
 
    state = {
       data: {
-         owner: '', country: '', city: '',
-         address: '', email: '', password: '',
+         name: '', username: '', country: '',
+         city: '', email: '', password: '',
          confirmpwd: ''
       },
       errors: {},
@@ -35,14 +35,14 @@ class Logup extends Component {
       this.setState({
          data: {
             ...this.state.data,
-            [target.name]: target.value.trim()
+            [target.name]: target.value
          }
       });
    };
 
    submitHandler = event => {
       event.preventDefault();
-      logUpFormValidator(this.state.data, ['address', 'foundation'])
+      logUpFormValidator(this.state.data)
          .then(isValid => {
             if (isValid) {
                this.setState({ loading: true, errors: {} });
@@ -106,12 +106,12 @@ class Logup extends Component {
                   <LogupInput
                      label="Nombre completo"
                      name="name"
-                     maxLength="45"
+                     maxLength="65"
                   />
                   <LogupInput
                      label="Usuario(a)"
                      name="username"
-                     maxLength="45"
+                     maxLength="25"
                      onKeyDown={this.UsernameConditionsModal}
                   />
                   <LogupInput
