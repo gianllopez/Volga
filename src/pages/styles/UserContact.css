@@ -1,21 +1,21 @@
-#contactnets-form {
+#user-contact-form {
    display: flex;
    flex-direction: column;
    align-items: center;
    margin: 10vh 0;
 }
 
-#contactnets-form h2 {
+#user-contact-form h2 {
    margin-bottom: 20px;
    font-size: 1.7em;
    text-align: center;
 }
 
-#contactnets-form .contact-net {
+#user-contact-form .contact-net {
    margin-bottom: 12.5px;
 }
 
-#sn-interaction-btns button {
+#contact-interaction-btns button {
    width: 115px;
    height: 45px;
    border: none;
@@ -25,20 +25,20 @@
    background-color: #0069D9;
 }
 
-#sn-interaction-btns {
+#contact-interaction-btns {
    display: inherit;
    justify-content: space-evenly;
    width: 90%;
    margin-top: 7.5px;
 }
 
-#sn-interaction-btns button:first-child {
+#contact-interaction-btns button:first-child {
    background-color: #00000021;
    color: black;
 }
 
 @media screen and (min-height: 625px) {
-   #contactnets-form {
+   #user-contact-form {
       position: absolute;
       top: 50%;
       left: 50%;

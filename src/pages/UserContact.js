@@ -1,36 +1,36 @@
 import React, { Component } from 'react';
-import { ContactNetInput } from './components';
-import './styles/ContactNets.css';
+import { ContactInput } from './components';
+import './styles/UserContact.css';
 
-class ContactNets extends Component {
+class UserContact extends Component {
    render() {
       return (
-         <form id="contactnets-form">
+         <form id="user-contact-form">
             <h2>
                Redes sociales para<br/>
                el contacto de tu tienda
             </h2>
-            <ContactNetInput
+            <ContactInput
                name="instagram"
                maxLength="30"
             />
-            <ContactNetInput
+            <ContactInput
                name="facebook"
                maxLength="50"
             />
-            <ContactNetInput
+            <ContactInput
                name="whatsapp"
                maxLength="15"
             />
-            <ContactNetInput
+            <ContactInput
                name="twitter"
                maxLength="15"
             />
-            <ContactNetInput
+            <ContactInput
                name="email"
                maxLength="100"
             />         
-            <div id="sn-interaction-btns">
+            <div id="contact-interaction-btns">
                <button>Omitir</button>
                <button>Continuar</button>
             </div>
@@ -39,4 +39,4 @@ class ContactNets extends Component {
    };
 };
 
-export default ContactNets;
+export default UserContact;

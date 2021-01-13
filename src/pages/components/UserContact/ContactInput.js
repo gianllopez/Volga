@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { ContactNetInputAnimationSetter } from '../local-utils';
+import { ContactInputAnimationSetter } from '../local-utils';
 import { capitalize } from '../../../utils/tools';
-import checkIcon from '../../../assets/ContactNets/check-icon.svg';
-import { snicons } from '../../../assets';
-import './ContactNetInput.css';
+import checkIcon from '../../../assets/UserContact/check-icon.svg';
+import { contact_icons } from '../../../assets';
+import './ContactInput.css';
 
-class ContactNetInput extends Component {
+class ContactInput extends Component {
 
    state = {}
 
@@ -14,9 +14,9 @@ class ContactNetInput extends Component {
       Name = capitalize(name);
       this.name = name;
       return (
-         <div className='contact-net'>
+         <div className='contact-input'>
             <figure className='logo-wrapper'>
-               <img src={snicons[name]} alt={`${name}-icon`}/>
+               <img src={contact_icons[name]} alt={`${name}-icon`}/>
             </figure>
             <div className='div-line'/>
             <div className='data-input'>
@@ -29,7 +29,7 @@ class ContactNetInput extends Component {
                />
                <img src={checkIcon} alt='check-icon'/>
             </div>
-            <h1>{this.name !== 'email' ? this.Name : 'Correo'}</h1>
+            <h1>{this.name !== 'email' ? Name : 'Correo'}</h1>
          </div>
       );
    };
@@ -43,9 +43,9 @@ class ContactNetInput extends Component {
          input: this.cntctQuery('input'),
          checkBtn: this.cntctQuery('.data-input > img')
       };
-      ContactNetInputAnimationSetter(cntctWrapper, childs);
+      ContactInputAnimationSetter(cntctWrapper, childs);
    };
 
 };
 
-export default ContactNetInput;
+export default ContactInput;

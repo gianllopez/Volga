@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { Logup, ContactNets, ShopTags, ShopLogo,
+import { Logup, UserContact, ShopTags, ShopLogo,
          Login, ShopProfile, ProductPage, Home,
          PostProduct, NewOpinion, ShopOpinions,
          ShopContact } from './pages/';
@@ -11,7 +11,7 @@ import './index.css';
 ReactDOM.render(
    <BrowserRouter>
       <Switch>
-         <Route exact path='/:shop/contact-networks' component={ContactNets}/>
+         <Route exact path='/:shop/contact-networks' component={UserContact}/>
          <Route exact path='/:shop/tags' component={ShopTags}/>
          <Route exact path='/:shop/logo' component={ShopLogo}/>
          <SomeRoutesLayout>

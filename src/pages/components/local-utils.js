@@ -1,6 +1,6 @@
 import checkicon from '../../assets/ShopLogo/check-icon.svg';
 
-// The next function handles the ContactNetInput Component animations:
+// The next function handles the ContactInput Component animations:
 
 export const sncolors = {
    facebook: '#2D88FF',
@@ -10,7 +10,7 @@ export const sncolors = {
    pinterest: '#C8232C',
 };
 
-export function ContactNetInputAnimationSetter(element, elementChilds) {
+export function ContactInputAnimationSetter(element, elementChilds) {
    const colors = {
       instagram: '#C32AA3',
       ...sncolors
