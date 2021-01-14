@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { CNcontext } from '../../ContactNetworks';
 import { ContactNetworkInputAnimationSetter } from '../local-utils';
 import { capitalize } from '../../../utils/tools';
 import checkIcon from '../../../assets/ContactNetworks/check-icon.svg';
@@ -7,7 +8,7 @@ import './ContactNetworkInput.css';
 
 class ContactNetworkInput extends Component {
 
-   state = {}
+   static contextType = CNcontext;
 
    render() {
       const {name} = this.props,
@@ -25,7 +26,8 @@ class ContactNetworkInput extends Component {
                   name={name}
                   autoComplete='off'
                   placeholder={Name !== 'Email' ? Name : 'Correo'}
-                  {...this.props}
+                  onChange={this.context.changeHandler}
+                  {...this.props}                  
                />
                <img src={checkIcon} alt='check-icon'/>
             </div>
