@@ -6,7 +6,14 @@ export const CNcontext = createContext({});
 
 class ContactNetworks extends Component {
    
-   state = {};
+   state = {
+      data: {
+         instagram: '', facebook: '',
+         whatsapp: '', twitter: '',
+         email: ''
+      },
+      errors: {}   
+   };
 
    changeHandler = ({target}) => {
       this.setState({
@@ -20,7 +27,8 @@ class ContactNetworks extends Component {
    
    render() {
       const contextContent = {
-         changeHandler: this.changeHandler
+         changeHandler: this.changeHandler,
+         errors: this.state.errors
       };
       return (
          <form id="user-contact-form">

@@ -8,6 +8,8 @@ import './ContactNetworkInput.css';
 
 class ContactNetworkInput extends Component {
 
+   state = {};
+
    static contextType = CNcontext;
 
    render() {
@@ -15,23 +17,30 @@ class ContactNetworkInput extends Component {
       Name = capitalize(name);
       this.name = name;
       return (
-         <div className='contact-network-input'>
-            <figure className='logo-wrapper'>
-               <img src={cn_icons[name]} alt={`${name}-icon`}/>
-            </figure>
-            <div className='div-line'/>
-            <div className='data-input'>
-               <input
-                  type='text'
-                  name={name}
-                  autoComplete='off'
-                  placeholder={Name !== 'Email' ? Name : 'Correo'}
-                  onChange={this.context.changeHandler}
-                  {...this.props}                  
-               />
-               <img src={checkIcon} alt='check-icon'/>
+         <div className={`contact-network-input ${this.name}`}>
+            <div className="cni-content">
+               <figure className='logo-wrapper'>
+                  <img src={cn_icons[name]} alt={`${name}-icon`}/>
+               </figure>
+               <div className='div-line'/>
+               <div className='data-input'>
+                  <input
+                     type='text'
+                     name={name}
+                     autoComplete='off'
+                     placeholder={Name !== 'Email' ? Name : 'Correo'}
+                     onChange={this.context.changeHandler}
+                     {...this.props}                  
+                     />
+                  <img src={checkIcon} alt='check-icon'/>
+               </div>
+               <h1>{this.name !== 'email' ? Name : 'Correo'}</h1>
             </div>
-            <h1>{this.name !== 'email' ? Name : 'Correo'}</h1>
+            {this.state.error && (
+               <p className="cn-error">
+                  {this.state.error}
+               </p>
+            )}
          </div>
       );
    };
@@ -46,6 +55,15 @@ class ContactNetworkInput extends Component {
          checkBtn: this.selfQuery('.data-input > img')
       };
       ContactNetworkInputAnimationSetter(cntctWrapper, childs);
+   };
+
+   componentDidUpdate() {
+      let error = this.context.errors[this.name];
+      if (error && !this.state.error) {
+         this.setState({ error });
+         setTimeout(
+            () => this.selfQuery('.cn-error').style.transform = 'initial', 1);
+      };
    };
 
 };
