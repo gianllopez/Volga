@@ -13,16 +13,16 @@ class ContactNetworkInput extends Component {
    static contextType = CNcontext;
 
    render() {
-      const {name} = this.props,
-      Name = capitalize(name);
+      const { name } = this.props,
+         Name = capitalize(name);
       this.name = name;
       return (
          <div className={`contact-network-input ${this.name}`}>
             <div className="cni-content">
                <figure className='logo-wrapper'>
-                  <img src={cn_icons[name]} alt={`${name}-icon`}/>
+                  <img src={cn_icons[name]} alt={`${name}-icon`} />
                </figure>
-               <div className='div-line'/>
+               <div className='div-line' />
                <div className='data-input'>
                   <input
                      type='text'
@@ -31,9 +31,9 @@ class ContactNetworkInput extends Component {
                      placeholder={Name !== 'Email' ? Name : 'Correo'}
                      onKeyDown={this.keyDownHandler}
                      onChange={this.context.changeHandler}
-                     {...this.props}                  
-                     />
-                  <img src={checkIcon} alt='check-icon'/>
+                     {...this.props}
+                  />
+                  <img src={checkIcon} alt='check-icon' />
                </div>
                <h1>{this.name !== 'email' ? Name : 'Correo'}</h1>
             </div>
@@ -45,7 +45,7 @@ class ContactNetworkInput extends Component {
          </div>
       );
    };
-   
+
    componentDidMount() {
       this.cntctWrapper = this._reactInternalFiber.child.stateNode;
       this.selfQuery = q => this.cntctWrapper.querySelector(q);
