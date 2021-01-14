@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { ContactInputAnimationSetter } from '../local-utils';
+import { ContactNetworkInputAnimationSetter } from '../local-utils';
 import { capitalize } from '../../../utils/tools';
-import checkIcon from '../../../assets/UserContact/check-icon.svg';
-import { contact_icons } from '../../../assets';
-import './ContactInput.css';
+import checkIcon from '../../../assets/ContactNetworks/check-icon.svg';
+import { cn_icons } from '../../../assets';
+import './ContactNetworkInput.css';
 
-class ContactInput extends Component {
+class ContactNetworkInput extends Component {
 
    state = {}
 
@@ -14,9 +14,9 @@ class ContactInput extends Component {
       Name = capitalize(name);
       this.name = name;
       return (
-         <div className='contact-input'>
+         <div className='contact-network-input'>
             <figure className='logo-wrapper'>
-               <img src={contact_icons[name]} alt={`${name}-icon`}/>
+               <img src={cn_icons[name]} alt={`${name}-icon`}/>
             </figure>
             <div className='div-line'/>
             <div className='data-input'>
@@ -36,16 +36,16 @@ class ContactInput extends Component {
    
    componentDidMount() {
       let cntctWrapper = this._reactInternalFiber.child.stateNode;
-      this.cntctQuery = q => cntctWrapper.querySelector(q);
+      this.selfQuery = q => cntctWrapper.querySelector(q);
       const childs = {
-         header: this.cntctQuery('h1'),
-         dataInput: this.cntctQuery('.data-input'),
-         input: this.cntctQuery('input'),
-         checkBtn: this.cntctQuery('.data-input > img')
+         header: this.selfQuery('h1'),
+         dataInput: this.selfQuery('.data-input'),
+         input: this.selfQuery('input'),
+         checkBtn: this.selfQuery('.data-input > img')
       };
-      ContactInputAnimationSetter(cntctWrapper, childs);
+      ContactNetworkInputAnimationSetter(cntctWrapper, childs);
    };
 
 };
 
-export default ContactInput;
+export default ContactNetworkInput;

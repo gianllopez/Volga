@@ -1,10 +1,10 @@
 // ---------- ContactNetInput (Component) Imports ---------- //
-import instagramLogo from './UserContact/instagram-icon.svg';
-import facebookLogo from './UserContact/facebook-icon.svg';
-import whatsappLogo from './UserContact/whatsapp-icon.svg';
-import twitterLogo from './UserContact/twitter-icon.svg';
-import emailLogo from './UserContact/email-icon.svg';
-import pinterestLogo from './UserContact/pinterest-icon.svg';
+import instagramLogo from './ContactNetworks/instagram-icon.svg';
+import facebookLogo from './ContactNetworks/facebook-icon.svg';
+import whatsappLogo from './ContactNetworks/whatsapp-icon.svg';
+import twitterLogo from './ContactNetworks/twitter-icon.svg';
+import emailLogo from './ContactNetworks/email-icon.svg';
+import pinterestLogo from './ContactNetworks/pinterest-icon.svg';
 
 // ---------- ShopTags (Page) Imports ---------- //
 import vehicles_icon from './ShopTags/tags-icons/car.svg';
@@ -38,7 +38,7 @@ import followerIcon from './ShopProfile/follower.svg';
 import productIcon from './ShopProfile/product.svg';
 
 // ---------- ContactNetInput (Component) Exports ---------- //
-export const contact_icons = {
+export const cn_icons = {
    instagram: instagramLogo,
    facebook: facebookLogo,
    whatsapp: whatsappLogo,

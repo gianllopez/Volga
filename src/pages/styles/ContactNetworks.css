@@ -6,8 +6,12 @@
 }
 
 #user-contact-form h2 {
-   margin-bottom: 20px;
-   font-size: 1.7em;
+   margin-bottom: 10px;
+   background-color: #c9c9c91f;
+   padding: 8px;
+   width: 284px;
+   font-size: 1.6em;
+   border-radius: 5px;
    text-align: center;
 }
 

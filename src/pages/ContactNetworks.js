@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { ContactInput } from './components';
-import './styles/UserContact.css';
+import { ContactNetworkInput } from './components';
+import './styles/ContactNetworks.css';
 
-class UserContact extends Component {
+class ContactNetworks extends Component {
    render() {
       return (
          <form id="user-contact-form">
@@ -10,23 +10,23 @@ class UserContact extends Component {
                Redes sociales para<br/>
                el contacto de tu tienda
             </h2>
-            <ContactInput
+            <ContactNetworkInput
                name="instagram"
                maxLength="30"
             />
-            <ContactInput
+            <ContactNetworkInput
                name="facebook"
                maxLength="50"
             />
-            <ContactInput
+            <ContactNetworkInput
                name="whatsapp"
                maxLength="15"
             />
-            <ContactInput
+            <ContactNetworkInput
                name="twitter"
                maxLength="15"
             />
-            <ContactInput
+            <ContactNetworkInput
                name="email"
                maxLength="100"
             />         
@@ -39,4 +39,4 @@ class UserContact extends Component {
    };
 };
 
-export default UserContact;
+export default ContactNetworks;

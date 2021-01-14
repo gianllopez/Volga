@@ -10,7 +10,7 @@ export const sncolors = {
    pinterest: '#C8232C',
 };
 
-export function ContactInputAnimationSetter(element, elementChilds) {
+export function ContactNetworkInputAnimationSetter(element, elementChilds) {
    const colors = {
       instagram: '#C32AA3',
       ...sncolors
