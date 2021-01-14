@@ -29,6 +29,7 @@ class ContactNetworkInput extends Component {
                      name={name}
                      autoComplete='off'
                      placeholder={Name !== 'Email' ? Name : 'Correo'}
+                     onKeyDown={this.keyDownHandler}
                      onChange={this.context.changeHandler}
                      {...this.props}                  
                      />
@@ -46,15 +47,15 @@ class ContactNetworkInput extends Component {
    };
    
    componentDidMount() {
-      let cntctWrapper = this._reactInternalFiber.child.stateNode;
-      this.selfQuery = q => cntctWrapper.querySelector(q);
-      const childs = {
+      this.cntctWrapper = this._reactInternalFiber.child.stateNode;
+      this.selfQuery = q => this.cntctWrapper.querySelector(q);
+      this.childs = {
          header: this.selfQuery('h1'),
          dataInput: this.selfQuery('.data-input'),
          input: this.selfQuery('input'),
          checkBtn: this.selfQuery('.data-input > img')
       };
-      ContactNetworkInputAnimationSetter(cntctWrapper, childs);
+      ContactNetworkInputAnimationSetter(this.cntctWrapper, this.childs);
    };
 
    componentDidUpdate() {
@@ -62,7 +63,10 @@ class ContactNetworkInput extends Component {
       if (error && !this.state.error) {
          this.setState({ error });
          setTimeout(
-            () => this.selfQuery('.cn-error').style.transform = 'initial', 1);
+            () => {
+               this.selfQuery('.cn-error').style.transform = 'initial';
+               this.selfQuery('.cni-content').style.borderRadius = '7px 7px 0px 0px';
+            }, 1);
       };
    };
 

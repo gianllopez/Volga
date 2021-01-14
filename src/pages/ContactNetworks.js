@@ -1,4 +1,5 @@
 import React, { Component, createContext } from 'react';
+import Axios from 'axios';
 import { ContactNetworkInput } from './components';
 import './styles/ContactNetworks.css';
 
@@ -24,6 +25,12 @@ class ContactNetworks extends Component {
          }
       });
    };
+
+   submitHandler = event => {
+      event.preventDefault();
+      // Axios.post('http:localhost:3000/api/v1/users/contact/', this.state.data)
+      //    .then(response => {debugger})
+   };
    
    render() {
       const contextContent = {
@@ -31,7 +38,7 @@ class ContactNetworks extends Component {
          errors: this.state.errors
       };
       return (
-         <form id="user-contact-form">
+         <form id="user-contact-form" onSubmit={this.submitHandler}>
             <h2>
                Redes sociales para<br/>
                el contacto de tu tienda

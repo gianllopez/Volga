@@ -24,8 +24,7 @@ export function ContactNetworkInputAnimationSetter(element, elementChilds) {
          header.classList.toggle('header-anim');
          dataInput.classList.toggle('data-input-anim');
       };
-      checkBtn.addEventListener('click', event => {
-         event.stopPropagation();
+      const onFilledField = () => {
          let name = input.placeholder !== 'Correo' ? input.placeholder : 'email';
          header.classList.remove('header-anim');
          dataInput.classList.remove('data-input-anim');
@@ -41,8 +40,17 @@ export function ContactNetworkInputAnimationSetter(element, elementChilds) {
          };
          if (header.offsetHeight > 75) {
             header.style.fontSize = `${fsizeOnOflow[name.toLowerCase()]}px`;
-         };
+         };         
+      };
+      checkBtn.addEventListener('click', event => {
+         event.stopPropagation();
+         onFilledField()
       });
+      input.addEventListener('keydown', event => {
+         if (event.keyCode === 13) {
+            onFilledField();
+         };
+      })
    });
 };
 
