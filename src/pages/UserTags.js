@@ -1,34 +1,35 @@
-import React, {Component} from 'react';
-import { TagBox } from './components/';
-import { tagsProps } from '../assets/';
-import tagsheader from '../assets/ShopTags/shop-tags-hero.svg';
-import './styles/ShopTags.css';
+import React, { Component } from 'react';
+import { TagBox, ButtonLoader } from './components';
+import { tagsProps } from '../assets';
+import './styles/UserTags.css';
 
-class ShopTags extends Component {
-	
-	state = {};
+class UserTags extends Component {
 
-	changeHandler = event => {
+   state = {
+      tags: {},
+      loading: false
+   };
+
+   changeHandler = event => {
       this.setState({
-		   tags: {
-			   ...this.state.tags,
-			   [event.target.name]: event.target.value
+         tags: {
+            ...this.state.tags,
+            [event.target.name]: event.target.value
          }
       });
    };
 
-   submitHandler = event => {		
+   submitHandler = event => {
       event.preventDefault();
    };
-	
+
    render() {
       return (
          <form id="tags-form" onSubmit={this.submitHandler}>
             <div id="tags-header">
-               <img src={tagsheader} alt="tags-hero"/>
                <h2>
-                  ¿Con qué etiquetas de venta<br/>
-                  relacionarías tu tienda?
+                  ¿Con qué etiquetas relacionarías<br />
+                  los productos que vendes?
                </h2>
                <span>Selecciona las que quieras</span>
             </div>
@@ -44,10 +45,10 @@ class ShopTags extends Component {
                   )
                )}
             </div>
-            <button>Continuar</button>
+            <ButtonLoader isloading={this.state.loading} />
          </form>
       );
    };
 };
 
-export default ShopTags;
+export default UserTags;
