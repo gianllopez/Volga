@@ -34,10 +34,17 @@ class ContactNetworks extends Component {
       const sendRequest = () => {
          this.setState({ loading: true });
          Axios.post('http://127.0.0.1:8000/api/v1/users/contact/', this.state.data)
-            .catch(({ response }) => this.setState({
-               loading: false,
-               errors: response.data
-            }));
+            .catch(({ response }) => {
+               this.setState({ loading: false, errors: response.data });
+               if (response.data.token) {
+                  swal({
+                     title: 'Error en el registro',
+                     icon: 'error',
+                     content: <p>{response.data.token}</p>,
+                     dangerMode: true
+                  });
+               };
+            });
       };
       let { isValid } = noBlankValidator(this.state.data);
       if (!isValid) {
