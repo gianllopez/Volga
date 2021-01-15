@@ -12,6 +12,15 @@ class ContactNetworkInput extends Component {
 
    static contextType = CNcontext;
 
+   keyDownHandler = ({ target }) => {
+      const { value } = target,
+         regex = /^[a-z0-9]*$/g;
+      if (!regex.test(value)) {
+         target.value = value.substring(0, (value.length - 1));
+      };
+
+   };
+
    render() {
       const { name } = this.props,
          Name = capitalize(name);

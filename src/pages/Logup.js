@@ -21,8 +21,8 @@ class Logup extends Component {
       loading: false
    };
 
-   changeHandler = ({target}) => {
-      let {name, value} = target;
+   changeHandler = ({ target }) => {
+      let { name, value } = target;
       const regsexs = {
          name: /(?!.*\s{2})^[a-zA-ZÀ-úñÑ\s]+$/,
          username: /^[a-z0-9]*$/
@@ -56,48 +56,15 @@ class Logup extends Component {
          }).catch(errors => this.setState({ errors }));
    };
 
-   UsernameConditionsModal = event => {
-      const conditions = [
-         'Solo letras y números.',
-         'Solo letras minúsculas.',
-         'No puede contener espacios.',
-         'Ningún carácter especial es válido.',
-         'Este debe ser único.'
-      ],
-      isFocused = event.target === document.activeElement,
-      isModalShowed = this.state.shopConditionModal
-      if (isFocused && !isModalShowed) {
-         this.setState({ shopConditionModal: true });
-         let jsxcontent = (
-            <div>
-               <span>
-                  Para registrarte aquí, debes tener en cuenta algunas condiciones
-                  a la hora de escoger un nombre de usuario:
-               </span>
-               <ul>
-                  {conditions.map((condition, i) => 
-                     <li key={i}>{condition}</li>
-                  )}
-               </ul>
-            </div>
-         );
-         swal({
-            title: 'Condiciones para el nombre de usuario:',
-            content: jsxcontent,
-            className: 'username-conditions'
-         });      
-      };
-   };
-
-	render() {
+   render() {
       const contextContent = {
          changeHandler: this.changeHandler,
          errors: this.state.errors
       };
-		return (
+      return (
          <form id="logup-form" onSubmit={this.submitHandler}>
             <div id="logup-header">
-               <img src={loguphero} alt="logup-hero"/>
+               <img src={loguphero} alt="logup-hero" />
                <h1>Crea tu cuenta de Volga</h1>
                <p>Vende tus productos con nosotros</p>
             </div>
@@ -112,7 +79,6 @@ class Logup extends Component {
                      label="Usuario(a)"
                      name="username"
                      maxLength="25"
-                     onKeyDown={this.UsernameConditionsModal}
                   />
                   <LogupInput
                      label="País"
@@ -144,19 +110,19 @@ class Logup extends Component {
                   />
                </logupContext.Provider>
             </div>
-               
-               <ButtonLoader isLoading={this.state.loading}/>
-               
-               <p>
-                  ¿Ya tienes cuenta?<br/>
-                  <Link to="/login">
-                     Ingresa
+
+            <ButtonLoader isLoading={this.state.loading} />
+
+            <p>
+               ¿Ya tienes cuenta?<br />
+               <Link to="/login">
+                  Ingresa
                   </Link>
-               </p>		
-               
+            </p>
+
          </form>
-		);
-	};
+      );
+   };
 
 };
 
