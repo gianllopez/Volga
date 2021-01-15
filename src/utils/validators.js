@@ -1,9 +1,9 @@
-export function noBlankValidator(data, alloweds) {
+export function noBlankValidator(data) {
    let isValid = true;
    const formData = Object.entries(data);
    let errors = {};
    for (let x of formData) {
-      if (!x[1] && !(alloweds || []).includes(x[0])) {
+      if (!x[1]) {
          errors[x[0]] = 'Este campo es requerido.'
          isValid = false
       }
@@ -11,9 +11,9 @@ export function noBlankValidator(data, alloweds) {
    return {isValid, errors};
 };
 
-export function logUpFormValidator(data, alloweds) {
+export function logUpFormValidator(data) {
    return new Promise((resolve, reject) => {
-      let {isValid, errors} = noBlankValidator(data, alloweds),
+      let {isValid, errors} = noBlankValidator(data),
       {password, confirmpwd} = data;
       if (!isValid) {
          reject(errors);
