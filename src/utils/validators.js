@@ -8,13 +8,13 @@ export function noBlankValidator(data) {
          isValid = false
       }
    };
-   return {isValid, errors};
+   return { isValid, errors };
 };
 
-export function logUpFormValidator(data) {
-   return new Promise((resolve, reject) => {
-      let {isValid, errors} = noBlankValidator(data),
-      {password, confirmpwd} = data;
+export const logUpFormValidator = data => (
+   new Promise((resolve, reject) => {
+      let { isValid, errors } = noBlankValidator(data),
+         { password, confirmpwd } = data;
       if (!isValid) {
          reject(errors);
       };
@@ -26,5 +26,5 @@ export function logUpFormValidator(data) {
       } else {
          resolve(isValid);
       };
-   });
-};
+   })
+);

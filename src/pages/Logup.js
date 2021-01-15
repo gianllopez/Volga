@@ -1,7 +1,6 @@
 import React, { Component, createContext } from 'react';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
-import swal from '@sweetalert/with-react';
 import { logUpFormValidator } from '../utils/validators';
 import { LogupInput, ButtonLoader } from './components/';
 import loguphero from '../assets/Logup/logup-hero.svg';
@@ -46,10 +45,10 @@ class Logup extends Component {
          .then(isValid => {
             if (isValid) {
                this.setState({ loading: true, errors: {} });
-               Axios.post('http://127.0.0.1:8000/api/shops/logup/', this.state.data)
+               Axios.post('http://127.0.0.1:8000/api/v1/users/logup/', this.state.data)
                   .then(response => {
-                     localStorage.setItem('shop-token', response.data.token);
-                     this.props.history.push(`${this.state.data.shop}/social-networks`)
+                     localStorage.setItem('user-token', response.data.token);
+                     this.props.history.push(`${this.state.data.user}/contact-networks`)
                   })
                   .catch(errors => this.setState({ errors: errors.response.data, loading: false }));
             };
@@ -111,7 +110,7 @@ class Logup extends Component {
                </logupContext.Provider>
             </div>
 
-            <ButtonLoader isLoading={this.state.loading} />
+            <ButtonLoader isloading={this.state.loading} />
 
             <p>
                ¿Ya tienes cuenta?<br />

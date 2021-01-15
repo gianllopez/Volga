@@ -48,30 +48,6 @@
    text-transform: capitalize;
 }
 
-.username-conditions .swal-title {
-   display: none;
-}
-
-.username-conditions .swal-content {
-   text-align: left;
-   margin-top: 50px;
-}
-
-.username-conditions .swal-content span {
-   font-weight: bold;
-   font-size: 5vw;
-}
-.username-conditions .swal-content ul {
-   margin-top: 10px;
-   list-style-position: inside;
-   border-left: 2px solid black;
-   padding-left: 10px;
-   font-size: 4vw;
-}
-
-@media (min-width:450px) {
-   .username-conditions .swal-content span,
-   .username-conditions .swal-content ul {
-      font-size: 1.4em;
-   }
+#logup-form #btnloader-wrapper {
+   margin: 7.5px 0;
 }

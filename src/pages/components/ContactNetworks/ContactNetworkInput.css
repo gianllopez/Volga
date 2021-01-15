@@ -71,8 +71,8 @@
 .cn-error {
    background-color: #f36060cc;
    color: white;
-   padding: 5px;
-   font-size: 1.1em;
+   padding: 10px;
+   margin: 5px 0;
    border-radius: 0px 0px 7px 7px;
    margin-top: -7.4px;
    transition: .5s;

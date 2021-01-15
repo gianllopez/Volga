@@ -1,11 +1,11 @@
 import React from 'react';
 import './styles/ButtonLoader.css';
 
-const ButtonLoader = props => (
-   <button id="btnloader-wrapper" type={props.type || 'submit'}>         
-      {props.isLoading ?
+const ButtonLoader = ({ type, isloading, label }) => (
+   <button id="btnloader-wrapper" type={type || 'submit'}>
+      {isloading ?
          <div id="loader" /> :
-         props.label || 'Continuar'
+         label || 'Continuar'
       }
    </button>
 );

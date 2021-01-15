@@ -27,6 +27,7 @@
    color: white;
    font-size: 1.1em;
    background-color: #0069D9;
+   outline: none;
 }
 
 #contact-interaction-btns {
@@ -49,4 +50,21 @@
       transform: translate(-50%, -50%);
       margin: 0;
    }
+}
+
+/* Sweet alert styles mods */
+
+.blank-confimation .swal-content {
+   margin-top: 73px;
+}
+
+.blank-confimation .swal-content p {
+    display: flex;
+    flex-direction: column;
+    padding: 7px;
+}
+
+.blank-confimation .swal-content p span {
+   font-size: 0.9em;
+   color: #e64942;
 }
