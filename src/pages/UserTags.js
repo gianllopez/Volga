@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import swal from '@sweetalert/with-react';
 import { TagBox, ButtonLoader } from './components';
 import { tagsProps } from '../assets';
 import './styles/UserTags.css';
@@ -10,17 +11,35 @@ class UserTags extends Component {
       loading: false
    };
 
-   changeHandler = event => {
+   changeHandler = ({ target }) => {
       this.setState({
          tags: {
             ...this.state.tags,
-            [event.target.name]: event.target.value
+            [target.name]: target.value
          }
       });
    };
 
    submitHandler = event => {
       event.preventDefault();
+      if (Object.keys(this.state.tags).length === 0) {
+         swal({
+            content: (
+               <p>
+                  No has seleccionado ninguna etiqueta.
+                  <span>
+                     ¿Deseas continuar así?
+                  </span>
+               </p>
+            ),
+            buttons: ['Si', 'No'],
+            dangerMode: true
+         });
+      };
+      this.setState({
+         loading: true,
+         tags: Object.values(this.state.tags).join(', ')
+      });
    };
 
    render() {

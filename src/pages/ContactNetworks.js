@@ -13,7 +13,7 @@ class ContactNetworks extends Component {
       data: {
          instagram: '', facebook: '',
          whatsapp: '', twitter: '',
-         email: '', token: localStorage.getItem('user-token')
+         email: '', user: localStorage.getItem('user-token')
       },
       loading: false,
       errors: {}
@@ -49,15 +49,16 @@ class ContactNetworks extends Component {
       let { isValid } = noBlankValidator(this.state.data);
       if (!isValid) {
          swal({
-            className: 'blank-confimation',
+            className: 'blank-confirmation',
+            icon: 'warning',
             content: (
-               <p>
-                  Estas redes facilitan el contacto entre tú y tus clientes.
-                  Recomendamos que llenes las que te sugerimos.
-                  <span>
-                     ¿Deseas continuar así?
-                  </span>
-               </p>
+               <div id="modal-text">
+                  <p>
+                     Estas redes facilitan el contacto entre tú y tus clientes.
+                     Recomendamos que llenes las que te sugerimos.
+                  </p>
+                  <span>¿Deseas continuar así?</span>
+               </div>
             ),
             buttons: ['No', 'Si'],
             dangerMode: true

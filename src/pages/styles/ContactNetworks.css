@@ -25,7 +25,7 @@
    border: none;
    border-radius: 5px;
    color: white;
-   font-size: 1.1em;
+   font-size: 1.05em;
    background-color: #0069D9;
    outline: none;
 }
@@ -52,19 +52,13 @@
    }
 }
 
-/* Sweet alert styles mods */
-
-.blank-confimation .swal-content {
-   margin-top: 73px;
+.blank-confirmation #modal-text {
+   font-size: 21px;
+   border-left: 3px solid;
+   text-align: left;
+   padding: 7px;
 }
 
-.blank-confimation .swal-content p {
-    display: flex;
-    flex-direction: column;
-    padding: 7px;
-}
-
-.blank-confimation .swal-content p span {
-   font-size: 0.9em;
+#modal-text span {
    color: #e64942;
 }
