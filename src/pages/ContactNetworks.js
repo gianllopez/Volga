@@ -1,6 +1,6 @@
-import React, { Component, createContext } from 'react';
+import React, { Component, createContext, Fragment } from 'react';
 import Axios from 'axios';
-import { ContactNetworkInput, ButtonLoader } from './components';
+import { ContactNetworkInput, ButtonLoader, ConfirmationModal } from './components';
 import { noBlankValidator } from '../utils/validators'
 import './styles/ContactNetworks.css';
 import swal from '@sweetalert/with-react';
@@ -49,23 +49,16 @@ class ContactNetworks extends Component {
       };
       let { isValid } = noBlankValidator(this.state.data);
       if (!isValid) {
-         swal({
-            className: 'blank-confirmation',
-            icon: 'warning',
-            content: (
-               <div id="swal-modal-text">
-                  <p>
-                     Estas redes facilitan el contacto entre tú y tus clientes.
-                     Recomendamos que llenes las que te sugerimos.
-                  </p>
-                  <span>¿Deseas continuar así?</span>
-               </div>
-            ),
-            buttons: ['No', 'Si'],
-            dangerMode: true
-         }).then(allowBlank => {
-            if (allowBlank) { sendRequest(); };
-         })
+         let content = (
+            <Fragment>
+               <p>
+                  Estas redes facilitan el contacto entre tú y tus clientes.
+                  Recomendamos que llenes las que te sugerimos.
+               </p>
+               <span>¿Deseas continuar así?</span>
+            </Fragment>
+         );
+         ConfirmationModal(content).then(allowBlank => allowBlank && sendRequest());
       } else { sendRequest(); };
    };
 

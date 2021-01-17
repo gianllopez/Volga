@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import swal from '@sweetalert/with-react';
-import { TagBox, ButtonLoader } from './components';
+import React, { Component, Fragment } from 'react';
+import { TagBox, ButtonLoader, ConfirmationModal } from './components';
 import { tagsProps } from '../assets';
 import './styles/UserTags.css';
 
@@ -23,26 +22,15 @@ class UserTags extends Component {
    submitHandler = event => {
       event.preventDefault();
       if (Object.keys(this.state.tags).length === 0) {
-         swal({
-            icon: 'warning',
-            content: (
-               <div className="swal-modal-text">
-                  <p>
-                     No has seleccionado ninguna etiqueta.
-                  </p>
-                  <span>
-                     ¿Deseas continuar así?
-                  </span>
-               </div>
-            ),
-            buttons: ['No', 'Si'],
-            dangerMode: true
-         });
+         let content = (
+            <Fragment>
+               <p>No has seleccionado ninguna etiqueta.</p>
+               <span>¿Deseas continuar así?</span>
+            </Fragment>
+         );
+         ConfirmationModal(content)
       };
-      this.setState({
-         loading: true,
-         tags: Object.values(this.state.tags).join(', ')
-      });
+
    };
 
    render() {
