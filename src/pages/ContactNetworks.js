@@ -1,5 +1,5 @@
 import React, { Component, createContext, Fragment } from 'react';
-import Axios from 'axios';
+import api from '../utils/api';
 import { ContactNetworkInput, ButtonLoader, ConfirmationModal } from './components';
 import { noBlankValidator } from '../utils/validators'
 import './styles/ContactNetworks.css';
@@ -33,7 +33,11 @@ class ContactNetworks extends Component {
       event.preventDefault();
       const sendRequest = () => {
          this.setState({ loading: true });
-         Axios.post('http://127.0.0.1:8000/api/v1/users/contact/', this.state.data)
+         api.post('/contact/', this.state.data)
+            .then(() => {
+               let username = this.props.match.params.username;
+               this.props.history.push(`/${username}/tags`)
+            })
             .catch(({ response }) => {
                this.setState({ loading: false, errors: response.data });
                let alreadyFilled = response.data.token;

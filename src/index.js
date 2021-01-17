@@ -13,8 +13,8 @@ import './index.css';
 ReactDOM.render(
    <BrowserRouter>
       <Switch>
-         <Route exact path='/:shop/contact-networks' component={ContactNetworks} /> {/* Ready, por revisar si hay código que resumir... */}
-         <Route exact path='/:shop/tags' component={UserTags} />
+         <Route exact path='/:username/contact-networks' component={ContactNetworks} /> {/* Ready, por revisar si hay código que resumir... */}
+         <Route exact path='/:username/tags' component={UserTags} />
          <Route exact path='/:shop/logo' component={ShopLogo} />
          <SomeRoutesLayout>
             <Route exact path='/' component={Home} />

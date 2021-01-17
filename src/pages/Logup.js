@@ -1,6 +1,6 @@
 import React, { Component, createContext } from 'react';
 import { Link } from 'react-router-dom';
-import Axios from 'axios';
+import api from '../utils/api';
 import { logUpFormValidator } from '../utils/validators';
 import { LogupInput, ButtonLoader } from './components/';
 import loguphero from '../assets/Logup/logup-hero.svg';
@@ -45,10 +45,10 @@ class Logup extends Component {
          .then(isValid => {
             if (isValid) {
                this.setState({ loading: true, errors: {} });
-               Axios.post('http://127.0.0.1:8000/api/v1/users/logup/', this.state.data)
+               api.post('/logup/', this.state.data)
                   .then(response => {
                      localStorage.setItem('user-token', response.data.token);
-                     this.props.history.push(`${this.state.data.user}/contact-networks`)
+                     this.props.history.push(`${this.state.data.username}/contact-networks`)
                   })
                   .catch(errors => this.setState({ errors: errors.response.data, loading: false }));
             };
