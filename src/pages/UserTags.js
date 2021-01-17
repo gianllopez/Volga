@@ -24,15 +24,18 @@ class UserTags extends Component {
       event.preventDefault();
       if (Object.keys(this.state.tags).length === 0) {
          swal({
+            icon: 'warning',
             content: (
-               <p>
-                  No has seleccionado ninguna etiqueta.
+               <div className="swal-modal-text">
+                  <p>
+                     No has seleccionado ninguna etiqueta.
+                  </p>
                   <span>
                      ¿Deseas continuar así?
                   </span>
-               </p>
+               </div>
             ),
-            buttons: ['Si', 'No'],
+            buttons: ['No', 'Si'],
             dangerMode: true
          });
       };

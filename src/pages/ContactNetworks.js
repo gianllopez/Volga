@@ -36,11 +36,12 @@ class ContactNetworks extends Component {
          Axios.post('http://127.0.0.1:8000/api/v1/users/contact/', this.state.data)
             .catch(({ response }) => {
                this.setState({ loading: false, errors: response.data });
-               if (response.data.token) {
+               let alreadyFilled = response.data.token;
+               if (alreadyFilled) {
                   swal({
                      title: 'Error en el registro',
                      icon: 'error',
-                     content: <p>{response.data.token}</p>,
+                     content: <p>{alreadyFilled}</p>,
                      dangerMode: true
                   });
                };
@@ -52,7 +53,7 @@ class ContactNetworks extends Component {
             className: 'blank-confirmation',
             icon: 'warning',
             content: (
-               <div id="modal-text">
+               <div id="swal-modal-text">
                   <p>
                      Estas redes facilitan el contacto entre tú y tus clientes.
                      Recomendamos que llenes las que te sugerimos.
