@@ -13,7 +13,7 @@ class ContactNetworks extends Component {
       data: {
          instagram: '', facebook: '',
          whatsapp: '', twitter: '',
-         email: '', user: localStorage.getItem('user-token')
+         email: '', user: this.props.match.params['username']
       },
       loading: false,
       errors: {}
@@ -33,21 +33,20 @@ class ContactNetworks extends Component {
       event.preventDefault();
       const sendRequest = () => {
          this.setState({ loading: true });
+         const nextpath = `/${this.state.data.user}/tags`;
          api.post('/contact/', this.state.data)
             .then(() => {
-               let username = this.props.match.params.username;
-               this.props.history.push(`/${username}/tags`)
+               this.props.history.push(nextpath)
             })
             .catch(({ response }) => {
                this.setState({ loading: false, errors: response.data });
-               let alreadyFilled = response.data.token;
-               if (alreadyFilled) {
+               if (response.data.user) {
                   swal({
                      title: 'Error en el registro',
                      icon: 'error',
-                     content: <p>{alreadyFilled}</p>,
+                     content: <p className="swal-modal-text">{response.data.user}</p>,
                      dangerMode: true
-                  });
+                  }).then(ok => ok && this.props.history.push(nextpath));
                };
             });
       };
