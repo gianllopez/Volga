@@ -1,6 +1,6 @@
 import React, { Component, createContext, Fragment } from 'react';
 import api from '../utils/api';
-import { ContactNetworkInput, ButtonLoader, ConfirmationModal } from './components';
+import { ContactNetworkInput, ButtonLoader } from './components';
 import { noBlankValidator } from '../utils/validators'
 import './styles/ContactNetworks.css';
 import swal from '@sweetalert/with-react';
@@ -35,16 +35,15 @@ class ContactNetworks extends Component {
          this.setState({ loading: true });
          const nextpath = `/${this.state.data.user}/tags`;
          api.post('/contact/', this.state.data)
-            .then(() => {
-               this.props.history.push(nextpath)
-            })
+            .then(() => this.props.history.push(nextpath))
             .catch(({ response }) => {
                this.setState({ loading: false, errors: response.data });
                if (response.data.user) {
+                  const content = <p className="swal-modal-text">{response.data.user}</p>;
                   swal({
                      title: 'Error en el registro',
                      icon: 'error',
-                     content: <p className="swal-modal-text">{response.data.user}</p>,
+                     content,
                      dangerMode: true
                   }).then(ok => ok && this.props.history.push(nextpath));
                };
@@ -61,7 +60,8 @@ class ContactNetworks extends Component {
                <span>¿Deseas continuar así?</span>
             </Fragment>
          );
-         ConfirmationModal(content).then(allowBlank => allowBlank && sendRequest());
+         FormsModals('warning', { content })
+            .then(allowBlank => allowBlank && sendRequest());
       } else { sendRequest(); };
    };
 

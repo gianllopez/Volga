@@ -2,7 +2,7 @@ import React, { Component, createContext } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../utils/api';
 import { logUpFormValidator } from '../utils/validators';
-import { LogupInput, ButtonLoader } from './components/';
+import { LogupInput, ButtonLoader, ConfirmationModal } from './components/';
 import loguphero from '../assets/Logup/logup-hero.svg';
 import './styles/Logup.css';
 
@@ -50,7 +50,22 @@ class Logup extends Component {
                      localStorage.setItem('user-token', response.data.token);
                      this.props.history.push(`${this.state.data.username}/contact-networks`)
                   })
-                  .catch(errors => this.setState({ errors: errors.response.data, loading: false }));
+                  .catch(errors => {
+                     this.setState({ loading: false });
+                     if (errors.message === 'Network Error') {
+                        const content = (
+                           <Fragment>
+                              <p>Error en el registro</p>
+                              <span>
+                                 Aségurate de estar conectado a internet.
+                              </span>
+                           </Fragment>
+                        );
+                        FormsModals('error', { content, buttons: [false, 'Ok'] });
+                     } else {
+                        this.setState({ errors: errors.response.data })
+                     };
+                  });
             };
          }).catch(errors => this.setState({ errors }));
    };

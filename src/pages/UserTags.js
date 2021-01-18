@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import api from '../utils/api';
 import { TagBox, ButtonLoader, ConfirmationModal } from './components';
 import { tagsProps } from '../assets';
 import './styles/UserTags.css';
@@ -6,31 +7,46 @@ import './styles/UserTags.css';
 class UserTags extends Component {
 
    state = {
-      tags: {},
+      tags: [],
       loading: false
    };
 
    changeHandler = ({ target }) => {
-      this.setState({
-         tags: {
-            ...this.state.tags,
-            [target.name]: target.value
-         }
-      });
+      let { tags } = this.state,
+         { value } = target;
+      if (tags.includes(value)) {
+         let i = tags.indexOf(value);
+         tags.splice(i);
+      } else {
+         tags.push(value)
+      };
+      this.setState({ tags })
    };
 
    submitHandler = event => {
       event.preventDefault();
-      if (Object.keys(this.state.tags).length === 0) {
+      const sendRequest = () => {
+         this.setState({
+            tags: this.state.tags.join(', '),
+            user: this.props.match.params['username'],
+            loading: true,
+         }, () => {
+            api.post('/tags/', this.state)
+               .catch(({ response }) => {
+                  if (response.data.user) { };
+               })
+         });
+      };
+      if (this.state.tags.length === 0) {
          let content = (
             <Fragment>
                <p>No has seleccionado ninguna etiqueta.</p>
                <span>¿Deseas continuar así?</span>
             </Fragment>
          );
-         ConfirmationModal(content)
-      };
-
+         FormsModals('warning', { content })
+            .then(allowBlank => allowBlank && sendRequest());
+      } else sendRequest();
    };
 
    render() {
