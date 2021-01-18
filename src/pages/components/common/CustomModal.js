@@ -3,17 +3,17 @@ import swal from '@sweetalert/with-react';
 
 /* This component isn't a react Component */
 
-const ConfirmationModal = content => (
+const CustomModal = (content, buttons) => (
    swal({
-      icon: 'warning',
+      icon: 'error',
       content: (
          <div className="swal-modal-text">
             {content}
          </div>
       ),
-      buttons: ['No', 'Si'],
+      buttons: buttons || ['No', 'Si'],
       dangerMode: true
    })
 );
 
-export default ConfirmationModal;
+export default CustomModal;

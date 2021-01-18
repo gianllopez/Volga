@@ -1,6 +1,6 @@
 import React, { Component, createContext, Fragment } from 'react';
 import api from '../utils/api';
-import { ContactNetworkInput, ButtonLoader } from './components';
+import { ContactNetworkInput, ButtonLoader, CustomModal } from './components';
 import { noBlankValidator } from '../utils/validators'
 import './styles/ContactNetworks.css';
 import swal from '@sweetalert/with-react';
@@ -39,7 +39,12 @@ class ContactNetworks extends Component {
             .catch(({ response }) => {
                this.setState({ loading: false, errors: response.data });
                if (response.data.user) {
-                  const content = <p className="swal-modal-text">{response.data.user}</p>;
+                  const content = (
+                     <Fragment>
+                        <p>Error en el registro</p>
+                        <span>{response.data.user}</span>;
+                     </Fragment>
+                  )
                   swal({
                      title: 'Error en el registro',
                      icon: 'error',
@@ -60,7 +65,7 @@ class ContactNetworks extends Component {
                <span>¿Deseas continuar así?</span>
             </Fragment>
          );
-         FormsModals('warning', { content })
+         CustomModal(content)
             .then(allowBlank => allowBlank && sendRequest());
       } else { sendRequest(); };
    };

@@ -1,8 +1,8 @@
-import React, { Component, createContext } from 'react';
+import React, { Component, createContext, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../utils/api';
 import { logUpFormValidator } from '../utils/validators';
-import { LogupInput, ButtonLoader, ConfirmationModal } from './components/';
+import { LogupInput, ButtonLoader, CustomModal } from './components/';
 import loguphero from '../assets/Logup/logup-hero.svg';
 import './styles/Logup.css';
 
@@ -61,7 +61,7 @@ class Logup extends Component {
                               </span>
                            </Fragment>
                         );
-                        FormsModals('error', { content, buttons: [false, 'Ok'] });
+                        CustomModal(content, [false, 'Ok'])
                      } else {
                         this.setState({ errors: errors.response.data })
                      };

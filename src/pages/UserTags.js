@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import api from '../utils/api';
-import { TagBox, ButtonLoader, ConfirmationModal } from './components';
+import { TagBox, ButtonLoader, CustomModal } from './components';
 import { tagsProps } from '../assets';
 import './styles/UserTags.css';
 
@@ -44,7 +44,7 @@ class UserTags extends Component {
                <span>¿Deseas continuar así?</span>
             </Fragment>
          );
-         FormsModals('warning', { content })
+         CustomModal(content)
             .then(allowBlank => allowBlank && sendRequest());
       } else sendRequest();
    };
