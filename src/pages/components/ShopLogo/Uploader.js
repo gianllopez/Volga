@@ -13,16 +13,16 @@ class Uploader extends Component {
 
    render() {
       return (
-         <div id="uploader-wrapper">            
+         <div id="uploader-wrapper">
             <button id="loadlogo-btn" type="button" onClick={this.uploaderTrigger}>
                <figure>
-                  <img src={uploadicon} alt="loader-icon"/>
+                  <img src={uploadicon} alt="loader-icon" />
                </figure>
-               <span>Cargar logo</span>               
+               <span>Cargar</span>
             </button>
             <input
                type="file"
-               name="logo" 
+               name="logo"
                id="logo"
                onInput={this.props.onChange}
                hidden
@@ -34,11 +34,11 @@ class Uploader extends Component {
    componentDidUpdate() {
       if (this.props.isLoaded) {
          const loadimg = document.querySelector('#loadlogo-btn figure img'),
-               loadspan = document.querySelector('#loadlogo-btn span');
+            loadspan = document.querySelector('#loadlogo-btn span');
          successAnimationsTrigger(loadimg, loadspan);
       };
    };
-   
+
 };
 
 export default Uploader;

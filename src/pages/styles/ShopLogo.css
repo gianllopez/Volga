@@ -1,6 +1,4 @@
 #shoplogo-form {
-   /* display: flex;
-   flex-direction: column; */
    text-align: center;
    margin: 5vh 0;
 }
@@ -14,13 +12,9 @@
    font-size: 6vw;
    line-height: 1;
    margin: 7.5px 0;
+   max-width: 250px;
+   margin: 5px auto 10px auto;
 }
-
-/* #actions-btns {
-   display: inherit;
-   flex-direction: inherit;
-   align-items: center;
-} */
 
 #actions-btns button {
    outline: none;
@@ -32,13 +26,10 @@
    height: 40px;
 }
 
-#actions-btns #skip {
+#actions-btns #btnloader-wrapper:first-child {
    margin-right: 10px;
    color: initial;
-}
-
-#actions-btns #continue {
-   background-color: #0069d9;
+   background-color: #dddddd;
 }
 
 @media screen and (min-width:500px) {

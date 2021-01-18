@@ -20,7 +20,7 @@
 }
 
 #loadlogo-btn figure {
-   height: calc(100% - 4px);
+   height: 35px;
    display: inherit;
    align-items: inherit;
    padding: 2px;

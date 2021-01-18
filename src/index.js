@@ -15,7 +15,7 @@ ReactDOM.render(
       <Switch>
          <Route exact path='/:username/contact-networks' component={ContactNetworks} /> {/* Ready, por revisar si hay código que resumir... */}
          <Route exact path='/:username/tags' component={UserTags} />
-         <Route exact path='/:shop/logo' component={ShopLogo} />
+         <Route exact path='/:username/profile-picture' component={ShopLogo} /> {/* Ready, por revisar si hay código que resumir... */}
          <SomeRoutesLayout>
             <Route exact path='/' component={Home} />
             <Route exact path='/logup' component={Logup} /> {/* Ready, por revisar si hay código que resumir... */}
