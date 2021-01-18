@@ -3,7 +3,6 @@ import api from '../utils/api';
 import { ContactNetworkInput, ButtonLoader, CustomModal } from './components';
 import { noBlankValidator } from '../utils/validators'
 import './styles/ContactNetworks.css';
-import swal from '@sweetalert/with-react';
 
 export const CNcontext = createContext({});
 

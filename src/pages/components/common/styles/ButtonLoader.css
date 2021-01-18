@@ -1,4 +1,4 @@
-#btnloader-wrapper {
+.btnloader-wrapper {
     width: 35vw;
     height: 40px;
     background-color: #0069d9cc;
@@ -10,7 +10,7 @@
     outline: none;
 }
 
-#loader {
+.btnloader-wrapper .loader {
     width: 10px;
     height: 10px;
     margin: auto;

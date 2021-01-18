@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import {
-   Logup, ContactNetworks, ShopLogo, UserTags,
+   Logup, ContactNetworks, UserProfilePicture, UserTags,
    Login, ShopProfile, ProductPage, Home,
    PostProduct, NewOpinion, ShopOpinions,
    ShopContact
@@ -15,7 +15,7 @@ ReactDOM.render(
       <Switch>
          <Route exact path='/:username/contact-networks' component={ContactNetworks} /> {/* Ready, por revisar si hay código que resumir... */}
          <Route exact path='/:username/tags' component={UserTags} />
-         <Route exact path='/:username/profile-picture' component={ShopLogo} /> {/* Ready, por revisar si hay código que resumir... */}
+         <Route exact path='/:username/profile-picture' component={UserProfilePicture} /> {/* Ready, por revisar si hay código que resumir... */}
          <SomeRoutesLayout>
             <Route exact path='/' component={Home} />
             <Route exact path='/logup' component={Logup} /> {/* Ready, por revisar si hay código que resumir... */}

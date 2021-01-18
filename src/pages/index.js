@@ -4,7 +4,7 @@ export { default as Home } from './Home';
 export { default as Logup } from './Logup';
 export { default as ContactNetworks } from './ContactNetworks';
 export { default as UserTags } from './UserTags';
-export { default as ShopLogo } from './ShopLogo';
+export { default as UserProfilePicture } from './UserProfilePicture';
 export { default as Login } from './Login';
 export { default as ShopProfile } from './ShopProfile';
 export { default as ProductPage } from './ProductPage';
