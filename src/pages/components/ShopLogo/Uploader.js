@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { successAnimationsTrigger } from '../local-utils';
-import uploadicon from '../../../assets/ShopLogo/upload-icon.svg';
+import uploadicon from '../../../assets/UserProfilePicture/upload-icon.svg';
 import './Uploader.css';
 
 class Uploader extends Component {

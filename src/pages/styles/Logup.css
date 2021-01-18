@@ -48,6 +48,6 @@
    text-transform: capitalize;
 }
 
-#logup-form #btnloader-wrapper {
+#logup-form .btnloader-wrapper {
    margin: 7.5px 0;
 }
