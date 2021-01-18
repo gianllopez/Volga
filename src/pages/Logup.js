@@ -34,7 +34,7 @@ class Logup extends Component {
       this.setState({
          data: {
             ...this.state.data,
-            [target.name]: target.value
+            [name]: value
          }
       });
    };
@@ -42,31 +42,29 @@ class Logup extends Component {
    submitHandler = event => {
       event.preventDefault();
       logUpFormValidator(this.state.data)
-         .then(isValid => {
-            if (isValid) {
-               this.setState({ loading: true, errors: {} });
-               api.post('/logup/', this.state.data)
-                  .then(response => {
-                     localStorage.setItem('user-token', response.data.token);
-                     this.props.history.push(`${this.state.data.username}/contact-networks`)
-                  })
-                  .catch(errors => {
-                     this.setState({ loading: false });
-                     if (errors.message === 'Network Error') {
-                        const content = (
-                           <Fragment>
-                              <p>Error en el registro</p>
-                              <span>
-                                 Aségurate de estar conectado a internet.
+         .then(() => {
+            this.setState({ loading: true, errors: {} });
+            api.post('/logup/', this.state.data)
+               .then(response => {
+                  localStorage.setItem('user-token', response.data.token);
+                  this.props.history.push(`${this.state.data.username}/contact-networks`)
+               })
+               .catch(errors => {
+                  this.setState({ loading: false });
+                  if (errors.message === 'Network Error') {
+                     const content = (
+                        <Fragment>
+                           <p>Error en el registro</p>
+                           <span>
+                              Aségurate de estar conectado a internet.
                               </span>
-                           </Fragment>
-                        );
-                        CustomModal(content, [false, 'Ok'])
-                     } else {
-                        this.setState({ errors: errors.response.data })
-                     };
-                  });
-            };
+                        </Fragment>
+                     );
+                     CustomModal(content, [false, 'Entendido'])
+                  } else {
+                     this.setState({ errors: errors.response.data })
+                  };
+               });
          }).catch(errors => this.setState({ errors }));
    };
 

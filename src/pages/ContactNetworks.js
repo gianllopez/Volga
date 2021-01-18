@@ -42,20 +42,18 @@ class ContactNetworks extends Component {
                   const content = (
                      <Fragment>
                         <p>Error en el registro</p>
-                        <span>{response.data.user}</span>;
+                        <span>{response.data.user}</span>
                      </Fragment>
-                  )
-                  swal({
-                     title: 'Error en el registro',
-                     icon: 'error',
-                     content,
-                     dangerMode: true
-                  }).then(ok => ok && this.props.history.push(nextpath));
+                  );
+                  CustomModal(content, [false, 'Entendido'])
+                     .then(ok => ok && this.props.history.push(nextpath));
                };
             });
       };
       let { isValid } = noBlankValidator(this.state.data);
-      if (!isValid) {
+      if (isValid) {
+         sendRequest();
+      } else {
          let content = (
             <Fragment>
                <p>
@@ -67,7 +65,7 @@ class ContactNetworks extends Component {
          );
          CustomModal(content)
             .then(allowBlank => allowBlank && sendRequest());
-      } else { sendRequest(); };
+      };
    };
 
    render() {

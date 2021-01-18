@@ -14,13 +14,10 @@ class UserTags extends Component {
    changeHandler = ({ target }) => {
       let { tags } = this.state,
          { value } = target;
-      if (tags.includes(value)) {
-         let i = tags.indexOf(value);
-         tags.splice(i);
-      } else {
-         tags.push(value)
-      };
-      this.setState({ tags })
+      tags.includes(value) ?
+         tags.splice(tags.indexOf(value)) :
+         tags.push(value);
+      this.setState({ tags });
    };
 
    submitHandler = event => {
@@ -31,10 +28,20 @@ class UserTags extends Component {
             user: this.props.match.params['username'],
             loading: true,
          }, () => {
+            const nextpath = `/${this.state.user}/profile-picture`;
             api.post('/tags/', this.state)
                .catch(({ response }) => {
-                  if (response.data.user) { };
-               })
+                  if (response.data.user) {
+                     const content = (
+                        <Fragment>
+                           <p>Error en el registro</p>
+                           <span>{response.data.user}</span>
+                        </Fragment>
+                     );
+                     CustomModal(content, [false, 'Entendido'])
+                        .then(ok => ok && this.props.history.push(nextpath));
+                  };
+               });
          });
       };
       if (this.state.tags.length === 0) {
