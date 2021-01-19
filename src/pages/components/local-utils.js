@@ -62,7 +62,7 @@ export function successAnimationsTrigger(img, span) {
    setTimeout(() => {
       img.src = checkicon;
       img.parentElement.style.backgroundColor = '#00E077';
-      span.innerText = 'Logo cargado';
+      span.innerText = 'Foto cargada';
       span.classList.add('on-success');
    }, 500);
 };

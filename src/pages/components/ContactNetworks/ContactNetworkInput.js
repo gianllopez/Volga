@@ -18,7 +18,6 @@ class ContactNetworkInput extends Component {
       if (!regex.test(value)) {
          target.value = value.substring(0, (value.length - 1));
       };
-
    };
 
    render() {

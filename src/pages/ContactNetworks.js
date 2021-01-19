@@ -67,13 +67,15 @@ class ContactNetworks extends Component {
       };
    };
 
+   keyDownHandler = event => event.keyCode === 13 && event.preventDefault();
+
    render() {
       const contextContent = {
          changeHandler: this.changeHandler,
          errors: this.state.errors
       };
       return (
-         <form id="user-contact-form" onSubmit={this.submitHandler}>
+         <form id="user-contact-form" onSubmit={this.submitHandler} onKeyDown={this.keyDownHandler}>
             <h2>
                Redes útiles para<br />
                el contacto con tus clientes

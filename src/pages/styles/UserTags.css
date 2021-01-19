@@ -16,6 +16,6 @@
    justify-content: center;
 }
 
-#tags-form #btnloader-wrapper {
+#tags-form .btnloader-wrapper {
    margin-top: 10px;
 }

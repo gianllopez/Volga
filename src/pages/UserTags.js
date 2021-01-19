@@ -7,29 +7,35 @@ import './styles/UserTags.css';
 class UserTags extends Component {
 
    state = {
-      tags: [],
+      data: {
+         user: this.props.match.params['username'],
+         tags: []
+      },
       loading: false
    };
 
    changeHandler = ({ target }) => {
-      let { tags } = this.state,
+      let { tags } = this.state.data,
          { value } = target;
       tags.includes(value) ?
          tags.splice(tags.indexOf(value)) :
          tags.push(value);
-      this.setState({ tags });
+      this.setState({ data: { ...this.state.data, tags } });
    };
 
    submitHandler = event => {
       event.preventDefault();
       const sendRequest = () => {
          this.setState({
-            tags: this.state.tags.join(', '),
-            user: this.props.match.params['username'],
-            loading: true,
+            data: {
+               ...this.state.data,
+               tags: this.state.data.tags.join(', ')
+            },
+            loading: true
          }, () => {
-            const nextpath = `/${this.state.user}/profile-picture`;
-            api.post('/tags', this.state)
+            const nexpath = `/${this.state.data.user}/profile-picture`
+            api.post('/tags', this.state.data)
+               .then(() => this.props.history.push(nexpath))
                .catch(({ response }) => {
                   if (response.data.user) {
                      const content = (
@@ -39,12 +45,12 @@ class UserTags extends Component {
                         </Fragment>
                      );
                      CustomModal(content, [false, 'Entendido'])
-                        .then(ok => ok && this.props.history.push(nextpath));
+                        .then(ok => ok && this.props.history.push(nexpath));
                   };
                });
          });
       };
-      if (this.state.tags.length === 0) {
+      if (this.state.data.tags.length === 0) {
          let content = (
             <Fragment>
                <p>No has seleccionado ninguna etiqueta.</p>

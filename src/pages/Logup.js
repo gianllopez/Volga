@@ -32,22 +32,20 @@ class Logup extends Component {
          };
       };
       this.setState({
-         data: {
-            ...this.state.data,
-            [name]: value
-         }
+         data: { ...this.state.data, [name]: value }
       });
    };
 
    submitHandler = event => {
       event.preventDefault();
-      logUpFormValidator(this.state.data)
+      let { data } = this.state;
+      logUpFormValidator(data)
          .then(() => {
             this.setState({ loading: true, errors: {} });
-            api.post('/logup', this.state.data)
+            api.post('/logup', data)
                .then(response => {
                   localStorage.setItem('user-token', response.data.token);
-                  this.props.history.push(`${this.state.data.username}/contact-networks`)
+                  this.props.history.push(`${data.username}/contact-networks`)
                })
                .catch(errors => {
                   this.setState({ loading: false });
