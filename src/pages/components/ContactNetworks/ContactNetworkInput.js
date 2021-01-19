@@ -12,14 +12,6 @@ class ContactNetworkInput extends Component {
 
    static contextType = CNcontext;
 
-   keyDownHandler = ({ target }) => {
-      const { value } = target,
-         regex = /^[a-z0-9]*$/g;
-      if (!regex.test(value)) {
-         target.value = value.substring(0, (value.length - 1));
-      };
-   };
-
    render() {
       const { name } = this.props,
          Name = capitalize(name);
@@ -37,8 +29,8 @@ class ContactNetworkInput extends Component {
                      name={name}
                      autoComplete='off'
                      placeholder={Name !== 'Email' ? Name : 'Correo'}
-                     onKeyDown={this.keyDownHandler}
                      onChange={this.context.changeHandler}
+                     spellCheck="false"
                      {...this.props}
                   />
                   <img src={checkIcon} alt='check-icon' />

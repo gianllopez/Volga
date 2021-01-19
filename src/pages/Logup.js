@@ -32,7 +32,10 @@ class Logup extends Component {
          };
       };
       this.setState({
-         data: { ...this.state.data, [name]: value }
+         data: {
+            ...this.state.data,
+            [name]: target.value
+         }
       });
    };
 

@@ -19,13 +19,19 @@ class ContactNetworks extends Component {
    };
 
    changeHandler = ({ target }) => {
-      this.setState({
-         ...this.state,
-         data: {
-            ...this.state.data,
-            [target.name]: target.value
-         }
-      });
+      let { name, value } = target;
+      const regex = /^[a-z0-9]*$/g;
+      if (!regex.test(value)) {
+         target.value = value.substring(0, (value.length - 1));
+      } else {
+         this.setState({
+            ...this.state,
+            data: {
+               ...this.state.data,
+               [name]: target.value
+            }
+         });
+      };
    };
 
    submitHandler = event => {
@@ -90,8 +96,7 @@ class ContactNetworks extends Component {
       return (
          <form id="user-contact-form" onSubmit={this.submitHandler} onKeyDown={this.keyDownHandler}>
             <h2>
-               Redes útiles para<br />
-               el contacto con tus clientes
+               Redes para el contacto<br />con tus clientes
             </h2>
             <CNcontext.Provider value={contextContent}>
                <ContactNetworkInput
