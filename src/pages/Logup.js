@@ -49,7 +49,8 @@ class Logup extends Component {
                })
                .catch(errors => {
                   this.setState({ loading: false });
-                  if (errors.message === 'Network Error') {
+                  let { response, message } = errors;
+                  if (message === 'Network Error') {
                      const content = (
                         <Fragment>
                            <p>Error en el registro</p>
@@ -60,7 +61,7 @@ class Logup extends Component {
                      );
                      CustomModal(content, [false, 'Entendido'])
                   } else {
-                     this.setState({ errors: errors.response.data })
+                     this.setState({ errors: response.data })
                   };
                });
          }).catch(errors => this.setState({ errors }));

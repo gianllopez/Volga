@@ -35,17 +35,30 @@ class ContactNetworks extends Component {
          const nextpath = `/${this.state.data.user}/tags`;
          api.post('/contact', this.state.data)
             .then(() => this.props.history.push(nextpath))
-            .catch(({ response }) => {
-               this.setState({ loading: false, errors: response.data });
-               if (response.data.user) {
+            .catch(errors => {
+               this.setState({ loading: false });
+               let { response, message } = errors;
+               if (message === 'Network Error') {
                   const content = (
                      <Fragment>
                         <p>Error en el registro</p>
-                        <span>{response.data.user}</span>
+                        <span>
+                           Aségurate de estar conectado a internet.
+                              </span>
                      </Fragment>
                   );
                   CustomModal(content, [false, 'Entendido'])
-                     .then(ok => ok && this.props.history.push(nextpath));
+               } else {
+                  if (response.data.user) {
+                     const content = (
+                        <Fragment>
+                           <p>Error en el registro</p>
+                           <span>{response.data.user}</span>
+                        </Fragment>
+                     );
+                     CustomModal(content, [false, 'Entendido'])
+                        .then(ok => ok && this.props.history.push(nextpath));
+                  };
                };
             });
       };
