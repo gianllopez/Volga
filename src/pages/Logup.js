@@ -13,8 +13,8 @@ class Logup extends Component {
    state = {
       data: {
          name: '', username: '', country: '',
-         city: '', email: '', password: '',
-         confirmpwd: ''
+         city: '', gender: 'Masculino', email: '',
+         password: '', confirmpwd: ''
       },
       errors: {},
       loading: false
@@ -99,6 +99,10 @@ class Logup extends Component {
                      label="Ciudad"
                      name="city"
                      maxLength="50"
+                  />
+                  <LogupInput
+                     label="Género"
+                     name="gender"
                   />
                   <LogupInput
                      label="Correo"

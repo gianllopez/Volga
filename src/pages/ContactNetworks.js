@@ -103,10 +103,9 @@ class ContactNetworks extends Component {
                   type="email"
                />
             </CNcontext.Provider>
-            <div id="contact-interaction-btns">
-               <button>Omitir</button>
-               <ButtonLoader isloading={this.state.loading} style={{ margin: 0 }} />
-            </div>
+
+            <ButtonLoader isloading={this.state.loading} />
+
          </form>
       );
    };

@@ -6,24 +6,26 @@ class Input extends Component {
    state = { error: false };
 
    render() {
-      const {name, type, label, allowblank, errors} = this.props;
+      const { name, type, label, allowblank, errors, children } = this.props;
       this.name = name; this.errors = errors;
       return (
          <div className={`input-wrapper ${name}`}>
             <label htmlFor={name}>
                {label}: {!allowblank && <span>*</span>}
             </label>
-            <input
-               type={type || 'text'}
-               id={name}
-               autoComplete="off"
-               spellCheck="false"
-               {...this.props}
-               errors={undefined}
-            />
+            {children ? children : (
+               <input
+                  type={type || 'text'}
+                  id={name}
+                  autoComplete="off"
+                  spellCheck="false"
+                  {...this.props}
+                  errors={undefined}
+               />
+            )}
             {this.state.error && (
                <span className={`${name}-error`}>
-                  { errors[name] }
+                  { errors[name]}
                </span>
             )}
          </div>
@@ -47,7 +49,7 @@ class Input extends Component {
             .valueAsDate = new Date();
       };
    };
-   
+
 };
 
 export default Input;

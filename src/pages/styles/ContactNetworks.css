@@ -19,27 +19,18 @@
    margin-bottom: 12.5px;
 }
 
-#contact-interaction-btns button {
-   width: 100px;
-   height: 40px;
-   border: none;
-   border-radius: 5px;
-   color: white;
-   font-size: 1.05em;
-   background-color: #0069D9;
-   outline: none;
-}
-
-#contact-interaction-btns {
-   display: inherit;
-   justify-content: space-evenly;
-   width: 80%;
+#user-contact-form .btnloader-wrapper {
    margin-top: 7.5px;
 }
+.swal2-icon.swal2-warning {
+   border-color: red;
+}
+.swal-icon--error{
+   border-color: #e64942;
+}
 
-#contact-interaction-btns button:first-child {
-   background-color: #00000021;
-   color: black;
+.swal-icon--error__line {
+   background-color: #e64942;
 }
 
 @media screen and (min-height: 625px) {
