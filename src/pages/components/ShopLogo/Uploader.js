@@ -24,7 +24,7 @@ class Uploader extends Component {
                type="file"
                name="logo"
                id="logo"
-               onInput={this.props.onChange}
+               onInput={this.props.uploadHandler}
                hidden
             />
          </div>
@@ -32,7 +32,7 @@ class Uploader extends Component {
    };
 
    componentDidUpdate() {
-      if (this.props.isLoaded) {
+      if (this.props.isloaded) {
          const loadimg = document.querySelector('#loadlogo-btn figure img'),
             loadspan = document.querySelector('#loadlogo-btn span');
          successAnimationsTrigger(loadimg, loadspan);
