@@ -3,9 +3,13 @@
    margin: 5vh 0;
 }
 
+#userpp-form-header {
+   border-bottom: 2px solid;
+}
+
 #userpp-form-header img {
    width: 55vw;
-   max-width: 215px;
+   max-width: 150px;
 }
 
 #userpp-form-header h1 {
@@ -33,6 +37,6 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -55%);
    }
 }

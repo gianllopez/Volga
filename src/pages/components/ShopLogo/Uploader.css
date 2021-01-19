@@ -1,5 +1,5 @@
 #uploader-wrapper {
-   width: calc(60vw - 12px);
+   width: calc(100% - 22px);
    max-width: 228px;
    border: 1px solid gray;
    border-radius: 5px;
