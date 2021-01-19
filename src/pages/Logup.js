@@ -44,7 +44,7 @@ class Logup extends Component {
       logUpFormValidator(this.state.data)
          .then(() => {
             this.setState({ loading: true, errors: {} });
-            api.post('/logup/', this.state.data)
+            api.post('/logup', this.state.data)
                .then(response => {
                   localStorage.setItem('user-token', response.data.token);
                   this.props.history.push(`${this.state.data.username}/contact-networks`)

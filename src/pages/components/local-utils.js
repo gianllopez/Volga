@@ -1,4 +1,4 @@
-import checkicon from '../../assets/ShopLogo/check-icon.svg';
+import checkicon from '../../assets/UserProfilePicture/check-icon.svg';
 
 // The next function handles the ContactInput Component animations:
 
@@ -40,7 +40,7 @@ export function ContactNetworkInputAnimationSetter(element, elementChilds) {
          };
          if (header.offsetHeight > 75) {
             header.style.fontSize = `${fsizeOnOflow[name.toLowerCase()]}px`;
-         };         
+         };
       };
       checkBtn.addEventListener('click', event => {
          event.stopPropagation();

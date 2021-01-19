@@ -33,7 +33,7 @@ class ContactNetworks extends Component {
       const sendRequest = () => {
          this.setState({ loading: true });
          const nextpath = `/${this.state.data.user}/tags`;
-         api.post('/contact/', this.state.data)
+         api.post('/contact', this.state.data)
             .then(() => this.props.history.push(nextpath))
             .catch(({ response }) => {
                this.setState({ loading: false, errors: response.data });

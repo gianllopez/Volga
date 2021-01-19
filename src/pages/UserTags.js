@@ -29,7 +29,7 @@ class UserTags extends Component {
             loading: true,
          }, () => {
             const nextpath = `/${this.state.user}/profile-picture`;
-            api.post('/tags/', this.state)
+            api.post('/tags', this.state)
                .catch(({ response }) => {
                   if (response.data.user) {
                      const content = (
