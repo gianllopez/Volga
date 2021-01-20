@@ -7,7 +7,7 @@
    margin: 10px auto;
 }
 
-#uploader-wrapper #loadlogo-btn {
+#loadlogo-btn {
    display: flex;
    align-items: center;
    height: 45px;
