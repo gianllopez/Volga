@@ -20,7 +20,7 @@ ReactDOM.render(
             <Route exact path='/' component={Home} />
             <Route exact path='/logup' component={Logup} /> {/* Ready, por revisar si hay código que resumir... */}
             <Route exact path='/login' component={Login} />
-            <Route exact path='/shops/:shop' component={ShopProfile} />
+            <Route exact path='/users/:username' component={ShopProfile} />
             <Route exact path='/:shop/products/new' component={PostProduct} />
             <Route exact path='/:shop/catalog/:product' component={ProductPage} />
             <Route exact path='/:shop/opinions' component={ShopOpinions} />

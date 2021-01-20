@@ -1,9 +1,10 @@
-#shop-profile {
+#user-profile {
    background-color: #d5d5e040;
    padding-top: calc(75px + 15px);
    padding-bottom: 25px;
 }
-#shop-profile section:not(:first-child) {
+
+#user-profile section:not(:first-child) {
    margin-top: 15px;
 }
 
@@ -18,7 +19,7 @@
    background-color: white;
 }
 
-.sub-sections {
+.sub-section {
    max-width: 600px;
 }
 
@@ -35,23 +36,23 @@
    margin-bottom: 5px;
 }
 
-#shop-info {
+#user-info {
    text-align: center;
    color: #4f4f4f;
 }
 
-#shop-info h2 {
+#user-info h2 {
    color: initial;   
 }
 
-#shop-info p {  
+#user-info p {  
    max-width: 300px;
    margin: 5px auto;
    padding: 0 10px;
 }
 
 #interaction-btns {
-   margin: 5px 0;
+   margin-top: 10px;
 }
 
 #interaction-btns button {
@@ -61,6 +62,7 @@
    border-radius: 5px;
    border: 2px solid black;
    background: none;
+   font-size: .9em;
 }
 
 #interaction-btns button:nth-child(2) {
@@ -68,18 +70,27 @@
    color: #0978e8;
    margin-left: 10px;
 }
-#products, #opinions {
-   display: inherit;
-}
 
 #products {
+   display: inherit;
    flex-wrap: wrap;
    justify-content: center;
 }
 
-#opinions {
-   flex-direction: column;
-   align-items: center;
+#clients-opinions a {
+   color: blue;
+   font-size: 1.1em;
+   margin: 7px;
+}
+
+@media (min-width:505px) {
+   #user-stats {
+      flex-direction: row;
+      justify-content: center;
+   }
+   .stat {
+      margin: 0 10px;
+   }
 }
 
 @media (min-width:600px) {
@@ -87,21 +98,20 @@
       font-size: 1.7em;
    }
 }
+
 @media (min-width:768px) {
-   #shop-profile {
+   #user-profile {
       display: grid;
-      grid-template-columns: 35% min-content;
       grid-template-rows: max-content max-content;
       justify-content: center;
       padding-top: 135px;
    }
-   #shop-stats {
-      flex-direction: row;
+   #user-stats {
+      /* flex-direction: row; */
       grid-row: 2;
    }
    .profile-section {
-      margin: 0 auto;
-      height: max-content;
+      /* height: max-content; */
    }
    .opinion {
       width: calc(90% - 10px);
@@ -109,21 +119,31 @@
    .section-title {
       font-size: 1.3em;
    }
-   #shop-profile #shop-products {
+   #user-profile #user-products {
       grid-row: 1/4;
       margin-top: 0;
       width: 60vw;
+      max-width: 1250px;
+   }
+}
+
+@media (max-width:768px) {
+   #user-products {
+      max-width: 600px;
    }
 }
 
 @media (min-width:768px) and (max-width:1400px) {
-   #shop-stats {
+   #user-stats {
       flex-direction: column;
+   }
+   .stat {
+      margin: 10px 0;
    }
 }
 
-@media (min-width:1400px) {
-   #shop-stats {
+/* @media (min-width:1400px) {
+   #user-stats {
       justify-content: center;
    }
-}
+} */
