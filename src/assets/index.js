@@ -33,9 +33,9 @@ import services_icon from './UserTags/tags-icons/services.svg';
 import botanic_icon from './UserTags/tags-icons/plant.svg'
 
 // ---------- ShopProfile (Page) Imports ---------- //
-import starIcon from './ShopProfile/star.svg';
-import followerIcon from './ShopProfile/follower.svg';
-import productIcon from './ShopProfile/product.svg';
+import starIcon from './UserProfile/star.svg';
+import followerIcon from './UserProfile/follower.svg';
+import productIcon from './UserProfile/product.svg';
 
 // ---------- ContactNetInput (Component) Exports ---------- //
 export const cn_icons = {

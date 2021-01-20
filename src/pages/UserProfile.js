@@ -4,8 +4,8 @@ import {
    ShopStats,
    ProductCard,
    UserOpinion
-} from './components/';
-import './styles/ShopProfile.css';
+} from './components';
+import './styles/UserProfile.css';
 
 class UserProfile extends Component {
 

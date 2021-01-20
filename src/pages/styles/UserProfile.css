@@ -12,8 +12,8 @@
    display: flex;
    flex-direction: column;
    align-items: center;
-   width: 90%;
-   padding: 4vh 0;
+   width: calc(90% - 20px);
+   padding: 4vh 10px;
    margin: auto;
    border-radius: 10px;
    background-color: white;
@@ -95,7 +95,7 @@
 
 @media (min-width:600px) {
    .section-title {
-      font-size: 1.7em;
+      font-size: 1.5em;
    }
 }
 
@@ -115,9 +115,6 @@
    }
    .opinion {
       width: calc(90% - 10px);
-   }
-   .section-title {
-      font-size: 1.3em;
    }
    #user-profile #user-products {
       grid-row: 1/4;
