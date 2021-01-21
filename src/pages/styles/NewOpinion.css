@@ -59,21 +59,3 @@
 #op-comment textarea::placeholder {
    text-align: center;
 }
-
-@media screen and (min-width: 768px) {
-   #opinion-form {
-      padding-top: 120px;
-      display: grid;
-      grid-template-columns: min-content min-content;
-      justify-content: center;
-      max-width: 900px;
-      margin: auto;
-   }   
-   #op-header {
-      grid-row: 1/5;
-   }
-   #opinion-form button {
-      justify-self: center;
-      grid-column: 2;
-   }
-}
