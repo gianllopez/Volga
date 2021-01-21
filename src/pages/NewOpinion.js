@@ -16,7 +16,10 @@ class NewOpinion extends Component {
 
    changeHandler = ({ target }) => {
       this.setState({
-         [target.name]: target.value
+         data: {
+            ...this.state.data,
+            [target.name]: target.value
+         }
       });
    };
 
@@ -37,11 +40,13 @@ class NewOpinion extends Component {
             <Input
                label="Nombre"
                name="clientname"
+               onChange={this.changeHandler}
             />
             <Input
                label="Correo"
                name="clientemail"
                type="email"
+               onChange={this.changeHandler}
             />
             <div id="op-comment">
                <label htmlFor="comment">Comentario: <p>*</p> </label>

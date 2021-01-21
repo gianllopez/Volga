@@ -7,7 +7,7 @@ class Input extends Component {
 
    render() {
       const { name, type, label, allowblank, errors, children } = this.props;
-      this.name = name; this.errors = errors;
+      this.name = name; this.errors = errors || {};
       return (
          <div className={`input-wrapper ${name}`}>
             <label htmlFor={name}>
@@ -33,7 +33,7 @@ class Input extends Component {
    };
 
    componentDidUpdate() {
-      let gotError = this.errors[this.name];
+      let gotError = this.errors[this.name] || false;
       if (gotError && !this.state.error) {
          this.setState({ error: true });
          setTimeout(() => {

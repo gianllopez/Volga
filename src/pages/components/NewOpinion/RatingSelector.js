@@ -3,16 +3,15 @@ import './RatingSelector.css';
 
 class RatingSelector extends Component {
 
-   state = { currentRating: 5 };
+   state = { rating: 5 };
 
    inputChanger = ({ target }) => {
-      let ratinput = document.querySelector('input[name="rating"]'),
-         { action } = target.dataset,
-         value = parseFloat(ratinput.value);
-      ratinput.value = action === 'increment' ?
-         value + 0.5 :
-         value - 0.5;
-      this.setState({ currentRating: parseFloat(ratinput.value) })
+      let { action } = target.dataset, { rating } = this.state
+      this.setState({
+         rating: action === 'increment' ?
+            rating + 0.5 :
+            rating - 0.5
+      }, () => this.props.onChange({ target: { name: 'rating', value: this.state.rating } }));
    };
 
    render() {
@@ -24,29 +23,19 @@ class RatingSelector extends Component {
                data-action="decrement"
                onClick={this.inputChanger} />
             <div id="rating-view">
-               {this.state.currentRating}
+               {this.state.rating}
             </div>
             <button
                type="button"
                className="far fa-plus-square"
                data-action="increment"
                onClick={this.inputChanger} />
-            <input
-               onChange={this.props.onChange}
-               value={this.state.currentRating}
-               name="rating"
-               type="range"
-               min="0"
-               max="5"
-               step="0.5"
-               hidden
-            />
          </div>
       );
    };
 
    componentDidUpdate() {
-      let rating = parseFloat(this.state.currentRating), bgColor = '';
+      let rating = parseFloat(this.state.rating), bgColor = '';
       if (rating < 3.0) {
          bgColor = '#FF5722';
       } if (rating >= 3.0 && rating <= 4.0) {
