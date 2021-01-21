@@ -1,12 +1,13 @@
 #rating-selector {
    display: flex;
-   margin: 10px 0;
+   margin-bottom: 10px;
 }
 
 #rating-selector button {
    font-size: 2em;
-   margin: 0 7px;
+   margin: 0 10px;
    outline: none;
+   border: none;
 }
 
 #rating-view {

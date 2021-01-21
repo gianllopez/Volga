@@ -5,7 +5,6 @@ import './styles/NewOpinion.css';
 
 class NewOpinion extends Component {
 
-
    state = {
       data: {
          rating: 5,
@@ -13,6 +12,12 @@ class NewOpinion extends Component {
          clientemail: '',
       },
       loading: false
+   };
+
+   changeHandler = ({ target }) => {
+      this.setState({
+         [target.name]: target.value
+      });
    };
 
    render() {
@@ -25,7 +30,10 @@ class NewOpinion extends Component {
                <h2>Opina sobre *shop*</h2>
                <p>Déjalo saber que piensas</p>
             </div>
-            <RatingSelector />
+            <h3>
+               ¿Cómo calificarías el servicio de *username*?
+            </h3>
+            <RatingSelector onChange={this.changeHandler} />
             <Input
                label="Nombre"
                name="clientname"
