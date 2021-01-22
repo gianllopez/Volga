@@ -7,7 +7,7 @@ class NewOpinion extends Component {
 
    state = {
       data: {
-         rating: 5,
+         rating: 10,
          clientname: '',
          clientemail: '',
       },
@@ -33,12 +33,10 @@ class NewOpinion extends Component {
                <h2>Opina sobre *shop*</h2>
                <p>Déjalo saber que piensas</p>
             </div>
-            <h3>
-               ¿Cómo calificarías su servicio?
-            </h3>
+            <h3>¿Cómo calificarías su servicio?</h3>
             <RatingSelector onChange={this.changeHandler} />
             <Input
-               label="Nombre"
+               label="Tu nombre"
                name="clientname"
                onChange={this.changeHandler}
             />

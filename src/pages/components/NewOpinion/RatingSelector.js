@@ -15,9 +15,9 @@ class RatingSelector extends Component {
          }, () => {
             let { rating } = this.state;
             if (rating < 0 || rating > 10) {
-               this.setState({ rating: rating < 0 ? 0 : rating > 10 && 10 });
+               this.setState({ rating: rating < 0 ? 0 : rating > 10 && 10 })
             };
-            this.props.onChange({ target: { name: 'rating', value: this.state.rating } });
+            this.props.onChange({ target: { name: 'rating', value: this.state.rating } })
          });
       };
    };

@@ -1,6 +1,6 @@
 #rating-selector {
    display: flex;
-   margin-bottom: 10px;
+   justify-content: center;
 }
 
 #rating-selector button {
