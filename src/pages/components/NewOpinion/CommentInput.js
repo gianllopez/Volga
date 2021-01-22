@@ -4,13 +4,15 @@ import './styles/CommentInput.css';
 
 class CommentInput extends Component {
    render() {
+      let { name, length } = this.props;
       return (
-         <Input label="Comentario">
+         <Input label="Comentario" name={name}>
+            <p>{length}/125</p>
             <textarea
-               name="comment"
+               name={name}
                id="comment"
                placeholder="..."
-               maxLength="150"
+               maxLength="125"
                {...this.props}
             />
          </Input>

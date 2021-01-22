@@ -25,7 +25,7 @@
 #opinion-form .input-wrapper {
    width: 85vw;
    max-width: 350px;
-   margin-bottom: 5px;
+   margin-bottom: 7.5px;
 }
 
 #opinion-form .input-wrapper input[name="clientname"] {
@@ -43,4 +43,13 @@
 
 #opinion-form h3 {
    margin: 10px 0;
+}
+
+#opinion-form .comment {
+   position: relative;
+}
+
+.input-wrapper.comment p {
+   position: absolute;
+   right: 5px;
 }

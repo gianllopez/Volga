@@ -10,6 +10,7 @@ class NewOpinion extends Component {
          rating: 10,
          clientname: '',
          clientemail: '',
+         comment: ''
       },
       loading: false
    };
@@ -53,7 +54,11 @@ class NewOpinion extends Component {
                type="email"
                onChange={this.changeHandler}
             />
-            <CommentInput onChange={this.changeHandler} />
+            <CommentInput
+               name="comment"
+               length={this.state.data.comment.length}
+               onChange={this.changeHandler}
+            />
          </form>
       );
    };
