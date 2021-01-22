@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './RatingSelector.css';
+import './styles/RatingSelector.css';
 
 class RatingSelector extends Component {
 

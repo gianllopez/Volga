@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { RatingSelector, Input } from './components';
+import { RatingSelector, Input, CommentInput } from './components';
 import opsheader from '../assets/NewOpinion/users-opinions.svg';
 import './styles/NewOpinion.css';
 
@@ -53,15 +53,7 @@ class NewOpinion extends Component {
                type="email"
                onChange={this.changeHandler}
             />
-            <div id="op-comment">
-               <label htmlFor="comment">Comentario: <p>*</p> </label>
-               <textarea
-                  name="comment"
-                  placeholder="..."
-                  maxLength="150"
-                  onChange={this.changeHandler}
-               />
-            </div>
+            <CommentInput onChange={this.changeHandler} />
          </form>
       );
    };

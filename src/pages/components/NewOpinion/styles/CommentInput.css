@@ -1,0 +1,14 @@
+#comment {
+   padding: 7.5px;
+   font-size: 1.1em;
+   width: calc(100% - 19px);
+   height: 85px;
+   resize: none;
+   border: 2px solid black;
+   border-radius: 5px;
+   outline: none;
+}
+
+#comment::placeholder {
+   text-align: center;
+}
