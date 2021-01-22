@@ -3,6 +3,14 @@ import { Input } from '..';
 import './styles/CommentInput.css';
 
 class CommentInput extends Component {
+
+   maxLengthHandler = ({ target }) => {
+      let { value } = target;
+      if (value.length >= 125) {
+         target.value = value.substring(0, 124);
+      };
+   };
+
    render() {
       let { name, length } = this.props;
       return (
@@ -12,7 +20,7 @@ class CommentInput extends Component {
                name={name}
                id="comment"
                placeholder="..."
-               maxLength="125"
+               onKeyDown={this.maxLengthHandler}
                {...this.props}
             />
          </Input>
