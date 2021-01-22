@@ -34,7 +34,7 @@ class NewOpinion extends Component {
                <p>Déjalo saber que piensas</p>
             </div>
             <h3>
-               ¿Cómo calificarías el servicio de *username*?
+               ¿Cómo calificarías su servicio?
             </h3>
             <RatingSelector onChange={this.changeHandler} />
             <Input
