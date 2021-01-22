@@ -48,7 +48,12 @@ class NewOpinion extends Component {
             />
             <div id="op-comment">
                <label htmlFor="comment">Comentario: <p>*</p> </label>
-               <textarea name="comment" placeholder="..." maxLength="150" />
+               <textarea
+                  name="comment"
+                  placeholder="..."
+                  maxLength="150"
+                  onChange={this.changeHandler}
+               />
             </div>
          </form>
       );

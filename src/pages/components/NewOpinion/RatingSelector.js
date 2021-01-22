@@ -7,6 +7,7 @@ class RatingSelector extends Component {
 
    inputChanger = ({ target }) => {
       let { action } = target.dataset, { rating } = this.state;
+      const onChange = () => this.props.onChange({ target: { name: 'rating', value: this.state.rating } });
       if (rating >= 0 && rating <= 10) {
          this.setState({
             rating: action === 'increment' ?
@@ -15,9 +16,9 @@ class RatingSelector extends Component {
          }, () => {
             let { rating } = this.state;
             if (rating < 0 || rating > 10) {
-               this.setState({ rating: rating < 0 ? 0 : rating > 10 && 10 })
+               this.setState({ rating: rating < 0 ? 0 : rating > 10 && 10 }, onChange);
             };
-            this.props.onChange({ target: { name: 'rating', value: this.state.rating } })
+            onChange();
          });
       };
    };
