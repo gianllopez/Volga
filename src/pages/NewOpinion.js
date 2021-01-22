@@ -15,10 +15,17 @@ class NewOpinion extends Component {
    };
 
    changeHandler = ({ target }) => {
+      let { name, value } = target;
+      if (name === 'clientname') {
+         const regex = /(?!.*\s{2})^[a-zA-ZÀ-úñÑ\s]+$/
+         if (!regex.test(value)) {
+            target.value = value.substring(0, (value.length - 1));
+         };
+      };
       this.setState({
          data: {
             ...this.state.data,
-            [target.name]: target.value
+            [name]: target.value
          }
       });
    };

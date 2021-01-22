@@ -28,6 +28,10 @@
    margin-bottom: 5px;
 }
 
+#opinion-form .input-wrapper input[name="clientname"] {
+   text-transform: capitalize;
+}
+
 #opinion-form #rating-selector {
    width: calc(85vw - 20px);
    border: 2px solid;
