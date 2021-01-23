@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import {
    ShopStats,
    ProductCard,
-   UserOpinion
+   Opinion
 } from './components';
 import './styles/UserProfile.css';
 
@@ -38,11 +38,11 @@ class UserProfile extends Component {
             </section>
             <section id="clients-opinions" className="profile-section sub-section">
                <h3 className="section-title">Opiniones de clientes:</h3>
-               <UserOpinion />
-               <UserOpinion />
-               <UserOpinion />
-               <UserOpinion />
-               <UserOpinion />
+               <Opinion />
+               <Opinion />
+               <Opinion />
+               <Opinion />
+               <Opinion />
                <Link to="/">Ver todas</Link>
             </section>
          </div>

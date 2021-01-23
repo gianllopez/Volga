@@ -9,6 +9,6 @@ export { default as Login } from './Login';
 export { default as UserProfile } from './UserProfile';
 export { default as ProductPage } from './ProductPage';
 export { default as PostProduct } from './PostProduct';
-export { default as ShopOpinions } from './ShopOpinions';
+export { default as ClientsOpinions } from './ClientsOpinions';
 export { default as NewOpinion } from './NewOpinion';
 export { default as ShopContact } from './ShopContact';

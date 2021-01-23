@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import {
    Logup, ContactNetworks, UserProfilePicture, UserTags,
    Login, UserProfile, ProductPage, Home,
-   PostProduct, NewOpinion, ShopOpinions,
+   PostProduct, NewOpinion, ClientsOpinions,
    ShopContact
 } from './pages/';
 import { SomeRoutesLayout } from './pages/components';
@@ -23,7 +23,7 @@ ReactDOM.render(
             <Route exact path='/users/:username' component={UserProfile} />
             <Route exact path='/:shop/products/new' component={PostProduct} />
             <Route exact path='/:shop/catalog/:product' component={ProductPage} />
-            <Route exact path='/:shop/opinions' component={ShopOpinions} />
+            <Route exact path='/:shop/opinions' component={ClientsOpinions} />
             <Route exact path='/:username/opinions/new' component={NewOpinion} /> {/* Ready, por revisar si hay código que resumir... */}
             <Route exact path='/:shop/contact' component={ShopContact} />
          </SomeRoutesLayout>

@@ -11,7 +11,7 @@ export { default as TagBox } from './UserTags/TagBox';
 export { default as ContactNetworkInput } from './ContactNetworks/ContactNetworkInput';
 export { default as ShopStats } from './UserProfile/ShopStats';
 export { default as ProductCard } from './UserProfile/ProductCard';
-export { default as UserOpinion } from './UserProfile/UserOpinion';
+export { default as Opinion } from './ClientsOpinions/Opinion';
 export { default as NavBar } from './common/NavBar';
 export { default as ShopProduct } from './Home/ShopProduct';
 export { default as FavButton } from './common/FavButton';
