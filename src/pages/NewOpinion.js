@@ -58,28 +58,30 @@ class NewOpinion extends Component {
                <h2>Opina sobre *shop*</h2>
                <p>Déjalo saber que piensas</p>
             </div>
-            <h3>¿Cómo calificarías su servicio?</h3>
-            <RatingSelector onChange={this.changeHandler} />
-            <Input
-               label="Tu nombre"
-               name="client"
-               errors={this.state.errors}
-               onChange={this.changeHandler}
-            />
-            <Input
-               label="Tu correo"
-               name="email"
-               type="email"
-               errors={this.state.errors}
-               onChange={this.changeHandler}
-            />
-            <CommentInput
-               label="Tu opinión"
-               name="comment"
-               errors={this.state.errors}
-               onChange={this.changeHandler}
-            />
-            <ButtonLoader isloading={this.state.loading} />
+            <div id="opinion-entries">
+               <h3>¿Cómo calificarías su servicio?</h3>
+               <RatingSelector onChange={this.changeHandler} />
+               <Input
+                  label="Tu nombre"
+                  name="client"
+                  errors={this.state.errors}
+                  onChange={this.changeHandler}
+               />
+               <Input
+                  label="Tu correo"
+                  name="email"
+                  type="email"
+                  errors={this.state.errors}
+                  onChange={this.changeHandler}
+               />
+               <CommentInput
+                  label="Tu opinión"
+                  name="comment"
+                  errors={this.state.errors}
+                  onChange={this.changeHandler}
+               />
+               <ButtonLoader isloading={this.state.loading} />
+            </div>
          </form>
       );
    };

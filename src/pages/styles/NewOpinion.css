@@ -7,9 +7,9 @@
 }
 
 #op-header {
-   display: inherit;
-   flex-direction: inherit;
-   align-items: inherit;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
    width: 80vw;
    max-width: 350px;
 }
@@ -43,6 +43,7 @@
 
 #opinion-form h3 {
    margin: 10px 0;
+   text-align: center;
 }
 
 #opinion-form .comment {
@@ -56,4 +57,23 @@
 
 #opinion-form .btnloader-wrapper {
    margin-top: 5px;
+}
+
+@media (min-width: 768px) {
+   #opinion-form {
+      display: grid;
+      justify-content: center;
+      grid-template-columns: min-content min-content;
+      padding-top: 135px;
+      /* position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); */
+   }
+   #opinion-entries {
+      display: inherit;
+   }
+   #opinion-entries .btnloader-wrapper {
+      margin: 5px auto 0 auto;
+   }
 }

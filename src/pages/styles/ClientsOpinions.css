@@ -12,7 +12,6 @@
    display: flex;
    flex-wrap: wrap;
    justify-content: center;
-   max-width: 775px;
    margin: 10px auto;
 }
 

@@ -23,7 +23,7 @@ ReactDOM.render(
             <Route exact path='/users/:username' component={UserProfile} />
             <Route exact path='/:shop/products/new' component={PostProduct} />
             <Route exact path='/:shop/catalog/:product' component={ProductPage} />
-            <Route exact path='/:shop/opinions' component={ClientsOpinions} />
+            <Route exact path='/:shop/opinions' component={ClientsOpinions} /> {/* Ready, por revisar si hay código que resumir... */}
             <Route exact path='/:username/opinions/new' component={NewOpinion} /> {/* Ready, por revisar si hay código que resumir... */}
             <Route exact path='/:shop/contact' component={ShopContact} />
          </SomeRoutesLayout>
