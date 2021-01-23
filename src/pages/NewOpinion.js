@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { RatingSelector, Input, CommentInput, ButtonLoader } from './components';
 import api from '../utils/api';
+import { noBlankValidator } from '../utils/validators';
 import opsheader from '../assets/NewOpinion/users-opinions.svg';
 import './styles/NewOpinion.css';
 
@@ -20,7 +21,7 @@ class NewOpinion extends Component {
 
    changeHandler = ({ target }) => {
       let { name, value } = target;
-      if (name === 'clientname') {
+      if (name === 'client') {
          const regex = /(?!.*\s{2})^[a-zA-ZÀ-úñÑ\s]+$/
          if (!regex.test(value)) {
             target.value = value.substring(0, (value.length - 1));
@@ -36,12 +37,15 @@ class NewOpinion extends Component {
 
    submitHandler = event => {
       event.preventDefault();
-      this.setState({ loading: true });
-      api.post('/opinions', this.state.data)
-         .then(() => console.log('SUCCESS'))
-         .catch(({ response }) => {
-            this.setState({ errors: response.data });
-         });
+      let { isValid, errors } = noBlankValidator(this.state.data);
+      if (isValid) {
+         this.setState({ loading: true });
+         api.post('/opinions', this.state.data)
+            .then(() => console.log('SUCCESS'))
+            .catch(({ response }) => this.setState({ loading: false, errors: response.data }));
+      } else {
+         this.setState({ errors });
+      };
    };
 
    render() {

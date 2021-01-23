@@ -28,7 +28,7 @@
    margin-bottom: 7.5px;
 }
 
-#opinion-form .input-wrapper input[name="clientname"] {
+#opinion-form .input-wrapper input[name="client"] {
    text-transform: capitalize;
 }
 
@@ -52,4 +52,8 @@
 .input-wrapper.comment p {
    position: absolute;
    right: 5px;
+}
+
+#opinion-form .btnloader-wrapper {
+   margin-top: 5px;
 }
