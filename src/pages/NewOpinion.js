@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { RatingSelector, Input, CommentInput } from './components';
+import { RatingSelector, Input, CommentInput, ButtonLoader } from './components';
+import api from '../utils/api';
 import opsheader from '../assets/NewOpinion/users-opinions.svg';
 import './styles/NewOpinion.css';
 
@@ -7,12 +8,14 @@ class NewOpinion extends Component {
 
    state = {
       data: {
+         user: this.props.match.params['username'],
          rating: 10,
-         clientname: '',
-         clientemail: '',
+         client: '',
+         email: '',
          comment: ''
       },
-      loading: false
+      loading: false,
+      errors: {}
    };
 
    changeHandler = ({ target }) => {
@@ -31,9 +34,19 @@ class NewOpinion extends Component {
       });
    };
 
+   submitHandler = event => {
+      event.preventDefault();
+      this.setState({ loading: true });
+      api.post('/opinions', this.state.data)
+         .then(() => console.log('SUCCESS'))
+         .catch(({ response }) => {
+            this.setState({ errors: response.data });
+         });
+   };
+
    render() {
       return (
-         <form id="opinion-form">
+         <form id="opinion-form" onSubmit={this.submitHandler}>
             <div id="op-header">
                <figure>
                   <img src={opsheader} alt="opsheader-icon" />
@@ -45,20 +58,24 @@ class NewOpinion extends Component {
             <RatingSelector onChange={this.changeHandler} />
             <Input
                label="Tu nombre"
-               name="clientname"
+               name="client"
+               errors={this.state.errors}
                onChange={this.changeHandler}
             />
             <Input
-               label="Correo"
-               name="clientemail"
+               label="Tu correo"
+               name="email"
                type="email"
+               errors={this.state.errors}
                onChange={this.changeHandler}
             />
             <CommentInput
+               label="Tu opinión"
                name="comment"
-               length={this.state.data.comment.length}
+               errors={this.state.errors}
                onChange={this.changeHandler}
             />
+            <ButtonLoader isloading={this.state.loading} />
          </form>
       );
    };
