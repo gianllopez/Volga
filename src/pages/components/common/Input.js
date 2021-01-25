@@ -41,12 +41,12 @@ class Input extends Component {
                .style.transform = 'initial';
          }, 1);
       };
-   };
-
-   componentDidMount() {
-      if (this.name === 'foundation') {
-         document.querySelector(`.${this.name} input[type="date"]`)
-            .valueAsDate = new Date();
+      let { regex } = this.props;
+      if (regex) {
+         const input = document.querySelector(`input#${this.name}`), { value } = input;
+         if (!regex.test(value)) {
+            input.value = value.substring(0, value.length - 1);
+         };
       };
    };
 

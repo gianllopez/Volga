@@ -21,20 +21,10 @@ class Logup extends Component {
    };
 
    changeHandler = ({ target }) => {
-      let { name, value } = target;
-      const regsexs = {
-         name: /(?!.*\s{2})^[a-zA-ZÀ-úñÑ\s]+$/,
-         username: /^[a-z0-9]*$/
-      };
-      if (name === 'username' || name === 'name') {
-         if (!regsexs[name].test(value)) {
-            target.value = value.substring(0, (value.length - 1));
-         };
-      };
       this.setState({
          data: {
             ...this.state.data,
-            [name]: target.value
+            [target.name]: target.value
          }
       });
    };
@@ -88,11 +78,13 @@ class Logup extends Component {
                      label="Nombre completo"
                      name="name"
                      maxLength="65"
+                     regex={/(?!.*\s{2})^[a-zA-ZÀ-úñÑ\s]+$/}
                   />
                   <LogupInput
                      label="Usuario(a)"
                      name="username"
                      maxLength="25"
+                     regex={/^[a-z0-9]*$/}
                   />
                   <LogupInput
                      label="País"

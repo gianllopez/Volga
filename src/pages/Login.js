@@ -51,6 +51,7 @@ class Login extends Component {
                   name="username"
                   onChange={this.changeHandler}
                   errors={this.state.errors}
+                  regex={/^[a-z0-9]*$/}
                />
                <Input
                   label="Contraseña"
