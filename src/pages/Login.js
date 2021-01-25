@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { noBlankValidator } from '../utils/validators';
+import api from '../utils/api';
 import { Input, ButtonLoader } from './components/';
 import loginhero from '../assets/Login/login-hero.svg';
 import './styles/Login.css';
-import { noBlankValidator } from '../utils/validators';
 
 class Login extends Component {
 
@@ -29,7 +30,13 @@ class Login extends Component {
       event.preventDefault();
       let { isValid, errors } = noBlankValidator(this.state.data);
       if (isValid) {
-         console.log('Make fetch');
+         this.setState({ loading: true });
+         api.post('/login', this.state.data)
+            .then(({ data }) => {
+               localStorage.setItem('user-token', data['user-token']);
+               this.props.history.push('/');
+            })
+            .catch(errors => this.setState({ errors: errors.response.data }));
       } else {
          this.setState({ errors });
       };
