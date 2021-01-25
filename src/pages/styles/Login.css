@@ -11,13 +11,15 @@
 
 #login-header img {
    width: 55vw;
-   max-width: 225px;
+   max-width: 245px;
 }
 
 #login-entries {
    width: 90vw;
    max-width: 300px;
    margin: 10px auto;
+   display: flex;
+   flex-direction: column;
 }
 
 #login-entries .input-wrapper {
@@ -31,20 +33,12 @@
    margin-top: 5px;
 }
 
-#login-form button {
-   align-self: center;
-   width: 100px;
-   height: 35px;
-   border: none;
-   border-radius: 4px;
-   background-color: #0069d9;
-   color: white;
-   font-size: 1.1em;
-   outline: none;
+#login-entries .btnloader-wrapper {
+   margin: 5px auto;
 }
 
 @media screen and (min-width:768px) {
-   
+
    #login-form {
       padding: 0;
       display: flex;
