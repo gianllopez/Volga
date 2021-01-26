@@ -15,7 +15,6 @@ function NavBar(props) {
          .toggle('show-links');
    };
 
-
    return (
       <div id="navbar-wrapper">
          <BurgerMenu clickCallback={linksAnimations} />

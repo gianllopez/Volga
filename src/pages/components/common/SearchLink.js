@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import swal from '@sweetalert/with-react';
 import './styles/SearchLink.css';
 
 class SearchLink extends Component {
 
-   state = { blankerror: false };
+   state = { blankerror: false, redirect: false };
 
    showSearchModal = () => (
       swal({
          title: '¿Que deseas buscar?',
-         buttons: ['Cancelar', {
-            text: 'Buscar',
-            closeModal: false
-         }],
+         buttons: ['Cancelar', 'Buscar'],
          content: (
             <div>
                <input placeholder="..." id="search-input" />
@@ -30,7 +28,9 @@ class SearchLink extends Component {
       this.showSearchModal().then(search => {
          if (search) {
             let { value } = document.querySelector('input#search-input');
-            if (!value) {
+            if (value) {
+               this.setState({ redirect: true });
+            } else {
                this.setState({ blankerror: true }, () => this.searchRequest());
             };
             console.log(value);
@@ -38,7 +38,9 @@ class SearchLink extends Component {
       });
    };
 
-   render = () => <a onClick={this.searchRequest}>Buscar</a>;
+   render = () => this.state.redirect ?
+      <Redirect to="search/results/" /> :
+      <a onClick={this.searchRequest}>Buscar</a>;
 
 };
 
