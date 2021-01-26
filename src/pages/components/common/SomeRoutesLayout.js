@@ -3,27 +3,22 @@ import { NavBar, Footer } from '..'
 
 class SomeRoutesLayout extends Component {
 
-   state = {};
+   state = { footer: true };
 
    render() {
       return (
          <Fragment>
             <NavBar />
             { this.props.children}
-            {this.state.footer &&
-               <Footer />
-            }
+            {this.state.footer && <Footer />}
          </Fragment>
       );
    };
 
    componentDidMount() {
-      const noKeys = ['logup', 'login', 'catalog'];
-      const path = this.props.location.pathname;
-      for (let key of noKeys) {
-         if (!path.includes(key)) {
-            this.setState({ footer: false });
-         }
+      const path = this.props.location.pathname, ppregex = /.*\/catalog\/.+/;
+      if (ppregex.test(path)) {
+         this.setState({ footer: false });
       };
    };
 

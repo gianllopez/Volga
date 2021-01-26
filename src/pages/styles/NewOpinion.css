@@ -22,6 +22,12 @@
    width: 100%;
 }
 
+#opinion-entries {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
 #opinion-form .input-wrapper {
    width: 85vw;
    max-width: 350px;
@@ -69,11 +75,5 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%); */
-   }
-   #opinion-entries {
-      display: inherit;
-   }
-   #opinion-entries .btnloader-wrapper {
-      margin: 5px auto 0 auto;
    }
 }
