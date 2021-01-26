@@ -10,14 +10,15 @@ import {
 import { SomeRoutesLayout } from './pages/components';
 import './index.css';
 
-const ProtectedRoute = props => {
-   let isAuthenticated = localStorage.getItem('user-token') || false;
-   return (
-      isAuthenticated ?
-         <Route {...props} /> :
-         <Redirect to="/login" />
-   );
-};
+const isAuthenticated = () => localStorage.getItem('user-token') || false;
+
+const ProtectedRoute = props => (
+   isAuthenticated() ?
+      <Route {...props} /> :
+      <Redirect to="/login" />
+);
+
+const LogForms = ({ children }) => isAuthenticated() ? <Redirect to="/" /> : children;
 
 ReactDOM.render(
    <BrowserRouter>
@@ -27,14 +28,17 @@ ReactDOM.render(
          <ProtectedRoute exact path='/:username/profile-picture' component={UserProfilePicture} /> {/* Ready, por revisar si hay código que resumir... */}
          <SomeRoutesLayout>
             <Route exact path='/' component={Home} />
-            <Route exact path='/logup' component={Logup} /> {/* Ready, por revisar si hay código que resumir... */}
-            <Route exact path='/login' component={Login} />
+            <LogForms>
+               <Route exact path='/logup' component={Logup} /> {/* Ready, por revisar si hay código que resumir... */}
+               <Route exact path='/login' component={Login} />
+            </LogForms>
             <Route exact path='/users/:username' component={UserProfile} />
             <ProtectedRoute exact path='/:shop/products/new' component={PostProduct} />
             <Route exact path='/:username/catalog/:product' component={ProductPage} />
             <Route exact path='/:username/opinions' component={ClientsOpinions} /> {/* Ready, por revisar si hay código que resumir... */}
             <ProtectedRoute exact path='/:username/opinions/new' component={NewOpinion} /> {/* Ready, por revisar si hay código que resumir... */}
             <Route exact path='/:shop/contact' component={ShopContact} />
+
          </SomeRoutesLayout>
       </Switch>
    </BrowserRouter>,
