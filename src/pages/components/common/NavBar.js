@@ -2,9 +2,12 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import volgalogo from '../../../assets/common/logo.svg';
 import BurgerMenu from './BurgerMenu';
+import SearchLink from './SearchLink';
 import './styles/NavBar.css';
 
 function NavBar(props) {
+
+   let isAuthenticated = localStorage.getItem('user-token') || false;
 
    const linksAnimations = () => {
       document.getElementById('navbar-links')
@@ -12,7 +15,6 @@ function NavBar(props) {
          .toggle('show-links');
    };
 
-   let isAuthenticated = localStorage.getItem('user-token') || false;
 
    return (
       <div id="navbar-wrapper">
@@ -20,9 +22,9 @@ function NavBar(props) {
          <figure>
             <img src={volgalogo} alt="volga-logo" />
          </figure>
-         <ul id="navbar-links">
+         <div id="navbar-links">
             <Link to='/'>Inicio</Link>
-            <Link to='/shops/search'>Buscar</Link>
+            <SearchLink />
             <Link to='/shops/explore'>Explorar</Link>
             {isAuthenticated ?
                <Link to='/users/me'>Mi perfil</Link> :
@@ -31,7 +33,7 @@ function NavBar(props) {
                   <Link to='/login'>Iniciar sesión</Link>
                </Fragment>
             }
-         </ul>
+         </div>
       </div>
    );
 };
