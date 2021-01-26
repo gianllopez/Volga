@@ -12,16 +12,11 @@ import './index.css';
 
 const isAuthenticated = () => localStorage.getItem('user-token') || false;
 
-// const ProtectedRoute = props => (
-//    isAuthenticated() ?
-//       <Route {...props} /> :
-//       <Redirect to="/login" />
-// );
-
-const ProtectedRoute = ({ component: Component, ...rest }) => (
-   <Route {...rest} render={(props) => (
-      isAuthenticated() === true ?
-         <Component {...props} /> : <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
+const ProtectedRoute = ({ component: Component, ...routeprops }) => (
+   <Route {...routeprops} render={props => (
+      isAuthenticated() ?
+         <Component {...props} /> :
+         <Redirect to="/login" />
    )} />
 );
 

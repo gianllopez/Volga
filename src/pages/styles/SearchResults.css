@@ -1,0 +1,14 @@
+#search-results-page {
+   padding-top: 75px;
+}
+
+#srp-header {
+   text-align: center;
+   margin: 15px 0;
+}
+
+#srp-results {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+}

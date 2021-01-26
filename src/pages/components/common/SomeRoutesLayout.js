@@ -8,15 +8,15 @@ class SomeRoutesLayout extends Component {
    render() {
       return (
          <Fragment>
-            <NavBar/>
-            { this.props.children }
-            {this.state.footer && 
-               <Footer/>
+            <NavBar />
+            { this.props.children}
+            {this.state.footer &&
+               <Footer />
             }
          </Fragment>
       );
    };
-   
+
    componentDidMount() {
       const noKeys = ['logup', 'login', 'catalog'];
       const path = this.props.location.pathname;
