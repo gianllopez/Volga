@@ -40,6 +40,7 @@ ReactDOM.render(
             <ProtectedRoute exact path='/:username/opinions/new' component={NewOpinion} /> {/* Ready, por revisar si hay código que resumir... */}
             <Route exact path='/:shop/contact' component={ShopContact} />
             <Route exact path='/search/results' component={SearchResults} />
+            <Route render={() => <Redirect to="/" />} />
          </MainLayout>
       </Switch>
    </BrowserRouter >, document.getElementById('root')
