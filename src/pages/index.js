@@ -12,3 +12,4 @@ export { default as ClientsOpinions } from './ClientsOpinions';
 export { default as NewOpinion } from './NewOpinion';
 export { default as ShopContact } from './ShopContact';
 export { default as SearchResults } from './SearchResults';
+export { default as NotFound } from './NotFound';

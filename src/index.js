@@ -5,7 +5,7 @@ import {
    Logup, ContactNetworks, UserProfilePicture, UserTags,
    Login, UserProfile, ProductPage, Home,
    PostProduct, NewOpinion, ClientsOpinions,
-   ShopContact, SearchResults
+   ShopContact, SearchResults, NotFound
 } from './pages/';
 import { MainLayout } from './pages/components/';
 import './index.css';
@@ -40,7 +40,7 @@ ReactDOM.render(
             <ProtectedRoute exact path="/:username/opinions/new" component={NewOpinion} /> {/* Ready, por revisar si hay código que resumir... */}
             <Route exact path="/:shop/contact" component={ShopContact} />
             <Route exact path="/search/results" component={SearchResults} />
-            <Route render={() => <Redirect to="/" />} />
+            <Route component={NotFound} />
          </MainLayout>
       </Switch>
    </BrowserRouter >, document.getElementById('root'));
