@@ -16,18 +16,17 @@ class MainLayout extends Component {
    };
 
    componentDidMount() {
-      const { nofooter, location } = this.props,
-         path = location.pathname;
-      if (nofooter.includes(path) && this.state.footer) {
-         this.setState({ footer: false });
-      };
-      if (!nofooter.includes(path) && !this.state.footer) {
-         this.setState({ footer: true });
-      };
+      this.componentDidUpdate()
    };
 
    componentDidUpdate() {
-      this.componentDidMount()
+      const { nofooter, location } = this.props, path = location.pathname;
+      let hasFooter = !nofooter.includes(path), { footer } = this.state;
+      if (!hasFooter && footer) {
+         this.setState({ footer: false });
+      } else if (hasFooter && !footer) {
+         this.setState({ footer: true });
+      };
    };
 
 };
