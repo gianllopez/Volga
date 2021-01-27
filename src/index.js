@@ -26,7 +26,7 @@ ReactDOM.render(
          <ProtectedRoute exact path='/:username/contact-networks' component={ContactNetworks} /> {/* Ready, por revisar si hay código que resumir... */}
          <ProtectedRoute exact path='/:username/tags' component={UserTags} /> {/* Ready, por revisar si hay código que resumir... */}
          <ProtectedRoute exact path='/:username/profile-picture' component={UserProfilePicture} /> {/* Ready, por revisar si hay código que resumir... */}
-         <MainLayout>
+         <MainLayout nofooter={['/login']}>
             <Route exact path='/' component={Home} />
             <Route exact path='/logup' component={Logup} /> {/* Ready, por revisar si hay código que resumir... */}
             <Route exact path='/login' component={Login} />
