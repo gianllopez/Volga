@@ -10,11 +10,11 @@ import {
 import { MainLayout } from './pages/components/';
 import './index.css';
 
-const isAuthenticated = () => localStorage.getItem('user-token') || false;
+const isAuthenticated = localStorage.getItem('user-token') ? true : false;
 
 const ProtectedRoute = ({ component: Component, ...routeprops }) => (
    <Route {...routeprops} render={props => (
-      isAuthenticated() ?
+      isAuthenticated ?
          <Component {...props} /> :
          <Redirect to="/login" />
    )} />
@@ -28,8 +28,11 @@ ReactDOM.render(
          <ProtectedRoute exact path='/:username/profile-picture' component={UserProfilePicture} /> {/* Ready, por revisar si hay código que resumir... */}
          <MainLayout nofooter={['/login']}>
             <Route exact path='/' component={Home} />
-            <Route exact path='/logup' component={Logup} /> {/* Ready, por revisar si hay código que resumir... */}
-            <Route exact path='/login' component={Login} />
+            {!isAuthenticated ? (
+               <Fragment>
+                  <Route exact path='/logup' component={Logup} /> {/* Ready, por revisar si hay código que resumir... */}
+                  <Route exact path='/login' component={Login} />
+               </Fragment>) : <Redirect to="/" />}
             <Route exact path='/users/:username' component={UserProfile} />
             <Route exact path='/:username/catalog/:product' component={ProductPage} />
             <ProtectedRoute exact path='/:username/products/new' component={PostProduct} />
