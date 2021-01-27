@@ -47,8 +47,7 @@ class SearchLink extends Component {
       <Redirect to={{
          pathname: "/search/results/",
          state: { query: this.state.query }
-      }} /> :
-      < a onClick={this.searchRequest} > Buscar</a >;
+      }} /> : < a onClick={this.searchRequest}>Buscar</a>;
 
 };
 

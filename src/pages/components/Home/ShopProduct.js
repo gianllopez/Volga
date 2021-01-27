@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { FavButton } from '..';
 import './ShopProduct.css';
 
-class ShopProduct extends Component {   
-   
+class ShopProduct extends Component {
+
    state = {
       fav: false
    };
@@ -15,13 +16,17 @@ class ShopProduct extends Component {
       });
    };
 
-   redirectToPP = () => this.props.history.push('ovo/hoodie');
+   showProductNavigation = () => {
+      const product = this._reactInternalFiber.child.stateNode,
+         navigation = product.querySelector('.product-navigation');
+      navigation.classList.toggle('show-navigation');
+   };
 
    render() {
       return (
-         <div className={`product-wrapper ${this.props.shop}-product`} onClick={this.redirectToPP}>
+         <div className={`product-wrapper ${this.props.shop}-product`} onClick={this.showProductNavigation}>
             <div className="product-shop">
-            <img className="logo" src="https://i.pinimg.com/originals/77/b6/6f/77b66fa7469f75773d5eb443056f2f8f.jpg" alt="shop-logo"/>
+               <img className="logo" src="https://i.pinimg.com/originals/77/b6/6f/77b66fa7469f75773d5eb443056f2f8f.jpg" alt="shop-logo" />
                <div className="product-shop-info">
                   <h2>ovotheshop</h2>
                   <span>Drake lorem lorem</span>
@@ -40,6 +45,11 @@ class ShopProduct extends Component {
                success={this.state.fav}
                fetchCallback={this.favCallback}
             />
+            <div className="product-navigation">
+               <Link to="/login">
+                  <button>Ver producto</button>
+               </Link>
+            </div>
          </div>
       );
    };
