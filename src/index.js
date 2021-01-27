@@ -7,6 +7,7 @@ import {
    PostProduct, NewOpinion, ClientsOpinions,
    ShopContact, SearchResults
 } from './pages/';
+import { MainLayout } from './pages/components/';
 import './index.css';
 
 const isAuthenticated = () => localStorage.getItem('user-token') || false;
@@ -25,17 +26,18 @@ ReactDOM.render(
          <ProtectedRoute exact path='/:username/contact-networks' component={ContactNetworks} /> {/* Ready, por revisar si hay código que resumir... */}
          <ProtectedRoute exact path='/:username/tags' component={UserTags} /> {/* Ready, por revisar si hay código que resumir... */}
          <ProtectedRoute exact path='/:username/profile-picture' component={UserProfilePicture} /> {/* Ready, por revisar si hay código que resumir... */}
-         <Route exact path='/search/results' component={SearchResults} />
-         <Route exact path='/' component={Home} />
-         <Route exact path='/logup' component={Logup} /> {/* Ready, por revisar si hay código que resumir... */}
-         <Route exact path='/login' component={Login} />
-         <Route exact path='/users/:username' component={UserProfile} />
-         <ProtectedRoute exact path='/:username/products/new' component={PostProduct} />
-         <Route exact path='/:username/catalog/:product' component={ProductPage} />
-         <Route exact path='/:username/opinions' component={ClientsOpinions} /> {/* Ready, por revisar si hay código que resumir... */}
-         <ProtectedRoute exact path='/:username/opinions/new' component={NewOpinion} /> {/* Ready, por revisar si hay código que resumir... */}
-         <Route exact path='/:shop/contact' component={ShopContact} />
+         <MainLayout>
+            <Route exact path='/' component={Home} />
+            <Route exact path='/logup' component={Logup} /> {/* Ready, por revisar si hay código que resumir... */}
+            <Route exact path='/login' component={Login} />
+            <Route exact path='/users/:username' component={UserProfile} />
+            <Route exact path='/:username/catalog/:product' component={ProductPage} />
+            <ProtectedRoute exact path='/:username/products/new' component={PostProduct} />
+            <Route exact path='/:username/opinions' component={ClientsOpinions} /> {/* Ready, por revisar si hay código que resumir... */}
+            <ProtectedRoute exact path='/:username/opinions/new' component={NewOpinion} /> {/* Ready, por revisar si hay código que resumir... */}
+            <Route exact path='/:shop/contact' component={ShopContact} />
+            <Route exact path='/search/results' component={SearchResults} />
+         </MainLayout>
       </Switch>
-   </BrowserRouter >,
-   document.getElementById('root')
+   </BrowserRouter >, document.getElementById('root')
 );
