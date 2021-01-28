@@ -15,7 +15,7 @@ export { default as Opinion } from './ClientsOpinions/Opinion';
 export { default as NavBar } from './common/NavBar';
 export { default as ShopProduct } from './Home/ShopProduct';
 export { default as FavButton } from './common/FavButton';
-export { default as ImageUploaderButton } from './PostProduct/ImageUploaderButton';
+export { default as ImagesUploader } from './PostProduct/ImagesUploader';
 export { default as PriceInput } from './PostProduct/PriceInput';
 export { default as DescriptionInput } from './PostProduct/DescriptionInput';
 export { default as RatingSelector } from './NewOpinion/RatingSelector';

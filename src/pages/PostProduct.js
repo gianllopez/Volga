@@ -1,5 +1,5 @@
 import React, { Component, createContext } from 'react';
-import { ButtonLoader, DescriptionInput, ImageUploaderButton, Input, PriceInput } from './components/';
+import { ButtonLoader, DescriptionInput, ImagesUploader, Input, PriceInput } from './components/';
 import prodboxicon from '../assets/PostProduct/product-box.svg';
 import './styles/PostProduct.css';
 
@@ -12,15 +12,7 @@ class PostProduct extends Component {
    };
 
    changeHandler = ({ target }) => {
-      this.setState({
-         data: {
-            ...this.state.data,
-            pictures: {
-               ...this.state.data.pictures,
-               [target.dataset.index]: target.files[0]
-            }
-         }
-      });
+      debugger
    };
 
    render() {
@@ -31,18 +23,9 @@ class PostProduct extends Component {
                   <img src={prodboxicon} alt="product-box-icon" />
                </figure>
                <h2>Postea tu producto</h2>
+               <p>Procura que las fotos sean claras y la descripción explícita</p>
             </div>
-            <div id="ppp-images-uploader">
-               <span>
-                  Sube imágenes (hasta 4) de tu producto: <p>*</p>
-               </span>
-               <div>
-                  <ImageUploaderButton index="1" onChange={this.changeHandler} />
-                  <ImageUploaderButton index="2" onChange={this.changeHandler} />
-                  <ImageUploaderButton index="3" onChange={this.changeHandler} />
-                  <ImageUploaderButton index="4" onChange={this.changeHandler} />
-               </div>
-            </div>
+            <ImagesUploader />
             <div id="ppp-product-info">
                <Input
                   label="Producto"
@@ -57,8 +40,8 @@ class PostProduct extends Component {
                   label="Descripción"
                   name="description"
                />
-               <ButtonLoader isloading={false} />
             </div>
+            <ButtonLoader isloading={false} />
          </form>
       );
    };
