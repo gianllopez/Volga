@@ -9,7 +9,7 @@
    max-width: 350px;
 }
 
-#ppp-header, #ppp-photo-uploader {
+#ppp-header, #ppp-images-uploader {
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -23,17 +23,17 @@
    width: 100%;
 }
 
-#ppp-photo-uploader span {
+#ppp-images-uploader span {
    display: flex;
    justify-content: center;
 }
 
-#ppp-photo-uploader span p {
+#ppp-images-uploader span p {
    color: red;
    padding-left: 5px;
 }
 
-#ppp-photo-uploader div {
+#ppp-images-uploader div {
    display: flex;
    justify-content: center;
    flex-wrap: wrap;
@@ -64,7 +64,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
    }
-   #ppp-photo-uploader {
+   #ppp-images-uploader {
       grid-column: 1;
    }
    #ppp-product-info {

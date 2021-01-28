@@ -17,8 +17,8 @@
 }
 
 .imguploader img:first-child {
-   height: 90%;
-   width: 70%;
+   height: 90px;
+   width: 65%;
 }
 
 .imguploader > img {

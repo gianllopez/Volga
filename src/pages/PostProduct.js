@@ -1,10 +1,27 @@
-import React, { Component } from 'react';
+import React, { Component, createContext } from 'react';
 import { ButtonLoader, DescriptionInput, ImageUploaderButton, Input, PriceInput } from './components/';
-import uploadicon from '../assets/PostProduct/upload-icon.svg';
 import prodboxicon from '../assets/PostProduct/product-box.svg';
 import './styles/PostProduct.css';
 
 class PostProduct extends Component {
+
+   state = {
+      data: {
+         images: {}
+      }
+   };
+
+   changeHandler = ({ target }) => {
+      this.setState({
+         data: {
+            ...this.state.data,
+            pictures: {
+               ...this.state.data.pictures,
+               [target.dataset.index]: target.files[0]
+            }
+         }
+      });
+   };
 
    render() {
       return (
@@ -15,15 +32,15 @@ class PostProduct extends Component {
                </figure>
                <h2>Postea tu producto</h2>
             </div>
-            <div id="ppp-photo-uploader">
+            <div id="ppp-images-uploader">
                <span>
-                  Sube fotos (hasta 4) de tu producto: <p>*</p>
+                  Sube imágenes (hasta 4) de tu producto: <p>*</p>
                </span>
                <div>
-                  <ImageUploaderButton />
-                  <ImageUploaderButton />
-                  <ImageUploaderButton />
-                  <ImageUploaderButton />
+                  <ImageUploaderButton index="1" onChange={this.changeHandler} />
+                  <ImageUploaderButton index="2" onChange={this.changeHandler} />
+                  <ImageUploaderButton index="3" onChange={this.changeHandler} />
+                  <ImageUploaderButton index="4" onChange={this.changeHandler} />
                </div>
             </div>
             <div id="ppp-product-info">
