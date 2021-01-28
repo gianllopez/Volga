@@ -12,11 +12,13 @@
    display: flex;
    align-items: center;
    justify-content: center;
+   background: none;
+   outline: none;
 }
 
 .imguploader img:first-child {
    height: 90%;
-   width: 90%;
+   width: 70%;
 }
 
 .imguploader > img {

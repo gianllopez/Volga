@@ -1,71 +1,78 @@
-#post-product {
-   padding-top: calc(75px + 15px);
-   margin-bottom: 5vh;
+#post-product-page {
+   padding-top: 75px;
    display: flex;
    flex-direction: column;
    align-items: center;
 }
 
-#post-product figure {
-   width: 175px;
+#ppp-header {
+   max-width: 350px;
 }
 
-#post-product figure img {
+#ppp-header, #ppp-photo-uploader {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+#ppp-header figure {
+   width: 60%;
+}
+
+#ppp-header figure img {
    width: 100%;
 }
 
-#post-product-form {
-   width: 85vw;
-   max-width: 320px;
-   display: inherit;
-   flex-direction: column;
-}
-
-#post-product-form .input-wrapper,
-#post-product-form #product-description {
-   margin-top: 5px;
-}
-
-#product-description label {
-   font-size: 1.1em;
-   font-weight: bold;
-}
-
-#product-description textarea {
-   resize: none;
-   width: calc(100% - 14px);
-   border: 2px solid black;
-   border-radius: 3px;
-   height: 85px;
-   outline: none;
-   font-size: 1.05em;
-   padding: 5px;
-   margin-top: 2px;
-}
-
-#post-product-form > span {
+#ppp-photo-uploader span {
    display: flex;
    justify-content: center;
 }
 
-#post-product-form > span p {
-   margin-left: 5px;
+#ppp-photo-uploader span p {
    color: red;
+   padding-left: 5px;
 }
 
-#product-image-uploader {
-   height: 185px;
-   border: 2px solid black;
-   margin-top: 7px;
+#ppp-photo-uploader div {
    display: flex;
-   justify-content: space-evenly;
-   border-radius: 5px;
+   justify-content: center;
    flex-wrap: wrap;
-   padding: 10px;
+   max-width: 270px;
 }
 
-@media screen and (min-width:768px) {
-   #post-product {
-      padding-top: 135px;
+#ppp-product-info {
+   width: 90vw;
+   max-width: 350px;
+}
+
+#ppp-product-info > .input-wrapper,
+#ppp-product-info #price-input {
+   margin-bottom: 5px;
+}
+
+#post-product-page .btnloader-wrapper {
+   margin-top: 7px;
+}
+
+@media (min-width: 768px) {
+   #post-product-page {
+      display: grid;
+      justify-content: center;
+      grid-template-columns: max-content max-content;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+   }
+   #ppp-photo-uploader {
+      grid-column: 1;
+   }
+   #ppp-product-info {
+      grid-column: 2;
+      grid-row: 1/3;
+      display: inherit;
+   }
+   #post-product-page .btnloader-wrapper {
+      margin: 7px auto 0 auto;
    }
 }

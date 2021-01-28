@@ -17,6 +17,7 @@ export { default as ShopProduct } from './Home/ShopProduct';
 export { default as FavButton } from './common/FavButton';
 export { default as ImageUploaderButton } from './PostProduct/ImageUploaderButton';
 export { default as PriceInput } from './PostProduct/PriceInput';
+export { default as DescriptionInput } from './PostProduct/DescriptionInput';
 export { default as RatingSelector } from './NewOpinion/RatingSelector';
 export { default as CommentInput } from './NewOpinion/CommentInput';
 export { default as ContactLink } from './ShopContact/ContactLink';
