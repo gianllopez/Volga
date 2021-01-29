@@ -1,4 +1,4 @@
-import React, { Component, createContext } from 'react';
+import React, { Component } from 'react';
 import { ButtonLoader, DescriptionInput, ImagesUploader, Input, PriceInput } from './components/';
 import prodboxicon from '../assets/PostProduct/product-box.svg';
 import './styles/PostProduct.css';
@@ -12,7 +12,12 @@ class PostProduct extends Component {
    };
 
    changeHandler = ({ target }) => {
-      debugger
+      this.setState({
+         data: {
+            ...this.state.data,
+            [target.name]: target.value
+         }
+      })
    };
 
    render() {
@@ -25,20 +30,27 @@ class PostProduct extends Component {
                <h2>Postea tu producto</h2>
                <p>Procura que las fotos sean claras y la descripción explícita</p>
             </div>
-            <ImagesUploader />
+            <ImagesUploader
+               name="images"
+               onChange={this.changeHandler}
+               loaded={Object.values(this.state.data.images)}
+            />
             <div id="ppp-product-info">
                <Input
                   label="Producto"
                   name="product"
+                  onChange={this.changeHandler}
                />
                <PriceInput
                   label="Precio"
                   name="price"
                   type="number"
+                  onChange={this.changeHandler}
                />
                <DescriptionInput
                   label="Descripción"
                   name="description"
+                  onChange={this.changeHandler}
                />
             </div>
             <ButtonLoader isloading={false} />
