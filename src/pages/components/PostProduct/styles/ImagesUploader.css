@@ -31,7 +31,8 @@
    width: calc(90vw - 20px);
    max-width: 330px;
    /* height: 140px; */
-   background-color: #8080800f;
+   background-color: #f8f8f8;
+   z-index: 2;
    padding: 10px;
    border-radius: 5px;
    display: inherit;
@@ -40,35 +41,14 @@
    flex-wrap: wrap;
 }
 
-.success-load {
-   background-color: white;
-   padding: 10px;
-   border-radius: 5px;
-   text-align: center;
-   width: calc(100% - 20px);
-   margin: 5px 0;
-}
-
-.success-load > div {
-   overflow-x: scroll;
-}
-
-.success-load button {
-   font-size: 15px;
-   margin-top: 5px;
-   color: #2c87f0;
-   text-decoration: underline;
-   border: none;
-   outline: none;
-   background: none;
-}
-
-.img-on-modal {
-   width: 100%;
-   border-radius: 3px;
-}
-
 .show-img-modal .swal-title {
    font-size: 15px;
    overflow-wrap: break-word;
+}
+
+span#images-blank-error {
+   color: red;
+   align-self: flex-start;
+   transform: translateY(-100%);
+   transition: .7s transform;
 }

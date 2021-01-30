@@ -40,6 +40,8 @@ class Input extends Component {
             document.querySelector(`.${this.name}-error`)
                .style.transform = 'initial';
          }, 1);
+      } else if (!gotError && this.state.error) {
+         this.setState({ error: false });
       };
       let { regex } = this.props;
       if (regex) {

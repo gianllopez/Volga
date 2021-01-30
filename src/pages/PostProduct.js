@@ -2,13 +2,19 @@ import React, { Component } from 'react';
 import { ButtonLoader, DescriptionInput, ImagesUploader, Input, PriceInput } from './components/';
 import prodboxicon from '../assets/PostProduct/product-box.svg';
 import './styles/PostProduct.css';
+import { noBlankValidator } from '../utils/validators';
 
 class PostProduct extends Component {
 
    state = {
       data: {
-         images: {}
-      }
+         images: null,
+         product: '',
+         price: null, type: '',
+         description: ''
+      },
+      loading: false,
+      errors: {}
    };
 
    changeHandler = ({ target }) => {
@@ -20,9 +26,19 @@ class PostProduct extends Component {
       })
    };
 
+   submitHandler = event => {
+      event.preventDefault();
+      let { isValid, errors } = noBlankValidator(this.state.data, ['description', 'type']);
+      if (isValid) {
+
+      } else {
+         this.setState({ errors });
+      };
+   };
+
    render() {
       return (
-         <form id="post-product-page">
+         <form id="post-product-page" onSubmit={this.submitHandler}>
             <div id="ppp-header">
                <figure>
                   <img src={prodboxicon} alt="product-box-icon" />
@@ -33,27 +49,31 @@ class PostProduct extends Component {
             <ImagesUploader
                name="images"
                onChange={this.changeHandler}
-               loaded={Object.values(this.state.data.images)}
+               errors={this.state.errors}
+               loaded={Object.values(this.state.data.images || {})}
             />
             <div id="ppp-product-info">
                <Input
                   label="Producto"
                   name="product"
                   onChange={this.changeHandler}
+                  errors={this.state.errors}
                />
                <PriceInput
                   label="Precio"
                   name="price"
                   type="number"
                   onChange={this.changeHandler}
+                  errors={this.state.errors}
                />
                <DescriptionInput
                   label="Descripción"
                   name="description"
                   onChange={this.changeHandler}
+                  errors={this.state.errors}
                />
             </div>
-            <ButtonLoader isloading={false} />
+            <ButtonLoader isloading={this.state.loading} />
          </form>
       );
    };

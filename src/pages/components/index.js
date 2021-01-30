@@ -18,6 +18,7 @@ export { default as FavButton } from './common/FavButton';
 export { default as ImagesUploader } from './PostProduct/ImagesUploader';
 export { default as PriceInput } from './PostProduct/PriceInput';
 export { default as DescriptionInput } from './PostProduct/DescriptionInput';
+export { default as LoadedImage } from './PostProduct/LoadedImage';
 export { default as RatingSelector } from './NewOpinion/RatingSelector';
 export { default as CommentInput } from './NewOpinion/CommentInput';
 export { default as ContactLink } from './ShopContact/ContactLink';

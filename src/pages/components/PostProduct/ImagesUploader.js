@@ -1,76 +1,44 @@
-import swal from '@sweetalert/with-react';
-import React, { Component, Fragment } from 'react';
-import { CustomModal } from '..';
+import React, { Component } from 'react';
+import { LoadedImage } from '..';
+import { clickTrigger, areImages, rightLength } from './local-utils';
 import './styles/ImagesUploader.css';
 
 class ImagesUploader extends Component {
 
-   clickTrigger = () => document.querySelector('input#loader').click();
+   state = { error: false };
 
-   imagesValidation = ({ target }) => {
-      let validFormat = true;
-      for (let image of target.files) {
-         if (!['image/png', 'image/jpeg', 'image/jpg'].includes(image.type)) {
-            validFormat = false;
-         }
-      };
-      if (validFormat) {
-         if (target.files.length > 4) {
-            CustomModal((
-               <Fragment>
-                  <p>Límite de imágenes por producto excedido</p>
-                  <span>Sólo puedes cargar 4 imágenes</span>
-               </Fragment>
-            ), [false, 'Entendido']);
+   loadedValidation = ({ target }) => {
+
+      let { files } = target, valid = areImages(files);
+
+      if (valid) {
+         let validlength = rightLength(files.length);
+         if (!validlength) {
             target.value = '';
          };
       } else {
-         CustomModal((
-            <Fragment>
-               <p>Archivo(s) inválido(s)</p>
-               <span>
-                  Verifica que los archivos que cargaste sean imágenes.
-               </span>
-               <p style={{ fontSize: '.8em' }}>
-                  Formatos admitidos: png, jpg, jpeg
-               </p>
-            </Fragment>
-         ), [false, 'Entendido']);
          target.value = '';
       };
-      this.props.onChange({ target: { name: this.props.name, value: { ...target.files } } });
-   };
 
-   showImageModal = image => {
-      let reader = new FileReader();
-      reader.onload = () => {
-         swal({
-            title: image.name,
-            content: <img className="img-on-modal" src={reader.result} alt="user-product" />,
-            className: 'show-img-modal',
-            buttons: [false, 'Cerrar']
-         });
-      };
-      reader.readAsDataURL(image);
+      this.props.onChange({
+         target: {
+            name: this.props.name,
+            value: target.value ? { ...target.files } : ''
+         }
+      });
+
    };
 
    render() {
       return (
          <div id="images-uploader">
-            <button type="button" onClick={this.clickTrigger}>
+            <button type="button" onClick={() => clickTrigger('input#loader')}>
                Cargar imágenes
             </button>
             <div>
                {this.props.loaded.length >= 1 ? (
-                  this.props.loaded.map((image, i) => (
-                     <div key={i} className="success-load">
-                        <div>
-                           <p>{image.name}</p>
-                        </div>
-                        <button type="button" onClick={() => this.showImageModal(image)}>
-                           Ver imagen
-                        </button>
-                     </div>
+                  this.props.loaded.map(image => (
+                     <LoadedImage image={image} />
                   ))
                ) : (
                      <p>
@@ -79,11 +47,16 @@ class ImagesUploader extends Component {
                      </p>
                   )}
             </div>
+            {this.state.error && (
+               <span id="images-blank-error">
+                  Tienes que subir al menos una imagen
+               </span>
+            )}
             <input
                type="file"
                id="loader"
                accept="image/png, image/jpeg"
-               onChange={this.imagesValidation}
+               onChange={this.loadedValidation}
                multiple
                hidden
             />
@@ -92,7 +65,17 @@ class ImagesUploader extends Component {
    };
 
    componentDidUpdate() {
-      // debugger
+      let { errors, name } = this.props;
+      if (errors[name] && !this.state.error) {
+         this.setState({ error: true }, () => {
+            setTimeout(() => {
+               document.querySelector('span#images-blank-error')
+                  .style.transform = 'initial';
+            }, 1);
+         });
+      } else if (!errors[name] && this.state.error) {
+         this.setState({ error: false });
+      };
    };
 
 };

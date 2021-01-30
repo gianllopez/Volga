@@ -5,12 +5,16 @@
 }
 
 #price-input .input-wrapper {
-   width: 55%;
+   width: 70%;
+}
+
+#price-input .input-wrapper input {
+   text-align: center;
 }
 
 #price-input select {
    text-align-last: center;
-   width: 40%;
+   width: 25%;
    height: 44px;
    border: 2px solid black;
    background: none;
