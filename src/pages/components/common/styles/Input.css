@@ -25,6 +25,7 @@
 
 .input-wrapper span {
     color: red;
+    padding: 1.5px 0 0 3px;
 }
 
 .input-wrapper > span {

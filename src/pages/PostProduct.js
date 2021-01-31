@@ -21,7 +21,13 @@ class PostProduct extends Component {
    removeImageHandler = index => {
       let { images } = this.state.data;
       delete images[index];
-      this.setState({ data: { ...this.state.data, images } });
+      let hasImages = Object.entries(images).length >= 1;
+      this.setState({
+         data: {
+            ...this.state.data,
+            images: hasImages ? images : null
+         }
+      });
 
    };
 
@@ -57,7 +63,7 @@ class PostProduct extends Component {
                name="images"
                onChange={this.changeHandler}
                errors={this.state.errors}
-               loaded={this.state.data.images || {}}
+               loaded={Object.entries(this.state.data.images || {})}
                removeHandler={this.removeImageHandler}
             />
             <div id="ppp-product-info">

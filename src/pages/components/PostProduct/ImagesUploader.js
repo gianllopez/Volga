@@ -30,15 +30,15 @@ class ImagesUploader extends Component {
    };
 
    render() {
-      let loaded = Object.entries(this.props.loaded);
+      this.loaded = this.props.loaded;
       return (
          <div id="images-uploader">
             <button type="button" onClick={() => clickTrigger('input#loader')}>
                Cargar imágenes
             </button>
             <div>
-               {loaded.length >= 1 ? (
-                  loaded.map((loadedimg, index) => (
+               {this.loaded.length >= 1 ? (
+                  this.loaded.map((loadedimg, index) => (
                      <LoadedImage
                         image={loadedimg[1]}
                         removeHandler={() => this.props.removeHandler(loadedimg[0])}
@@ -54,7 +54,7 @@ class ImagesUploader extends Component {
             </div>
             {this.state.error && (
                <span id="images-blank-error">
-                  Tienes que subir al menos una imagen
+                  Tienes que subir al menos una imagen.
                </span>
             )}
             <input
@@ -70,7 +70,7 @@ class ImagesUploader extends Component {
    };
 
    componentDidUpdate() {
-      let { errors, name } = this.props;
+      let { errors, name, loaded } = this.props;
       if (errors[name] && !this.state.error) {
          this.setState({ error: true }, () => {
             setTimeout(() => {
@@ -80,6 +80,9 @@ class ImagesUploader extends Component {
          });
       } else if (!errors[name] && this.state.error) {
          this.setState({ error: false });
+      };
+      if (this.loaded.length === 0) {
+         document.querySelector('input#loader').value = '';
       };
    };
 
