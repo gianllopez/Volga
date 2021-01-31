@@ -3,6 +3,7 @@ import { ButtonLoader, DescriptionInput, ImagesUploader, Input, PriceInput } fro
 import prodboxicon from '../assets/PostProduct/product-box.svg';
 import './styles/PostProduct.css';
 import { noBlankValidator } from '../utils/validators';
+import api from '../utils/api';
 
 class PostProduct extends Component {
 
@@ -15,6 +16,13 @@ class PostProduct extends Component {
       },
       loading: false,
       errors: {}
+   };
+
+   removeImageHandler = index => {
+      let { images } = this.state.data;
+      delete images[index];
+      this.setState({ data: { ...this.state.data, images } });
+
    };
 
    changeHandler = ({ target }) => {
@@ -30,7 +38,6 @@ class PostProduct extends Component {
       event.preventDefault();
       let { isValid, errors } = noBlankValidator(this.state.data, ['description', 'type']);
       if (isValid) {
-
       } else {
          this.setState({ errors });
       };
@@ -50,7 +57,8 @@ class PostProduct extends Component {
                name="images"
                onChange={this.changeHandler}
                errors={this.state.errors}
-               loaded={Object.values(this.state.data.images || {})}
+               loaded={this.state.data.images || {}}
+               removeHandler={this.removeImageHandler}
             />
             <div id="ppp-product-info">
                <Input

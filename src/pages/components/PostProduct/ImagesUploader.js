@@ -23,22 +23,27 @@ class ImagesUploader extends Component {
       this.props.onChange({
          target: {
             name: this.props.name,
-            value: target.value ? { ...target.files } : ''
+            value: target.value ? { ...target.files } : null
          }
       });
 
    };
 
    render() {
+      let loaded = Object.entries(this.props.loaded);
       return (
          <div id="images-uploader">
             <button type="button" onClick={() => clickTrigger('input#loader')}>
                Cargar imágenes
             </button>
             <div>
-               {this.props.loaded.length >= 1 ? (
-                  this.props.loaded.map(image => (
-                     <LoadedImage image={image} />
+               {loaded.length >= 1 ? (
+                  loaded.map((loadedimg, index) => (
+                     <LoadedImage
+                        image={loadedimg[1]}
+                        removeHandler={() => this.props.removeHandler(loadedimg[0])}
+                        key={index}
+                     />
                   ))
                ) : (
                      <p>

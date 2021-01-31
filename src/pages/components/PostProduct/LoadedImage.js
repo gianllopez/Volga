@@ -5,7 +5,7 @@ import './styles/LoadedImage.css';
 
 function LoadedImage(props) {
 
-   let { image } = props, { name } = image;
+   let { image, removeHandler } = props, { name } = image;
 
    return (
       <div className="loaded-image">
@@ -15,7 +15,7 @@ function LoadedImage(props) {
          <button type="button" onClick={() => showImage(image, name)}>
             Ver imagen
          </button>
-         <img src={closeicon} alt="close-icon" />
+         <img src={closeicon} alt="close-icon" onClick={removeHandler} />
       </div>
    );
 };
