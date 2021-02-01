@@ -4,6 +4,7 @@ import prodboxicon from '../assets/PostProduct/product-box.svg';
 import './styles/PostProduct.css';
 import { noBlankValidator } from '../utils/validators';
 import api from '../utils/api';
+import swal from 'sweetalert';
 
 class PostProduct extends Component {
 
@@ -44,10 +45,13 @@ class PostProduct extends Component {
       event.preventDefault();
       let { isValid, errors } = noBlankValidator(this.state.data, ['description', 'type']);
       if (isValid) {
-         let { data } = this.state;
-         data = { ...data, price: `${data.price} ${data.pricetype}` };
-         delete data['pricetype'];
-         this.setState({ loading: true, data }, () => {
+         this.setState({
+            loading: true, 
+            data: {
+               ...this.state.data,
+               user: this.props.match.params['username']
+            }
+         }, () => {
             let fdata = new FormData(), statedata = Object.entries(this.state.data);
             for (let data of statedata) {
                let field = data[0], value = data[1];
@@ -63,8 +67,16 @@ class PostProduct extends Component {
                };
             };
             api.post('/products/new', fdata)
-            // .then((x) => { debugger })
-            // .catch((x) => { debugger });
+               .then(({data}) => {
+                  swal({
+                     title: '¡Tu producto ha sido posteado!',
+                     icon: 'success',
+                     buttons: [false, 'Continuar']
+                  }).then(cont => {
+                     cont && this.props.history.push(`/${data.user}/catalog/${data.key}`)
+                  })
+               })
+               .catch(errors => { debugger });
          });
       } else {
          this.setState({ errors });
@@ -93,14 +105,15 @@ class PostProduct extends Component {
                   label="Producto"
                   name="product"
                   onChange={this.changeHandler}
-                  maxLength="25"
+                  maxLength="50"
                   errors={this.state.errors}
+                  regex={/(?!.*\s{2})[a-zA-Z0-9]/}
                />
                <PriceInput
                   label="Precio"
                   name="price"
                   type="number"
-                  maxLength="15"
+                  maxLength="11"
                   onChange={this.changeHandler}
                   errors={this.state.errors}
                />

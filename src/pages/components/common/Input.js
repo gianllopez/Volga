@@ -5,11 +5,12 @@ class Input extends Component {
 
    state = { error: false };
 
-   maxLengthHandler = ({ target }) => {
-      let { maxLength } = this.props, { value } = target;
-      if (value.length >= maxLength) {
-         target.value = value.substring(0, maxLength - 1);
+   entrieValidation = event => {
+      let { maxLength } = this.props, { value } = event.target;
+      if (value.length > maxLength) {
+         event.target.value = value.substring(0, maxLength);
       };
+      this.props.onChange(event);
    };
 
    render() {
@@ -26,8 +27,8 @@ class Input extends Component {
                   id={name}
                   autoComplete="off"
                   spellCheck="false"
-                  onKeyDown={this.maxLengthHandler}
                   {...this.props}
+                  onChange={this.entrieValidation}
                   errors={undefined}
                />
             )}

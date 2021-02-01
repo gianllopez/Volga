@@ -10,11 +10,11 @@ import {
 import { MainLayout } from './pages/components/';
 import './index.css';
 
-const isAuthenticated = localStorage.getItem('user-token') ? true : false;
+const isAuthenticated = () => localStorage.getItem('user-token') ? true : false;
 
 const ProtectedRoute = ({ component: Component, ...routeprops }) => (
    <Route {...routeprops} render={props => (
-      isAuthenticated ?
+      isAuthenticated() ?
          <Component {...props} /> :
          <Redirect to="/login" />
    )} />
@@ -22,7 +22,7 @@ const ProtectedRoute = ({ component: Component, ...routeprops }) => (
 
 const NoAuthRoute = ({ component: Component, ...routeprops }) => (
    <Route {...routeprops} render={props => (
-      !isAuthenticated ?
+      !isAuthenticated() ?
          <Component {...props} /> :
          <Redirect to="/" />
    )} />
@@ -40,7 +40,7 @@ ReactDOM.render(
                <NoAuthRoute exact path="/logup" component={Logup} /> {/* Ready, por revisar si hay código que resumir... */}
                <NoAuthRoute exact path="/login" component={Login} />
                <Route exact path="/users/:username" component={UserProfile} />
-               <Route exact path="/:username/catalog/:product" component={ProductPage} />
+               <Route exact path="/:username/catalog/:productkey" component={ProductPage} />
                <Route exact path="/:username/products/new" component={PostProduct} />
                <Route exact path="/:username/opinions" component={ClientsOpinions} /> {/* Ready, por revisar si hay código que resumir... */}
                <ProtectedRoute exact path="/:username/opinions/new" component={NewOpinion} /> {/* Ready, por revisar si hay código que resumir... */}

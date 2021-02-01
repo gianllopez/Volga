@@ -4,13 +4,21 @@ import './styles/DescriptionInput.css';
 
 function DescriptionInput(props) {
    let { currentLength, maxLength, ...rest } = props;
+
+   const maxLengthHandler = ({ target }) => {
+      let { value } = target;
+      if (value.length >= maxLength) {
+         target.value = value.substring(0, maxLength - 1);
+      };
+   };
+
    return (
       <Input {...rest}>
          <textarea
             id="ppp-description"
             name="description"
-            maxLength="100"
             errors={undefined}
+            onKeyDown={maxLengthHandler}
             {...rest}
          />
          <p id="ml-indicator">
