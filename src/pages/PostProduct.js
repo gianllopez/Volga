@@ -62,11 +62,9 @@ class PostProduct extends Component {
                   fdata.append(field, value);
                };
             };
-            for (let x of fdata.entries()) console.log(x);
-            // debugger;
-            api.post('/products/new', JSON.stringify(this.state.data))
-               .then((x) => { debugger })
-               .catch((x) => { debugger });
+            api.post('/products/new', fdata)
+            // .then((x) => { debugger })
+            // .catch((x) => { debugger });
          });
       } else {
          this.setState({ errors });
@@ -75,7 +73,7 @@ class PostProduct extends Component {
 
    render() {
       return (
-         <form id="post-product-page" onSubmit={this.submitHandler}>
+         <form id="post-product-page" onSubmit={this.submitHandler} encType="multipart/form-data">
             <div id="ppp-header">
                <figure>
                   <img src={prodboxicon} alt="product-box-icon" />
