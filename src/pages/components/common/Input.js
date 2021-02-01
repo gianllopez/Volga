@@ -5,6 +5,13 @@ class Input extends Component {
 
    state = { error: false };
 
+   maxLengthHandler = ({ target }) => {
+      let { maxLength } = this.props, { value } = target;
+      if (value.length >= maxLength) {
+         target.value = value.substring(0, maxLength - 1);
+      };
+   };
+
    render() {
       const { name, type, label, allowblank, errors, children } = this.props;
       this.name = name; this.errors = errors || {};
@@ -19,6 +26,7 @@ class Input extends Component {
                   id={name}
                   autoComplete="off"
                   spellCheck="false"
+                  onKeyDown={this.maxLengthHandler}
                   {...this.props}
                   errors={undefined}
                />

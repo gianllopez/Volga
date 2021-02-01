@@ -70,7 +70,7 @@ class ImagesUploader extends Component {
    };
 
    componentDidUpdate() {
-      let { errors, name, loaded } = this.props;
+      let { errors, name } = this.props;
       if (errors[name] && !this.state.error) {
          this.setState({ error: true }, () => {
             setTimeout(() => {

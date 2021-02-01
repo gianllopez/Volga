@@ -11,7 +11,7 @@ class PostProduct extends Component {
       data: {
          images: null,
          product: '',
-         price: null, type: '',
+         price: null, pricetype: 'COP',
          description: ''
       },
       loading: false,
@@ -44,6 +44,30 @@ class PostProduct extends Component {
       event.preventDefault();
       let { isValid, errors } = noBlankValidator(this.state.data, ['description', 'type']);
       if (isValid) {
+         let { data } = this.state;
+         data = { ...data, price: `${data.price} ${data.pricetype}` };
+         delete data['pricetype'];
+         this.setState({ loading: true, data }, () => {
+            let fdata = new FormData(), statedata = Object.entries(this.state.data);
+            for (let data of statedata) {
+               let field = data[0], value = data[1];
+               if (data[0] === 'images') {
+                  let imgnames = Object.entries(['image_1', 'image_2', 'image_3', 'image_4']);
+                  for (let name of imgnames) {
+                     field = name[1];
+                     value = data[1][name[0]];
+                     fdata.append(field, value);
+                  };
+               } else {
+                  fdata.append(field, value);
+               };
+            };
+            for (let x of fdata.entries()) console.log(x);
+            // debugger;
+            api.post('/products/new', JSON.stringify(this.state.data))
+               .then((x) => { debugger })
+               .catch((x) => { debugger });
+         });
       } else {
          this.setState({ errors });
       };
@@ -71,18 +95,22 @@ class PostProduct extends Component {
                   label="Producto"
                   name="product"
                   onChange={this.changeHandler}
+                  maxLength="25"
                   errors={this.state.errors}
                />
                <PriceInput
                   label="Precio"
                   name="price"
                   type="number"
+                  maxLength="15"
                   onChange={this.changeHandler}
                   errors={this.state.errors}
                />
                <DescriptionInput
                   label="Descripción"
                   name="description"
+                  maxLength="145"
+                  currentLength={this.state.data.description.length}
                   onChange={this.changeHandler}
                   errors={this.state.errors}
                />

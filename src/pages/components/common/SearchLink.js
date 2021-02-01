@@ -28,7 +28,8 @@ class SearchLink extends Component {
       })
    );
 
-   searchRequest = () => {
+   searchRequest = event => {
+      event.preventDefault();
       this.showSearchModal().then(search => {
          if (search) {
             let { value } = document.querySelector('input#search-input');
@@ -47,7 +48,7 @@ class SearchLink extends Component {
       <Redirect to={{
          pathname: "/search/results/",
          state: { query: this.state.query }
-      }} /> : < a onClick={this.searchRequest}>Buscar</a>;
+      }} /> : < a href="/" onClick={this.searchRequest}>Buscar</a>;
 
 };
 

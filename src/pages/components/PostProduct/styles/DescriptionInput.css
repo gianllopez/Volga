@@ -7,3 +7,12 @@ textarea#ppp-description {
    font-size: 1.1em;
    resize: none;
 }
+
+.input-wrapper.description {
+   position: relative;
+}
+
+.input-wrapper.description p#ml-indicator {
+   position: absolute;
+   right: 0;
+}
