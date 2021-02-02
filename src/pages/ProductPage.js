@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import api from '../utils/api';
-import { PageLoader } from './components';
+import { PageLoader, ProductGallery } from './components';
 import './styles/ProductPage.css';
 
 class ProductPage extends Component {
@@ -11,8 +11,8 @@ class ProductPage extends Component {
       let {images, product, price, description} = this.state.data;
       return (
          this.state.fetched ? (
-            <div>
-               {/* Structure  */}
+            <div id="product-page">
+               <ProductGallery/>
             </div>
          ) : <PageLoader/>
       );

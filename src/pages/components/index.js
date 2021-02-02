@@ -23,3 +23,4 @@ export { default as LoadedImage } from './PostProduct/LoadedImage';
 export { default as RatingSelector } from './NewOpinion/RatingSelector';
 export { default as CommentInput } from './NewOpinion/CommentInput';
 export { default as ContactLink } from './ShopContact/ContactLink';
+export { default as ProductGallery } from './ProductPage/ProductGallery';
