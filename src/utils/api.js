@@ -2,13 +2,26 @@ import Axios from 'axios';
 
 class VolgaREST {
 
-   baseurl = 'http://localhost:8000/api/v1/users'
-
+   baseconfig(endpoint) {
+      return {
+         method: 'get',
+         url: 'http://localhost:8000/api/v1/users' + endpoint + '/',
+         headers: {
+            Authorization: `Token ${localStorage.getItem('user-token')}`
+         }
+      }
+   };
+   
    post(endpoint, data) {
-      const url = this.baseurl + endpoint + '/',
-         authtoken = localStorage.getItem('user-token'),
-         config = authtoken && { headers: { Authorization: `Token ${authtoken}` } };
-      return Axios.post(url, data, config);
+      let config = this.baseconfig(endpoint);
+      config.data = data;
+      return Axios(config);
+   };
+
+   get(endpoint, params={}) {
+      let config = this.baseconfig(endpoint);
+      config.params = params;
+      return Axios(config);
    };
 
 };

@@ -21,7 +21,7 @@ class MainLayout extends Component {
       if (!hasFooter && footer) {
          this.setState({ footer: false });
       } else if (hasFooter && !footer) {
-         if (location.key) {
+         if (location.key && !/.+\/catalog\/.+/gm.test(path)) {
             this.setState({ footer: true });
          };
       };

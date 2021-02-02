@@ -4,7 +4,7 @@ import prodboxicon from '../assets/PostProduct/product-box.svg';
 import './styles/PostProduct.css';
 import { noBlankValidator } from '../utils/validators';
 import api from '../utils/api';
-import swal from 'sweetalert';
+import swal from '@sweetalert/with-react';
 
 class PostProduct extends Component {
 

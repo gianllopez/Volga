@@ -49,3 +49,9 @@
 #post-product-page .btnloader-wrapper {
    margin-top: 7px;
 }
+
+#imgs-treat-modal {
+   font-size: 1.3em;
+   max-width: 395px;
+   margin: auto;
+}

@@ -54,7 +54,7 @@
 }
 
 #page-border {
-   position: absolute;
+   position: fixed;
    z-index: -1;
    width: 15px;
    height: 100vh;
