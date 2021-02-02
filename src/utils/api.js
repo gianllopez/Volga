@@ -14,6 +14,7 @@ class VolgaREST {
    
    post(endpoint, data) {
       let config = this.baseconfig(endpoint);
+      config.method = 'post';
       config.data = data;
       return Axios(config);
    };

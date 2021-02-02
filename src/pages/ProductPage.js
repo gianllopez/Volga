@@ -11,21 +11,9 @@ class ProductPage extends Component {
       let {images, product, price, description} = this.state.data;
       return (
          this.state.fetched ? (
-            <Fragment>
-               <div id="product-page-wrapper">
-                  <img src={images[0]} alt="product" />
-                  <div id="productpage-info">
-                     <h2>{product}</h2>
-                     <h4 className="ppgray-content">{price}</h4>
-                     <p>{description}</p>
-                     <div id="iproduct-btns">
-                        <button>Preguntar</button>
-                        <button>Añadir a deseos</button>
-                     </div>
-                  </div>
-               </div>
-               <div id="page-border" />
-            </Fragment>
+            <div>
+               {/* Structure  */}
+            </div>
          ) : <PageLoader/>
       );
    };
