@@ -9,9 +9,6 @@ function LoadedImage(props) {
 
    return (
       <div className="loaded-image">
-         <div>
-            <p>{name}</p>
-         </div>
          <button type="button" onClick={() => showImage(image, name)}>
             Ver imagen
          </button>

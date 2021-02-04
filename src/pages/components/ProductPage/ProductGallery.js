@@ -19,12 +19,14 @@ class ProductGallery extends Component {
             </figure>
             <div id="gallery-items">
                {images.map((img, index) => (
-                  <img
-                     src={img}
-                     key={index}
-                     alt="gall-item"
-                     onClick={() => this.galleryChangeHandler(img)}
-                  />
+                  img && (
+                     <img
+                        src={img}
+                        key={index}
+                        alt="gall-item"
+                        onClick={() => this.galleryChangeHandler(img)}
+                     />
+                  )
                ))}
             </div>
          </div>

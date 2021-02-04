@@ -59,7 +59,7 @@ class PostProduct extends Component {
                   let imgnames = Object.entries(['image_1', 'image_2', 'image_3', 'image_4']);
                   for (let name of imgnames) {
                      field = name[1];
-                     value = data[1][name[0]];
+                     value = data[1][name[0]] || '';
                      fdata.append(field, value);
                   };
                } else {
@@ -125,8 +125,10 @@ class PostProduct extends Component {
                   onChange={this.changeHandler}
                   errors={this.state.errors}
                />
+            
+               <ButtonLoader isloading={this.state.loading} />
+            
             </div>
-            <ButtonLoader isloading={this.state.loading} />
          </form>
       );
    };

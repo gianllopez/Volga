@@ -55,4 +55,6 @@ span#images-blank-error {
    align-self: flex-start;
    transform: translateY(-100%);
    transition: .7s transform;
+   text-align: center;
+   width: 100%;
 }

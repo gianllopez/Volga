@@ -47,10 +47,14 @@ class ProductPage extends Component {
       api.get('/get-data/product', { username, productkey })
          .then(({data}) => this.setState({fetched: true, data}))
          .catch(({response}) => {
-            let notfound = response.data.product;
-            if (notfound) {
-               CustomModal(<span>{ notfound }</span>, [false, 'Entendido'])
-                  .then(ok => ok && this.props.history.push('/'));
+            let {error} = response.data;
+            if (error === '404') {
+               CustomModal (
+                  <span>
+                     El producto que buscas no se encuentra
+                     en el catálogo de {username}
+                  </span>, [false, 'Entendido'])
+                     .then(ok => ok && this.props.history.push('/'));
             };
          });
    };

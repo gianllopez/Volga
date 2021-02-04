@@ -12,7 +12,13 @@
    display: flex;
    flex-wrap: wrap;
    justify-content: center;
-   margin: 10px auto;
+   /* margin: 10px auto; */
+}
+
+#clients-opinions a {
+   color: blue;
+   font-size: 1.1em;
+   margin: 7px;
 }
 
 @media (min-width:768px) {

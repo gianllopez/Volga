@@ -77,12 +77,6 @@
    justify-content: center;
 }
 
-#clients-opinions a {
-   color: blue;
-   font-size: 1.1em;
-   margin: 7px;
-}
-
 @media (min-width:505px) {
    #user-stats {
       flex-direction: row;

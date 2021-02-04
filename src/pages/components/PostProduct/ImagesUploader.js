@@ -1,32 +1,11 @@
 import React, { Component } from 'react';
 import { LoadedImage } from '..';
 import { clickTrigger, areImages, rightLength } from './local-utils';
-import swal from '@sweetalert/with-react';
 import './styles/ImagesUploader.css';
 
 class ImagesUploader extends Component {
 
    state = { error: false };
-
-   imgsTreatModal = () => {
-      swal({
-         title: 'Tratado de imágenes',
-         icon: 'warning',
-         dangerMode: true,
-         content: (
-            <div id="imgs-treat-modal">
-               <p>
-                  Para una mejor presentación de tus productos y una interfaz de usuario más limpia,
-                  Volga te recomienda eliminar el fondo de tus imágenes en:
-               </p>
-               <a rel="noopener noreferrer" target="_blank" href="https://www.remove.bg/">
-                  https://www.remove.bg/
-               </a>
-            </div>
-         ), buttons: [false, 'Omitir']
-      }).then(skip => skip && clickTrigger('input#loader'));
-   };
-
 
    loadedValidation = ({ target }) => {
 
@@ -54,7 +33,7 @@ class ImagesUploader extends Component {
       this.loaded = this.props.loaded;
       return (
          <div id="images-uploader">
-            <button type="button" onClick={this.imgsTreatModal}>
+            <button type="button" onClick={() => clickTrigger('input#loader')}>
                Cargar imágenes
             </button>
             <div>

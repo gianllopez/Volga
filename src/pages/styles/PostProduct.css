@@ -39,6 +39,8 @@
 #ppp-product-info {
    width: 90vw;
    max-width: 350px;
+   display: inherit;
+   flex-direction: inherit;
 }
 
 #ppp-product-info > .input-wrapper,
@@ -47,11 +49,28 @@
 }
 
 #post-product-page .btnloader-wrapper {
-   margin-top: 7px;
+   margin: 7px auto;
 }
 
 #imgs-treat-modal {
    font-size: 1.3em;
    max-width: 395px;
    margin: auto;
+}
+
+@media (min-width:768px) {
+   #post-product-page {
+      display: grid;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+   }
+   #images-uploader {
+      grid-column: 1;
+   }
+   #ppp-product-info {
+      grid-column: 2;
+      grid-row: 1/3;
+   }
 }
