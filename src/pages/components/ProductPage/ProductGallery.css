@@ -1,0 +1,46 @@
+#product-gallery {
+   width: 85vw;
+   max-width: 325px;
+   background-color: #f1f1f1;
+   padding: 15px;
+   border-radius: 5px;
+}
+
+#product-gallery > figure {
+   object-fit: contain;   
+   display: flex;
+   align-items: center;
+}
+
+#product-gallery > figure img {
+   border-radius: 5px;
+   width: 100%;
+}
+
+#gallery-items {
+   width: 85vw;
+   max-width: 325px;
+   margin-top: 5px;
+}
+
+#gallery-items img {
+   width: calc(25% - 5px);
+   height: 65px;
+   object-fit: cover;
+   margin-right: 5px;
+   border-radius: 5px;
+}
+
+#gallery-items img:last-of-type {
+   width: 25%;
+   margin-right: 0;
+}
+
+.pp-imgdisplay-modal {
+   width: 95vw;
+   height: 95vh;
+}
+
+.pp-imgdisplay-modal .swal-content {
+   
+}

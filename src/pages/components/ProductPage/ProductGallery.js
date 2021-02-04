@@ -1,10 +1,42 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './ProductGallery.css';
 
-function ProductGallery(props) {
-   return (
-      <div></div>
-   );
+class ProductGallery extends Component {
+
+   state = {index: 0};
+
+   galleryChangeHandler = src => {
+      let index = this.props.images.indexOf(src);
+      this.setState({ index });
+   };
+
+   render() {
+      let {images} = this.props, {index} = this.state;
+      return (
+         <div id="product-gallery">
+            <figure>
+               <img src={images[index]} alt="pg-pic" id="displayed"/>
+            </figure>
+            <div id="gallery-items">
+               {images.map((img, index) => (
+                  <img
+                     src={img}
+                     key={index}
+                     alt="gall-item"
+                     onClick={() => this.galleryChangeHandler(img)}
+                  />
+               ))}
+            </div>
+         </div>
+      );
+   };
+
+   componentDidUpdate() {
+      this.props.heightChangeCallback (
+         document.querySelector('img#displayed').offsetHeight
+      );
+   };
+
 };
 
 export default ProductGallery;
