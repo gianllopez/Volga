@@ -65,11 +65,11 @@
    font-size: .9em;
 }
 
-#interaction-btns button:nth-child(2) {
+/* #interaction-btns button:nth-child(2) {
    border: 2px solid;
    color: #0978e8;
    margin-left: 10px;
-}
+} */
 
 #products {
    display: inherit;

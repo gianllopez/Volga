@@ -38,8 +38,8 @@
    text-transform: capitalize;
 }
 
-#opinion-form #rating-selector {
-   width: calc(85vw - 20px);
+#rating-selector {
+   width: calc(85vw - 24px);
    border: 2px solid;
    max-width: 326px;
    padding: 10px;
@@ -67,13 +67,10 @@
 
 @media (min-width: 768px) {
    #opinion-form {
-      display: grid;
-      justify-content: center;
-      grid-template-columns: min-content min-content;
-      padding-top: 135px;
-      /* position: absolute;
+      flex-direction: row;
+      position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%); */
+      transform: translate(-50%, -50%);
    }
 }

@@ -3,7 +3,7 @@ import swal from '@sweetalert/with-react';
 
 /* This component isn't a react Component */
 
-const CustomModal = (content, buttons) => (
+const CustomModal = (content, buttons, outsideClose=true) => (
    swal({
       icon: 'error',
       content: (
@@ -12,7 +12,8 @@ const CustomModal = (content, buttons) => (
          </div>
       ),
       buttons: buttons || ['No', 'Si'],
-      dangerMode: true
+      dangerMode: true,
+      closeOnClickOutside: outsideClose
    })
 );
 
