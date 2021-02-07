@@ -10,11 +10,46 @@
 
 #srp-header {
    text-align: center;
-   margin: 15px 0;
+   margin: 15px 0 5px 0;
 }
 
 #srp-results {
    display: flex;
    flex-wrap: wrap;
    justify-content: center;
+}
+
+#no-query {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   text-align: center;
+}
+
+#no-query > * {
+   background-color: ghostwhite;
+   padding: 10px;
+   border-radius: 7px;
+}
+
+#no-query figure img {
+   width: 70%;
+}
+
+#no-query p {
+   font-size: 1.5em;
+   font-weight: bold;
+   width: 250px;   
+   margin-top: 10px;
+}
+
+#blank-results {
+   font-size: 1.6em;
+   font-weight: bold;
+   text-align: center;
+   max-width: 400px;
+   background-color: #f57a7a;
+   padding: 10px;
+   border-radius: 5px;
 }

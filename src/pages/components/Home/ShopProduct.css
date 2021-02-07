@@ -27,8 +27,11 @@
 }
 
 .product-wrapper .product-img {
-   height: 265px;
+   margin: 20px 0;
    align-self: center;
+   width: 100%;
+   object-fit: contain;
+   border-radius: 5px;
 }
 
 .product-footer {

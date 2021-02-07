@@ -1,4 +1,4 @@
-#product-page {
+.product-page {
    padding-top: 75px;
    display: flex;
    flex-direction: column;
@@ -34,6 +34,8 @@
 #pp-product-info div p {
    font-size: 1.1em;
    font-weight: bold;
+   overflow-wrap: break-word;
+   max-width: 325px;
 }
 
 @media (min-width:425px) {
@@ -68,12 +70,13 @@
 }
 
 @media (min-width:768px) {
-   #product-page {
+   .product-page {
       display: grid;
       grid-template-rows: max-content;
       width: max-content;
       margin: auto;
       padding-top: 135px;
+      height: auto;
    }
    #pp-product-info {
       grid-column: 2;
@@ -98,7 +101,7 @@
 }
 
 @media (min-height: 685px) {
-   #product-page {
+   .product-page {
       height: max-content;
    }
 }

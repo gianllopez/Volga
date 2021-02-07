@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
 import { capitalize } from '../../../utils/tools';
 import { sncolors } from '../local-utils';
 import './ContactLink.css';
@@ -10,7 +9,8 @@ class ContactLink extends Component {
 
    render() {
       return (
-         <Link className={`contact-link ${this.for}-link`} to="/">
+         <a className={`contact-link ${this.for}-link`} href={`${this.props.url}`}
+               target="_blank" rel="noopener noreferrer">
             <i className={
                this.for !== 'email' ?
                   `fab fa-${this.for}` :
@@ -18,7 +18,7 @@ class ContactLink extends Component {
             }/>
             <div className="fake-before"/>
             <h3>{capitalize(this.for)}</h3>
-         </Link>
+         </a>
       );
    };
 

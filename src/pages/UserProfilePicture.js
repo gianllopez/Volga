@@ -17,7 +17,7 @@ class UserProfilePicture extends Component {
          form.append('picture', this.state.picture)
          form.append('username', this.props.match.params['username']);
          api.post('/profile-picture', form)
-            .then(() => this.props.history.push(`/${form.get('username')}/`))
+            .then(() => this.props.history.push(`/users/${form.get('username')}/`))
       };
       if (!this.state.picture) {
          const content = (

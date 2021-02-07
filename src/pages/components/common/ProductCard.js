@@ -5,14 +5,15 @@ import './styles/ProductCard.css';
 class ProductCard extends Component {
 
    render() {
+      let { image, name, price } = this.props;
       return (
          <div className="product-card">
             <figure>
-               <img src="https://http2.mlstatic.com/D_NQ_NP_806395-MCO44222237959_122020-O.webp" alt="product" />
+               <img src={image} alt="user-product" />
             </figure>
             <div id="product-info">
-               <h2>Air Jordan de J Balvin</h2>
-               <span>$321</span>
+               <h2>{name}</h2>
+               <span>{price}</span>
             </div>
             <div className="to-page">
                <Link to="/">

@@ -33,11 +33,20 @@ class ProductGallery extends Component {
       );
    };
 
-   componentDidUpdate() {
-      this.props.heightChangeCallback (
-         document.querySelector('img#displayed').offsetHeight
-      );
+   componentDidMount() {
+      let mediascreen = matchMedia('(min-width: 768px)')
+      if (mediascreen.matches) {
+         this.props.heightChangeCallback (
+            document.querySelector('img#displayed').offsetHeight
+            );
+      };
    };
+
+   componentDidUpdate() {
+      this.componentDidMount();
+   };
+
+
 
 };
 

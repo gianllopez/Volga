@@ -60,16 +60,13 @@
    height: 37px;
    outline: none;
    border-radius: 5px;
-   border: 2px solid black;
-   background: none;
    font-size: .9em;
 }
 
-/* #interaction-btns button:nth-child(2) {
-   border: 2px solid;
-   color: #0978e8;
-   margin-left: 10px;
-} */
+#interaction-btns button:first-of-type {
+   border: 2px solid black;
+   background: none;
+} 
 
 #products {
    display: inherit;
@@ -133,6 +130,9 @@
    }
 }
 
+#products > p {
+   text-align: center;
+}
 /* @media (min-width:1400px) {
    #user-stats {
       justify-content: center;

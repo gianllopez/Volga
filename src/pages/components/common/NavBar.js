@@ -15,6 +15,12 @@ function NavBar(props) {
          .toggle('show-links');
    };
 
+   const logOut = event => {
+      event.preventDefault();
+      localStorage.removeItem('user-token');
+      window.location = '/login';
+   };
+
    return (
       <div id="navbar-wrapper">
          <BurgerMenu clickCallback={linksAnimations} />
@@ -22,14 +28,18 @@ function NavBar(props) {
             <img src={volgalogo} alt="volga-logo" />
          </figure>
          <div id="navbar-links">
-            <Link to='/'>Inicio</Link>
+            <Link to="/">Inicio</Link>
             <SearchLink />
-            <Link to='/shops/explore'>Explorar</Link>
+            {/* <Link to="/shops/explore">Explorar</Link> */}
             {isAuthenticated ?
-               <Link to='/users/me'>Mi perfil</Link> :
                <Fragment>
-                  <Link to='/logup'>Registrar</Link>
-                  <Link to='/login'>Iniciar sesión</Link>
+                  <Link to="/my-products/new">Postear</Link>
+                  <Link to="/users/me">Mi perfil</Link>
+                  <a href="/" onClick={logOut}>Cerrar sesión</a>
+               </Fragment> :
+               <Fragment>
+                  <Link to="/logup">Registrar</Link>
+                  <Link to="/login">Iniciar sesión</Link>
                </Fragment>
             }
          </div>

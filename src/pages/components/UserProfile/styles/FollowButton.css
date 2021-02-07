@@ -1,12 +1,14 @@
-#follow-btn {
-   border: 2px solid !important;
+.follow-btn {
+   border: 2px solid;
    color: #0978e8;
    margin-left: 10px;
    position: relative;
    transition: .5s;
+   background-color: white;
 }
 
 .following {
-   background-color: #0978e8 !important;
-   color: white !important;
+   background-color: #0978e8;
+   color: white;
+   border: 2px solid black;
 }

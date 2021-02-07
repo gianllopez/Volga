@@ -8,7 +8,7 @@ class ProductPage extends Component {
    state = { fetched: false, data: {} };
 
    centeredCallback = height => {
-      let pp = document.querySelector('#product-page');
+      let pp = document.querySelector('.product-page');
       height < 433 ? 
          pp.classList.add('centered-position') :
          pp.classList.remove('centered-position');      
@@ -18,7 +18,7 @@ class ProductPage extends Component {
       let {images, product, price, description} = this.state.data;
       return (
          this.state.fetched ? (
-            <div id="product-page">
+            <div className="product-page">
                <ProductGallery
                   images={images}
                   product={this.state.data.product}

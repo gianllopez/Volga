@@ -8,14 +8,14 @@ class MainLayout extends Component {
    render() {
       return (
          <Fragment>
-            <NavBar />
+            <NavBar/>
             {this.props.children}
             {this.state.footer && <Footer />}
          </Fragment>
       );
    };
 
-   componentDidMount() {
+   componentDidUpdate() {
       const { nofooter, location } = this.props, path = location.pathname;
       let hasFooter = !nofooter.includes(path), { footer } = this.state;
       if (!hasFooter && footer) {
@@ -27,8 +27,8 @@ class MainLayout extends Component {
       };
    };
 
-   componentDidUpdate() {
-      this.componentDidMount();
+   componentDidMount() {
+      this.componentDidUpdate();
    };
 
 };

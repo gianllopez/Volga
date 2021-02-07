@@ -45,39 +45,32 @@ class PostProduct extends Component {
       event.preventDefault();
       let { isValid, errors } = noBlankValidator(this.state.data, ['description', 'type']);
       if (isValid) {
-         this.setState({
-            loading: true, 
-            data: {
-               ...this.state.data,
-               user: this.props.match.params['username']
-            }
-         }, () => {
-            let fdata = new FormData(), statedata = Object.entries(this.state.data);
-            for (let data of statedata) {
-               let field = data[0], value = data[1];
-               if (data[0] === 'images') {
-                  let imgnames = Object.entries(['image_1', 'image_2', 'image_3', 'image_4']);
-                  for (let name of imgnames) {
-                     field = name[1];
-                     value = data[1][name[0]] || '';
-                     fdata.append(field, value);
-                  };
-               } else {
+         this.setState({loading: true});
+         let fdata = new FormData(), statedata = Object.entries(this.state.data);
+         for (let data of statedata) {
+            let field = data[0], value = data[1];
+            if (data[0] === 'images') {
+               let imgnames = Object.entries(['image_1', 'image_2', 'image_3', 'image_4']);
+               for (let name of imgnames) {
+                  field = name[1];
+                  value = data[1][name[0]] || '';
                   fdata.append(field, value);
                };
+            } else {
+               fdata.append(field, value);
             };
-            api.post('/products/new', fdata)
-               .then(({data}) => {
-                  swal({
-                     title: '¡Tu producto ha sido posteado!',
-                     icon: 'success',
-                     buttons: [false, 'Continuar']
-                  }).then(cont => {
-                     cont && this.props.history.push(`/${data.user}/catalog/${data.key}`)
-                  })
+         };
+         api.post('/products/new', fdata)
+            .then(({data}) => {
+               swal({
+                  title: '¡Tu producto ha sido posteado!',
+                  icon: 'success',
+                  buttons: [false, 'Continuar']
+               }).then(cont => {
+                  cont && this.props.history.push(`/${data.user}/catalog/${data.key}`)
                })
-               .catch(errors => { debugger });
-         });
+            })
+            .catch(errors => console.log(errors));
       } else {
          this.setState({ errors });
       };

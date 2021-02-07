@@ -19,19 +19,9 @@ class ContactNetworks extends Component {
    };
 
    changeHandler = ({ target }) => {
-      let { name, value } = target;
-      const regex = /^[a-z0-9]*$/g;
-      if (!regex.test(value)) {
-         target.value = value.substring(0, (value.length - 1));
-      } else {
-         this.setState({
-            ...this.state,
-            data: {
-               ...this.state.data,
-               [name]: target.value
-            }
-         });
-      };
+      this.setState({
+         data: {...this.state.data, [target.name]: target.value}
+      })
    };
 
    submitHandler = event => {

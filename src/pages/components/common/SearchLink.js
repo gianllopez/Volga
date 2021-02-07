@@ -5,11 +5,7 @@ import './styles/SearchLink.css';
 
 class SearchLink extends Component {
 
-   state = {
-      blankerror: false,
-      redirect: false,
-      query: ''
-   };
+   state = { blankerror: false, redirect: false };
 
    showSearchModal = () => (
       swal({
@@ -28,14 +24,15 @@ class SearchLink extends Component {
       })
    );
 
-   searchRequest = event => {
-      event.preventDefault();
+   searchRequest = () => {
       this.showSearchModal().then(search => {
          if (search) {
             let { value } = document.querySelector('input#search-input');
             if (value) {
-               this.setState({ redirect: true, query: value }, () => {
-                  this.setState({ redirect: false }, swal.close);
+               this.setState ({
+                  redirect: true, query: value }, () => {
+                     swal.close()
+                     this.setState({ redirect: false });
                });
             } else {
                this.setState({ blankerror: true }, this.searchRequest);
@@ -44,12 +41,16 @@ class SearchLink extends Component {
       });
    };
 
-   render = () => this.state.redirect ?
-      <Redirect to={{
-         pathname: "/search/results/",
-         state: { query: this.state.query }
-      }} /> : < a href="/" onClick={this.searchRequest}>Buscar</a>;
-
+   render = () => (
+      !this.state.redirect ?
+         // eslint-disable-next-line
+         <a onClick={this.searchRequest}>Buscar</a> :
+         <Redirect to={{
+            pathname: '/search/results',
+            state: {query: this.state.query}
+         }}/>
+   );
+      
 };
 
 export default SearchLink;

@@ -34,17 +34,17 @@ ReactDOM.render(
          <ProtectedRoute exact path="/:username/contact-networks" component={ContactNetworks} /> {/* Ready, por revisar si hay código que resumir... */}
          <ProtectedRoute exact path="/:username/tags" component={UserTags} /> {/* Ready, por revisar si hay código que resumir... */}
          <ProtectedRoute exact path="/:username/profile-picture" component={UserProfilePicture} /> {/* Ready, por revisar si hay código que resumir... */}
-         <MainLayout nofooter={['/login']}>
+         <MainLayout nofooter={['/login', '/my-products/new']}>
             <Switch>
                <Route exact path="/" component={Home} />
                <NoAuthRoute exact path="/logup" component={Logup} /> {/* Ready, por revisar si hay código que resumir... */}
                <NoAuthRoute exact path="/login" component={Login} />
                <Route exact path="/users/:username" component={UserProfile} />
                <Route exact path="/:username/catalog/:productkey" component={ProductPage} />
-               <Route exact path="/:username/products/new" component={PostProduct} />
+               <ProtectedRoute exact path="/my-products/new" component={PostProduct} />
                <Route exact path="/:username/opinions" component={ClientsOpinions} /> {/* Ready, por revisar si hay código que resumir... */}
                <ProtectedRoute exact path="/:username/opinions/new" component={NewOpinion} /> {/* Ready, por revisar si hay código que resumir... */}
-               <Route exact path="/:shop/contact" component={ShopContact} />
+               <Route exact path="/:username/contact" component={ShopContact} />
                <Route exact path="/search/results" component={SearchResults} />
                <Route component={NotFound} />
             </Switch>
