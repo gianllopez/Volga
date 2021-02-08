@@ -14,7 +14,7 @@ class ShopProduct extends Component {
    };
 
    render() {
-      let {user, image_1, key, price, product } = this.props.product_data
+      let {user, image_1, key, price, product, isfav } = this.props.product_data
       return (
          <div className={`product-wrapper ${this.props.shop}-product`} onClick={this.showProductNavigation}>
             <div className="product-shop">
@@ -33,7 +33,7 @@ class ShopProduct extends Component {
                <span>{product}</span>
                <p>{price}</p>
             </div>
-            <FavButton productkey={key}/>
+            <FavButton productkey={key} isfav={isfav}/>
             <div className="product-navigation">
                <Link to={`/${user.username}/catalog/${key}`}>
                   <button>Ver producto</button>
