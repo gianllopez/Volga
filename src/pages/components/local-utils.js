@@ -7,7 +7,7 @@ export const sncolors = {
    whatsapp: '#00E676',
    twitter: '#6CC9F3',
    email: '#FFC217',
-   pinterest: '#C8232C',
+   linkedin: '#0A66C2',
 };
 
 export function ContactNetworkInputAnimationSetter(element, elementChilds) {

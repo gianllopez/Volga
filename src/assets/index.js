@@ -4,7 +4,7 @@ import facebookLogo from './ContactNetworks/facebook-icon.svg';
 import whatsappLogo from './ContactNetworks/whatsapp-icon.svg';
 import twitterLogo from './ContactNetworks/twitter-icon.svg';
 import emailLogo from './ContactNetworks/email-icon.svg';
-import pinterestLogo from './ContactNetworks/pinterest-icon.svg';
+import linkedinLogo from './ContactNetworks/linkedin-icon.svg';
 
 // ---------- UserTags (Page) Imports ---------- //
 import vehicles_icon from './UserTags/tags-icons/car.svg';
@@ -44,7 +44,7 @@ export const cn_icons = {
    whatsapp: whatsappLogo,
    twitter: twitterLogo,
    email: emailLogo,
-   pinterest: pinterestLogo
+   linkedin: linkedinLogo
 };
 
 // ---------- UserTags (Page) Exports ---------- //

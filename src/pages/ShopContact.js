@@ -9,7 +9,7 @@ class ShopContact extends Component {
    state = {};
 
    render() {
-      let { data } = this.state;
+      let contacts = Object.entries(this.state.data || {});
       return (
          !this.state.notfound ?
             <div id="contact-form">
@@ -17,12 +17,12 @@ class ShopContact extends Component {
                   ¿Por donde deseas contactar con *shop*?
                </h2>
                <div id="contact-ways">
-                  {data && Object.entries(data).map((contact, index) => (
+                  {contacts.map((contact, index) => (
                      <ContactLink
                         for={contact[0]}
                         url={contact[1]}
                         key={index}
-                     />
+                     />                  
                   ))}
                </div>
             </div> : <NotFound/>

@@ -21,7 +21,9 @@ class UserProfile extends Component {
                      <h4>{name}</h4>
                   </div>
                   <div id="interaction-btns">
-                     <button>Contactar</button>
+                     <Link to={`/${username}/contact`}>
+                        <button>Contactar</button>
+                     </Link>
                      <FollowButton
                         user={username}
                         following={following}

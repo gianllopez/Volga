@@ -12,7 +12,8 @@ class ContactNetworks extends Component {
       data: {
          instagram: '', facebook: '',
          whatsapp: '', twitter: '',
-         email: '', user: this.props.match.params['username']
+         email: '', linkedin: '',
+         user: this.props.match.params['username']
       },
       loading: false,
       errors: {}
@@ -109,6 +110,10 @@ class ContactNetworks extends Component {
                   name="email"
                   maxLength="100"
                   type="email"
+               />
+               <ContactNetworkInput
+                  name="linkedin"
+                  maxLength="30"
                />
             </CNcontext.Provider>
 

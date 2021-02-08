@@ -63,7 +63,7 @@
    font-size: .9em;
 }
 
-#interaction-btns button:first-of-type {
+#interaction-btns a button:first-of-type {
    border: 2px solid black;
    background: none;
 } 
