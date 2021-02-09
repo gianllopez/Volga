@@ -73,7 +73,7 @@ class UserTags extends Component {
                <span>Selecciona las que quieras</span>
             </div>
             <div id="tags-entries">
-               {tagsProps.map(
+               {Object.entries(tagsProps).map(
                   (tagdata, i) => (
                      <TagBox
                         key={i}

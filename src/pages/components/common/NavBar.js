@@ -30,12 +30,12 @@ function NavBar(props) {
          <div id="navbar-links">
             <Link to="/">Inicio</Link>
             <SearchLink />
-            {/* <Link to="/shops/explore">Explorar</Link> */}
+            <Link to="/products/explore">Explorar</Link>
             {isAuthenticated ?
                <Fragment>
                   <Link to="/my-products/new">Postear</Link>
-                  <Link to="/users/me">Mi perfil</Link>
-                  <a href="/" onClick={logOut}>Cerrar sesión</a>
+                  {/* <Link to="/users/me">Mi perfil</Link> */}
+                  {/* <a href="/" onClick={logOut}>Cerrar sesión</a> */}
                </Fragment> :
                <Fragment>
                   <Link to="/logup">Registrar</Link>

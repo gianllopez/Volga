@@ -48,7 +48,7 @@ export const cn_icons = {
 };
 
 // ---------- UserTags (Page) Exports ---------- //
-export const tagsProps = Object.entries({
+export const tagsProps = {
    'Vehículos': vehicles_icon,
    'Alimentos': foods_icon,
    'Mascotas': pets_icon,
@@ -73,7 +73,7 @@ export const tagsProps = Object.entries({
    'Joyas': jewelry_icon,
    'Ropa & Accesorios': clothes_icon,
    'Prestación de Servicios': services_icon
-});
+};
 
 // ---------- ShopProfile (Page) Exports ---------- //
 export const statsicons = {

@@ -5,7 +5,7 @@ import {
    Logup, ContactNetworks, UserProfilePicture, UserTags,
    Login, UserProfile, ProductPage, Home,
    PostProduct, NewOpinion, ClientsOpinions,
-   ShopContact, SearchResults, NotFound
+   ShopContact, SearchResults, NotFound, Explore
 } from './pages/';
 import { MainLayout } from './pages/components/';
 import './index.css';
@@ -40,6 +40,7 @@ ReactDOM.render(
                <NoAuthRoute exact path="/logup" component={Logup} /> {/* Ready, por revisar si hay código que resumir... */}
                <NoAuthRoute exact path="/login" component={Login} />
                <Route exact path="/users/:username" component={UserProfile} />
+               <Route exact path="/products/explore" component={Explore} />
                <Route exact path="/:username/catalog/:productkey" component={ProductPage} />
                <ProtectedRoute exact path="/my-products/new" component={PostProduct} />
                <Route exact path="/:username/opinions" component={ClientsOpinions} /> {/* Ready, por revisar si hay código que resumir... */}

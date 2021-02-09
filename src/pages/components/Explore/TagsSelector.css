@@ -1,0 +1,22 @@
+#tags-selector p {
+   background-color: #eeeeee;
+   padding: 10px 0;
+   border-radius: 3px;
+   text-align: center;
+   margin: 7px;
+   width: 90vw;
+   max-width: 325px;
+}
+
+@media (min-width: 768px) {
+   #tags-selector {
+      display: grid;
+      grid-template-columns: repeat(2, 50%);
+   }
+}
+
+@media (min-width: 1035px) {
+   #tags-selector {
+      grid-template-columns: repeat(3, 33%);
+   }
+}
