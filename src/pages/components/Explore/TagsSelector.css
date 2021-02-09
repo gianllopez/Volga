@@ -6,6 +6,7 @@
    margin: 7px;
    width: 90vw;
    max-width: 325px;
+   transition: .3s;
 }
 
 @media (min-width: 768px) {
@@ -19,4 +20,9 @@
    #tags-selector {
       grid-template-columns: repeat(3, 33%);
    }
+}
+
+.selected-tag {
+   background-color: #3387E1 !important;
+   color: white;
 }
