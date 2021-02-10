@@ -14,3 +14,4 @@ export { default as ShopContact } from './ShopContact';
 export { default as SearchResults } from './SearchResults';
 export { default as NotFound } from './NotFound';
 export { default as Explore } from './Explore';
+export { default as FavoritesProducts } from './FavoritesProducts';

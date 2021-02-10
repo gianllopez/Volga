@@ -5,7 +5,7 @@ import {
    Logup, ContactNetworks, UserProfilePicture, UserTags,
    Login, UserProfile, ProductPage, Home,
    PostProduct, NewOpinion, ClientsOpinions,
-   ShopContact, SearchResults, NotFound, Explore
+   ShopContact, SearchResults, NotFound, Explore, FavoritesProducts
 } from './pages/';
 import { MainLayout } from './pages/components/';
 import './index.css';
@@ -43,6 +43,7 @@ ReactDOM.render(
                <Route exact path="/products/explore" component={Explore} />
                <Route exact path="/:username/catalog/:productkey" component={ProductPage} />
                <ProtectedRoute exact path="/my-products/new" component={PostProduct} />
+               <ProtectedRoute exact path="/me/favorites-products" component={FavoritesProducts} />
                <Route exact path="/:username/opinions" component={ClientsOpinions} /> {/* Ready, por revisar si hay código que resumir... */}
                <ProtectedRoute exact path="/:username/opinions/new" component={NewOpinion} /> {/* Ready, por revisar si hay código que resumir... */}
                <Route exact path="/:username/contact" component={ShopContact} />
