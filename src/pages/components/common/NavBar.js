@@ -39,7 +39,7 @@ function NavBar(props) {
                </Fragment> :
                <Fragment>
                   <Link to="/logup">Registrar</Link>
-                  <Link to="/login">Iniciar sesión</Link>
+                  <Link to="/login">Acceder</Link>
                </Fragment>
             }
          </div>
