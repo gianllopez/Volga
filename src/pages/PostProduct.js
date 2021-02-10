@@ -13,7 +13,8 @@ class PostProduct extends Component {
          images: null,
          product: '',
          price: null, pricetype: 'COP',
-         description: ''
+         description: '',
+         tags: []
       },
       loading: false,
       errors: {}
@@ -60,8 +61,11 @@ class PostProduct extends Component {
                fdata.append(field, value);
             };
          };
-         ProductTags()
-            .then(() => {            
+         ProductTags(tag => {
+            let { data } = this.state; 
+            this.setState({ data: {...data, tags: data.tags.concat(tag)} });
+         }).then(() => {
+               fdata.set('tags', this.state.data.tags.join(', '));
                api.post('/products/new', fdata)
                   .then(({data}) => {
                      swal({

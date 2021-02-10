@@ -4,7 +4,7 @@ import swal from '@sweetalert/with-react';
 import { tagsProps } from '../../../assets';
 import './styles/ProductTags.css';
 
-function ProductTags() {
+function ProductTags(changeCallback) {
    let tags = Object.entries(tagsProps);
    return swal({
       title: '¿Con qué etiquetas relacionarías este producto?',
@@ -14,6 +14,7 @@ function ProductTags() {
                <TagBox
                   name={tag[0]}
                   image={tag[1]}
+                  onChange={() => changeCallback(tag[0])}
                />
             ))}
          </div>
