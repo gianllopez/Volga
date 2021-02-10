@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { ButtonLoader, TagsSelector } from './components';
+import { Fragment } from 'react';
+import api from '../utils/api';
+import { ButtonLoader, TagsSelector, PageLoader, ShopProduct } from './components';
 import './styles/Explore.css';
 
 class Explore extends Component {
@@ -17,16 +19,37 @@ class Explore extends Component {
       this.setState({ querytags });
    };
 
+   submitHandler = event => {
+      event.preventDefault();
+      this.setState({
+         querytags: this.state.querytags.join(', '),
+         loading: true
+      }, () => {
+         let { querytags } = this.state;
+         api.post('/get-data/explore', { querytags })
+            .then(({ data }) => {
+               this.setState({ loading: false, results: data });
+            });
+      });
+   };
+
    render() {
+      let { results } = this.state || { results: [] };
       return (
-         <div id="explore-page">
-            <h1>Etiquetas a explorar:</h1>
-            <TagsSelector
-               onSelect={this.selectHandler}
-               selectedTags={this.state.querytags}
-            />
-            <ButtonLoader/>
-         </div>
+         !this.state.loading ? 
+            <form id="explore-page" onSubmit={this.submitHandler}>
+               {!results ?
+                  <Fragment>
+                     <h1>Etiquetas a explorar:</h1>
+                     <TagsSelector onSelect={this.selectHandler}/>
+                     <ButtonLoader isloading={false} label="Explorar"/>
+                  </Fragment> : 
+                  <div id="explore-results">
+                     {results.map((result, index) => (
+                        <ShopProduct product_data={result}/>
+                     ))}
+                  </div>}
+            </form> : <PageLoader/>
       );
    };
 };

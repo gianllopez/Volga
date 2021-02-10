@@ -6,9 +6,8 @@ class TagsSelector extends Component {
 
 
    clickHandler = ({ target }) => {
-      let { selectedTags, onSelect } = this.props;
       target.classList.toggle('selected-tag');
-      onSelect(target);
+      this.props.onSelect(target);
    };
 
    render() {
