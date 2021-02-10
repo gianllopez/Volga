@@ -26,3 +26,4 @@ export { default as ContactLink } from './ShopContact/ContactLink';
 export { default as ProductGallery } from './ProductPage/ProductGallery';
 export { default as FollowButton } from './UserProfile/FollowButton';
 export { default as TagsSelector } from './Explore/TagsSelector';
+export { default as ProductTags } from './PostProduct/ProductTags';

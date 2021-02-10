@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ButtonLoader, DescriptionInput, ImagesUploader, Input, PriceInput } from './components/';
+import { ButtonLoader, DescriptionInput, ImagesUploader, Input, PriceInput, ProductTags } from './components/';
 import prodboxicon from '../assets/PostProduct/product-box.svg';
 import './styles/PostProduct.css';
 import { noBlankValidator } from '../utils/validators';
@@ -60,17 +60,20 @@ class PostProduct extends Component {
                fdata.append(field, value);
             };
          };
-         api.post('/products/new', fdata)
-            .then(({data}) => {
-               swal({
-                  title: '¡Tu producto ha sido posteado!',
-                  icon: 'success',
-                  buttons: [false, 'Continuar']
-               }).then(cont => {
-                  cont && this.props.history.push(`/${data.user}/catalog/${data.key}`)
-               })
-            })
-            .catch(errors => console.log(errors));
+         ProductTags()
+            .then(() => {            
+               api.post('/products/new', fdata)
+                  .then(({data}) => {
+                     swal({
+                        title: '¡Tu producto ha sido posteado!',
+                        icon: 'success',
+                        buttons: [false, 'Continuar']
+                     }).then(cont => {
+                        cont && this.props.history.push(`/${data.user}/catalog/${data.key}`)
+                     })
+                  })
+                  .catch(errors => console.log(errors));
+            })         
       } else {
          this.setState({ errors });
       };
