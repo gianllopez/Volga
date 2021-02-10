@@ -2,6 +2,7 @@ import React from 'react';
 import { TagBox } from '../';
 import swal from '@sweetalert/with-react';
 import { tagsProps } from '../../../assets';
+import './styles/ProductTags.css';
 
 function ProductTags() {
    let tags = Object.entries(tagsProps);
@@ -18,6 +19,7 @@ function ProductTags() {
          </div>
       ),
       buttons: [false, 'Continuar'],
+      className: 'product-tags-modal',
       closeOnClickOutside: false
    });
 

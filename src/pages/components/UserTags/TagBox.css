@@ -1,7 +1,7 @@
 .tagbox-wrapper {
    position: relative;
-   width: 110px;
-   height: 150px;
+   width: calc(50% - 30px);
+   max-width: 100px;
    margin: 15px;
 }
 
