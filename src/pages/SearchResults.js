@@ -6,7 +6,14 @@ import api from '../utils/api';
 
 class SearchResult extends Component {
 
-   state = {};
+   state = { filter: 'Productos' };
+
+   filterChangeHandler = filter => this.setState({ filter });
+
+   getQuery = () => {
+      let { state } = this.props.location;
+      return state ? state.query : '';
+   }
 
    render() {
       let { query, results } = this.state;
@@ -16,7 +23,7 @@ class SearchResult extends Component {
                   <Fragment>   
                      <div id="srp-header">
                         <h2>Resultados para "{query}"</h2>
-                        <FilterSelector/>
+                        <FilterSelector onChange={this.filterChangeHandler}/>
                         {/* <h4>Encontrados: {results ? results.length : 0}</h4> */}
                      </div>
                      <div id="srp-results">
@@ -46,22 +53,19 @@ class SearchResult extends Component {
    };
 
    componentDidMount() {
-      let { state } = this.props.location;
-      if (state && !this.state.results) {
-         let { query } = state;
-         api.post('/get-data/search', { query })
-            .then(response => {
-               let { data } = response;
-               this.setState({ results: data ? data.results : null, query });
-            });
-      };
+      let query = this.getQuery(), { filter } = this.state;
+      api.post('/get-data/search', { query, filter })
+         .then(response => {
+            let { data } = response;
+            this.setState({ results: data ? data.results : null, query });
+         });      
    };
 
-   // componentDidUpdate() {
-   //    if (!this.state.results) {
-   //       this.componentDidMount();
-   //    };
-   // };
+   componentDidUpdate() {
+      if (this.state.query !== this.getQuery()) {
+         this.componentDidMount();
+      };
+   };
 
 };
 

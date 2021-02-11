@@ -4,13 +4,15 @@ import './styles/FilterSelector.css';
 function FilterSelector(props) {
    
    const filterChange = ({ target }) => {
+      let { innerText } = target;
       document.querySelector('#filter-selector div')
          .style.transform =
-            target.innerText === 'Productos' ?
+            innerText === 'Productos' ?
                'translateX(-50%)' : 'translateX(50%)';
       document.querySelectorAll('#filter-selector p')
          .forEach(p => p.style.color = 'initial');
       target.style.color = 'white'
+      props.onChange(innerText);
    };
 
    return (

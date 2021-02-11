@@ -31,7 +31,7 @@ class SearchLink extends Component {
             if (value) {
                this.setState ({
                   redirect: true, query: value }, () => {
-                     swal.close()
+                     swal.close();
                      this.setState({ redirect: false });
                });
             } else {
@@ -43,14 +43,13 @@ class SearchLink extends Component {
 
    render = () => (
       !this.state.redirect ?
-         // eslint-disable-next-line
          <a onClick={this.searchRequest}>Buscar</a> :
          <Redirect to={{
             pathname: '/search/results',
             state: {query: this.state.query}
          }}/>
    );
-      
+
 };
 
 export default SearchLink;
