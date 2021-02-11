@@ -28,3 +28,4 @@ export { default as FollowButton } from './UserProfile/FollowButton';
 export { default as TagsSelector } from './Explore/TagsSelector';
 export { default as ProductTags } from './PostProduct/ProductTags';
 export { default as UserCard } from './common/UserCard';
+export { default as FilterSelector } from './common/FilterSelector';

@@ -1,0 +1,32 @@
+#filter-selector {
+  position: relative;
+  width: 300px;
+  margin: auto;
+  background-color: #f1f1f1;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 7px;
+}
+
+#filter-selector p {
+  width: calc(50% - 10px);
+  padding: 5px;
+  z-index: 2;
+  transition: color .4s;
+}
+
+#filter-selector div {
+  background-color: #78ade5;
+  height: 100%;
+  width: 50%;
+  position: absolute;
+  border-radius: inherit;
+  transition: transform .4s;
+  transform: translateX(-50%);
+}
+
+.user-indicator {
+  transform: translateX(50%) !important;
+}
+

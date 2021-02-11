@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { ShopProduct, UserCard } from './components';
+import { FilterSelector, ShopProduct, UserCard } from './components';
 import loupeicon from '../assets/SearchResults/loupe-icon.svg';
 import './styles/SearchResults.css';
 import api from '../utils/api';
@@ -16,10 +16,11 @@ class SearchResult extends Component {
                   <Fragment>   
                      <div id="srp-header">
                         <h2>Resultados para "{query}"</h2>
-                        <h4>Encontrados: {results ? results.length : 0}</h4>
+                        <FilterSelector/>
+                        {/* <h4>Encontrados: {results ? results.length : 0}</h4> */}
                      </div>
                      <div id="srp-results">
-                        <UserCard/>
+                        {/* <UserCard/> */}
                         {results ? (
                            results.map((result, index) => (
                               <ShopProduct

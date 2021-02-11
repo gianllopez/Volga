@@ -16,6 +16,7 @@
 
 .product-shop .logo {
    width: 45px;
+   height: 45px;
    border-radius: 50%;
    object-fit: cover;
    margin-right: 10px;
@@ -27,10 +28,12 @@
 }
 
 .product-wrapper .product-img {
+   height: 225px;
    margin: 20px 0;
    align-self: center;
    width: 100%;
    object-fit: contain;
+   background-color: #fbfbfb;
    border-radius: 5px;
 }
 
