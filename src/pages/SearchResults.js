@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { ShopProduct } from './components';
+import { ShopProduct, UserCard } from './components';
 import loupeicon from '../assets/SearchResults/loupe-icon.svg';
 import './styles/SearchResults.css';
 import api from '../utils/api';
@@ -19,6 +19,7 @@ class SearchResult extends Component {
                         <h4>Encontrados: {results ? results.length : 0}</h4>
                      </div>
                      <div id="srp-results">
+                        <UserCard/>
                         {results ? (
                            results.map((result, index) => (
                               <ShopProduct
