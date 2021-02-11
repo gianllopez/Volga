@@ -138,3 +138,9 @@
       justify-content: center;
    }
 } */
+
+/* añadir esta clase cuando no hay productos al #user-products */
+.x {
+   height: calc(100% - 8vh);
+   justify-content: center;
+}

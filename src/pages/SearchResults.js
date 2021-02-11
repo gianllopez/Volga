@@ -45,7 +45,7 @@ class SearchResult extends Component {
 
    componentDidMount() {
       let { state } = this.props.location;
-      if (state) {
+      if (state && !this.state.results) {
          let { query } = state;
          api.post('/get-data/search', { query })
             .then(response => {
@@ -55,11 +55,11 @@ class SearchResult extends Component {
       };
    };
 
-   componentDidUpdate() {
-      if (!this.state.results) {
-         this.componentDidMount();
-      };
-   };
+   // componentDidUpdate() {
+   //    if (!this.state.results) {
+   //       this.componentDidMount();
+   //    };
+   // };
 
 };
 

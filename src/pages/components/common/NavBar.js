@@ -12,7 +12,7 @@ function NavBar(props) {
    const linksAnimations = () => {
       document.getElementById('navbar-links')
          .classList
-         .toggle('show-links');
+            .toggle('show-links');
    };
 
    const logOut = event => {

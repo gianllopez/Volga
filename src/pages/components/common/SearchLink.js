@@ -10,15 +10,15 @@ class SearchLink extends Component {
    showSearchModal = () => (
       swal({
          title: '¿Que deseas buscar?',
-         buttons: ['Cancelar', { text: 'Buscar', closeModal: false }],
          content: (
             <div>
                <input placeholder="..." id="search-input" />
                {this.state.blankerror && (
                   <p id="blank-error">Debes rellenar el campo de búsqueda.</p>
-               )}
+                  )}
             </div>
          ),
+         buttons: ['Cancelar', { text: 'Buscar', closeModal: false }],
          className: 'search-modal',
          closeOnClickOutside: false
       })

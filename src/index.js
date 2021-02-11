@@ -32,7 +32,7 @@ ReactDOM.render(
    <BrowserRouter>
       <Switch>
          <ProtectedRoute exact path="/:username/contact-networks" component={ContactNetworks} /> {/* Ready, por revisar si hay código que resumir... */}
-         <ProtectedRoute exact path="/:username/tags" component={UserTags} /> {/* Ready, por revisar si hay código que resumir... */}
+         {/* <ProtectedRoute exact path="/:username/tags" component={UserTags} /> Ready, por revisar si hay código que resumir... */}
          <ProtectedRoute exact path="/:username/profile-picture" component={UserProfilePicture} /> {/* Ready, por revisar si hay código que resumir... */}
          <MainLayout nofooter={['/login', '/my-products/new']}>
             <Switch>
