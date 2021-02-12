@@ -14,7 +14,7 @@ class ShopProduct extends Component {
    };
 
    render() {
-      let {user, image_1, key, price, product, isfav } = this.props.product_data
+      let { user, image_1, key, price, product, isfav } = this.props.data;
       return (
          <div className={`product-wrapper ${this.props.shop}-product`} onClick={this.showProductNavigation}>
             <div className="product-shop">
