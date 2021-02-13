@@ -6,15 +6,23 @@ import api from '../utils/api';
 
 class SearchResult extends Component {
 
-   state = { filter: 'Productos' };
+   state = { filter: 'products' };
 
    loadRequest = () => {
-      let query = this.getQuery(), { filter } = this.state;
-      api.post('/get-data/search', { query, filter })
-         .then(response => {
-            let { data } = response;
-            this.setState({ results: data ? data.results : [], query });
-         });      
+      let query = this.getQuery(), { filter, results } = this.state;
+      if (results ? !results[filter] : true) {
+         api.post('/get-data/search', { query, filter })
+            .then(({ data }) => {
+               if (results ? !results[filter] : true) {
+                  this.setState ({
+                     results: {
+                        ...results,
+                        [filter] : data ? data.results : []
+                     }, query
+                  });
+               };
+            });      
+      };
    };
 
    filterChangeHandler = filter => {
@@ -29,34 +37,35 @@ class SearchResult extends Component {
    }
 
    render() {
-      let { filter, query, results } = this.state;
+      let { filter, query, results } = this.state,
+      items = results && filter in results && results[filter] || [];
       return (
          <div id="search-results-page">
-               {this.state.query ? (
-                  <Fragment>   
-                     <div id="srp-header">
-                        <h2>Resultados para "{query}"</h2>
-                        <FilterSelector onChange={this.filterChangeHandler}/>
-                        <h4>Encontrados: {results.length}</h4>
-                        {results.length === 0 && (
-                           <p id="blank-results">
-                              No se ha encontrado un producto
-                              que coincida con tu consulta.
-                           </p>)}
-                     </div>
-                     <div id="srp-results">
-                        {results.map((result, index) => 
-                           filter === 'Productos' ? 
-                              <ShopProduct data={result} key={index}/> :
-                              <UserCard data={result} key={index}/>)}
-                     </div>
-                  </Fragment>) : (
-                  <div id="no-query">
-                     <figure>
-                        <img src={loupeicon} alt="loupe-icon"/>
-                     </figure>
-                     <p>Realiza una consulta para ver los resultados.</p>
-                  </div>)}
+            {this.state.query ? (
+               <Fragment>   
+                  <div id="srp-header">
+                     <h2>Resultados para "{query}"</h2>
+                     <FilterSelector onChange={this.filterChangeHandler}/>
+                     <h4>Encontrados: {items.length}</h4>
+                     {items.length === 0 && (
+                        <p id="blank-results">
+                           No se ha encontrado un producto
+                           que coincida con tu consulta.
+                        </p>)}
+                  </div>
+                  <div id="srp-results">
+                     {items.map((item, index) => 
+                        filter === 'Productos' ? 
+                           <ShopProduct data={item} key={index}/> :
+                           <UserCard data={item} key={index}/>)}
+                  </div>
+               </Fragment>) : (
+               <div id="no-query">
+                  <figure>
+                     <img src={loupeicon} alt="loupe-icon"/>
+                  </figure>
+                  <p>Realiza una consulta para ver los resultados.</p>
+               </div>)}
             </div>
       );
    };

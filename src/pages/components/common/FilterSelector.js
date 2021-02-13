@@ -12,14 +12,14 @@ function FilterSelector(props) {
       document.querySelectorAll('#filter-selector p')
          .forEach(p => p.style.color = 'initial');
       target.style.color = 'white'
-      props.onChange(innerText);
+      props.onChange(target.dataset.filter);
    };
 
    return (
       <div id="filter-selector">
          <div/>
-         <p onClick={filterChange}>Productos</p>
-         <p onClick={filterChange}>Usuarios</p>
+         <p data-filter="products" onClick={filterChange}>Productos</p>
+         <p data-filter="users" onClick={filterChange}>Usuarios</p>
       </div>
    );
 };
