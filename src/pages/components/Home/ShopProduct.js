@@ -14,20 +14,21 @@ class ShopProduct extends Component {
    };
 
    render() {
-      let { user, image_1, key, price, product, isfav } = this.props.data;
+      let { user, image_1, key, price, product, isfav } = this.props.data || '',
+      userdata = user ? user : { username: '', name: '', picture: '' };
       return (
          <div className={`product-wrapper ${this.props.shop}-product`} onClick={this.showProductNavigation}>
             <div className="product-shop">
-               <img className="logo" src={user.picture} alt="user-pp" />
+               <img className="logo" src={userdata.picture} alt="user-pp" />
                <div className="product-shop-info">
-                  <h2>{user.username}</h2>
-                  <span>{user.name}</span>
+                  <h2>{userdata.username}</h2>
+                  <span>{userdata.name}</span>
                </div>
             </div>
             <img
                className="product-img"
                src={image_1}
-               alt={product.replace(' ', '-')}
+               alt={product && product.replace(' ', '-')}
             />
             <div className="product-footer">
                <span>{product}</span>
@@ -35,7 +36,7 @@ class ShopProduct extends Component {
             </div>
             <FavButton productkey={key} isfav={isfav}/>
             <div className="product-navigation">
-               <Link to={`/${user.username}/catalog/${key}`}>
+               <Link to={`/${userdata.username}/catalog/${key}`}>
                   <button>Ver producto</button>
                </Link>
             </div>

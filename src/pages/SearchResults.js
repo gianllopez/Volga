@@ -13,7 +13,7 @@ class SearchResult extends Component {
       api.post('/get-data/search', { query, filter })
          .then(response => {
             let { data } = response;
-            this.setState({ results: data ? data.results : null, query });
+            this.setState({ results: data ? data.results : [], query });
          });      
    };
 
@@ -37,18 +37,18 @@ class SearchResult extends Component {
                      <div id="srp-header">
                         <h2>Resultados para "{query}"</h2>
                         <FilterSelector onChange={this.filterChangeHandler}/>
-                        {/* <h4>Encontrados: {results ? results.length : 0}</h4> */}
+                        <h4>Encontrados: {results.length}</h4>
+                        {results.length === 0 && (
+                           <p id="blank-results">
+                              No se ha encontrado un producto
+                              que coincida con tu consulta.
+                           </p>)}
                      </div>
                      <div id="srp-results">
-                        {results ? (
-                           results.map((result, index) => 
+                        {results.map((result, index) => 
                            filter === 'Productos' ? 
                               <ShopProduct data={result} key={index}/> :
-                              <UserCard data={result} key={index}/>)
-                        ) :  (<p id="blank-results">
-                                 No se ha encontrado un producto
-                                 que coincida con tu consulta.
-                              </p>)}
+                              <UserCard data={result} key={index}/>)}
                      </div>
                   </Fragment>) : (
                   <div id="no-query">

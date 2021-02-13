@@ -12,7 +12,7 @@ class Home extends Component {
       return (
          <div id="feed-products">
             {feed.map((product, index) => (
-               <ShopProduct product_data={product}/>
+               <ShopProduct data={product}/>
             ))}
          </div>   
       );
