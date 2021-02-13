@@ -5,7 +5,8 @@ import {
    Logup, ContactNetworks, UserProfilePicture, UserTags,
    Login, UserProfile, ProductPage, Home,
    PostProduct, NewOpinion, ClientsOpinions,
-   ShopContact, SearchResults, NotFound, Explore, FavoritesProducts
+   ShopContact, SearchResults, NotFound, Explore,
+   FavoritesProducts, Landing
 } from './pages/';
 import { MainLayout } from './pages/components/';
 import './index.css';
@@ -36,7 +37,7 @@ ReactDOM.render(
          <ProtectedRoute exact path="/:username/profile-picture" component={UserProfilePicture} /> {/* Ready, por revisar si hay código que resumir... */}
          <MainLayout nofooter={['/login', '/my-products/new']}>
             <Switch>
-               <Route exact path="/" component={Home} />
+               <Route exact path="/" render={() => isAuthenticated() ? <Home /> : <Landing />} />
                <NoAuthRoute exact path="/logup" component={Logup} /> {/* Ready, por revisar si hay código que resumir... */}
                <NoAuthRoute exact path="/login" component={Login} />
                <Route exact path="/users/:username" component={UserProfile} />
