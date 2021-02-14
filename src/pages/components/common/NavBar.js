@@ -12,7 +12,7 @@ function NavBar(props) {
    const linksAnimations = () => {
       document.getElementById('navbar-links')
          .classList
-            .toggle('show-links');
+         .toggle('show-links');
    };
 
    const logOut = event => {
@@ -38,8 +38,8 @@ function NavBar(props) {
                   {/* <a href="/" onClick={logOut}>Cerrar sesión</a> */}
                </Fragment> :
                <Fragment>
-                  <Link to="/logup">Registrar</Link>
-                  <Link to="/login">Acceder</Link>
+                  <Link to="/logup">Registro</Link>
+                  <Link to="/login">Iniciar</Link>
                </Fragment>
             }
          </div>
