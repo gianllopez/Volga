@@ -11,9 +11,9 @@ class NavBar extends Component {
    state = {};
 
    linksAnimations = () => {
-      document.querySelector('#navbar-links')
+      document.getElementById('navbar-links')
          .classList
-         .toggle('show-links');
+            .toggle('show-links');
    };
 
    render() {
@@ -23,14 +23,11 @@ class NavBar extends Component {
          <div id="navbar-wrapper">
             <BurgerMenu clickCallback={this.linksAnimations} />
             <figure>
-               <img src={this.isAuthenticated ? picture : volgalogo} alt="navbarpic" />
+               <img
+                  {...this.isAuthenticated && { className: 'user-rounded-picture' }}
+                  src={this.isAuthenticated ? picture : volgalogo}
+                  alt="navbarpic" />
             </figure>
-            {/* {this.isAuthenticated &&
-               <div>
-                  <Link>Mi perfil</Link>
-                  <Link>Mis favoritos</Link>
-                  <Link>Cerrar sesión</Link>
-               </div>} */}
             <div id="navbar-links">
                <Link to="/">Inicio</Link>
                <SearchLink />
