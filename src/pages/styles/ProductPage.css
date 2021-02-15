@@ -13,6 +13,7 @@
    border-radius: 20px 20px 0 0;
    margin-top: 10px;
    flex-grow: 1;
+   overflow-wrap: anywhere;
 }
 
 #pp-product-info > div {
@@ -23,7 +24,7 @@
 }
 
 #pp-product-info div h2 {
-   font-size: 1.6em;
+   font-size: clamp(1em, 6vw, 1.35em);
 }
 
 #pp-product-info div h4 {
@@ -32,7 +33,7 @@
 }
 
 #pp-product-info div p {
-   font-size: 1.1em;
+   font-size: clamp(0.8em, 5vw, 0.9em);;
    font-weight: bold;
    overflow-wrap: break-word;
    max-width: 325px;
@@ -40,7 +41,7 @@
 
 @media (min-width:425px) {
    #pp-product-info div h2 {
-      font-size: 2em;
+      max-width: 350px;
    }
 }
 
@@ -77,6 +78,7 @@
       margin: auto;
       padding-top: 135px;
       height: auto;
+      align-items: unset;
    }
    #pp-product-info {
       grid-column: 2;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import api from '../utils/api';
+import api from '../utils/api';
 import { UserProduct } from './components/';
 import './styles/Home.css';
 
@@ -21,8 +21,8 @@ class Home extends Component {
 
    componentDidMount() {
       document.title = 'Volga - Inicio';
-      // api.get('/get-data/feed')
-      //    .then(({ data }) => this.setState({ feed: data }));
+      api.get('/get-data/feed')
+         .then(({ data }) => this.setState({ feed: data }));
    };
 
 };

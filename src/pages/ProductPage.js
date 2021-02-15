@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../utils/api';
-import { CustomModal, FavButton, PageLoader, ProductGallery } from './components';
+import { CustomModal, FavButton, PageLoader, ProductGallery, ProductTagsDisplayer } from './components';
 import './styles/ProductPage.css';
 
 class ProductPage extends Component {
@@ -16,7 +16,7 @@ class ProductPage extends Component {
    };
 
    render() {
-      let { images, product, price, description, key, user } = this.state.data;
+      let { images, product, price, description, tags, isfav, key, user } = this.state.data;
       return (
          this.state.fetched ? (
             <div className="product-page">
@@ -30,11 +30,12 @@ class ProductPage extends Component {
                      <h2>{product}</h2>
                      <h4>{price}</h4>
                      <p>{description}</p>
+                     <ProductTagsDisplayer tags={tags}/>
                      <div id="btns">
                         <Link to={`/${user}/contact`}>
                            <button>Preguntar</button>
                         </Link>
-                        <FavButton productkey={key} withtext />
+                        <FavButton isfav={isfav} productkey={key} withtext />
                      </div>
                   </div>
                </section>
@@ -60,10 +61,6 @@ class ProductPage extends Component {
             };
          });
    };
-
-
-
-
 };
 
 export default ProductPage;

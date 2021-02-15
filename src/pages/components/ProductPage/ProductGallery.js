@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './ProductGallery.css';
+import './styles/ProductGallery.css';
 
 class ProductGallery extends Component {
 
@@ -38,7 +38,7 @@ class ProductGallery extends Component {
       if (mediascreen.matches) {
          this.props.heightChangeCallback (
             document.querySelector('img#displayed').offsetHeight
-            );
+         );
       };
    };
 

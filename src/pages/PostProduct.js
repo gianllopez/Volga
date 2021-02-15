@@ -76,7 +76,7 @@ class PostProduct extends Component {
                      cont && this.props.history.push(`/${data.user}/catalog/${data.key}`)
                   })
                })
-               .catch(errors => console.log(errors));
+               .catch(errors => this.setState({}, () => console.log(errors)));
          })
       } else {
          this.setState({ errors });

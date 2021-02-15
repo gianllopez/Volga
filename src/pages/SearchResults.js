@@ -76,8 +76,10 @@ class SearchResult extends Component {
    };
 
    componentDidMount() {
-      document.title = 'Volga - Resultados'
-      this.loadRequest();
+      document.title = 'Volga - Resultados';
+      if (this.getQuery()) {
+         this.loadRequest();
+      };
    };
 
    componentDidUpdate() {

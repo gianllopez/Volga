@@ -1,0 +1,13 @@
+#p-tags-displayer {
+   cursor: pointer;
+   user-select: none;
+}
+
+#displayed-tags {
+   /* list-style-position: inside; */
+}
+
+#p-tags-displayer p {
+   font-size: .85em !important;
+   /* padding-left: 7px; */
+}
