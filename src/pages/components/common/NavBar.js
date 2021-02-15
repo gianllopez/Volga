@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import volgalogo from '../../../assets/common/logo.svg';
+import logouticon from '../../../assets/common/logout-icon.svg';
 import BurgerMenu from './BurgerMenu';
 import SearchLink from './SearchLink';
 import api from '../../../utils/api';
@@ -16,6 +17,11 @@ class NavBar extends Component {
             .toggle('show-links');
    };
 
+   logout = () => {
+      localStorage.removeItem('user-token');
+      window.location = '';
+   };
+
    render() {
       this.isAuthenticated = localStorage.getItem('user-token') || false;
       let { picture } = this.state;
@@ -26,7 +32,9 @@ class NavBar extends Component {
                <img
                   {...this.isAuthenticated && { className: 'user-rounded-picture' }}
                   src={this.isAuthenticated ? picture : volgalogo}
-                  alt="navbarpic" />
+                  alt="navbarpic"
+                  onClick={this.userOptions}
+               />
             </figure>
             <div id="navbar-links">
                <Link to="/">Inicio</Link>
@@ -35,6 +43,7 @@ class NavBar extends Component {
                {this.isAuthenticated ?
                   <Fragment>
                      <Link to="/my-products/new">Postear</Link>
+                     <Link to="/me/favorites-products">Favoritos</Link>
                   </Fragment> :
                   <Fragment>
                      <Link to="/logup">Registro</Link>
@@ -42,6 +51,14 @@ class NavBar extends Component {
                   </Fragment>
                }
             </div>
+            {this.isAuthenticated && 
+               <img
+                  src={logouticon}
+                  id="logout-btn"
+                  alt="logout-icon"
+                  onClick={this.logout}
+               />}
+            
          </div>
       );
    };
@@ -49,10 +66,6 @@ class NavBar extends Component {
       if (this.isAuthenticated && !this.state.picture) {
          api.get('/get-data/profile-picture')
             .then(({ data }) => this.setState({ picture: data.picture }));
-         let nbimg = document.querySelector('img[alt="navbarpic"]');
-         nbimg.addEventListener('click', () => {
-
-         });
       };
    };
 
