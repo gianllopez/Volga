@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { FavButton } from '..';
-import './ShopProduct.css';
+import './styles/UserProduct.css';
 
 class ShopProduct extends Component {
 
@@ -9,18 +9,18 @@ class ShopProduct extends Component {
 
    showProductNavigation = () => {
       const product = this._reactInternalFiber.child.stateNode,
-      navigation = product.querySelector('.product-navigation');
+         navigation = product.querySelector('.product-navigation');
       navigation.classList.toggle('show-navigation');
    };
 
    render() {
       let { user, image_1, key, price, product, isfav } = this.props.data || '',
-      userdata = user ? user : { username: '', name: '', picture: '' };
+         userdata = user ? user : { username: '', name: '', picture: '' };
       return (
-         <div className={`product-wrapper ${this.props.shop}-product`} onClick={this.showProductNavigation}>
-            <div className="product-shop">
+         <div className="product-wrapper" onClick={this.showProductNavigation}>
+            <div className="product-user">
                <img className="logo" src={userdata.picture} alt="user-pp" />
-               <div className="product-shop-info">
+               <div className="product-user-info">
                   <h2>{userdata.username}</h2>
                   <span>{userdata.name}</span>
                </div>
@@ -34,7 +34,7 @@ class ShopProduct extends Component {
                <span>{product}</span>
                <p>{price}</p>
             </div>
-            <FavButton productkey={key} isfav={isfav}/>
+            <FavButton productkey={key} isfav={isfav} />
             <div className="product-navigation">
                <Link to={`/${userdata.username}/catalog/${key}`}>
                   <button>Ver producto</button>

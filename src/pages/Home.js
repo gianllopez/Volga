@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import api from '../utils/api';
-import { ShopProduct } from './components/';
+// import api from '../utils/api';
+import { UserProduct } from './components/';
 import './styles/Home.css';
 
 class Home extends Component {
@@ -11,16 +11,18 @@ class Home extends Component {
       let { feed } = this.state;
       return (
          <div id="feed-products">
-            {feed.map((product, index) => (
-               <ShopProduct data={product}/>
-            ))}
-         </div>   
+            {feed.length !== 0 ?
+               feed.map((product, index) =>
+                  <UserProduct data={product} key={index} />) :
+               <p>Esto hay que hacerlo un componente lindo...</p>}
+         </div>
       );
    };
 
    componentDidMount() {
-      api.get('/get-data/feed')
-         .then(({ data }) => this.setState({ feed: data }));
+      document.title = 'Volga - Inicio';
+      // api.get('/get-data/feed')
+      //    .then(({ data }) => this.setState({ feed: data }));
    };
 
 };

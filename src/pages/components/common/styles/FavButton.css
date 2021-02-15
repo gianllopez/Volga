@@ -1,3 +1,17 @@
 .fav-icon {
    width: 25px;
 }
+
+button#fav-btn {
+   width: 175px !important;
+}
+
+.btn-no-fav {
+   color: red;
+}
+
+.btn-is-fav {
+   background-color: red !important;
+   color: white;
+   border-color: white !important;
+}

@@ -46,7 +46,7 @@ class PostProduct extends Component {
       event.preventDefault();
       let { isValid, errors } = noBlankValidator(this.state.data, ['description', 'type']);
       if (isValid) {
-         this.setState({loading: true});
+         this.setState({ loading: true });
          let fdata = new FormData(), statedata = Object.entries(this.state.data);
          for (let data of statedata) {
             let field = data[0], value = data[1];
@@ -62,22 +62,22 @@ class PostProduct extends Component {
             };
          };
          ProductTags(tag => {
-            let { data } = this.state; 
-            this.setState({ data: {...data, tags: data.tags.concat(tag)} });
+            let { data } = this.state;
+            this.setState({ data: { ...data, tags: data.tags.concat(tag) } });
          }).then(() => {
-               fdata.set('tags', this.state.data.tags.join(', '));
-               api.post('/products/new', fdata)
-                  .then(({data}) => {
-                     swal({
-                        title: '¡Tu producto ha sido posteado!',
-                        icon: 'success',
-                        buttons: [false, 'Continuar']
-                     }).then(cont => {
-                        cont && this.props.history.push(`/${data.user}/catalog/${data.key}`)
-                     })
+            fdata.set('tags', this.state.data.tags.join(', '));
+            api.post('/products/new', fdata)
+               .then(({ data }) => {
+                  swal({
+                     title: '¡Tu producto ha sido posteado!',
+                     icon: 'success',
+                     buttons: [false, 'Continuar']
+                  }).then(cont => {
+                     cont && this.props.history.push(`/${data.user}/catalog/${data.key}`)
                   })
-                  .catch(errors => console.log(errors));
-            })         
+               })
+               .catch(errors => console.log(errors));
+         })
       } else {
          this.setState({ errors });
       };
@@ -125,12 +125,16 @@ class PostProduct extends Component {
                   onChange={this.changeHandler}
                   errors={this.state.errors}
                />
-            
+
                <ButtonLoader isloading={this.state.loading} />
-            
+
             </div>
          </form>
       );
+   };
+
+   componentDidMount() {
+      document.title = 'Volga - Postear';
    };
 
 };

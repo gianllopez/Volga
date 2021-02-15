@@ -19,6 +19,11 @@
    width: 100%;
 }
 
+#logged-user-interaction img {
+   width: 45px;
+   border-radius: 50%;
+}
+
 #navbar-links {
    display: flex;
    flex-direction: column;

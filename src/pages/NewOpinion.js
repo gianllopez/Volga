@@ -42,7 +42,7 @@ class NewOpinion extends Component {
          api.post('/opinions', this.state.data)
             .catch(({ response }) => {
                if (response.data.to_user) {
-                  CustomModal (
+                  CustomModal(
                      <span>
                         El usuario sobre el que deseas opinar no existe.
                      </span>, [false, 'Entendido']).then(ok => ok && this.props.history.push('/'));
@@ -77,15 +77,16 @@ class NewOpinion extends Component {
                   />
                   <ButtonLoader isloading={this.state.loading} />
                </div>
-            </form> : <NotFound/>
+            </form> : <NotFound />
 
       );
    };
 
    componentDidMount() {
       let { username } = this.props.match.params;
+      document.title = `${username} - Opinar`;
       api.post('/validation/user-exists', { username })
-         .catch(({response}) => {
+         .catch(({ response }) => {
             if (response.status === 404) {
                this.setState({ notfound: true });
             };

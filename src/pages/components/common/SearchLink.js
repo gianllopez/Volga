@@ -15,7 +15,7 @@ class SearchLink extends Component {
                <input placeholder="..." id="search-input" />
                {this.state.blankerror && (
                   <p id="blank-error">Debes rellenar el campo de búsqueda.</p>
-                  )}
+               )}
             </div>
          ),
          buttons: ['Cancelar', { text: 'Buscar', closeModal: false }],
@@ -24,15 +24,17 @@ class SearchLink extends Component {
       })
    );
 
-   searchRequest = () => {
+   searchRequest = event => {
+      event.preventDefault();
       this.showSearchModal().then(search => {
          if (search) {
             let { value } = document.querySelector('input#search-input');
             if (value) {
-               this.setState ({
-                  redirect: true, query: value }, () => {
-                     swal.close();
-                     this.setState({ redirect: false });
+               this.setState({
+                  redirect: true, query: value
+               }, () => {
+                  swal.close();
+                  this.setState({ redirect: false });
                });
             } else {
                this.setState({ blankerror: true }, this.searchRequest);
@@ -43,11 +45,11 @@ class SearchLink extends Component {
 
    render = () => (
       !this.state.redirect ?
-         <a onClick={this.searchRequest}>Buscar</a> :
+         <a href="/" onClick={this.searchRequest}>Buscar</a> :
          <Redirect to={{
             pathname: '/search/results',
-            state: {query: this.state.query}
-         }}/>
+            state: { query: this.state.query }
+         }} />
    );
 
 };

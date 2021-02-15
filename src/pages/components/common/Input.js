@@ -5,7 +5,7 @@ class Input extends Component {
 
    state = { error: false };
 
-   entrieValidation = event => {
+   entryValidation = event => {
       let { maxLength } = this.props, { value } = event.target;
       if (value.length > maxLength) {
          event.target.value = value.substring(0, maxLength);
@@ -28,7 +28,7 @@ class Input extends Component {
                   autoComplete="off"
                   spellCheck="false"
                   {...this.props}
-                  onChange={this.entrieValidation}
+                  onChange={this.entryValidation}
                   errors={undefined}
                />
             )}

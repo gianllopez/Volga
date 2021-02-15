@@ -27,19 +27,19 @@ class UserProfile extends Component {
                      <FollowButton
                         user={username}
                         following={following}
-                        history={this.props.history}                        
+                        history={this.props.history}
                      />
                   </div>
                </section>
                <section id="user-stats" className="profile-section sub-section">
-                  <ShopStats data={stats}/>
+                  <ShopStats data={stats} />
                </section>
                <section id="user-products" className="profile-section">
                   <h3 className="section-title">Aquí puedes encontrar:</h3>
                   <div id="products">
                      {products && products.length >= 1 ?
                         products.map((product, index) => (
-                           <ProductCard 
+                           <ProductCard
                               image={product.image_1}
                               name={product.product}
                               price={product.price}
@@ -61,14 +61,15 @@ class UserProfile extends Component {
                            />
                         ))}
                         <Link to={`/${username}/opinions`}>Ver todas</Link>
-                     </Fragment>: <p>Este usuario no tiene opiniones de clientes.</p>}
+                     </Fragment> : <p>Este usuario no tiene opiniones de clientes.</p>}
                </section>
-            </div> : <NotFound/>
+            </div> : <NotFound />
       );
    };
 
    componentDidMount() {
       let { username } = this.props.match.params;
+      document.title = `Volga - ${username}`;
       api.post('/validation/user-exists', { username })
          .catch(({ response }) => {
             if (response.status === 404) {
@@ -76,9 +77,7 @@ class UserProfile extends Component {
             };
          }).then(() => {
             api.get('/get-data/user', { username })
-            .then(({ data }) => {
-               this.setState({ ...data.user });
-            })
+               .then(({ data }) => this.setState({ ...data.user }));
          });
    };
 

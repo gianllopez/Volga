@@ -134,6 +134,10 @@ class Logup extends Component {
       );
    };
 
+   componentDidMount() {
+      document.title = 'Volga - Registro';
+   };
+
 };
 
 export default Logup;

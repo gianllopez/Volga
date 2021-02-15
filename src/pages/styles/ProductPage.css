@@ -55,19 +55,19 @@
    border: none;
    border-radius: 5px;
    outline: none;
+   font-size: 1em;
+   border: 2px solid;
 }
 
 #btns button:first-child {
    color: #2c87f0;
-   border: 2px solid;
    margin-right: 10px;
 }
 
-#btns button:not(:first-child) {
+/* #btns button:not(:first-child) {
    width: 150px;
    color: red;
-   border: 2px solid;
-}
+} */
 
 @media (min-width:768px) {
    .product-page {

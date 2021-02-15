@@ -10,11 +10,11 @@
    overflow: hidden;
 }
 
-.product-shop {
+.product-user {
    display: inherit;
 }
 
-.product-shop .logo {
+.product-user .logo {
    width: 45px;
    height: 45px;
    border-radius: 50%;
@@ -22,7 +22,7 @@
    margin-right: 10px;
 }
 
-.product-shop .product-shop-info {
+.product-user .product-user-info {
    font-size: 0.8em;
    height: 45px;
 }

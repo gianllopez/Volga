@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { capitalize } from '../../../utils/tools';
 import { sncolors } from '../local-utils';
 import './ContactLink.css';
@@ -10,18 +10,17 @@ class ContactLink extends Component {
 
    render() {
       return (
-         <a className={`contact-link ${this.for}-link`} href={`${this.props.url}`}
-               target="_blank" rel="noopener noreferrer" aria-disabled="true">
-            {this.url ? (
-               <Fragment>
-                  <i className={
-                     this.for !== 'email' ?
-                        `fab fa-${this.for}` :
-                        'fas fa-envelope-open-text'
-                  }/>
-                  <div className="fake-before"/>
-               </Fragment>
-            ) : <p>Red no registrada</p>}
+         <a className={`contact-link ${this.for}-link`}
+            target="_blank" rel="noopener noreferrer"
+            {...this.url && { href: this.url }}>
+            <i className={
+               this.for !== 'email' ?
+                  `fab fa-${this.for}` :
+                  'fas fa-envelope-open-text'
+            } />
+            {this.url ?
+               <div className="fake-before" /> :
+               <p>Red no registrada</p>}
             <h3>{capitalize(this.for)}</h3>
          </a>
       );
@@ -29,7 +28,7 @@ class ContactLink extends Component {
 
    componentDidMount() {
       let link = document.querySelector(`.${this.for}-link`),
-      bg = '';
+         bg = '';
       if (this.for !== 'instagram') {
          bg = sncolors[this.for];
       } else {
@@ -44,7 +43,7 @@ class ContactLink extends Component {
          link.querySelector('.fake-before').style.background = bg;
       } else {
          link.classList.add('nonet');
-         link.addEventListener('mouseover', function() {
+         link.addEventListener('mouseover', function () {
             this.style.color = 'black';
          })
       };

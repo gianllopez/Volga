@@ -19,13 +19,23 @@ class FavButton extends Component {
    };
 
    render() {
+      let { isfav } = this.state;
       return (
-         <img
-            className="fav-icon"
-            src={this.state.isfav ? filledFavIcon: favIcon}
-            alt="fav-icon"
-            onClick={this.fetchFav}
-         />
+         !this.props.withtext ?
+            <img
+               className="fav-icon"
+               src={isfav ? filledFavIcon : favIcon}
+               alt="fav-icon"
+               onClick={this.fetchFav}
+            /> :
+            <button
+               id="fav-btn"
+               onClick={this.fetchFav}
+               className={isfav ? "btn-is-fav" : "btn-no-fav"}>
+               {!isfav ?
+                  "Añadir a favoritos" :
+                  "Eliminar de favoritos"}
+            </button>
       );
    }
 };

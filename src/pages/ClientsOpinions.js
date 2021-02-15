@@ -5,7 +5,7 @@ import { Opinion } from './components'
 import './styles/ClientsOpinions.css';
 
 class ClientsOpinions extends Component {
-   
+
    state = {};
 
    render() {
@@ -23,14 +23,15 @@ class ClientsOpinions extends Component {
                         key={index}
                      />
                   ))}
-               
+
                </div>
-            </div> : <NotFound/>
+            </div> : <NotFound />
       );
    };
 
    componentDidMount() {
       let { username } = this.props.match.params;
+      document.title = `${username} - Opiniones`;
       api.post('/validation/user-exists', { username })
          .catch(({ response }) => {
             if (response.status === 404) {
@@ -38,7 +39,7 @@ class ClientsOpinions extends Component {
             };
          }).then(() => {
             api.get('/get-data/clients-opinions', { username })
-            .then(({ data }) => this.setState({ data }));
+               .then(({ data }) => this.setState({ data }));
          });
    };
 

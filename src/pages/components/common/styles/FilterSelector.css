@@ -1,36 +1,35 @@
 #filter-selector {
-  position: relative;
-  width: 300px;
-  margin: auto;
-  background-color: #f1f1f1;
-  border-radius: 4px;
-  display: flex;
-  justify-content: space-around;
-  margin-top: 7px;
-}
+   position: relative;
+   width: 300px;
+   margin: 3px auto;
+   background-color: #f1f1f1;
+   border-radius: 4px;
+   display: flex;
+   justify-content: space-around;
+   margin-top: 7px;
+   }
 
 #filter-selector p {
-  width: calc(50% - 10px);
-  padding: 5px;
-  z-index: 1;
-  transition: color .4s;
+   width: calc(50% - 10px);
+   padding: 5px;
+   z-index: 1;
+   transition: color 0.4s;
 }
 
 #filter-selector p:first-of-type {
-  color: white;
+   color: white;
 }
 
 #filter-selector div {
-  background-color: #78ade5;
-  height: 100%;
-  width: 50%;
-  position: absolute;
-  border-radius: inherit;
-  transition: transform .4s;
-  transform: translateX(-50%);
+   background-color: #78ade5;
+   height: 100%;
+   width: 50%;
+   position: absolute;
+   border-radius: inherit;
+   transition: transform 0.4s;
+   transform: translateX(-50%);
 }
 
 .user-indicator {
-  transform: translateX(50%) !important;
+   transform: translateX(50%) !important;
 }
-

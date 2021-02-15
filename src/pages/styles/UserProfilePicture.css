@@ -19,8 +19,7 @@
    margin: 5px auto 10px auto;
 }
 
-#userpp-form .btnloader-wrapper:first-of-type {
-   margin-right: 10px;
+#userpp-form .btnloader-wrapper {
    color: initial;
    background-color: #dddddd;
 }

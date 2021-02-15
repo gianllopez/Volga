@@ -4,10 +4,16 @@
    position: relative;
    padding: 10px;
    border-radius: 10px;
-   box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.1);
+   box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.3);
    overflow: hidden;
    transition: color .5s;
    color: black;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   width: 125px;
+   height: 115px;
+   margin: auto;
 }
 
 .contact-link i {
@@ -36,13 +42,13 @@
    top: 90%;
    left: -130%;
    width: 140%;
-   height: 140%;
+   height: 145%;
    border-radius: inherit;
 }
 
 .contact-link:hover .fake-before {
-   top: -18%;
-   left: -18%;
+   top: -22%;
+   left: -20%;
 }
 
 .nonet {

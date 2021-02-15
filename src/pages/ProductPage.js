@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import api from '../utils/api';
-import { CustomModal, PageLoader, ProductGallery } from './components';
+import { CustomModal, FavButton, PageLoader, ProductGallery } from './components';
 import './styles/ProductPage.css';
 
 class ProductPage extends Component {
@@ -9,19 +10,19 @@ class ProductPage extends Component {
 
    centeredCallback = height => {
       let pp = document.querySelector('.product-page');
-      height < 433 ? 
+      height < 433 ?
          pp.classList.add('centered-position') :
-         pp.classList.remove('centered-position');      
+         pp.classList.remove('centered-position');
    };
 
    render() {
-      let {images, product, price, description} = this.state.data;
+      let { images, product, price, description, key, user } = this.state.data;
       return (
          this.state.fetched ? (
             <div className="product-page">
                <ProductGallery
                   images={images}
-                  product={this.state.data.product}
+                  product={product}
                   heightChangeCallback={this.centeredCallback}
                />
                <section id="pp-product-info">
@@ -30,36 +31,37 @@ class ProductPage extends Component {
                      <h4>{price}</h4>
                      <p>{description}</p>
                      <div id="btns">
-                        <button>Preguntar</button>
-                        <button>
-                           Añadir a favoritos
-                        </button>
+                        <Link to={`/${user}/contact`}>
+                           <button>Preguntar</button>
+                        </Link>
+                        <FavButton productkey={key} withtext />
                      </div>
                   </div>
                </section>
             </div>
-         ) : <PageLoader/>
+         ) : <PageLoader />
       );
    };
 
    componentDidMount() {
       const { username, productkey } = this.props.match.params;
+      document.title = `Volga - ${productkey}`;
       api.get('/get-data/product', { username, productkey })
-         .then(({data}) => this.setState({fetched: true, data}))
-         .catch(({response}) => {
-            let {error} = response.data;
+         .then(({ data }) => this.setState({ fetched: true, data }))
+         .catch(({ response }) => {
+            let { error } = response.data;
             if (error === '404') {
-               CustomModal (
+               CustomModal(
                   <span>
                      El producto que buscas no se encuentra
                      en el catálogo de {username}
                   </span>, [false, 'Entendido'])
-                     .then(ok => ok && this.props.history.push('/'));
+                  .then(ok => ok && this.props.history.push('/'));
             };
          });
    };
 
-   
+
 
 
 };

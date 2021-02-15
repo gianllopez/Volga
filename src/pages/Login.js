@@ -88,6 +88,9 @@ class Login extends Component {
          </form>
       );
    };
+   componentDidMount() {
+      document.title = 'Volga - Inicio de sesión';
+   };
 };
 
 export default Login;

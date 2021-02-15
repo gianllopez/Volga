@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import api from '../utils/api';
-import { NotFound } from './';
+import { NotFound } from '.';
 import { ContactLink, CustomModal } from './components';
-import './styles/ShopContact.css';
+import './styles/UserContact.css';
 
 class ShopContact extends Component {
-   
+
    state = {};
 
    render() {
@@ -22,15 +22,16 @@ class ShopContact extends Component {
                         for={contact[0]}
                         url={contact[1]}
                         key={index}
-                     />                  
+                     />
                   ))}
                </div>
-            </div> : <NotFound/>
+            </div> : <NotFound />
       );
    };
 
    componentDidMount() {
       let { username } = this.props.match.params;
+      document.title = `${username} - Contacto`;
       api.post('/validation/user-exists', { username })
          .catch(({ response }) => {
             if (response.status === 404) {
@@ -38,11 +39,11 @@ class ShopContact extends Component {
             };
          }).then(() => {
             api.get('/get-data/contact-networks', { username })
-            .then(({ data }) => this.setState({ data }))
-            .catch(({ response }) => {
-               CustomModal(<span>{response.data.user}</span>, [false, 'Entendido'])
-                  .then(ok => ok && this.props.history.push(`/users/${username}`));
-            })
+               .then(({ data }) => this.setState({ data }))
+               .catch(({ response }) => {
+                  CustomModal(<span>{response.data.user}</span>, [false, 'Entendido'])
+                     .then(ok => ok && this.props.history.push(`/users/${username}`));
+               })
          });
    };
 

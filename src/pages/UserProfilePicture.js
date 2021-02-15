@@ -43,12 +43,17 @@ class UserProfilePicture extends Component {
                <h1>Selecciona una foto para tu perfil</h1>
             </div>
             <Uploader isloaded={this.state.picture} uploadHandler={this.uploadHandler} />
-            <div style={{ display: 'flex' }}>
+            <ButtonLoader label="Continuar" />
+            {/* <div style={{ display: 'flex' }}>
                <ButtonLoader label="Omitir" />
-               <ButtonLoader label="Continuar" />
-            </div>
+            </div> */}
          </form>
       );
+   };
+
+   componentDidMount() {
+      let { username } = this.props.match.params;
+      document.title = `${username} - Foto de perfil`;
    };
 
 };

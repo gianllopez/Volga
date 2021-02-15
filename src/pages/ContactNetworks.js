@@ -21,7 +21,7 @@ class ContactNetworks extends Component {
 
    changeHandler = ({ target }) => {
       this.setState({
-         data: {...this.state.data, [target.name]: target.value}
+         data: { ...this.state.data, [target.name]: target.value }
       })
    };
 
@@ -121,6 +121,10 @@ class ContactNetworks extends Component {
 
          </form>
       );
+   };
+
+   componentDidMount() {
+      document.title = `${this.state.data.user} - Redes de contacto`;
    };
 };
 

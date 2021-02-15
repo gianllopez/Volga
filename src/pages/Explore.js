@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Fragment } from 'react';
 import api from '../utils/api';
-import { ButtonLoader, TagsSelector, PageLoader, ShopProduct } from './components';
+import { ButtonLoader, TagsSelector, PageLoader, UserProduct } from './components';
 import './styles/Explore.css';
 
 class Explore extends Component {
@@ -10,7 +10,7 @@ class Explore extends Component {
 
    selectHandler = target => {
       let tag = target.innerText,
-      { querytags } = this.state;
+         { querytags } = this.state;
       if (querytags.includes(tag)) {
          querytags.splice(querytags.indexOf(tag), 1);
       } else {
@@ -36,21 +36,25 @@ class Explore extends Component {
    render() {
       let { results } = this.state || { results: [] };
       return (
-         !this.state.loading ? 
+         !this.state.loading ?
             <form id="explore-page" onSubmit={this.submitHandler}>
                {!results ?
                   <Fragment>
                      <h1>Etiquetas a explorar:</h1>
-                     <TagsSelector onSelect={this.selectHandler}/>
-                     <ButtonLoader isloading={false} label="Explorar"/>
-                  </Fragment> : 
+                     <TagsSelector onSelect={this.selectHandler} />
+                     <ButtonLoader isloading={false} label="Explorar" />
+                  </Fragment> :
                   <div id="explore-results">
                      {results.map((result, index) => (
-                        <ShopProduct product_data={result}/>
+                        <UserProduct product_data={result} />
                      ))}
                   </div>}
-            </form> : <PageLoader/>
+            </form> : <PageLoader />
       );
+   };
+
+   componentDidMount() {
+      document.title = 'Volga - Explorar';
    };
 };
 
