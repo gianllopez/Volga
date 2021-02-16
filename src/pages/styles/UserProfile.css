@@ -112,6 +112,8 @@
       margin-top: 0;
       width: 60vw;
       max-width: 1250px;
+      height: calc(100% - 8vh);
+      justify-content: center;
    }
 }
 
@@ -130,7 +132,7 @@
    }
 }
 
-#products > p {
+.profile-section p {
    text-align: center;
 }
 /* @media (min-width:1400px) {
@@ -140,7 +142,7 @@
 } */
 
 /* añadir esta clase cuando no hay productos al #user-products */
-.x {
+/* .no-prods-styles {
    height: calc(100% - 8vh);
    justify-content: center;
-}
+} */

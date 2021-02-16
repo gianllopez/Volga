@@ -28,14 +28,16 @@ class NavBar extends Component {
       return (
          <div id="navbar-wrapper">
             <BurgerMenu clickCallback={this.linksAnimations} />
-            <figure>
-               <img
-                  {...this.isAuthenticated && { className: 'user-rounded-picture' }}
-                  src={this.isAuthenticated ? picture : volgalogo}
-                  alt="navbarpic"
-                  onClick={this.userOptions}
-               />
-            </figure>
+            <Link to="/users/me">
+               <figure>
+                  <img
+                     {...this.isAuthenticated && { className: 'user-rounded-picture' }}
+                     src={this.isAuthenticated ? picture : volgalogo}
+                     alt="navbarpic"
+                     onClick={this.userOptions}
+                  />
+               </figure>
+            </Link>
             <div id="navbar-links">
                <Link to="/">Inicio</Link>
                <SearchLink />

@@ -34,7 +34,7 @@ class UserProfile extends Component {
                <section id="user-stats" className="profile-section sub-section">
                   <UserStats stats={stats} />
                </section>
-               <section id="user-products" className="profile-section">
+               <section id="user-products" className="profile-section no-prods-styles">
                   <h3 className="section-title">Aquí puedes encontrar:</h3>
                   <div id="products">
                      {products && products.length >= 1 ?

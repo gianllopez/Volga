@@ -10,6 +10,7 @@ class ProductTagsDisplayer extends Component {
    };
 
    render() {
+
       let { displayed } = this.state,
          { tags } = this.props,
          sortedtags = tags.sort((a, b) => b.length - a.length)
