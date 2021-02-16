@@ -44,7 +44,8 @@
 
 .product-footer span {
    font-weight: bold;
-   font-size: 1.3em;
+   font-size: 1.2em;
+   overflow-wrap: break-word;
 }
 
 .product-wrapper .fav-icon {

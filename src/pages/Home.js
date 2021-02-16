@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import api from '../utils/api';
-import { UserProduct } from './components/';
+import { CustomMessage, UserProduct } from './components/';
+import missingfollower from '../assets/Home/missing-follower.svg';
 import './styles/Home.css';
 
 class Home extends Component {
@@ -14,7 +15,11 @@ class Home extends Component {
             {feed.length !== 0 ?
                feed.map((product, index) =>
                   <UserProduct data={product} key={index} />) :
-               <p>Esto hay que hacerlo un componente lindo...</p>}
+               <CustomMessage
+                  msgimage={missingfollower}
+                  message="No estás siguiendo a nadie,
+                           sigue a usuarios para ver sus productos"
+               />}
          </div>
       );
    };

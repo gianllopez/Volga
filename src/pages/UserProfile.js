@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { ShopStats, ProductCard, Opinion, FollowButton } from './components';
+import { UserStats, ProductCard, Opinion, FollowButton } from './components';
 import { NotFound } from './';
 import './styles/UserProfile.css';
 import api from '../utils/api';
@@ -32,7 +32,7 @@ class UserProfile extends Component {
                   </div>
                </section>
                <section id="user-stats" className="profile-section sub-section">
-                  <ShopStats data={stats} />
+                  <UserStats stats={stats} />
                </section>
                <section id="user-products" className="profile-section">
                   <h3 className="section-title">Aquí puedes encontrar:</h3>

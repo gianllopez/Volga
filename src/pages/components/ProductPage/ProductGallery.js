@@ -3,7 +3,7 @@ import './styles/ProductGallery.css';
 
 class ProductGallery extends Component {
 
-   state = {index: 0};
+   state = { index: 0 };
 
    galleryChangeHandler = src => {
       let index = this.props.images.indexOf(src);
@@ -11,11 +11,11 @@ class ProductGallery extends Component {
    };
 
    render() {
-      let {images} = this.props, {index} = this.state;
+      let { images } = this.props, { index } = this.state;
       return (
          <div id="product-gallery">
             <figure>
-               <img src={images[index]} alt="pg-pic" id="displayed"/>
+               <img src={images[index]} alt="pg-pic" id="displayed" />
             </figure>
             <div id="gallery-items">
                {images.map((img, index) => (
@@ -33,18 +33,18 @@ class ProductGallery extends Component {
       );
    };
 
-   componentDidMount() {
-      let mediascreen = matchMedia('(min-width: 768px)')
-      if (mediascreen.matches) {
-         this.props.heightChangeCallback (
-            document.querySelector('img#displayed').offsetHeight
-         );
-      };
-   };
+   // componentDidMount() {
+   //    let mediascreen = matchMedia('(min-width: 768px)')
+   //    if (mediascreen.matches) {
+   //       this.props.heightChangeCallback (
+   //          document.querySelector('img#displayed').offsetHeight
+   //       );
+   //    };
+   // };
 
-   componentDidUpdate() {
-      this.componentDidMount();
-   };
+   // componentDidUpdate() {
+   //    this.componentDidMount();
+   // };
 
 
 

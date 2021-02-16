@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Fragment } from 'react';
+import swal from 'sweetalert';
 import api from '../utils/api';
-import { ButtonLoader, TagsSelector, PageLoader, UserProduct } from './components';
+import { ButtonLoader, TagsSelector, PageLoader, UserProduct, CustomModal } from './components';
 import './styles/Explore.css';
 
 class Explore extends Component {
@@ -21,16 +22,23 @@ class Explore extends Component {
 
    submitHandler = event => {
       event.preventDefault();
-      this.setState({
-         querytags: this.state.querytags.join(', '),
-         loading: true
-      }, () => {
-         let { querytags } = this.state;
-         api.post('/get-data/explore', { querytags })
-            .then(({ data }) => {
-               this.setState({ loading: false, results: data });
-            });
-      });
+      let { querytags } = this.state;
+      if (querytags.length !== 0) {
+         this.setState({
+            querytags: this.state.querytags.join(', '),
+            loading: true
+         }, () => {
+            let { querytags } = this.state;
+            api.post('/get-data/explore', { querytags })
+               .then(({ data }) => {
+                  this.setState({ loading: false, results: data });
+               });
+         });
+      } else {
+         CustomModal(
+            <span>Para explorar tienes que tener al menos una
+            etiqueta por criterio de exploración.</span>, [false, 'Entendido'])
+      };
    };
 
    render() {
@@ -46,7 +54,7 @@ class Explore extends Component {
                   </Fragment> :
                   <div id="explore-results">
                      {results.map((result, index) => (
-                        <UserProduct product_data={result} />
+                        <UserProduct data={result} key={index} />
                      ))}
                   </div>}
             </form> : <PageLoader />

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { FavButton } from '..';
+import { FavButton } from '../';
 import './styles/UserProduct.css';
 
-class ShopProduct extends Component {
+class UserProduct extends Component {
 
    state = { fav: false };
 
@@ -45,4 +45,4 @@ class ShopProduct extends Component {
    };
 };
 
-export default ShopProduct;
+export default UserProduct;

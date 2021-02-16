@@ -62,10 +62,16 @@ class PostProduct extends Component {
             };
          };
          ProductTags(tag => {
-            let { data } = this.state;
-            this.setState({ data: { ...data, tags: data.tags.concat(tag) } });
+            let { data } = this.state, { tags } = data;
+            if (tags.includes(tag)) {
+               tags.splice(tags.indexOf(tag), 1);
+            } else {
+               tags = tags.concat(tag)
+            };
+            this.setState({ data: { ...data, tags } });
          }).then(() => {
-            fdata.set('tags', this.state.data.tags.join(', '));
+            let { tags } = this.state.data;
+            fdata.set('tags', tags.slice(0, 10).join(', '));
             api.post('/products/new', fdata)
                .then(({ data }) => {
                   swal({

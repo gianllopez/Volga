@@ -14,12 +14,12 @@ class NavBar extends Component {
    linksAnimations = () => {
       document.getElementById('navbar-links')
          .classList
-            .toggle('show-links');
+         .toggle('show-links');
    };
 
    logout = () => {
       localStorage.removeItem('user-token');
-      window.location = '';
+      window.location = '/';
    };
 
    render() {
@@ -51,14 +51,14 @@ class NavBar extends Component {
                   </Fragment>
                }
             </div>
-            {this.isAuthenticated && 
+            {this.isAuthenticated &&
                <img
                   src={logouticon}
                   id="logout-btn"
                   alt="logout-icon"
                   onClick={this.logout}
                />}
-            
+
          </div>
       );
    };

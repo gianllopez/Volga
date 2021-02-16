@@ -4,6 +4,7 @@
 
 button#fav-btn {
    width: 175px !important;
+   transition: .6s;
 }
 
 .btn-no-fav {
