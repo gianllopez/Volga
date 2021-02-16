@@ -30,7 +30,7 @@ class ProductPage extends Component {
                      <h2>{product}</h2>
                      <h4>{price}</h4>
                      <p>{description}</p>
-                     <ProductTagsDisplayer tags={tags}/>
+                     {tags && <ProductTagsDisplayer tags={tags}/>}
                      <div id="btns">
                         <Link to={`/${user}/contact`}>
                            <button>Preguntar</button>
