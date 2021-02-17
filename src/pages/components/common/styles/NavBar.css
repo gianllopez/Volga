@@ -20,7 +20,7 @@
 }
 
 #navbar-wrapper a figure img {
-   width: 95%;
+   width: calc(95% - 3.5px);
    transition: .3s;
    z-index: 2;
 }

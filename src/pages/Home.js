@@ -18,7 +18,7 @@ class Home extends Component {
                <CustomMessage
                   msgimage={missingfollower}
                   message="No estás siguiendo a nadie,
-                           sigue a usuarios para ver sus productos"
+                           sigue a usuarios para ver sus productos aquí en inicio"
                />}
          </div>
       );

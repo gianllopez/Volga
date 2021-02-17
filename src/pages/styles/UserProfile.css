@@ -113,7 +113,7 @@
       width: 60vw;
       max-width: 1250px;
       height: calc(100% - 8vh);
-      justify-content: center;
+      /* justify-content: center; */
    }
 }
 
@@ -142,7 +142,11 @@
 } */
 
 /* añadir esta clase cuando no hay productos al #user-products */
-/* .no-prods-styles {
+.no-prods-styles {
    height: calc(100% - 8vh);
    justify-content: center;
-} */
+}
+
+.blank-header {
+   text-align: center;
+}

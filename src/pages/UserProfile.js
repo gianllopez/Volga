@@ -7,10 +7,14 @@ import api from '../utils/api';
 
 class UserProfile extends Component {
 
-   state = {};
+   state = {
+      picture: '', username: '', name: '', stats: {},
+      opinions: '', products: [], following: ''
+   };
 
    render() {
       let { picture, username, name, stats, opinions, products, following } = this.state;
+      // debugger
       return (
          !this.state.notfound ?
             <div id="user-profile">
@@ -34,24 +38,27 @@ class UserProfile extends Component {
                <section id="user-stats" className="profile-section sub-section">
                   <UserStats stats={stats} />
                </section>
-               <section id="user-products" className="profile-section no-prods-styles">
-                  <h3 className="section-title">Aquí puedes encontrar:</h3>
+               <section id="user-products"
+                  className={`profile-section${products.length === 0 ? " no-prods-styles" : ""}`}>
+                  {products.length !== 0 && <h3 className="section-title">Aquí puedes encontrar:</h3>}
                   <div id="products">
-                     {products && products.length >= 1 ?
-                        products.map((product, index) => (
-                           <ProductCard
-                              image={product.image_1}
-                              name={product.product}
-                              price={product.price}
-                              key={index}
-                           />
-                        )) : <p>Este usuario no ha posteado ningún producto.</p>}
+                     {products.length !== 0 ?
+                        <Fragment>
+                           {products.map((product, index) => 
+                              <ProductCard
+                                 image={product.image_1}
+                                 name={product.product}
+                                 price={product.price}
+                                 key={index}
+                              />)}
+                        </Fragment> :
+                        <h3 className="blank-header">Este usuario no ha posteado ningún producto.</h3>}
                   </div>
                </section>
                <section id="clients-opinions" className="profile-section sub-section">
-                  <h3 className="section-title">Opiniones de clientes:</h3>
-                  {opinions && opinions.length >= 1 ?
+                  {opinions.length !== 0 ?
                      <Fragment>
+                        <h3 className="section-title">Opiniones de clientes:</h3>
                         {opinions.map((opinion, index) => (
                            <Opinion
                               from={opinion.from}
@@ -61,7 +68,7 @@ class UserProfile extends Component {
                            />
                         ))}
                         <Link to={`/${username}/opinions`}>Ver todas</Link>
-                     </Fragment> : <p>Este usuario no tiene opiniones de clientes.</p>}
+                     </Fragment> : <h3 className="blank-header">Este usuario no tiene opiniones de clientes.</h3>}
                </section>
             </div> : <NotFound />
       );

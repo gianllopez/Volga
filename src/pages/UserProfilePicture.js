@@ -13,14 +13,15 @@ class UserProfilePicture extends Component {
    submitHandler = event => {
       event.preventDefault();
       const sendRequest = () => {
-         let form = new FormData();
-         form.append('picture', this.state.picture)
-         form.append('username', this.props.match.params['username']);
-         api.post('/profile-picture', form)
-            .then(() => this.props.history.push(`/users/${form.get('username')}/`))
+         this.setState({ loading: true }, () => {
+            let binaries = new FormData();
+            binaries.append('picture', this.state.picture)
+            api.post('/profile-picture', binaries)
+               .then(() => this.props.history.push(`/users/me`))
+         });
       };
       if (!this.state.picture) {
-         const content = (
+         CustomModal(
             <Fragment>
                <p>
                   Vemos que no tienes pensado agregar una foto para
@@ -29,9 +30,7 @@ class UserProfilePicture extends Component {
                </p>
                <span>¿Deseas continuar así?</span>
             </Fragment>
-         );
-         CustomModal(content)
-            .then(allowBlank => allowBlank && sendRequest());
+         ).then(allowBlank => allowBlank && sendRequest());
       } else { sendRequest(); };
 
    };
@@ -43,10 +42,7 @@ class UserProfilePicture extends Component {
                <h1>Selecciona una foto para tu perfil</h1>
             </div>
             <Uploader isloaded={this.state.picture} uploadHandler={this.uploadHandler} />
-            <ButtonLoader label="Continuar" />
-            {/* <div style={{ display: 'flex' }}>
-               <ButtonLoader label="Omitir" />
-            </div> */}
+            <ButtonLoader label="Continuar" isloading={this.state.loading}/>
          </form>
       );
    };

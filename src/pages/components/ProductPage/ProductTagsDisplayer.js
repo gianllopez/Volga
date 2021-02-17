@@ -12,8 +12,8 @@ class ProductTagsDisplayer extends Component {
    render() {
 
       let { displayed } = this.state,
-         { tags } = this.props,
-         sortedtags = tags.sort((a, b) => b.length - a.length)
+      { tags } = this.props,
+      sortedtags = tags.sort((a, b) => b.length - a.length)
       return (
          <div id="p-tags-displayer" onClick={this.tagsDisplayer}>
             {tags ?
