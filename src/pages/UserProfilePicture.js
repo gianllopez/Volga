@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Uploader, ButtonLoader, CustomModal } from './components';
 import api from '../utils/api';
 import userpphero from '../assets/UserProfilePicture/userpp-hero.svg';
+import volgalogo from '../assets/common/logo.svg';
 import './styles/UserProfilePicture.css';
 
 class UserProfilePicture extends Component {
@@ -17,7 +18,9 @@ class UserProfilePicture extends Component {
             let binaries = new FormData();
             binaries.append('picture', this.state.picture)
             api.post('/profile-picture', binaries)
-               .then(() => this.props.history.push(`/users/me`))
+               .then(({data}) => {
+                  localStorage.setItem('globudata', JSON.stringify(data))
+               });
          });
       };
       if (!this.state.picture) {
