@@ -9,7 +9,9 @@ import './styles/NavBar.css';
 
 class NavBar extends Component {
 
-   state = {};
+   globdata = JSON.parse(localStorage.getItem('globudata'));
+
+   state = { picture: this.globdata.picture };
 
    linksAnimations = () => {
       document.getElementById('navbar-links')
@@ -24,15 +26,14 @@ class NavBar extends Component {
 
    render() {
       this.isAuthenticated = localStorage.getItem('user-token') || false;
-      let { picture } = this.state;
       return (
          <div id="navbar-wrapper">
             <BurgerMenu clickCallback={this.linksAnimations} />
-            <Link to="/users/me">
+            <Link to={`/users/${this.globdata.username}`}>
                <figure>
                   <img
                      {...this.isAuthenticated && { className: 'user-rounded-picture' }}
-                     src={this.isAuthenticated ? picture : volgalogo}
+                     src={this.isAuthenticated ? this.state.picture : volgalogo}
                      alt="navbarpic"
                      onClick={this.userOptions}
                   />
@@ -63,16 +64,6 @@ class NavBar extends Component {
 
          </div>
       );
-   };
-   componentDidMount() {
-      if (this.isAuthenticated && !this.state.picture) {
-         api.get('/get-data/profile-picture')
-            .then(({ data }) => this.setState({ picture: data.picture }));
-      };
-   };
-
-   componentDidUpdate() {
-      this.componentDidMount();
    };
 
 };
