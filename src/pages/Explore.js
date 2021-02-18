@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Fragment } from 'react';
-import swal from 'sweetalert';
 import api from '../utils/api';
 import { ButtonLoader, TagsSelector, PageLoader, UserProduct, CustomModal } from './components';
 import './styles/Explore.css';

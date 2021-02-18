@@ -1,55 +1,54 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import {
-   Logup, ContactNetworks, UserProfilePicture,
-   Login, UserProfile, ProductPage, Home,
-   PostProduct, NewOpinion, ClientsOpinions,
-   UserContact, SearchResults, NotFound, Explore,
-   FavoritesProducts, Landing
-} from './pages/';
-import { MainLayout } from './pages/components/';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import routing from './routing';
+import { Footer, NavBar } from './pages/components';
 import './index.css';
 
-const isAuthenticated = () => localStorage.getItem('user-token') ? true : false;
+function CompleteLayout({children}) {
+   return (
+      <Fragment>
+         <NavBar/>
+         <Switch>
+            {children}
+         </Switch>
+         <Footer/>
+      </Fragment>
+   );
+};
 
-const ProtectedRoute = ({ component: Component, ...routeprops }) => (
-   <Route {...routeprops} render={props => (
-      isAuthenticated() ?
-         <Component {...props} /> :
-         <Redirect to="/login" />
-   )} />
-);
+function NoFooterLayout({children}) {
+   return (
+      <Fragment>
+         <NavBar/>
+         <Switch>
+            {children}
+         </Switch>
+      </Fragment>
+   );
+};
 
-const NoAuthRoute = ({ component: Component, ...routeprops }) => (
-   <Route {...routeprops} render={props => (
-      !isAuthenticated() ?
-         <Component {...props} /> :
-         <Redirect to="/" />
-   )} />
-);
+function VolgaApp(props) {
+   const VolgaRoutes = props => (
+      props.routes.map((route, index) => 
+         <Route {...route} key={index} />)
+   ), { complete, nofooter } = routing;
+   return (
+      <BrowserRouter> 
+         <Switch>
+            <Route path={complete.paths}>
+               <CompleteLayout>  
+                  <VolgaRoutes routes={complete.routes}/>
+               </CompleteLayout>
+            </Route>
+            <Route path={nofooter.paths}>
+               <NoFooterLayout>
+                  <VolgaRoutes routes={nofooter.routes}/>
+               </NoFooterLayout>
+            </Route>
+         </Switch>
+      </BrowserRouter>
+   );
+};
 
-ReactDOM.render(
-   <BrowserRouter>
-      <Switch>
-         <ProtectedRoute exact path="/:username/contact-networks" component={ContactNetworks} /> {/* Ready, por revisar si hay código que resumir... */}
-         <ProtectedRoute exact path="/:username/profile-picture" component={UserProfilePicture} /> {/* Ready, por revisar si hay código que resumir... */}
-         <MainLayout nofooter={['/login', '/my-products/new']}>
-            <Switch>
-               <Route exact path="/" render={() => isAuthenticated() ? <Home /> : <Landing />} />
-               <NoAuthRoute exact path="/logup" component={Logup} /> {/* Ready, por revisar si hay código que resumir... */}
-               <NoAuthRoute exact path="/login" component={Login} />
-               <Route exact path="/users/:username" component={UserProfile} />
-               <Route exact path="/products/explore" component={Explore} />
-               <Route exact path="/:username/catalog/:productkey" component={ProductPage} />
-               <ProtectedRoute exact path="/my-products/new" component={PostProduct} />
-               <ProtectedRoute exact path="/me/favorites-products" component={FavoritesProducts} />
-               <Route exact path="/:username/opinions" component={ClientsOpinions} /> {/* Ready, por revisar si hay código que resumir... */}
-               <ProtectedRoute exact path="/:username/opinions/new" component={NewOpinion} /> {/* Ready, por revisar si hay código que resumir... */}
-               <Route exact path="/:username/contact" component={UserContact} />
-               <Route exact path="/search/results" component={SearchResults} />
-               <Route component={NotFound} />
-            </Switch>
-         </MainLayout>
-      </Switch>
-   </BrowserRouter >, document.getElementById('root'));
+ReactDOM.render(<VolgaApp/>, document.getElementById('root'));

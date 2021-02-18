@@ -9,7 +9,12 @@ import './styles/NavBar.css';
 
 class NavBar extends Component {
 
-   state = { isauth: false, username: '', picture: '' }; 
+   hastoken = localStorage.getItem('user-token') ? true : false;
+
+   state = {
+      isauth: this.hastoken,
+      username: '', picture: ''
+   }; 
 
    linksAnimations = () => {
       document.getElementById('navbar-links')
@@ -27,14 +32,15 @@ class NavBar extends Component {
       return (
          <div id="navbar-wrapper">
             <BurgerMenu clickCallback={this.linksAnimations} />
-            <figure>
-               {isauth && <Link to={`/users/${username}`}/>}
-               <img
-                  {...isauth && { className: 'user-rounded-picture' }}
-                  src={isauth ? picture : volgalogo}
-                  alt="navbar-user-pic"
-               />
-            </figure>
+            <Link to={isauth ? `/users/${username}` : '#'}>
+               <figure>
+                  <img
+                     {...isauth && { className: 'user-rounded-picture' }}
+                     src={isauth ? picture : volgalogo}
+                     alt="navbar-user-pic"
+                     />
+               </figure>
+            </Link>
             <div id="navbar-links">
                <Link to="/">Inicio</Link>
                <SearchLink />
@@ -83,7 +89,7 @@ class NavBar extends Component {
 
    componentDidUpdate() {
       this.componentDidMount();
-      if (!this.state.isauth && localStorage.getItem('user-token')) {
+      if (!this.state.isauth && this.hastoken) {
          this.setState({ isauth: true });
       };
    };

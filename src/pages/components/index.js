@@ -3,7 +3,6 @@
 export { default as Input } from './common/Input';
 export { default as ButtonLoader } from './common/ButtonLoader';
 export { default as Footer } from './common/Footer';
-export { default as MainLayout } from './common/MainLayout';
 export { default as CustomModal } from './common/CustomModal';
 export { default as PageLoader } from './common/PageLoader';
 export { default as LogupInput } from './Logup/LogupInput';

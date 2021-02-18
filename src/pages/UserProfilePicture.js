@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import { Uploader, ButtonLoader, CustomModal } from './components';
 import api from '../utils/api';
 import userpphero from '../assets/UserProfilePicture/userpp-hero.svg';
-import volgalogo from '../assets/common/logo.svg';
 import './styles/UserProfilePicture.css';
 
 class UserProfilePicture extends Component {

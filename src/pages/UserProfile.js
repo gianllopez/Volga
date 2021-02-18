@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { UserStats, ProductCard, Opinion, FollowButton } from './components';
+import { UserStats, ProductCard, Opinion, FollowButton, PageLoader } from './components';
 import { NotFound } from './';
 import './styles/UserProfile.css';
 import api from '../utils/api';
@@ -9,13 +9,14 @@ class UserProfile extends Component {
 
    state = {
       picture: '', username: '', name: '', stats: {},
-      opinions: '', products: [], following: ''
+      opinions: '', products: [], following: '',
+      loading: true
    };
 
    render() {
       let { picture, username, name, stats, opinions, products, following } = this.state;
-      // debugger
       return (
+         this.state.loading ? <PageLoader/> :
          !this.state.notfound ?
             <div id="user-profile">
                <section id="profile-header" className="profile-section sub-section">
@@ -77,19 +78,21 @@ class UserProfile extends Component {
    componentDidMount() {
       let { username } = this.props.match.params;
       document.title = `Volga - ${username}`;
-      api.post('/validation/user-exists', { username })
-         .catch(({ response }) => {
+      api.get('/get-data/user', { username })
+         .then(({data}) => this.setState({ notfound: false, loading: false, ...data.user }))
+         .catch(({response}) => {
             if (response.status === 404) {
-               this.setState({ notfound: true });
+               this.setState({ notfound: true, loading: false });
             };
-         }).then(() => {
-            api.get('/get-data/user', { username })
-               .then(({ data }) => this.setState({ ...data.user }));
          });
    };
 
-   componentDidUpdate() {
-      console.log(1);
+   componentDidUpdate(prevProps) {
+      let { username } = this.props.match.params,
+      prevUser = prevProps.match.params.username;
+      if (username !== prevUser) {
+         this.componentDidMount();
+      };
    };
 
 };
