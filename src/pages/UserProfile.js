@@ -88,6 +88,9 @@ class UserProfile extends Component {
          });
    };
 
+   componentDidUpdate() {
+      console.log(1);
+   };
 
 };
 

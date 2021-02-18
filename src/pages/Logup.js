@@ -37,8 +37,9 @@ class Logup extends Component {
             this.setState({ loading: true, errors: {} });
             api.post('/logup', data)
                .then(response => {
-                  localStorage.setItem('user-token', response.data.token);
-                  this.props.history.push('/me/contact-networks')
+                  let { data } = response;
+                  localStorage.setItem('user-token', data.token);
+                  this.props.history.push(`/${data.username}/contact-networks`);
                })
                .catch(errors => {
                   this.setState({ loading: false });

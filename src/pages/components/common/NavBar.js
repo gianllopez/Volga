@@ -9,41 +9,37 @@ import './styles/NavBar.css';
 
 class NavBar extends Component {
 
-   globdata = JSON.parse(localStorage.getItem('globudata'));
-
-   state = { picture: this.globdata.picture };
+   state = { isauth: false, username: '', picture: '' }; 
 
    linksAnimations = () => {
       document.getElementById('navbar-links')
          .classList
-         .toggle('show-links');
+            .toggle('show-links');
    };
 
-   logout = () => {
-      localStorage.removeItem('user-token');
+   logOut = () => {
+      localStorage.clear();
       window.location = '/';
    };
 
    render() {
-      this.isAuthenticated = localStorage.getItem('user-token') || false;
+      let { isauth, username, picture } = this.state;
       return (
          <div id="navbar-wrapper">
             <BurgerMenu clickCallback={this.linksAnimations} />
-            <Link to={`/users/${this.globdata.username}`}>
-               <figure>
-                  <img
-                     {...this.isAuthenticated && { className: 'user-rounded-picture' }}
-                     src={this.isAuthenticated ? this.state.picture : volgalogo}
-                     alt="navbarpic"
-                     onClick={this.userOptions}
-                  />
-               </figure>
-            </Link>
+            <figure>
+               {isauth && <Link to={`/users/${username}`}/>}
+               <img
+                  {...isauth && { className: 'user-rounded-picture' }}
+                  src={isauth ? picture : volgalogo}
+                  alt="navbar-user-pic"
+               />
+            </figure>
             <div id="navbar-links">
                <Link to="/">Inicio</Link>
                <SearchLink />
                <Link to="/products/explore">Explorar</Link>
-               {this.isAuthenticated ?
+               {isauth ?
                   <Fragment>
                      <Link to="/my-products/new">Postear</Link>
                      <Link to="/me/favorites-products">Favoritos</Link>
@@ -54,16 +50,42 @@ class NavBar extends Component {
                   </Fragment>
                }
             </div>
-            {this.isAuthenticated &&
+            {isauth &&
                <img
-                  src={logouticon}
                   id="logout-btn"
+                  src={logouticon}
                   alt="logout-icon"
-                  onClick={this.logout}
+                  onClick={this.logOut}
                />}
 
          </div>
       );
+   };
+
+   componentDidMount() {
+      let { isauth, username, picture } = this.state;
+      if (isauth) {
+         const globalUI = localStorage.getItem('for-global-ui');
+         if (!globalUI) {
+            api.get('/get-data/for-global-ui')
+               .then(({data}) => {
+                  this.setState({...data}, () => {
+                     localStorage.setItem('for-global-ui', JSON.stringify(data))
+                  });
+               });
+         } else {
+            if (!username || !picture) {
+               this.setState({...JSON.parse(globalUI)});
+            };
+         };
+      };
+   };
+
+   componentDidUpdate() {
+      this.componentDidMount();
+      if (!this.state.isauth && localStorage.getItem('user-token')) {
+         this.setState({ isauth: true });
+      };
    };
 
 };

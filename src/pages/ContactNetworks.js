@@ -29,7 +29,7 @@ class ContactNetworks extends Component {
       event.preventDefault();
       const sendRequest = () => {
          this.setState({ loading: true });
-         const nextpath = '/me/profile-picture';
+         let nextpath = `/${this.props.match.params.username}/profile-picture`;
          api.post('/contact', this.state.data)
             .then(() => this.props.history.push(nextpath))
             .catch(errors => {

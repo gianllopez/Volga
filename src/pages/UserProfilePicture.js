@@ -13,17 +13,21 @@ class UserProfilePicture extends Component {
 
    submitHandler = event => {
       event.preventDefault();
+      let { picture } = this.state;
       const sendRequest = () => {
          this.setState({ loading: true }, () => {
             let binaries = new FormData();
-            binaries.append('picture', this.state.picture)
+            binaries.append('picture', picture)
             api.post('/profile-picture', binaries)
-               .then(({data}) => {
-                  localStorage.setItem('globudata', JSON.stringify(data))
+               .then(({status}) => {
+                  if (status === 201) {
+                     this.props.history
+                        .push(`/users/${this.props.match.params.username}`);
+                  };
                });
          });
       };
-      if (!this.state.picture) {
+      if (!picture) {
          CustomModal(
             <Fragment>
                <p>
