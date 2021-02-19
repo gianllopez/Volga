@@ -71,7 +71,7 @@ class UserProfile extends Component {
                         <Link to={`/${username}/opinions`}>Ver todas</Link>
                      </Fragment> : <h3 className="blank-header">Este usuario no tiene opiniones de clientes.</h3>}
                </section>
-            </div> : <NotFound />
+            </div> : <NotFound path={this.props.match.path}/>
       );
    };
 

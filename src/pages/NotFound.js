@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { noFooterPaths } from '../utils/routing-tools';
 import notfoundicon from '../assets/NotFound/404.svg';
 import './styles/NotFound.css';
 
@@ -16,7 +17,13 @@ class NotFound extends Component {
       );
    };
    componentDidMount() {
-      document.title = 'Página no encontrada'
+      document.title = 'Página no encontrada';
+      if (!noFooterPaths.includes(this.props.path)) {
+         let footer = document.querySelector('#footer-wrapper');
+         if (footer) {
+            footer.style.display = 'none';
+         };
+      };
    };
 };
 

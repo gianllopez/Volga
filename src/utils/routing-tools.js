@@ -37,15 +37,16 @@ const completePaths = [
    '/users/:username',
    '/search/results',
    '/me/favorites',
-   '/logup',
-   '/'
+   '/logup'
 ];
 
 const noFooterPaths = [
    '/:username/catalog/:productkey',
    '/:username/opinions/new',
    '/my-products/new',
-   '/login'
+   '/login',
+   '/',
+   '*'
 ];
 
 export { Layout, CustomRoute, completePaths, noFooterPaths, isAuthenticated };

@@ -1,15 +1,12 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import {
-   Logup, ContactNetworks, UserProfilePicture,
-   Login, UserProfile, ProductPage, Home,
-   PostProduct, NewOpinion, ClientsOpinions,
-   UserContact, SearchResults, NotFound, Explore,
-   FavoritesProducts, Landing } from './pages/';
-import {
-   Layout, CustomRoute, completePaths,
-   noFooterPaths, isAuthenticated } from './utils/routing-tools';
+import { Logup, ContactNetworks, UserProfilePicture, Login, UserProfile,
+         ProductPage, Home, PostProduct, NewOpinion, ClientsOpinions,
+         UserContact, SearchResults, NotFound, Explore,
+         FavoritesProducts, Landing } from './pages/';
+import { Layout, CustomRoute, completePaths,
+         noFooterPaths, isAuthenticated } from './utils/routing-tools';
 import './index.css';
 
 function VolgaApp() {
@@ -21,7 +18,6 @@ function VolgaApp() {
             <CustomRoute path="/:username/profile-picture" component={UserProfilePicture} />
             <Route path={completePaths} exact>
                <Layout withfooter>
-                  <Route path="/" render={() => isauth ? <Home /> : <Landing />} exact />
                   <Route path="/:username/opinions" component={ClientsOpinions} exact />
                   <CustomRoute path="/me/favorites" component={FavoritesProducts} />
                   <Route path="/:username/contact" component={UserContact} exact />
@@ -34,10 +30,11 @@ function VolgaApp() {
             <Route path={noFooterPaths} exact>
                <Layout>
                   <Route path="/:username/catalog/:productkey" component={ProductPage} exact />
+                  <Route path="/" render={() => isauth ? <Home /> : <Landing />} exact />
                   <CustomRoute path="/:username/opinions/new" component={NewOpinion} />
                   <CustomRoute exact path="/my-products/new" component={PostProduct} />
                   <CustomRoute path="/login" component={Login} disabledonauth/>
-                  <Route component={NotFound}/>
+                  <Route path="*" component={NotFound}/>
                </Layout>
             </Route>
          </Switch>
