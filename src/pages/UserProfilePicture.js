@@ -1,18 +1,21 @@
 import React, { Component, Fragment } from 'react';
-import { Uploader, ButtonLoader, CustomModal } from './components';
+import { Uploader, ButtonLoader, CustomModal, UserPageExists } from './components';
 import api from '../utils/api';
 import userpphero from '../assets/UserProfilePicture/userpp-hero.svg';
 import './styles/UserProfilePicture.css';
 
 class UserProfilePicture extends Component {
 
-   state = { picture: '', loading: false };
+   state = {
+      username: this.props.match.params['username'],
+      picture: '', loading: false
+   };
 
    uploadHandler = ({ target }) => this.setState({ picture: target.files[0] });
 
    submitHandler = event => {
       event.preventDefault();
-      let { picture } = this.state;
+      let { username, picture } = this.state;
       const sendRequest = () => {
          this.setState({ loading: true }, () => {
             let binaries = new FormData();
@@ -21,7 +24,7 @@ class UserProfilePicture extends Component {
                .then(({status}) => {
                   if (status === 201) {
                      this.props.history
-                        .push(`/users/${this.props.match.params.username}`);
+                        .push(`/users/${username}`);
                   };
                });
          });
@@ -42,20 +45,21 @@ class UserProfilePicture extends Component {
    };
    render() {
       return (
-         <form id="userpp-form" encType="multipart/form-data" onSubmit={this.submitHandler}>
-            <div id="userpp-form-header">
-               <img src={userpphero} alt="userpp-hero" />
-               <h1>Selecciona una foto para tu perfil</h1>
-            </div>
-            <Uploader isloaded={this.state.picture} uploadHandler={this.uploadHandler} />
-            <ButtonLoader label="Continuar" isloading={this.state.loading}/>
-         </form>
+         <UserPageExists componentProps={this.props}>
+            <form id="userpp-form" encType="multipart/form-data" onSubmit={this.submitHandler}>
+               <div id="userpp-form-header">
+                  <img src={userpphero} alt="userpp-hero" />
+                  <h1>Selecciona una foto para tu perfil</h1>
+               </div>
+               <Uploader isloaded={this.state.picture} uploadHandler={this.uploadHandler} />
+               <ButtonLoader label="Continuar" isloading={this.state.loading}/>
+            </form>
+         </UserPageExists>
       );
    };
 
    componentDidMount() {
-      let { username } = this.props.match.params;
-      document.title = `${username} - Foto de perfil`;
+      document.title = `${this.state.username} - Foto de perfil`;
    };
 
 };

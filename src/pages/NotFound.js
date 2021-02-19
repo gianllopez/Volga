@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { noFooterPaths } from '../utils/routing-tools';
 import notfoundicon from '../assets/NotFound/404.svg';
 import './styles/NotFound.css';
+import { NavBar } from './components';
 
 class NotFound extends Component {
    render() {

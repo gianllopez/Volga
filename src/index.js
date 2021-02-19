@@ -30,11 +30,11 @@ function VolgaApp() {
                   <Route path="/:username/catalog/:productkey" component={ProductPage} exact />
                   <Route path="/" component={Home} exact />
                   <CustomRoute path="/:username/opinions/new" component={NewOpinion} />
-                  <CustomRoute exact path="/my-products/new" component={PostProduct} />
-                  <CustomRoute path="/login" component={Login} disabledonauth/>
-                  <Route path="*" component={NotFound}/>
+                  <CustomRoute path="/my-products/new" component={PostProduct} exact />
+                  <CustomRoute path="/login" component={Login} disabledonauth/>                  
                </Layout>
             </Route>
+            <Route component={NotFound}/>
          </Switch>
       </BrowserRouter>
    );

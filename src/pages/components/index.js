@@ -30,3 +30,4 @@ export { default as UserCard } from './common/UserCard';
 export { default as FilterSelector } from './common/FilterSelector';
 export { default as ProductTagsDisplayer } from './ProductPage/ProductTagsDisplayer';
 export { default as CustomMessage } from './common/CustomMessage';
+export { default as UserPageExists } from './common/UserPageExists';

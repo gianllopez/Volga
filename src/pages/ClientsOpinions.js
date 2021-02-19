@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
 import { NotFound } from './';
 import api from '../utils/api';
-import { Opinion } from './components'
+import { Opinion, UserPageExists } from './components'
 import './styles/ClientsOpinions.css';
 
 class ClientsOpinions extends Component {
 
-   state = {};
+   state = {
+      username: this.props.match.params['username']
+   };
+
+   fetchOpinions = () => {
+      api.get('/get-data/clients-opinions', { username: this.state.username })
+         .then(({ data }) => this.setState({ data }))
+   };
 
    render() {
       let { data } = this.state;
       return (
-         !this.state.notfound ?
+         <UserPageExists componentProps={this.props} onExists={this.fetchOpinions}>
             <div id="clients-opinions-page">
                <h2>Esto es lo que opinan de *user* sus clientes:</h2>
                <div id="clients-opinions">
@@ -25,22 +32,13 @@ class ClientsOpinions extends Component {
                   ))}
 
                </div>
-            </div> : <NotFound />
+            </div>
+         </UserPageExists>
       );
    };
 
-   componentDidMount() {
-      let { username } = this.props.match.params;
-      document.title = `${username} - Opiniones`;
-      api.post('/validation/user-exists', { username })
-         .catch(({ response }) => {
-            if (response.status === 404) {
-               this.setState({ notfound: true });
-            };
-         }).then(() => {
-            api.get('/get-data/clients-opinions', { username })
-               .then(({ data }) => this.setState({ data }));
-         });
+   componentDidMount() {      
+      document.title = `${this.state.username} - Opiniones`;
    };
 
 };

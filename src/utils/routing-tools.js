@@ -45,8 +45,7 @@ const noFooterPaths = [
    '/:username/opinions/new',
    '/my-products/new',
    '/login',
-   '/',
-   '*'
+   '/'
 ];
 
 export { Layout, CustomRoute, completePaths, noFooterPaths, isAuthenticated };

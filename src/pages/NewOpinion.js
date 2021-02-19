@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { RatingSelector, CommentInput, ButtonLoader, CustomModal } from './components';
+import { RatingSelector, CommentInput, ButtonLoader, CustomModal, UserPageExists } from './components';
 import NotFound from './NotFound';
 import api from '../utils/api';
 import { noBlankValidator } from '../utils/validators';
@@ -57,7 +57,7 @@ class NewOpinion extends Component {
 
    render() {
       return (
-         !this.state.notfound ?
+         <UserPageExists componentProps={this.props}>
             <form id="opinion-form" onSubmit={this.submitHandler}>
                <div id="op-header">
                   <figure>
@@ -77,20 +77,14 @@ class NewOpinion extends Component {
                   />
                   <ButtonLoader isloading={this.state.loading} />
                </div>
-            </form> : <NotFound />
+            </form>
+         </UserPageExists>
 
       );
    };
 
    componentDidMount() {
-      let { username } = this.props.match.params;
-      document.title = `${username} - Opinar`;
-      api.post('/validation/user-exists', { username })
-         .catch(({ response }) => {
-            if (response.status === 404) {
-               this.setState({ notfound: true });
-            };
-         })
+      document.title = `${this.state.data.to_user} - Nueva Opinión`;
    };
 
 };

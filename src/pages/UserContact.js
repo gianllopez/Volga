@@ -1,52 +1,50 @@
 import React, { Component } from 'react';
 import api from '../utils/api';
 import { NotFound } from '.';
-import { ContactLink, CustomModal } from './components';
+import { ContactLink, CustomModal, UserPageExists } from './components';
 import './styles/UserContact.css';
+import { Fragment } from 'react';
 
-class ShopContact extends Component {
+class UserContact extends Component {
 
-   state = {};
+   state = {
+      username: this.props.match.params['username'],
+      contact: {}
+   };
+
+   fetchContactWays = username => {
+      api.get('/get-data/contact-networks', { username })
+         .then(({ data }) => this.setState({ contact: {...data} }));
+   };
 
    render() {
-      let contacts = Object.entries(this.state.data || {});
+      let { username, contact } = this.state,
+      contactways = Object.entries(contact);
       return (
-         !this.state.notfound ?
+         <UserPageExists componentProps={this.props} onExists={() => this.fetchContactWays(username)}>
             <div id="contact-form">
-               <h2>
-                  ¿Por donde deseas contactar con *shop*?
-               </h2>
-               <div id="contact-ways">
-                  {contacts.map((contact, index) => (
-                     <ContactLink
-                        for={contact[0]}
-                        url={contact[1]}
+            {contactways.length !== 0 ? 
+               <Fragment>
+                  <h2>¿Por donde deseas contactar con {username}?</h2>
+                  <div id="contact-ways">
+                     {contactways.map((way, index) => (
+                        <ContactLink
+                        for={way[0]}
+                        url={way[1]}
                         key={index}
-                     />
-                  ))}
-               </div>
-            </div> : <NotFound />
+                        />
+                        ))}
+                  </div>
+               </Fragment> : <p>Hola</p>}
+            </div>
+         </UserPageExists>
       );
    };
 
    componentDidMount() {
-      let { username } = this.props.match.params;
-      document.title = `${username} - Contacto`;
-      api.post('/validation/user-exists', { username })
-         .catch(({ response }) => {
-            if (response.status === 404) {
-               this.setState({ notfound: true });
-            };
-         }).then(() => {
-            api.get('/get-data/contact-networks', { username })
-               .then(({ data }) => this.setState({ data }))
-               .catch(({ response }) => {
-                  CustomModal(<span>{response.data.user}</span>, [false, 'Entendido'])
-                     .then(ok => ok && this.props.history.push(`/users/${username}`));
-               })
-         });
+      document.title = `${this.state.username} - Contacto`;
    };
 
 };
 
-export default ShopContact;
+export default UserContact;

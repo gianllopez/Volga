@@ -1,6 +1,6 @@
 import React, { Component, createContext, Fragment } from 'react';
 import api from '../utils/api';
-import { ContactNetworkInput, ButtonLoader, CustomModal } from './components';
+import { ContactNetworkInput, ButtonLoader, CustomModal, UserPageExists } from './components';
 import { noBlankValidator } from '../utils/validators'
 import './styles/ContactNetworks.css';
 
@@ -9,11 +9,11 @@ export const CNcontext = createContext({});
 class ContactNetworks extends Component {
 
    state = {
+      username: this.props.match.params['username'],
       data: {
          instagram: '', facebook: '',
          whatsapp: '', twitter: '',
-         email: '', linkedin: '',
-         user: this.props.match.params['username']
+         email: '', linkedin: ''
       },
       loading: false,
       errors: {}
@@ -21,47 +21,53 @@ class ContactNetworks extends Component {
 
    changeHandler = ({ target }) => {
       this.setState({
-         data: { ...this.state.data, [target.name]: target.value }
-      })
+         data: {
+            ...this.state.data,
+            [target.name]: target.value
+         }
+      });
    };
 
-   submitHandler = event => {
-      event.preventDefault();
-      const sendRequest = () => {
-         this.setState({ loading: true });
-         let nextpath = `/${this.props.match.params.username}/profile-picture`;
-         api.post('/contact', this.state.data)
-            .then(() => this.props.history.push(nextpath))
-            .catch(errors => {
-               this.setState({ loading: false });
-               let { response, message } = errors;
-               if (message === 'Network Error') {
+
+   fetchRequest = () => {
+      let { username, data } = this.state;
+      this.setState({ loading: true });
+      let nextpath = `/${username}/profile-picture`;
+      api.post('/contact', data)
+         .then(() => this.props.history.push(nextpath))
+         .catch(errors => {
+            this.setState({ loading: false });
+            let { response, message } = errors;
+            if (message === 'Network Error') {
+               const content = (
+                  <Fragment>
+                     <p>Error en el registro</p>
+                     <span>
+                        Aségurate de estar conectado a internet.
+                           </span>
+                  </Fragment>
+               );
+               CustomModal(content, [false, 'Entendido'])
+            } else {
+               if (response.data.user) {
                   const content = (
                      <Fragment>
                         <p>Error en el registro</p>
-                        <span>
-                           Aségurate de estar conectado a internet.
-                              </span>
+                        <span>{response.data.user}</span>
                      </Fragment>
                   );
                   CustomModal(content, [false, 'Entendido'])
-               } else {
-                  if (response.data.user) {
-                     const content = (
-                        <Fragment>
-                           <p>Error en el registro</p>
-                           <span>{response.data.user}</span>
-                        </Fragment>
-                     );
-                     CustomModal(content, [false, 'Entendido'])
-                        .then(ok => ok && this.props.history.push(nextpath));
-                  };
+                     .then(ok => ok && this.props.history.push(nextpath));
                };
-            });
-      };
+            };
+         });
+   }
+
+   submitHandler = event => {
+      event.preventDefault();
       let { isValid } = noBlankValidator(this.state.data);
       if (isValid) {
-         sendRequest();
+         this.fetchRequest();
       } else {
          let content = (
             <Fragment>
@@ -73,7 +79,7 @@ class ContactNetworks extends Component {
             </Fragment>
          );
          CustomModal(content)
-            .then(allowBlank => allowBlank && sendRequest());
+            .then(allowBlank => allowBlank && this.fetchRequest());
       };
    };
 
@@ -85,46 +91,46 @@ class ContactNetworks extends Component {
          errors: this.state.errors
       };
       return (
-         <form id="user-contact-form" onSubmit={this.submitHandler} onKeyDown={this.keyDownHandler}>
-            <h2>
-               Redes para el contacto<br />con tus clientes
-            </h2>
-            <CNcontext.Provider value={contextContent}>
-               <ContactNetworkInput
-                  name="instagram"
-                  maxLength="30"
-               />
-               <ContactNetworkInput
-                  name="facebook"
-                  maxLength="50"
-               />
-               <ContactNetworkInput
-                  name="whatsapp"
-                  maxLength="15"
-               />
-               <ContactNetworkInput
-                  name="twitter"
-                  maxLength="15"
-               />
-               <ContactNetworkInput
-                  name="email"
-                  maxLength="100"
-                  type="email"
-               />
-               <ContactNetworkInput
-                  name="linkedin"
-                  maxLength="30"
-               />
-            </CNcontext.Provider>
+         <UserPageExists componentProps={this.props}>
+            <form id="user-contact-form" onSubmit={this.submitHandler} onKeyDown={this.keyDownHandler}>
+               <h2>Redes para el contacto<br />con tus clientes</h2>
+               <CNcontext.Provider value={contextContent}>
+                  <ContactNetworkInput
+                     name="instagram"
+                     maxLength="30"
+                  />
+                  <ContactNetworkInput
+                     name="facebook"
+                     maxLength="50"
+                  />
+                  <ContactNetworkInput
+                     name="whatsapp"
+                     maxLength="15"
+                  />
+                  <ContactNetworkInput
+                     name="twitter"
+                     maxLength="15"
+                  />
+                  <ContactNetworkInput
+                     name="email"
+                     maxLength="100"
+                     type="email"
+                  />
+                  <ContactNetworkInput
+                     name="linkedin"
+                     maxLength="30"
+                  />
+               </CNcontext.Provider>
 
-            <ButtonLoader isloading={this.state.loading} />
+               <ButtonLoader isloading={this.state.loading} />
 
-         </form>
+            </form>
+         </UserPageExists>
       );
    };
 
    componentDidMount() {
-      document.title = `${this.state.data.user} - Redes de contacto`;
+      document.title = `${this.state.username} - Redes de contacto`;
    };
 };
 
