@@ -57,7 +57,7 @@ class NewOpinion extends Component {
 
    render() {
       return (
-         <UserPageExists componentProps={this.props}>
+         <UserPageExists userParam={this.state.data.to_user}>
             <form id="opinion-form" onSubmit={this.submitHandler}>
                <div id="op-header">
                   <figure>

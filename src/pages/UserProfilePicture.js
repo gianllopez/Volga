@@ -45,7 +45,7 @@ class UserProfilePicture extends Component {
    };
    render() {
       return (
-         <UserPageExists componentProps={this.props}>
+         <UserPageExists userParam={this.state.username}>
             <form id="userpp-form" encType="multipart/form-data" onSubmit={this.submitHandler}>
                <div id="userpp-form-header">
                   <img src={userpphero} alt="userpp-hero" />

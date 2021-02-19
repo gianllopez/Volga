@@ -17,13 +17,18 @@ class UserPageExists extends Component {
    };
 
    componentDidMount() {
-      let { componentProps, onExists } = this.props,
-      { username } = componentProps.match.params;
-      api.post('/validation/user-exists', { username })
+      let { userParam, onExists } = this.props;
+      api.post('/validation/user-exists', { username: userParam })
          .then(() => {
             this.setState({ found: true }, onExists)
          })
          .finally(() => this.setState({ loading: false }));
+   };
+
+   componentDidUpdate(prevProps, prevState) {
+      if (prevProps.userParam !== this.props.userParam && !this.state.found) {
+         this.componentDidMount();
+      };
    };
 
 };

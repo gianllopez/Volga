@@ -16,9 +16,9 @@ class ClientsOpinions extends Component {
    };
 
    render() {
-      let { data } = this.state;
+      let { username, data } = this.state;
       return (
-         <UserPageExists componentProps={this.props} onExists={this.fetchOpinions}>
+         <UserPageExists userParam={username} onExists={this.fetchOpinions}>
             <div id="clients-opinions-page">
                <h2>Esto es lo que opinan de *user* sus clientes:</h2>
                <div id="clients-opinions">

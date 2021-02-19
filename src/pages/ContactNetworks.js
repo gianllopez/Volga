@@ -91,7 +91,7 @@ class ContactNetworks extends Component {
          errors: this.state.errors
       };
       return (
-         <UserPageExists componentProps={this.props}>
+         <UserPageExists userParam={this.state.username}>
             <form id="user-contact-form" onSubmit={this.submitHandler} onKeyDown={this.keyDownHandler}>
                <h2>Redes para el contacto<br />con tus clientes</h2>
                <CNcontext.Provider value={contextContent}>

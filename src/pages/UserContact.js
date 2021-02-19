@@ -13,7 +13,7 @@ class UserContact extends Component {
    };
 
    fetchContactWays = username => {
-      api.get('/get-data/contact-networks', { username })
+      api.get('/get-data/contact-networks', { username: this.state.username })
          .then(({ data }) => this.setState({ contact: {...data} }));
    };
 
@@ -21,7 +21,7 @@ class UserContact extends Component {
       let { username, contact } = this.state,
       contactways = Object.entries(contact);
       return (
-         <UserPageExists componentProps={this.props} onExists={() => this.fetchContactWays(username)}>
+         <UserPageExists userParam={username} onExists={this.fetchContactWays}>
             <div id="contact-form">
             {contactways.length !== 0 ? 
                <Fragment>

@@ -30,7 +30,7 @@ class NavBar extends Component {
       return (
          <div id="navbar-wrapper">
             <BurgerMenu clickCallback={this.linksAnimations} />
-            <Link to={isauth ? `/users/${username}` : '#'}>
+            <Link to={isauth ? `/users/${username}` : '#'} className="profile-link">
                <figure>
                   <img
                      {...isauth && { className: 'user-rounded-picture' }}
@@ -84,7 +84,7 @@ class NavBar extends Component {
          };
       };
       if (matchMedia('(max-width:767px)').matches) {
-         document.querySelectorAll('#navbar-wrapper a')
+         document.querySelectorAll('#navbar-wrapper a:not(.profile-link)')
             .forEach(el => 
                el.addEventListener('click', function() {
                   this.parentElement.parentNode.classList.remove('show-links');

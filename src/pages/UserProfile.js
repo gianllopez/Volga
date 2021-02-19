@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { UserStats, ProductCard, Opinion, FollowButton, PageLoader } from './components';
+import { UserStats, ProductCard, Opinion, FollowButton, PageLoader, UserPageExists } from './components';
 import { NotFound } from './';
 import './styles/UserProfile.css';
 import api from '../utils/api';
@@ -8,16 +8,21 @@ import api from '../utils/api';
 class UserProfile extends Component {
 
    state = {
-      picture: '', username: '', name: '', stats: {},
-      opinions: '', products: [], following: '',
-      loading: true
+      username: this.props.match.params['username'],
+      name: '', stats: {}, picture: '', 
+      opinions: '', products: [], following: ''
    };
 
+   fetchUserData = userQuery => {
+      let username = userQuery || this.state.username;
+      api.get('/get-data/user', { username })
+         .then(({data}) => this.setState({ ...data.user }))
+   };
+ 
    render() {
       let { picture, username, name, stats, opinions, products, following } = this.state;
       return (
-         this.state.loading ? <PageLoader/> :
-         !this.state.notfound ?
+         <UserPageExists userParam={username} onExists={this.fetchUserData}>
             <div id="user-profile">
                <section id="profile-header" className="profile-section sub-section">
                   <img src={picture} alt="user-profilepic" />
@@ -71,27 +76,20 @@ class UserProfile extends Component {
                         <Link to={`/${username}/opinions`}>Ver todas</Link>
                      </Fragment> : <h3 className="blank-header">Este usuario no tiene opiniones de clientes.</h3>}
                </section>
-            </div> : <NotFound path={this.props.match.path}/>
+            </div>
+         </UserPageExists>
       );
    };
 
    componentDidMount() {
-      let { username } = this.props.match.params;
-      document.title = `Volga - ${username}`;
-      api.get('/get-data/user', { username })
-         .then(({data}) => this.setState({ notfound: false, loading: false, ...data.user }))
-         .catch(({response}) => {
-            if (response.status === 404) {
-               this.setState({ notfound: true, loading: false });
-            };
-         });
+      document.title = `Volga - ${this.state.username}`;
    };
 
    componentDidUpdate(prevProps) {
-      let { username } = this.props.match.params,
-      prevUser = prevProps.match.params.username;
+      let { username } = this.props.match.params;
+      let prevUser = prevProps.match.params.username;
       if (username !== prevUser) {
-         this.componentDidMount();
+         this.fetchUserData(username);
       };
    };
 
