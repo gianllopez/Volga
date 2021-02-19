@@ -1,54 +1,48 @@
 import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import routing from './routing';
-import { Footer, NavBar } from './pages/components';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import {
+   Logup, ContactNetworks, UserProfilePicture,
+   Login, UserProfile, ProductPage, Home,
+   PostProduct, NewOpinion, ClientsOpinions,
+   UserContact, SearchResults, NotFound, Explore,
+   FavoritesProducts, Landing } from './pages/';
+import {
+   Layout, CustomRoute, completePaths,
+   noFooterPaths, isAuthenticated } from './utils/routing-tools';
 import './index.css';
 
-function CompleteLayout({children}) {
+function VolgaApp() {
+   let isauth = isAuthenticated();
    return (
-      <Fragment>
-         <NavBar/>
+      <BrowserRouter>
          <Switch>
-            {children}
-         </Switch>
-         <Footer/>
-      </Fragment>
-   );
-};
-
-function NoFooterLayout({children}) {
-   return (
-      <Fragment>
-         <NavBar/>
-         <Switch>
-            {children}
-         </Switch>
-      </Fragment>
-   );
-};
-
-function VolgaApp(props) {
-   const VolgaRoutes = props => (
-      props.routes.map((route, index) => 
-         <Route {...route} key={index} />)
-   ), { complete, nofooter } = routing;
-   return (
-      <BrowserRouter> 
-         <Switch>
-            <Route path={complete.paths}>
-               <CompleteLayout>  
-                  <VolgaRoutes routes={complete.routes}/>
-               </CompleteLayout>
+            <CustomRoute path="/:username/contact-networks" component={ContactNetworks} />
+            <CustomRoute path="/:username/profile-picture" component={UserProfilePicture} />
+            <Route path={completePaths} exact>
+               <Layout withfooter>
+                  <Route path="/" render={() => isauth ? <Home /> : <Landing />} exact />
+                  <Route path="/:username/opinions" component={ClientsOpinions} exact />
+                  <CustomRoute path="/me/favorites" component={FavoritesProducts} />
+                  <Route path="/:username/contact" component={UserContact} exact />
+                  <Route path="/search/results" component={SearchResults} exact />
+                  <Route path="/users/:username" component={UserProfile} exact />
+                  <CustomRoute path="/logup" component={Logup} disabledonauth/>
+                  <Route exact path="/products/explore" component={Explore} />
+               </Layout>
             </Route>
-            <Route path={nofooter.paths}>
-               <NoFooterLayout>
-                  <VolgaRoutes routes={nofooter.routes}/>
-               </NoFooterLayout>
+            <Route path={noFooterPaths} exact>
+               <Layout>
+                  <Route path="/:username/catalog/:productkey" component={ProductPage} exact />
+                  <CustomRoute path="/:username/opinions/new" component={NewOpinion} />
+                  <CustomRoute exact path="/my-products/new" component={PostProduct} />
+                  <CustomRoute path="/login" component={Login} disabledonauth/>
+                  <Route component={NotFound}/>
+               </Layout>
             </Route>
          </Switch>
       </BrowserRouter>
    );
 };
 
-ReactDOM.render(<VolgaApp/>, document.getElementById('root'));
+ReactDOM.render(<VolgaApp/> , document.getElementById('root'));

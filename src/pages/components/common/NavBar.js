@@ -9,10 +9,8 @@ import './styles/NavBar.css';
 
 class NavBar extends Component {
 
-   hastoken = localStorage.getItem('user-token') ? true : false;
-
    state = {
-      isauth: this.hastoken,
+      isauth: localStorage.getItem('user-token') ? true : false,
       username: '', picture: ''
    }; 
 
@@ -48,7 +46,7 @@ class NavBar extends Component {
                {isauth ?
                   <Fragment>
                      <Link to="/my-products/new">Postear</Link>
-                     <Link to="/me/favorites-products">Favoritos</Link>
+                     <Link to="/me/favorites">Favoritos</Link>
                   </Fragment> :
                   <Fragment>
                      <Link to="/logup">Registro</Link>
@@ -74,8 +72,8 @@ class NavBar extends Component {
          const globalUI = localStorage.getItem('for-global-ui');
          if (!globalUI) {
             api.get('/get-data/for-global-ui')
-               .then(({data}) => {
-                  this.setState({...data}, () => {
+               .then(({ data }) => {
+                  this.setState({ ...data }, () => {
                      localStorage.setItem('for-global-ui', JSON.stringify(data))
                   });
                });
