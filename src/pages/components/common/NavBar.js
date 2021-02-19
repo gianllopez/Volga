@@ -69,7 +69,7 @@ class NavBar extends Component {
    componentDidMount() {
       let { isauth, username, picture } = this.state;
       if (isauth) {
-         const globalUI = localStorage.getItem('for-global-ui');
+         let globalUI = localStorage.getItem('for-global-ui');
          if (!globalUI) {
             api.get('/get-data/for-global-ui')
                .then(({ data }) => {
@@ -82,13 +82,6 @@ class NavBar extends Component {
                this.setState({...JSON.parse(globalUI)});
             };
          };
-      };
-   };
-
-   componentDidUpdate() {
-      this.componentDidMount();
-      if (!this.state.isauth && this.hastoken) {
-         this.setState({ isauth: true });
       };
    };
 

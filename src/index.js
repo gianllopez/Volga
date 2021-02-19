@@ -10,7 +10,6 @@ import { Layout, CustomRoute, completePaths,
 import './index.css';
 
 function VolgaApp() {
-   let isauth = isAuthenticated();
    return (
       <BrowserRouter>
          <Switch>
@@ -30,7 +29,7 @@ function VolgaApp() {
             <Route path={noFooterPaths} exact>
                <Layout>
                   <Route path="/:username/catalog/:productkey" component={ProductPage} exact />
-                  <Route path="/" render={() => isauth ? <Home /> : <Landing />} exact />
+                  <Route path="/" render={() => isAuthenticated() ? <Home /> : <Landing />} exact />
                   <CustomRoute path="/:username/opinions/new" component={NewOpinion} />
                   <CustomRoute exact path="/my-products/new" component={PostProduct} />
                   <CustomRoute path="/login" component={Login} disabledonauth/>

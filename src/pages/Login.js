@@ -34,7 +34,7 @@ class Login extends Component {
          api.post('/login', this.state.data)
             .then(({ data }) => {
                localStorage.setItem('user-token', data['user-token']);
-               this.props.history.push('/');
+               window.location = '/';
             })
             .catch(({ response, message }) => {
                this.setState({ loading: false });
