@@ -1,55 +1,48 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import {
    Logup, ContactNetworks, UserProfilePicture,
    Login, UserProfile, ProductPage, Home,
    PostProduct, NewOpinion, ClientsOpinions,
    UserContact, SearchResults, NotFound, Explore,
-   FavoritesProducts, Landing
-} from './pages/';
-import { MainLayout } from './pages/components/';
+   FavoritesProducts, Landing } from './pages/';
+import {
+   Layout, CustomRoute, completePaths,
+   noFooterPaths, isAuthenticated } from './utils/routing-tools';
 import './index.css';
 
-const isAuthenticated = () => localStorage.getItem('user-token') ? true : false;
+function VolgaApp() {
+   let isauth = isAuthenticated();
+   return (
+      <BrowserRouter>
+         <Switch>
+            <CustomRoute path="/:username/contact-networks" component={ContactNetworks} />
+            <CustomRoute path="/:username/profile-picture" component={UserProfilePicture} />
+            <Route path={completePaths} exact>
+               <Layout withfooter>
+                  <Route path="/" render={() => isauth ? <Home /> : <Landing />} exact />
+                  <Route path="/:username/opinions" component={ClientsOpinions} exact />
+                  <CustomRoute path="/me/favorites" component={FavoritesProducts} />
+                  <Route path="/:username/contact" component={UserContact} exact />
+                  <Route path="/search/results" component={SearchResults} exact />
+                  <Route path="/users/:username" component={UserProfile} exact />
+                  <CustomRoute path="/logup" component={Logup} disabledonauth/>
+                  <Route exact path="/products/explore" component={Explore} />
+               </Layout>
+            </Route>
+            <Route path={noFooterPaths} exact>
+               <Layout>
+                  <Route path="/:username/catalog/:productkey" component={ProductPage} exact />
+                  <CustomRoute path="/:username/opinions/new" component={NewOpinion} />
+                  <CustomRoute exact path="/my-products/new" component={PostProduct} />
+                  <CustomRoute path="/login" component={Login} disabledonauth/>
+                  <Route component={NotFound}/>
+               </Layout>
+            </Route>
+         </Switch>
+      </BrowserRouter>
+   );
+};
 
-const ProtectedRoute = ({ component: Component, ...routeprops }) => (
-   <Route {...routeprops} render={props => (
-      isAuthenticated() ?
-         <Component {...props} /> :
-         <Redirect to="/login" />
-   )} />
-);
-
-const NoAuthRoute = ({ component: Component, ...routeprops }) => (
-   <Route {...routeprops} render={props => (
-      !isAuthenticated() ?
-         <Component {...props} /> :
-         <Redirect to="/" />
-   )} />
-);
-
-ReactDOM.render(
-   <BrowserRouter>
-      <Switch>
-         <ProtectedRoute exact path="/:username/contact-networks" component={ContactNetworks} /> {/* Ready, por revisar si hay código que resumir... */}
-         <ProtectedRoute exact path="/:username/profile-picture" component={UserProfilePicture} /> {/* Ready, por revisar si hay código que resumir... */}
-         <MainLayout nofooter={['/login', '/my-products/new']}>
-            <Switch>
-               <Route exact path="/" render={() => isAuthenticated() ? <Home /> : <Landing />} />
-               <NoAuthRoute exact path="/logup" component={Logup} /> {/* Ready, por revisar si hay código que resumir... */}
-               <NoAuthRoute exact path="/login" component={Login} />
-               <Route exact path="/users/:username" component={UserProfile} />
-               <Route exact path="/products/explore" component={Explore} />
-               <Route exact path="/:username/catalog/:productkey" component={ProductPage} />
-               <ProtectedRoute exact path="/my-products/new" component={PostProduct} />
-               <ProtectedRoute exact path="/me/favorites-products" component={FavoritesProducts} />
-               <Route exact path="/:username/opinions" component={ClientsOpinions} /> {/* Ready, por revisar si hay código que resumir... */}
-               <ProtectedRoute exact path="/:username/opinions/new" component={NewOpinion} /> {/* Ready, por revisar si hay código que resumir... */}
-               <Route exact path="/:username/contact" component={UserContact} />
-               <Route exact path="/search/results" component={SearchResults} />
-               <Route component={NotFound} />
-            </Switch>
-         </MainLayout>
-      </Switch>
-   </BrowserRouter >, document.getElementById('root'));
+ReactDOM.render(<VolgaApp/> , document.getElementById('root'));

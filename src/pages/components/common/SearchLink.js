@@ -44,7 +44,7 @@ class SearchLink extends Component {
 
    render = () => (
       !this.state.redirect ?
-         <a onClick={this.searchRequest}>Buscar</a> :
+         <a href="/#" onClick={this.searchRequest}>Buscar</a> :
          <Redirect to={{
             pathname: '/search/results',
             state: { query: this.state.query }
