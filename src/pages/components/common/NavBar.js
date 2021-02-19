@@ -12,7 +12,7 @@ class NavBar extends Component {
    state = {
       isauth: localStorage.getItem('user-token') ? true : false,
       username: '', picture: ''
-   }; 
+   };
 
    linksAnimations = () => {
       document.getElementById('navbar-links')
@@ -21,8 +21,8 @@ class NavBar extends Component {
    };
 
    logOut = () => {
-      localStorage.clear();
       window.location = '/';
+      localStorage.clear();
    };
 
    render() {
@@ -82,6 +82,14 @@ class NavBar extends Component {
                this.setState({...JSON.parse(globalUI)});
             };
          };
+      };
+      if (matchMedia('(max-width:767px)').matches) {
+         document.querySelectorAll('#navbar-wrapper a')
+            .forEach(el => 
+               el.addEventListener('click', function() {
+                  this.parentElement.parentNode.classList.remove('show-links');
+                  document.querySelector('#burger-menu').click();
+               }));
       };
    };
 

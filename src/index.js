@@ -4,9 +4,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Logup, ContactNetworks, UserProfilePicture, Login, UserProfile,
          ProductPage, Home, PostProduct, NewOpinion, ClientsOpinions,
          UserContact, SearchResults, NotFound, Explore,
-         FavoritesProducts, Landing } from './pages/';
-import { Layout, CustomRoute, completePaths,
-         noFooterPaths, isAuthenticated } from './utils/routing-tools';
+         FavoritesProducts } from './pages/';
+import { Layout, CustomRoute, completePaths, noFooterPaths } from './utils/routing-tools';
 import './index.css';
 
 function VolgaApp() {
@@ -29,7 +28,7 @@ function VolgaApp() {
             <Route path={noFooterPaths} exact>
                <Layout>
                   <Route path="/:username/catalog/:productkey" component={ProductPage} exact />
-                  <Route path="/" render={() => isAuthenticated() ? <Home /> : <Landing />} exact />
+                  <Route path="/" component={Home} exact />
                   <CustomRoute path="/:username/opinions/new" component={NewOpinion} />
                   <CustomRoute exact path="/my-products/new" component={PostProduct} />
                   <CustomRoute path="/login" component={Login} disabledonauth/>
