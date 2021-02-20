@@ -14,13 +14,16 @@ class UserProfile extends Component {
    };
 
    fetchUserData = userQuery => {
-      let username = userQuery || this.state.username;
-      api.get('/get-data/user', { username })
-         .then(({data}) => this.setState({ ...data.user }))
+      if (!this.state.fetched) {
+         let username = userQuery || this.state.username;
+         api.get('/get-data/user', { username })
+            .then(({data}) => this.setState({ fetched: true, ...data.user }));
+      };
    };
  
    render() {
-      let { picture, username, name, stats, opinions, products, following } = this.state;
+      let { picture, username, name, stats,
+            opinions, products, following } = this.state;
       return (
          <UserPageExists userParam={username} onExists={this.fetchUserData}>
             <div id="user-profile">

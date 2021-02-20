@@ -30,7 +30,9 @@ class NavBar extends Component {
       return (
          <div id="navbar-wrapper">
             <BurgerMenu clickCallback={this.linksAnimations} />
-            <Link to={isauth ? `/users/${username}` : '#'} className="profile-link">
+            <Link to={{
+               pathname: isauth && `/users/${username}`,
+               state: { validate: false }}} className="profile-link">
                <figure>
                   <img
                      {...isauth && { className: 'user-rounded-picture' }}
@@ -83,14 +85,12 @@ class NavBar extends Component {
             };
          };
       };
-      if (matchMedia('(max-width:767px)').matches) {
-         document.querySelectorAll('#navbar-wrapper a:not(.profile-link)')
-            .forEach(el => 
-               el.addEventListener('click', function() {
-                  this.parentElement.parentNode.classList.remove('show-links');
-                  document.querySelector('#burger-menu').click();
-               }));
-      };
+      document.querySelectorAll('#navbar-wrapper a:not(.profile-link)')
+         .forEach(el => 
+            el.addEventListener('click', function() {
+               this.parentElement.parentNode.classList.remove('show-links');
+               document.querySelector('#burger-menu').click();
+            }));
    };
 
 };
