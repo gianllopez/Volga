@@ -1,5 +1,5 @@
 #logup-form {
-   padding-top: 90px;
+   /* padding-top: 90px; */
    margin-bottom: 5vh;
    display: flex;
    flex-direction: column;
@@ -38,11 +38,11 @@
    font-size: 1.1em;
 }
 
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
    #logup-form {
       padding-top: 125px;
    }
-}
+} */
 
 .input-wrapper.name input[name="name"] {
    text-transform: capitalize;

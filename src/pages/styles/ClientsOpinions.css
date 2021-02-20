@@ -1,6 +1,6 @@
-#clients-opinions-page {
+/* #clients-opinions-page {
    padding-top: 80px;
-}
+} */
 
 #clients-opinions-page h2 {
    text-align: center;
@@ -21,8 +21,8 @@
    margin: 7px;
 }
 
-@media (min-width:768px) {
+/* @media (min-width:768px) {
    #clients-opinions-page {
       padding-top: 135px;
    }
-}
+} */

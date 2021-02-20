@@ -53,7 +53,7 @@
    font-size: 1.4em;
    background-color: #36393ff0;
    padding-left: 10px;
-   transition: transform .6s;
+   transition: all .4s;
    transform: translateX(-100%);
 }
 
@@ -102,6 +102,7 @@
       border-radius: 0 0 7px 7px;
       width: 550px;
       max-width: unset;
+      overflow-y: hidden;
    }
 
    #navbar-links a {

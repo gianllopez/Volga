@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import api from '../utils/api';
-import { NotFound } from '.';
-import { ContactLink, CustomModal, UserPageExists } from './components';
+import { ContactLink, CustomMessage, UserPageExists } from './components';
+import nocontacthero from '../assets/UserContact/no-contact-hero.png';
 import './styles/UserContact.css';
 import { Fragment } from 'react';
 
@@ -35,7 +35,8 @@ class UserContact extends Component {
                         />
                         ))}
                   </div>
-               </Fragment> : <p>Hola</p>}
+               </Fragment> : <CustomMessage msgimage={nocontacthero}
+                             message="Este usuario no registró redes de contacto."/>}
             </div>
          </UserPageExists>
       );

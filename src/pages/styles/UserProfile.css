@@ -1,6 +1,6 @@
 #user-profile {
    background-color: #d5d5e040;
-   padding-top: calc(75px + 15px);
+   /* padding-top: calc(75px + 15px); */
    padding-bottom: 25px;
 }
 
@@ -95,7 +95,7 @@
       display: grid;
       grid-template-rows: max-content max-content;
       justify-content: center;
-      padding-top: 135px;
+      /* padding-top: 135px; */
    }
    #user-stats {
       /* flex-direction: row; */
