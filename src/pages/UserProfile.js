@@ -58,9 +58,8 @@ class UserProfile extends Component {
                         <Fragment>
                            {products.map((product, index) => 
                               <ProductCard
-                                 image={product.image_1}
-                                 name={product.product}
-                                 price={product.price}
+                                 product-data={product}
+                                 user={username}
                                  key={index}
                               />)}
                         </Fragment> :

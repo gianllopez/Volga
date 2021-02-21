@@ -6,16 +6,8 @@
    font-family: 'Lato', cursive;
 }
 
-#root > *:nth-child(2) {
-   padding-top: 75px;
-}
-@media (min-width: 768px) {
-   #root > *:nth-child(2):not(#post-product-page, #opinion-form, #login-form) {
-      padding-top: 125px;
-   }
-   #root > :is(#post-product-page, #opinion-form, #login-form) {
-      padding: 0;
-   }
+#root > *:nth-child(2):not(#landing-page) {
+   padding-top: 90px;
 }
 
 /* Sweet alert modified styles */

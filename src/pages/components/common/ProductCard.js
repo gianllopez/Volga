@@ -5,18 +5,18 @@ import './styles/ProductCard.css';
 class ProductCard extends Component {
 
    render() {
-      let { image, name, price } = this.props;
+      let { image_1, product, price, key } = this.props['product-data'];
       return (
          <div className="product-card">
             <figure>
-               <img src={image} alt="user-product" />
+               <img src={image_1} alt="user-product" />
             </figure>
             <div id="product-info">
-               <h2>{name}</h2>
+               <h2>{product}</h2>
                <span>{price}</span>
             </div>
             <div className="to-page">
-               <Link to="/">
+               <Link to={`/${this.props.user}/catalog/${key}`}>
                   <button>Ver producto</button>
                </Link>
             </div>

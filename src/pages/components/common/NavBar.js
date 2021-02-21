@@ -91,19 +91,19 @@ class NavBar extends Component {
                this.parentElement.parentNode.classList.remove('show-links');
                document.querySelector('#burger-menu').click();
             }));
-      if (matchMedia('(min-width: 768px)').matches) {
-         window.onscroll = function() {
-            let { oldScroll, scrollY, innerHeight } = this,
-            atPageBottom = (innerHeight + scrollY) >= document.body.offsetHeight,
-            downScroll = oldScroll < scrollY,
-            navstate = downScroll && 0;
-            if (!downScroll || atPageBottom) {
-               navstate = '45px'
-            };
-            document.getElementById('navbar-links').style.height = navstate
-            this.oldScroll = this.scrollY;
-         };
-      };
+      // if (matchMedia('(min-width: 768px)').matches) {
+      //    window.onscroll = function() {
+      //       let { oldScroll, scrollY, innerHeight } = this,
+      //       atPageBottom = (innerHeight + scrollY) >= document.body.offsetHeight,
+      //       downScroll = oldScroll < scrollY,
+      //       navstate = downScroll && 0;
+      //       if (!downScroll || atPageBottom) {
+      //          navstate = '45px'
+      //       };
+      //       document.getElementById('navbar-links').style.height = navstate
+      //       this.oldScroll = this.scrollY;
+      //    };
+      // };
    };
 
 };
