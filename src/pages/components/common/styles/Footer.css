@@ -10,14 +10,14 @@
 
 #my-social-contact {
    width: max-content;
-   margin: 0 auto 7px auto;
-   padding: 5px 15px;
+   margin: 0px auto 3px auto;
+   padding: 0 10px 5px 10px;
    border-bottom: 1px solid;
 }
 
 #my-social-contact a {
    color: white;
-   font-size: 2em;
+   font-size: 1.6em;
 }
 
 #my-social-contact a:not(:last-of-type) {
@@ -43,3 +43,18 @@
    margin-top: 5px;
 }
 
+@media (min-width: 768px) {
+   #contact-me {
+      /* width: ; */
+      display: flex;
+      justify-content: center;
+      border: none;
+   }
+
+   #contact-me p {
+      background-color: #454850;
+      padding: 5px;
+      border-radius: 5px;
+      margin: 0 5px;
+   }
+}

@@ -21,8 +21,8 @@ function Footer(props={}) {
          </section>
          <div id="contact-me">
             <p>lopezarizagianlucas@gmail.com</p>
-            <p>gianlucasla@hotmail.com</p>
             <p>+57 302-223-6578</p>
+            <p>gianlucasla@hotmail.com</p>
          </div>
          <p id="copyright">Volga by Gian López © 2020</p>
       </div>

@@ -78,17 +78,67 @@
 }
 
 #logout-btn {
-   /* position: absolute; */
    height: 40px;
-   /* right: 0;
-   padding: 10px; */
+   color: #f85f76;
+   font-size: 2.5em;
 }
 
 @media screen and (min-width:768px) {
+   
    #navbar-wrapper {
-      justify-content: space-between;
+      justify-content: center;
    }
+
    #navbar-links {      
-      /* transform: initial; */
+      transform: initial;
+      height: 45px;
+      flex-direction: row;
+      padding: 0;
+      border: none;
+      left: unset;
+      align-items: center;
+      justify-content: space-evenly;
+      font-size: 1.2em;
+      border-radius: 0 0 7px 7px;
+      width: 550px;
+      max-width: unset;
+      overflow-y: hidden;
+   }
+
+   #navbar-links a {
+      padding: 0;
+      margin: 0;
+      border: none;
+      cursor: pointer;
+   }
+   
+   #navbar-links a:hover {
+      color: #c7c7c7;
+   }
+   #logout-btn {
+      position: absolute;
+      right: 10px;
    }
 }
+
+/* Scroll clasess: */
+
+/* .navbar-wrapper-on-scroll {
+   justify-content: space-evenly !important;
+} */
+
+.profile-link-on-scroll {
+   position: absolute;
+   right: 10px;
+}
+
+.navbar-links-on-scroll {
+   margin: 0  !important;
+   position: static  !important;
+}
+/* 
+.logout-btn-on-scroll {
+   transition: .4s  !important;
+   transform: translateX(calc(100% + 10px))  !important;
+}
+ */

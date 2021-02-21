@@ -32,7 +32,7 @@ class NavBar extends Component {
             <BurgerMenu clickCallback={this.linksAnimations} />
             <Link to={{
                pathname: isauth && `/users/${username}`,
-               state: { validate: false }}} className="profile-link">
+               state: { validate: false }}} id="profile-link">
                <figure>
                   <img
                      {...isauth && { className: 'user-rounded-picture' }}
@@ -91,19 +91,26 @@ class NavBar extends Component {
                this.parentElement.parentNode.classList.remove('show-links');
                document.querySelector('#burger-menu').click();
             }));
-      // if (matchMedia('(min-width: 768px)').matches) {
-      //    window.onscroll = function() {
-      //       let { oldScroll, scrollY, innerHeight } = this,
-      //       atPageBottom = (innerHeight + scrollY) >= document.body.offsetHeight,
-      //       downScroll = oldScroll < scrollY,
-      //       navstate = downScroll && 0;
-      //       if (!downScroll || atPageBottom) {
-      //          navstate = '45px'
-      //       };
-      //       document.getElementById('navbar-links').style.height = navstate
-      //       this.oldScroll = this.scrollY;
-      //    };
-      // };
+      if (matchMedia('(min-width: 768px)').matches) {
+         const scrollAnimsIds = (action=false) => {
+            ['profile-link',
+             'navbar-links'].map(id => {
+               let element = document.getElementById(id);
+               let { classList } = element;
+               if (action) {
+                  classList.add(`${id}-on-scroll`);
+               } else {
+                  classList.remove(`${id}-on-scroll`)
+               };
+            });
+         };
+         window.onscroll = function() {
+            let { oldScroll, scrollY } = this,
+            downScroll = oldScroll < scrollY;
+            this.oldScroll = scrollY;
+            scrollAnimsIds(downScroll && true);
+         };
+      };
    };
 
 };

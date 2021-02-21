@@ -33,18 +33,17 @@ class ProductGallery extends Component {
       );
    };
 
-   // componentDidMount() {
-   //    let mediascreen = matchMedia('(min-width: 768px)')
-   //    if (mediascreen.matches) {
-   //       this.props.heightChangeCallback (
-   //          document.querySelector('img#displayed').offsetHeight
-   //       );
-   //    };
-   // };
-
-   // componentDidUpdate() {
-   //    this.componentDidMount();
-   // };
+   componentDidMount() {
+      const mediascreen = matchMedia('(min-width: 768px)');
+      if (mediascreen.matches) {
+         let { clientHeight } = document.querySelector('.product-page');
+         console.log(clientHeight);
+      };
+   };
+   
+   componentDidUpdate() {
+      this.componentDidMount();
+   };
 
 
 

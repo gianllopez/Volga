@@ -12,20 +12,17 @@ class ProductTagsDisplayer extends Component {
    render() {
 
       let { displayed } = this.state,
-      { tags } = this.props,
-      sortedtags = tags.sort((a, b) => b.length - a.length)
+      { tags } = this.props;
       return (
          <div id="p-tags-displayer" onClick={this.tagsDisplayer}>
-            {tags ?
-               <Fragment>
-                  <h4>Etiquetas {displayed ? "-" : "+"}</h4>
-                  <div id="displayed-tags">
-                     {displayed && sortedtags.map((tag, index) =>
-                        <p key={index}>{tag}</p>
-                     )}
-                  </div>
-               </Fragment> :
-               <p>Este producto no tiene etiquetas.</p>}
+            <h4>Etiquetas {displayed ? "-" : "+"}</h4>
+            <div id="displayed-tags">
+               {displayed && (
+                  tags ?
+                     tags.map((tag, index) => 
+                        <p key={index}>{tag}</p>) :
+                        <p>Este producto no tiene etiquetas.</p>)}
+            </div>
          </div>
       );
    };
