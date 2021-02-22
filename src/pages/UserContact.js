@@ -27,16 +27,15 @@ class UserContact extends Component {
                <Fragment>
                   <h2>¿Por donde deseas contactar con {username}?</h2>
                   <div id="contact-ways">
-                     {contactways.map((way, index) => (
+                     {contactways.map((way, index) => 
                         <ContactLink
-                        for={way[0]}
-                        url={way[1]}
-                        key={index}
-                        />
-                        ))}
+                           for={way[0]}
+                           url={way[1]}
+                           key={index}
+                        />)}
                   </div>
                </Fragment> : <CustomMessage msgimage={nocontacthero}
-                             message="Este usuario no registró redes de contacto."/>}
+                              message="Este usuario no registró redes de contacto."/>}
             </div>
          </UserPageExists>
       );

@@ -14,8 +14,8 @@ class UserProduct extends Component {
    };
 
    render() {
-      let { user, image_1, key, price, product, isfav } = this.props.data || '',
-         userdata = user ? user : { username: '', name: '', picture: '' };
+      let { user, images, key, price, product, isfav } = this.props.data || '',
+      userdata = user ? user : { username: '', name: '', picture: '' };
       return (
          <div className="product-wrapper" onClick={this.showProductNavigation}>
             <div className="product-user">
@@ -27,7 +27,7 @@ class UserProduct extends Component {
             </div>
             <img
                className="product-img"
-               src={image_1}
+               src={images[0]}
                alt={product && product.replace(' ', '-')}
             />
             <div className="product-footer">

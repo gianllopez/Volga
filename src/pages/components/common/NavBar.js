@@ -96,11 +96,13 @@ class NavBar extends Component {
             ['profile-link',
              'navbar-links'].map(id => {
                let element = document.getElementById(id);
-               let { classList } = element;
-               if (action) {
-                  classList.add(`${id}-on-scroll`);
-               } else {
-                  classList.remove(`${id}-on-scroll`)
+               if (element) {
+                  let { classList } = element;
+                  if (action) {
+                     classList.add(`${id}-on-scroll`);
+                  } else {
+                     classList.remove(`${id}-on-scroll`)
+                  };
                };
             });
          };

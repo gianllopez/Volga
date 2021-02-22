@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Fragment } from 'react';
 import api from '../utils/api';
-import { ButtonLoader, TagsSelector, PageLoader, UserProduct, CustomModal } from './components';
+import { ButtonLoader, TagsSelector, PageLoader, UserProduct, CustomModal, CustomMessage } from './components';
+import notags from '../assets/Explore/notags.png';
 import './styles/Explore.css';
 
 class Explore extends Component {
@@ -23,14 +24,16 @@ class Explore extends Component {
       event.preventDefault();
       let { querytags } = this.state;
       if (querytags.length !== 0) {
-         this.setState({
-            querytags: this.state.querytags.join(', '),
-            loading: true
-         }, () => {
+         querytags = querytags.join(', ')
+         this.setState({ querytags, loading: true }, () => {
             let { querytags } = this.state;
             api.post('/get-data/explore', { querytags })
-               .then(({ data }) => {
-                  this.setState({ loading: false, results: data });
+               .then(({ data }) => this.setState({ ...data }))
+               .finally(() => this.setState({ loading: false }))
+               .catch(({ response }) => {
+                  if (response.status === 404) {
+                     this.setState({ blank_results: true });
+                  };
                });
          });
       } else {
@@ -41,20 +44,22 @@ class Explore extends Component {
    };
 
    render() {
-      let { results } = this.state || { results: [] };
+      let { results, blank_results } = this.state;
       return (
          !this.state.loading ?
             <form id="explore-page" onSubmit={this.submitHandler}>
                {!results ?
-                  <Fragment>
-                     <h1>Etiquetas a explorar:</h1>
-                     <TagsSelector onSelect={this.selectHandler} />
-                     <ButtonLoader isloading={false} label="Explorar" />
-                  </Fragment> :
+                  !blank_results ?
+                     <Fragment>
+                        <h1>Etiquetas a explorar:</h1>
+                        <TagsSelector onSelect={this.selectHandler} />
+                        <ButtonLoader isloading={false} label="Explorar" />
+                     </Fragment> : <CustomMessage msgimage={notags}
+                                    message="Aún no se ha registrado un
+                                             producto con tales etiquetas."/> :
                   <div id="explore-results">
-                     {results.map((result, index) => (
-                        <UserProduct data={result} key={index} />
-                     ))}
+                     {results.map((result, index) =>
+                        <UserProduct data={result} key={index} />)}
                   </div>}
             </form> : <PageLoader />
       );

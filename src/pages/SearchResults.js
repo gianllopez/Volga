@@ -77,7 +77,7 @@ class SearchResult extends Component {
 
    componentDidUpdate() {
       if (this.state.query !== this.getQuery()) {
-         this.componentDidMount();
+         this.loadRequest();
       };
    };
 
