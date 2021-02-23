@@ -11,7 +11,7 @@ class FavButton extends Component {
    fetchFav = event => {
       event.stopPropagation();
       let { productkey } = this.props;
-      api.post('/product-fav', { productkey })
+      api.post('/product-fav', { product: productkey })
          .then(response => {
             let { isfav } = response.data;
             this.setState({ isfav });

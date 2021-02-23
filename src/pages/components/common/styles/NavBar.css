@@ -136,9 +136,8 @@
    margin: 0  !important;
    position: static  !important;
 }
-/* 
+
 .logout-btn-on-scroll {
-   transition: .4s  !important;
    transform: translateX(calc(100% + 10px))  !important;
 }
- */
+

@@ -5,11 +5,11 @@ import './styles/ProductCard.css';
 class ProductCard extends Component {
 
    render() {
-      let { image_1, product, price, key } = this.props['product-data'];
+      let { images, product, price, key } = this.props['product-data'];
       return (
          <div className="product-card">
             <figure>
-               <img src={image_1} alt="user-product" />
+               <img src={images[0]} alt="user-product" />
             </figure>
             <div id="product-info">
                <h2>{product}</h2>

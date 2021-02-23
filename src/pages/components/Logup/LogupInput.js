@@ -7,7 +7,7 @@ class LogupInput extends Component {
 
    static contextType = logupContext;
 
-   GENDERS = ['Masculino', 'Femenino', 'No definido', 'Prefiero no especificarlo']
+   GENDERS = ['Masculino', 'Femenino', 'No definido']
 
    render() {
       let default_props = {

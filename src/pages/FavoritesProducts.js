@@ -5,15 +5,15 @@ import './styles/FavoritesProducts.css';
 
 class FavoritesProducts extends Component {
 
-   state = { results: [] };
+   state = { favorites: [] };
 
    render() {
-      let { results } = this.state;
+      let { favorites } = this.state;
       return (
          <div id="favorites-products">
             <h2>Estos son tus productos favoritos:</h2>
             <div>
-               {results.map((result, index) => (
+               {favorites.map((result, index) => (
                   <UserProduct data={result} />
                ))}
             </div>
@@ -25,7 +25,7 @@ class FavoritesProducts extends Component {
       document.title = 'Mis favoritos';
       api.get('/get-data/favorites-products')
          .then(({ data }) => {
-            this.setState({ results: data })
+            this.setState({ ...data })
          })
    };
 };

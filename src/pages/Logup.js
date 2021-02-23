@@ -36,10 +36,10 @@ class Logup extends Component {
          .then(() => {
             this.setState({ loading: true, errors: {} });
             api.post('/logup', data)
-               .then(response => {
-                  let { data } = response;
+               .then(({data}) => {
                   localStorage.setItem('user-token', data.token);
-                  this.props.history.push(`/${data.username}/contact-networks`);
+                  localStorage.setItem('uiconstdata', JSON.stringify(data['uiconstdata']));
+                  this.props.history.push(`/${data.uiconstdata.username}/contact-networks`);
                })
                .catch(errors => {
                   this.setState({ loading: false });

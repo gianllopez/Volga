@@ -33,7 +33,8 @@ class Login extends Component {
          this.setState({ loading: true });
          api.post('/login', this.state.data)
             .then(({ data }) => {
-               localStorage.setItem('user-token', data['user-token']);
+               localStorage.setItem('user-token', data['token']);
+               localStorage.setItem('uiconstdata', JSON.stringify(data['uiconstdata']));
                window.location = '/';
             })
             .catch(({ response, message }) => {

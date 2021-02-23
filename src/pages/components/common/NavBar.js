@@ -11,7 +11,7 @@ class NavBar extends Component {
 
    state = {
       isauth: localStorage.getItem('user-token') ? true : false,
-      username: '', picture: ''
+      ...JSON.parse(localStorage.getItem('uiconstdata'))
    };
 
    linksAnimations = () => {
@@ -30,15 +30,13 @@ class NavBar extends Component {
       return (
          <div id="navbar-wrapper">
             <BurgerMenu clickCallback={this.linksAnimations} />
-            <Link to={{
-               pathname: isauth && `/users/${username}`,
-               state: { validate: false }}} id="profile-link">
+            <Link to={isauth && `/users/${username}`} id="profile-link">
                <figure>
                   <img
                      {...isauth && { className: 'user-rounded-picture' }}
                      src={isauth ? picture : volgalogo}
                      alt="navbar-user-pic"
-                     />
+                  />
                </figure>
             </Link>
             <div id="navbar-links">
@@ -69,22 +67,6 @@ class NavBar extends Component {
    };
 
    componentDidMount() {
-      let { isauth, username, picture } = this.state;
-      if (isauth) {
-         let globalUI = localStorage.getItem('for-global-ui');
-         if (!globalUI) {
-            api.get('/get-data/for-global-ui')
-               .then(({ data }) => {
-                  this.setState({ ...data }, () => {
-                     localStorage.setItem('for-global-ui', JSON.stringify(data))
-                  });
-               });
-         } else {
-            if (!username || !picture) {
-               this.setState({...JSON.parse(globalUI)});
-            };
-         };
-      };
       document.querySelectorAll('#navbar-wrapper a:not(.profile-link)')
          .forEach(el => 
             el.addEventListener('click', function() {
@@ -92,25 +74,20 @@ class NavBar extends Component {
                document.querySelector('#burger-menu').click();
             }));
       if (matchMedia('(min-width: 768px)').matches) {
-         const scrollAnimsIds = (action=false) => {
-            ['profile-link',
-             'navbar-links'].map(id => {
-               let element = document.getElementById(id);
-               if (element) {
-                  let { classList } = element;
-                  if (action) {
-                     classList.add(`${id}-on-scroll`);
-                  } else {
-                     classList.remove(`${id}-on-scroll`)
-                  };
-               };
-            });
-         };
          window.onscroll = function() {
-            let { oldScroll, scrollY } = this,
-            downScroll = oldScroll < scrollY;
-            this.oldScroll = scrollY;
-            scrollAnimsIds(downScroll && true);
+            ['profile-link', 'navbar-links', 'logout-btn']
+               .map(id => {
+                  const element = document.getElementById(id);
+                  if (element) {                  
+                     let { classList } = element;
+                     if (this.oldScroll < this.scrollY) {
+                        classList.add(`${id}-on-scroll`);
+                     } else {
+                        classList.remove(`${id}-on-scroll`)
+                     };
+                  };
+               });
+            this.oldScroll = this.scrollY;
          };
       };
    };

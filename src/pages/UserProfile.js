@@ -7,28 +7,27 @@ import api from '../utils/api';
 
 class UserProfile extends Component {
 
-   locationState = this.props.location.state;
-
    state = {
-      username: this.props.match.params['username'],
-      name: '', stats: {}, picture: '', 
-      opinions: '', products: [], following: '',
-      validate: this.locationState ? this.locationState.validate : true
+      user: {
+         username: this.props.match.params['username'],
+         name: '', stats: {}, picture: '', opinions: '',
+         products: [], following: '',
+      }
    };
 
    fetchUserData = userQuery => {
       if (!this.state.fetched) {
-         let username = userQuery || this.state.username;
+         let username = userQuery || this.state.user.username;
          api.get('/get-data/user', { username })
-         .then(({data}) => this.setState({ fetched: true, ...data.user }));
+            .then(({data}) => this.setState({ fetched: true, user: {...data} }));
       };
    };
    
    render() {
-      let { picture, username, name, stats,
-         opinions, products, following, validate } = this.state;
+      let { picture, username, name, stats, opinions,
+            products, following } = this.state.user;
       return (
-         <UserPageExists userParam={validate && username} onExists={this.fetchUserData}>
+         <UserPageExists userParam={username} onExists={this.fetchUserData}>
             <div id="user-profile">
                <section id="profile-header" className="profile-section sub-section">
                   <img src={picture} alt="user-profilepic" />
@@ -70,14 +69,8 @@ class UserProfile extends Component {
                   {opinions.length !== 0 ?
                      <Fragment>
                         <h3 className="section-title">Opiniones de clientes:</h3>
-                        {opinions.map((opinion, index) => (
-                           <Opinion
-                              from={opinion.from}
-                              date={opinion.date}
-                              comment={opinion.comment}
-                              key={index}
-                           />
-                        ))}
+                        {opinions.map((opinion, index) => 
+                           <Opinion {...opinion} key={index}/>)}
                         <Link to={`/${username}/opinions`}>Ver todas</Link>
                      </Fragment> : <h3 className="blank-header">Este usuario no tiene opiniones de clientes.</h3>}
                </section>
@@ -87,13 +80,7 @@ class UserProfile extends Component {
    };
 
    componentDidMount() {
-      document.title = `Volga - ${this.state.username}`;
-      let { validate } = this.props.location.state || { validate: true };
-      this.setState({ validate }, () => {
-         if (!this.state.validate) {
-            this.fetchUserData();
-         };
-      });
+      document.title = `Volga - ${this.state.user.username}`;
    };
 
    componentDidUpdate(prevProps) {

@@ -36,9 +36,10 @@ class UserProduct extends Component {
             </div>
             <FavButton productkey={key} isfav={isfav} />
             <div className="product-navigation">
-               <Link to={`/${userdata.username}/catalog/${key}`}>
-                  <button>Ver producto</button>
-               </Link>
+               <Link to={{
+                  pathname: `/${userdata.username}/catalog/${key}`,
+                  state: {product: this.props.data}
+               }}> <button>Ver producto</button> </Link>
             </div>
          </div>
       );

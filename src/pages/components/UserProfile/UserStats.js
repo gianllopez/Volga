@@ -4,8 +4,7 @@ import './styles/UserStats.css';
 
 function UserStats(props) {
 
-   const defaultValues = { rating_avg: 0, followers: 0, products: 0 };
-   let { rating_avg, followers, products } = props.stats || defaultValues;
+   let { rating_avg, followers, total_products } = props.stats;
 
    const Stat = (props) => {
       let { stat, label, value } = props;
@@ -22,9 +21,9 @@ function UserStats(props) {
 
    return (
       <Fragment>
-         <Stat stat="rating" label="Calificación" value={rating_avg} />
-         <Stat stat="followers" label="Seguidores" value={followers} />
-         <Stat stat="products" label="Productos" value={products} />
+         <Stat stat="rating" label="Calificación" value={rating_avg || 0} />
+         <Stat stat="followers" label="Seguidores" value={followers || 0} />
+         <Stat stat="products" label="Productos" value={total_products || 0} />
       </Fragment>
    );
 
