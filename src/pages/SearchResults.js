@@ -15,11 +15,9 @@ class SearchResult extends Component {
             .then(({ data }) => {
                if (results ? !results[filter] : true) {
                   this.setState({
-                     results: {
-                        ...results,
+                     results: { ...results,
                         [filter]: data ? data.results : []
-                     }, query
-                  });
+                     }, query });
                };
             });
       };
@@ -76,8 +74,9 @@ class SearchResult extends Component {
    };
 
    componentDidUpdate() {
-      if (this.state.query !== this.getQuery()) {
-         this.loadRequest();
+      let propQuery = this.getQuery()
+      if (this.state.query !== propQuery) {
+         this.setState({results: {}, query: propQuery}, this.loadRequest);
       };
    };
 

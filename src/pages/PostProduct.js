@@ -4,7 +4,8 @@ import prodboxicon from '../assets/PostProduct/product-box.svg';
 import './styles/PostProduct.css';
 import { noBlankValidator } from '../utils/validators';
 import api from '../utils/api';
-import swal from '@sweetalert/with-react';
+import swal from 'sweetalert';
+
 
 class PostProduct extends Component {
 
@@ -47,43 +48,49 @@ class PostProduct extends Component {
       let { isValid, errors } = noBlankValidator(this.state.data, ['description', 'type']);
       if (isValid) {
          this.setState({ loading: true });
-         let fdata = new FormData(), statedata = Object.entries(this.state.data);
-         for (let data of statedata) {
-            let field = data[0], value = data[1];
-            if (data[0] === 'images') {
-               let imgnames = Object.entries(['image_1', 'image_2', 'image_3', 'image_4']);
-               for (let name of imgnames) {
-                  field = name[1];
-                  value = data[1][name[0]] || '';
-                  fdata.append(field, value);
+         const fdata = new FormData();
+         Object.entries(this.state.data)
+            .forEach(data => {
+               let name = data[0],
+               value = data[1]
+               if (name === 'images') {
+                  Object.values(value)
+                     .forEach(img => fdata.append('images', img));
+               } else {
+                  fdata.append(name, value);
                };
-            } else {
-               fdata.append(field, value);
-            };
-         };
+            });
          ProductTags(tag => {
-            let { data } = this.state, { tags } = data;
+            let { tags } = this.state.data;
             if (tags.includes(tag)) {
                tags.splice(tags.indexOf(tag), 1);
             } else {
-               tags = tags.concat(tag)
+               tags = tags.concat(tag);
             };
-            this.setState({ data: { ...data, tags } });
-         }).then(() => {
-            let { tags } = this.state.data;
-            fdata.set('tags', tags.slice(0, 10).join(', '));
-            api.post('/products/new', fdata)
-               .then(({ data }) => {
-                  swal({
-                     title: '¡Tu producto ha sido posteado!',
-                     icon: 'success',
-                     buttons: [false, 'Continuar']
-                  }).then(cont => {
-                     cont && this.props.history.push(`/${data.user}/catalog/${data.key}`)
-                  })
-               })
-               .catch(errors => this.setState({}, () => console.log(errors)));
-         })
+            this.setState({ data: { ...this.state.data, tags } });
+         }).then(ready => {
+            if (ready) {
+               let { tags } = this.state.data,
+               tagString = tags.slice(0, 10).join(', '); 
+               fdata.set('tags', tagString);
+               api.post('/products/new', fdata)
+                  .then(response => {
+                     if (response.status === 201) {
+                        swal({
+                           icon: 'success',
+                           
+                           title: '¡ENHORABUENA!',
+                           text: 'Tu producto ha sido posteado de manera satisfactoria.'
+                        }).then(gotit => {
+                           let { username, key } = response.data;
+                           if (gotit) {
+                              this.props.history.push(`/${username}/catalog/${key}`);
+                           };
+                        });
+                     };
+                  });
+            };
+         });
       } else {
          this.setState({ errors });
       };
@@ -146,3 +153,29 @@ class PostProduct extends Component {
 };
 
 export default PostProduct;
+
+
+
+
+// ProductTags(tag => {
+   
+//    let { tags } = this.state.data;
+//    if (tags.includes(tag))
+//       tags.splice(tags.indexOf(tag), 1);
+//    else tags = tags.concat(tag);
+//    this.setState({ data: { ...this.state.data, tags } });
+
+// }).then(() => {
+
+//    fdata.set('tags', this.state.data.tags.slice(0, 10).join(', '));
+//    api.post('/products/new', fdata)
+//       .then(({ data }) => {
+//          swal({
+//             title: '¡Tu producto ha sido posteado!',
+//             icon: 'success',
+//             buttons: [false, 'Continuar']
+//          }).then(cont => {
+//             cont && this.props.history.push(`/${data.user}/catalog/${data.key}`)
+//          })
+//       })
+//       .catch(errors => console.error(errors))});

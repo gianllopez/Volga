@@ -1,23 +1,27 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './styles/Footer.css';
 
-function Footer(props={}) {
+function Footer() {
+
+   const NetworkLink = props => {
+      let { network, username } = props;
+      return (
+         <a href={`https://${network}.com/${username}`}
+            target="_blank" rel="noopener noreferrer">
+            <i className={`fab fa-${network}-square`}/>
+         </a>
+      );
+   };
+
    return (
       <div id="footer-wrapper">
          <section id="my-social-contact">
-            <Link to="">
-               <i className="fab fa-twitter-square"/>
-            </Link>
-            <Link to="">
-               <i className="fab fa-github-square"/>
-            </Link>
-            <Link to="">
-               <i className="fab fa-facebook-square"/>
-            </Link>
-            <Link to="">
-               <i className="fab fa-instagram-square"/>
-            </Link>
+            {['twitter', 'github', 'facebook', 'instagram']
+               .map((sn, index) => 
+                  <NetworkLink
+                     username={sn !== 'facebook' ? 'gianlop3z' : 'therealgoat01'}
+                     network={sn}
+                     key={index} />)}
          </section>
          <div id="contact-me">
             <p>lopezarizagianlucas@gmail.com</p>

@@ -12,7 +12,8 @@ class UserProfile extends Component {
          username: this.props.match.params['username'],
          name: '', stats: {}, picture: '', opinions: '',
          products: [], following: '',
-      }
+      },
+      ...this.props.location.state
    };
 
    fetchUserData = userQuery => {
@@ -27,7 +28,7 @@ class UserProfile extends Component {
       let { picture, username, name, stats, opinions,
             products, following } = this.state.user;
       return (
-         <UserPageExists userParam={username} onExists={this.fetchUserData}>
+         <UserPageExists userParam={!this.state.exists && username} onExists={this.fetchUserData}>
             <div id="user-profile">
                <section id="profile-header" className="profile-section sub-section">
                   <img src={picture} alt="user-profilepic" />
@@ -71,9 +72,12 @@ class UserProfile extends Component {
                         <h3 className="section-title">Opiniones de clientes:</h3>
                         {opinions.map((opinion, index) => 
                            <Opinion {...opinion} key={index}/>)}
-                        <Link to={`/${username}/opinions`}>Ver todas</Link>
                      </Fragment> : <h3 className="blank-header">Este usuario no tiene opiniones de clientes.</h3>}
-                     <Link to={`/${username}/opinions/new`}>Opinar</Link>
+                     <div>
+                        {opinions.length !== 0 &&
+                           <Link to={`/${username}/opinions`}>Ver todas</Link>}
+                        <Link to={`/${username}/opinions/new`}>Opinar</Link>
+                     </div>
                </section>
             </div>
          </UserPageExists>
