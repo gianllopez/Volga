@@ -23,7 +23,7 @@ class UserPageExists extends Component {
             .then(() => this.setState({ found: true }, onExists))
             .finally(() => this.setState({ loading: false }));
       } else {
-         this.setState({ found: true, loading: false });
+         this.setState({ found: true, loading: false }, onExists);
       };
    };
 
