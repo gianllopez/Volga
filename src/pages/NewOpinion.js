@@ -5,6 +5,7 @@ import api from '../utils/api';
 import { noBlankValidator } from '../utils/validators';
 import opsheader from '../assets/NewOpinion/users-opinions.svg';
 import './styles/NewOpinion.css';
+import swal from 'sweetalert';
 
 class NewOpinion extends Component {
 
@@ -18,7 +19,8 @@ class NewOpinion extends Component {
       errors: {}
    };
 
-   changeHandler = ({ target }) => {
+   changeHandler = event => {
+      let { target } = event;
       let { name, value } = target;
       if (name === 'client') {
          const regex = /(?!.*\s{2})^[a-zA-ZÀ-úñÑ\s]+$/
@@ -40,16 +42,13 @@ class NewOpinion extends Component {
       if (isValid) {
          this.setState({ loading: true });
          api.post('/opinions', this.state.data)
-            .catch(({ response }) => {
-               if (response.data.to_user) {
-                  CustomModal(
-                     <span>
-                        El usuario sobre el que deseas opinar no existe.
-                     </span>, [false, 'Entendido']).then(ok => ok && this.props.history.push('/'));
-               } else {
-                  this.setState({ loading: false, errors: response.data })
+            .then(({status}) => {
+               if (status === 201) {
+                  swal({title: '¡Opinión enviada!',
+                        text: '¡Gracias por tu opinión!',
+                        icon: 'success'}).then(ok => ok && this.props.history.push('/'))
                };
-            });
+            })
       } else {
          this.setState({ errors });
       };

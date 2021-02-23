@@ -40,19 +40,22 @@ class ProductPage extends Component {
    componentDidMount() {
       const { username, productkey } = this.props.match.params;
       document.title = `Volga - ${productkey}`;
-      api.get('/get-data/product', { username, productkey })
-         .then(({ data }) => this.setState({ fetched: true, data }))
-         // .catch(({ response }) => {
-         //    let { error } = response.data;
-         //    if (error === '404') {
-         //       CustomModal(
-         //          <span>
-         //             El producto que buscas no se encuentra
-         //             en el catálogo de {username}
-         //          </span>, [false, 'Entendido'])
-         //          .then(ok => ok && this.props.history.push('/'));
-         //    };
-         // });
+      let fromlink = this.props.location.state;
+      if (!fromlink) {
+         api.get('/get-data/product', { username, productkey })
+            .then(({ data }) => this.setState({ fetched: true, data }))
+            .catch(({response}) => {
+               if (response.status === 404) {
+                  CustomModal(
+                     <span>
+                        El producto que buscas no se encuentra
+                        en el catálogo de {username}
+                     </span>, [false, 'Entendido'])
+                        .then(ok => ok && this.props.history.push('/'));
+               };});
+      } else {
+         this.setState({fetched: true, data: fromlink.product});
+      };
    };
 };
 

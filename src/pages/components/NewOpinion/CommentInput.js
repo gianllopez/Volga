@@ -5,13 +5,14 @@ import './styles/CommentInput.css';
 class CommentInput extends Component {
 
    state = { length: 0 }
-
-   maxLengthHandler = ({ target }) => {
-      let { value } = target;
-      if (value.length >= 125) {
-         target.value = value.substring(0, 124);
+   
+   entryValidation = event => {
+      let { value } = event.target;
+      if (value.length > 125) {
+         event.target.value = value.substring(0, 125);
       };
-      this.setState({ length: value.length })
+      this.setState({ length: event.target.value.length })
+      this.props.onChange(event);
    };
 
    render() {
@@ -22,8 +23,7 @@ class CommentInput extends Component {
                name={this.props.name}
                id="comment"
                placeholder="..."
-               onKeyDown={this.maxLengthHandler}
-               onChange={this.props.onChange}
+               onChange={this.entryValidation}
             />
          </Input>
       )

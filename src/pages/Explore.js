@@ -68,6 +68,14 @@ class Explore extends Component {
    componentDidMount() {
       document.title = 'Volga - Explorar';
    };
+
+   componentDidUpdate(prevProps) {
+      let { key } = this.props.location;
+      if (key !== prevProps.location.key && this.state.blank_results) {
+         this.setState({ blank_results: false, querytags: [] });
+      };
+   };
+
 };
 
 export default Explore;

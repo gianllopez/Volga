@@ -14,7 +14,7 @@ class FavoritesProducts extends Component {
             <h2>Estos son tus productos favoritos:</h2>
             <div>
                {favorites.map((result, index) => (
-                  <UserProduct data={result} />
+                  <UserProduct data={result} key={index} />
                ))}
             </div>
          </div>

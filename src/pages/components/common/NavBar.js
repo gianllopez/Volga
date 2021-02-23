@@ -67,11 +67,17 @@ class NavBar extends Component {
    };
 
    componentDidMount() {
-      document.querySelectorAll('#navbar-wrapper a:not(.profile-link)')
+      document.querySelectorAll('#navbar-wrapper a')
          .forEach(el => 
             el.addEventListener('click', function() {
-               this.parentElement.parentNode.classList.remove('show-links');
-               document.querySelector('#burger-menu').click();
+               if (el.id !== 'profile-link') {
+                  document.querySelector('#burger-menu').click();
+               } else {
+                  let { classList } = document.querySelector('#navbar-links');
+                  if (classList.contains('show-links')) {
+                     document.querySelector('#burger-menu').click();
+                  };
+               };
             }));
       if (matchMedia('(min-width: 768px)').matches) {
          window.onscroll = function() {
