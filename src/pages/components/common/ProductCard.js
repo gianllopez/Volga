@@ -1,11 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { CustomModal } from '..';
+import api from '../../../utils/api';
 import './styles/ProductCard.css';
 
 class ProductCard extends Component {
 
+
+
    render() {
-      let { images, product, price, key } = this.props['product-data'];
+      let { images, product, price, key } = this.props['product-data'],
+      { user, isowner, onDelete } = this.props;
       return (
          <div className="product-card">
             <figure>
@@ -16,23 +21,24 @@ class ProductCard extends Component {
                <span>{price}</span>
             </div>
             <div className="to-page">
-               <Link to={`/${this.props.user}/catalog/${key}`}>
+               <Link to={`/${user}/catalog/${key}`}>
                   <button>Ver producto</button>
                </Link>
             </div>
+            {isowner &&
+               <i className="fas fa-trash-alt" id="delete-btn"
+                  onClick={() => onDelete({user, key})}/>}
          </div>
       );
    };
 
    componentDidMount() {
-      const product = this._reactInternalFiber.child.stateNode;
-      const show2page = () => {
-         product.querySelector('.to-page')
-            .classList
-            .toggle('show-to-page')
-      };
-      product.addEventListener('click', show2page);
-      product.addEventListener('hover', show2page);
+      let product = this._reactInternalFiber.child.stateNode,
+      animDiv = document.querySelector('.to-page');
+      product.addEventListener('mouseover',
+         () => animDiv.classList.add('show-to-page'));
+      product.addEventListener('mouseout',
+         () => animDiv.classList.remove('show-to-page'));
    };
 
 };

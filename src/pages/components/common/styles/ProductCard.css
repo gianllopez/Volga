@@ -19,6 +19,18 @@
    margin-top: 20px;   
 }
 
+#delete-btn {
+   position: absolute;
+   bottom: 0;
+   right: 0;
+   padding: 10px;
+   transition: .15s;
+}
+
+#delete-btn:hover {
+   color: red;
+}
+
 .to-page {
    position: absolute;
    height: 100%;

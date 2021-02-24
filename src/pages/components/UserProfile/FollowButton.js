@@ -5,9 +5,9 @@ import './styles/FollowButton.css';
 
 class FollowButton extends Component {
 
-   animChanger = action => {
+   animChanger = following => {
       let btn = document.querySelector('.follow-btn');
-      if (action === 'create') {
+      if (following) {
          btn.classList.add('following');
          btn.textContent = 'Siguiendo';
       } else {
@@ -18,7 +18,7 @@ class FollowButton extends Component {
    
    actionSubmit = () => {
       api.post('/follow', { user: this.props.user })
-         .then(({ data }) => this.animChanger(data.action))
+         .then(({ data }) => this.animChanger(data.following))
          .catch(({ response }) => {
             if (response.status === 404) {
                CustomModal(<span>{ response.data[this.props.user] }</span>, [false, 'Entendido'])

@@ -32,21 +32,6 @@ class ProductGallery extends Component {
          </div>
       );
    };
-
-   componentDidMount() {
-      const mediascreen = matchMedia('(min-width: 768px)');
-      if (mediascreen.matches) {
-         let { clientHeight } = document.querySelector('.product-page');
-         console.log(clientHeight);
-      };
-   };
-   
-   componentDidUpdate() {
-      this.componentDidMount();
-   };
-
-
-
 };
 
 export default ProductGallery;

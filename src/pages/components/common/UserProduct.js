@@ -19,7 +19,11 @@ class UserProduct extends Component {
       return (
          <div className="product-wrapper" onClick={this.showProductNavigation}>
             <div className="product-user">
-               <img className="logo" src={userdata.picture} alt="user-pp" />
+               <Link to={{
+                  pathname: `/users/${user.username}`,
+                  state: {exists: true}}}>
+                  <img className="logo" src={userdata.picture} alt="user-pp" />
+               </Link>
                <div className="product-user-info">
                   <h2>{userdata.username}</h2>
                   <span>{userdata.name}</span>

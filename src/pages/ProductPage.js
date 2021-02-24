@@ -43,7 +43,7 @@ class ProductPage extends Component {
       let fromlink = this.props.location.state;
       if (!fromlink) {
          api.get('/get-data/product', { username, productkey })
-            .then(({ data }) => this.setState({ fetched: true, data }))
+            .then(({ data }) => {this.setState({ fetched: true, data })})
             .catch(({response}) => {
                if (response.status === 404) {
                   CustomModal(

@@ -10,7 +10,6 @@ class ProductTagsDisplayer extends Component {
    };
 
    render() {
-
       let { displayed } = this.state,
       { tags } = this.props;
       return (

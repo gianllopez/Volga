@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { UserStats, ProductCard, Opinion, FollowButton, PageLoader, UserPageExists } from './components';
+import { UserStats, ProductCard, Opinion, FollowButton, PageLoader, UserPageExists, CustomModal } from './components';
 import { NotFound } from './';
 import './styles/UserProfile.css';
 import api from '../utils/api';
@@ -22,6 +22,24 @@ class UserProfile extends Component {
          api.get('/get-data/user', { username })
             .then(({data}) => this.setState({ fetched: true, user: {...data} }));
       };
+   };
+
+   deleteHandler = query => {
+      CustomModal((
+         <Fragment>
+            <p>Esta acción es irreversible, luego de eliminarlo ya no estará en tu catálogo.</p>
+            <span>¿Estás seguro que lo eliminas?</span>
+         </Fragment>
+      ), ['Cancelar', 'Si, eliminar']).then(del => {
+         if (del) {
+            api.post('/products/delete', query)
+               .then(({status}) => {
+                  if (status === 204) {
+                     this.setState({fetched: false}, this.fetchUserData);
+                  };
+               });
+         };
+      });
    };
    
    render() {
@@ -59,8 +77,10 @@ class UserProfile extends Component {
                            {products.map((product, index) => 
                               <ProductCard
                                  product-data={product}
+                                 onDelete={this.deleteHandler}
                                  user={username}
                                  key={index}
+                                 isowner
                               />)}
                         </Fragment> :
                         <h3 className="blank-header">Este usuario no ha posteado ningún producto.</h3>}

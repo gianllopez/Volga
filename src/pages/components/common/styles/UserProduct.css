@@ -14,7 +14,7 @@
    display: inherit;
 }
 
-.product-user .logo {
+.product-user a .logo {
    width: 45px;
    height: 45px;
    border-radius: 50%;

@@ -8,8 +8,9 @@ function DescriptionInput(props) {
    const maxLengthHandler = ({ target }) => {
       let { value } = target;
       if (value.length >= maxLength) {
-         target.value = value.substring(0, maxLength - 1);
+         target.value = value.substring(0, maxLength);
       };
+      props.onChange({target});
    };
 
    return (
@@ -18,8 +19,8 @@ function DescriptionInput(props) {
             id="ppp-description"
             name="description"
             errors={undefined}
-            onKeyDown={maxLengthHandler}
-            {...rest}
+            onChange={maxLengthHandler}
+            // {...rest}
          />
          <p id="ml-indicator">
             {currentLength}/{maxLength}

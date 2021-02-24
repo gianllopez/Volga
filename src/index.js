@@ -8,7 +8,7 @@ import { Logup, ContactNetworks, UserProfilePicture, Login, UserProfile,
 import { Layout, CustomRoute, completePaths, noFooterPaths } from './utils/routing-tools';
 import './index.css';
 
-function VolgaApp() {
+function VolgaApp(props) {
    return (
       <BrowserRouter>
          <Switch>
