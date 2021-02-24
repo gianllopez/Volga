@@ -74,7 +74,8 @@ class UserProfile extends Component {
                            <Opinion {...opinion} key={index}/>)}
                      </Fragment> : <h3 className="blank-header">Este usuario no tiene opiniones de clientes.</h3>}
                      <div>
-                        <Link to={`/${username}/opinions`}>Ver todas</Link>
+                        {opinions.length !== 0 &&
+                           <Link to={`/${username}/opinions`}>Ver todas</Link>}
                         <Link to={`/${username}/opinions/new`}>Opinar</Link>
                      </div>
                </section>
