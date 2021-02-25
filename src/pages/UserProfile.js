@@ -35,7 +35,7 @@ class UserProfile extends Component {
             api.post('/products/delete', query)
                .then(({status}) => {
                   if (status === 204) {
-                     this.setState({fetched: false}, this.fetchUserData);
+                     this.setState({fetched: false, exists: true}, this.fetchUserData);
                   };
                });
          };

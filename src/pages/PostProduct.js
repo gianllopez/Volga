@@ -78,7 +78,6 @@ class PostProduct extends Component {
                      if (response.status === 201) {
                         swal({
                            icon: 'success',
-                           
                            title: '¡ENHORABUENA!',
                            text: 'Tu producto ha sido posteado de manera satisfactoria.'
                         }).then(gotit => {
@@ -137,6 +136,7 @@ class PostProduct extends Component {
                   currentLength={this.state.data.description.length}
                   onChange={this.changeHandler}
                   errors={this.state.errors}
+                  allowblank
                />
 
                <ButtonLoader isloading={this.state.loading} />
