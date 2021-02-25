@@ -6,7 +6,7 @@
    font-family: 'Lato', cursive;
 }
 
-#root > *:nth-child(2) {
+#root > *:nth-child(2):not(#landing-page) {
    padding-top: 75px;
 }
 @media (min-width: 768px) {

@@ -1,5 +1,5 @@
 import React, { Component, createContext, Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import api from '../utils/api';
 import { logUpFormValidator } from '../utils/validators';
 import { LogupInput, ButtonLoader, CustomModal } from './components/';
@@ -37,9 +37,9 @@ class Logup extends Component {
             this.setState({ loading: true, errors: {} });
             api.post('/logup', data)
                .then(({data}) => {
-                  localStorage.setItem('user-token', data.token);
-                  localStorage.setItem('uiconstdata', JSON.stringify(data['uiconstdata']));
-                  this.props.history.push(`/${data.uiconstdata.username}/contact-networks`);
+                  this.setState({ redirect: true }, () => 
+                     Object.entries(data).forEach(resp => 
+                        localStorage.setItem(resp[0], JSON.stringify(resp[1]))));
                })
                .catch(errors => {
                   this.setState({ loading: false });
@@ -67,71 +67,73 @@ class Logup extends Component {
          errors: this.state.errors
       };
       return (
-         <form id="logup-form" onSubmit={this.submitHandler}>
-            <div id="logup-header">
-               <img src={loguphero} alt="logup-hero" />
-               <h1>Crea tu cuenta de Volga</h1>
-               <p>Vende tus productos con nosotros</p>
-            </div>
-            <div id="logup-entries">
-               <logupContext.Provider value={contextContent}>
-                  <LogupInput
-                     label="Nombre completo"
-                     name="name"
-                     maxLength="65"
-                     regex={/(?!.*\s{2})^[a-zA-ZÀ-úñÑ\s]+$/}
-                  />
-                  <LogupInput
-                     label="Usuario(a)"
-                     name="username"
-                     maxLength="25"
-                     regex={/^[a-z0-9]*$/}
-                  />
-                  <LogupInput
-                     label="País"
-                     name="country"
-                     maxLength="30"
-                  />
-                  <LogupInput
-                     label="Ciudad"
-                     name="city"
-                     maxLength="50"
-                  />
-                  <LogupInput
-                     label="Género"
-                     name="gender"
-                  />
-                  <LogupInput
-                     label="Correo"
-                     name="email"
-                     type="email"
-                     maxLength="75"
-                  />
-                  <LogupInput
-                     label="Contraseña"
-                     name="password"
-                     type="password"
-                     maxLength="30"
-                  />
-                  <LogupInput
-                     label="Confirmar contraseña"
-                     name="confirmpwd"
-                     type="password"
-                     maxLength="30"
-                  />
-               </logupContext.Provider>
-            </div>
+         // !this.state.redirect ?
+            <form id="logup-form" onSubmit={this.submitHandler}>
+               <div id="logup-header">
+                  <img src={loguphero} alt="logup-hero" />
+                  <h1>Crea tu cuenta de Volga</h1>
+                  <p>Vende tus productos con nosotros</p>
+               </div>
+               <div id="logup-entries">
+                  <logupContext.Provider value={contextContent}>
+                     <LogupInput
+                        label="Nombre completo"
+                        name="name"
+                        maxLength="65"
+                        regex={/(?!.*\s{2})^[a-zA-ZÀ-úñÑ\s]+$/}
+                     />
+                     <LogupInput
+                        label="Usuario(a)"
+                        name="username"
+                        maxLength="25"
+                        regex={/^[a-z0-9]*$/}
+                     />
+                     <LogupInput
+                        label="País"
+                        name="country"
+                        maxLength="30"
+                     />
+                     <LogupInput
+                        label="Ciudad"
+                        name="city"
+                        maxLength="50"
+                     />
+                     <LogupInput
+                        label="Género"
+                        name="gender"
+                     />
+                     <LogupInput
+                        label="Correo"
+                        name="email"
+                        type="email"
+                        maxLength="75"
+                     />
+                     <LogupInput
+                        label="Contraseña"
+                        name="password"
+                        type="password"
+                        maxLength="30"
+                     />
+                     <LogupInput
+                        label="Confirmar contraseña"
+                        name="confirmpwd"
+                        type="password"
+                        maxLength="30"
+                     />
+                  </logupContext.Provider>
+               </div>
 
-            <ButtonLoader isloading={this.state.loading} />
+               <ButtonLoader isloading={this.state.loading} />
 
-            <p>
-               ¿Ya tienes cuenta?<br />
-               <Link to="/login">
-                  Ingresa
-                  </Link>
-            </p>
+               <p>
+                  ¿Ya tienes cuenta?<br />
+                  <Link to="/login">Ingresa</Link>
+               </p>
 
-         </form>
+            </form> 
+            // : <Redirect to={{
+            //    pathname: `/${this.state.data.username}/contact-networks`,
+            //    state: { exists: true }}} />
       );
    };
 

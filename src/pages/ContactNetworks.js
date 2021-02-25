@@ -16,7 +16,8 @@ class ContactNetworks extends Component {
          email: '', linkedin: ''
       },
       loading: false,
-      errors: {}
+      errors: {},
+      ...this.props.location.state
    };
 
    changeHandler = ({ target }) => {
@@ -39,25 +40,22 @@ class ContactNetworks extends Component {
             this.setState({ loading: false });
             let { response, message } = errors;
             if (message === 'Network Error') {
-               const content = (
+               CustomModal(
                   <Fragment>
                      <p>Error en el registro</p>
-                     <span>
-                        Aségurate de estar conectado a internet.
-                           </span>
-                  </Fragment>
-               );
-               CustomModal(content, [false, 'Entendido'])
+                     <span>Aségurate de estar conectado a internet.</span>
+                  </Fragment>, [false, 'Entendido'])
             } else {
-               if (response.data.user) {
-                  const content = (
+               let { user } = response.data;
+               if (user) {
+                  CustomModal(
                      <Fragment>
                         <p>Error en el registro</p>
-                        <span>{response.data.user}</span>
-                     </Fragment>
-                  );
-                  CustomModal(content, [false, 'Entendido'])
-                     .then(ok => ok && this.props.history.push(nextpath));
+                        <span>{user}</span>
+                     </Fragment>, [false, 'Entendido'])
+                        .then(ok => ok && this.props.history.push(nextpath));
+               } else {
+                  this.setState({ errors: response.data });
                };
             };
          });
@@ -86,14 +84,16 @@ class ContactNetworks extends Component {
    keyDownHandler = event => event.keyCode === 13 && event.preventDefault();
 
    render() {
-      const contextContent = {
+      let contextContent = {
          changeHandler: this.changeHandler,
          errors: this.state.errors
-      };
+      }, { exists, username } = this.state;
       return (
-         <UserPageExists userParam={this.state.username}>
+         <UserPageExists userParam={!exists && username}>
             <form id="user-contact-form" onSubmit={this.submitHandler} onKeyDown={this.keyDownHandler}>
-               <h2>Redes para el contacto<br />con tus clientes</h2>
+               <h2>
+                  Redes para el contacto<br />con tus clientes
+               </h2>
                <CNcontext.Provider value={contextContent}>
                   <ContactNetworkInput
                      name="instagram"
