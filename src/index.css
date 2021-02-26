@@ -37,3 +37,24 @@
 .swal-text {
    text-align: center;
 }
+
+
+
+#root {
+   /* height: calc(100vh - 135px); */
+   height: 100vh;
+   position: relative;
+   /* padding-bottom: 135px; */
+}
+
+#footer-wrapper {
+   position: absolute;
+   bottom: 0;
+   width: 100%;
+} 
+
+/* .at-bottom {
+   position: absolute;
+   bottom: 0;
+   width: 100%;
+} */

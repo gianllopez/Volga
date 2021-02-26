@@ -74,10 +74,6 @@ class Explore extends Component {
       if (key !== prevProps.location.key) {
          this.setState({ blank_results: false, querytags: [], results: null });
       };
-      if (this.state.blank_results) {
-         document.querySelector('#footer-wrapper')
-            .style.display = 'none';
-      };
    };
 
 };

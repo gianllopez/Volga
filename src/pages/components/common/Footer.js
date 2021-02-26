@@ -4,6 +4,8 @@ import './styles/Footer.css';
 
 class Footer extends Component {
 
+   state = {};
+
    NetworkLink = props => {
       let { network, username } = props;
       return (
@@ -16,7 +18,7 @@ class Footer extends Component {
 
    render() {
       return (
-         <div id="footer-wrapper">
+         <div id="footer-wrapper" {...this.state.atbottom && {className: 'at-bottom'}}>
             <section id="my-social-contact">
                {['twitter', 'github', 'facebook', 'instagram']
                   .map((sn, index) => 
@@ -35,12 +37,27 @@ class Footer extends Component {
       );
    };
 
-   componentDidMount() {
-      // debugger
-   }
 
+   togglePosition = add => {
+      let { classList } = document.querySelector('#footer-wrapper');
+      if (add) {
+         classList.add('at-bottom');
+      } else {
+         classList.remove('at-bottom');
+      };
+   };
+
+   componentDidMount() {
+      if (this.props.match.path !== '/products/explore') {
+         this.togglePosition(true) 
+      } else {
+         this.togglePosition(false) 
+      };
+      
+   };
+   
    componentDidUpdate() {
-      console.log('update');
+      this.componentDidMount();
    }
 
    // componentDidUpdate(prevProps) {
