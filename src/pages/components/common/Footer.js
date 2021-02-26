@@ -35,6 +35,14 @@ class Footer extends Component {
       );
    };
 
+   componentDidMount() {
+      // debugger
+   }
+
+   componentDidUpdate() {
+      console.log('update');
+   }
+
    // componentDidUpdate(prevProps) {
    //    let { key, pathname } = this.props.location,
    //    keyChange = key !== prevProps.location.key,

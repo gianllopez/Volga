@@ -45,7 +45,7 @@ class UserProfile extends Component {
    
    render() {
       let { picture, username, name, stats, opinions,
-            products, following } = this.state.user;
+            products, following, itsme } = this.state.user;
       return (
          <UserPageExists userParam={!this.state.exists && username} onExists={this.fetchUserData}>
             <div id="user-profile">
@@ -81,7 +81,7 @@ class UserProfile extends Component {
                                  onDelete={this.deleteHandler}
                                  user={username}
                                  key={index}
-                                 isowner
+                                 isowner={itsme || false}
                               />)}
                         </Fragment> :
                         <h3 className="blank-header">Este usuario no ha posteado ningún producto.</h3>}

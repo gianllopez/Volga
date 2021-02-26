@@ -33,3 +33,7 @@
    color: #e64942;
    font-size: .9em;
 }
+
+.swal-text {
+   text-align: center;
+}

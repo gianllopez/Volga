@@ -31,16 +31,16 @@ function Layout(props) {
 
 
 const completePaths = [
-   '/:username/opinions',
-   '/:username/contact',
    '/products/explore',
    '/users/:username',
-   '/search/results',
-   '/me/favorites',
    '/logup'
 ];
 
 const noFooterPaths = [
+   '/:username/opinions',
+   '/:username/contact',
+   '/search/results',
+   '/me/favorites',
    '/:username/catalog/:productkey',
    '/:username/opinions/new',
    '/my-products/new',

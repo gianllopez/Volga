@@ -71,8 +71,12 @@ class Explore extends Component {
 
    componentDidUpdate(prevProps) {
       let { key } = this.props.location;
-      if (key !== prevProps.location.key && this.state.blank_results) {
-         this.setState({ blank_results: false, querytags: [] });
+      if (key !== prevProps.location.key) {
+         this.setState({ blank_results: false, querytags: [], results: null });
+      };
+      if (this.state.blank_results) {
+         document.querySelector('#footer-wrapper')
+            .style.display = 'none';
       };
    };
 
