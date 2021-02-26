@@ -6,9 +6,12 @@ class Input extends Component {
    state = { error: false };
 
    entryValidation = event => {
-      let { maxLength } = this.props, { value } = event.target;
+      let { maxLength, regex } = this.props, { value } = event.target;
       if (value.length > maxLength) {
          event.target.value = value.substring(0, maxLength);
+      };
+      if (regex && !regex.test(value)) {
+         event.target.value = value.substring(0, value.length - 1);
       };
       this.props.onChange(event);
    };
@@ -51,13 +54,6 @@ class Input extends Component {
          }, 1);
       } else if (!gotError && this.state.error) {
          this.setState({ error: false });
-      };
-      let { regex } = this.props;
-      if (regex) {
-         const input = document.querySelector(`input#${this.name}`), { value } = input;
-         if (!regex.test(value)) {
-            input.value = value.substring(0, value.length - 1);
-         };
       };
    };
 

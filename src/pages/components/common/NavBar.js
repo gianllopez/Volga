@@ -11,7 +11,7 @@ class NavBar extends Component {
 
    state = {
       isauth: localStorage.getItem('user-token') ? true : false,
-      ...JSON.parse(localStorage.getItem('uiconstdata'))
+      ...JSON.parse(localStorage.getItem('uiprev'))
    };
 
    linksAnimations = () => {

@@ -8,7 +8,8 @@ class UserProfilePicture extends Component {
 
    state = {
       username: this.props.match.params['username'],
-      picture: '', loading: false
+      picture: '', loading: false,
+      ...this.props.location.state
    };
 
    uploadHandler = ({ target }) => this.setState({ picture: target.files[0] });
@@ -23,8 +24,10 @@ class UserProfilePicture extends Component {
             api.post('/profile-picture', binaries)
                .then(({status}) => {
                   if (status === 201) {
-                     this.props.history
-                        .push(`/users/${username}`);
+                     this.props.history.push({
+                        pathname: `/users/${username}`,
+                        state: { exists: true }
+                     });
                   };
                });
          });
@@ -44,8 +47,9 @@ class UserProfilePicture extends Component {
 
    };
    render() {
+      let { exists, username } = this.state;
       return (
-         <UserPageExists userParam={this.state.username}>
+         <UserPageExists userParam={!exists && username}>
             <form id="userpp-form" encType="multipart/form-data" onSubmit={this.submitHandler}>
                <div id="userpp-form-header">
                   <img src={userpphero} alt="userpp-hero" />

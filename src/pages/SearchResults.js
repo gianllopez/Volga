@@ -11,7 +11,7 @@ class SearchResult extends Component {
    loadRequest = () => {
       let query = this.getQuery(), { filter, results } = this.state;
       if (results ? !results[filter] : true) {
-         api.post('/get-data/search', { query, filter })
+         api.get('/get-data/search', { query, filter })
             .then(({ data }) => {
                if (results ? !results[filter] : true) {
                   this.setState({

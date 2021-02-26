@@ -36,10 +36,13 @@ class Logup extends Component {
          .then(() => {
             this.setState({ loading: true, errors: {} });
             api.post('/logup', data)
-               .then(({data}) => {
-                  this.setState({ redirect: true }, () => 
-                     Object.entries(data).forEach(resp => 
-                        localStorage.setItem(resp[0], JSON.stringify(resp[1]))));
+               .then(({ data }) => {
+                  localStorage.setItem('uiprev', JSON.stringify(data.uiprev));
+                  localStorage.setItem('user-token', data.token);
+                  this.props.history.push({
+                     pathname: `/${data.uiprev.username}/contact-networks`,
+                     state: { exists: true }
+                  });
                })
                .catch(errors => {
                   this.setState({ loading: false });
@@ -86,7 +89,7 @@ class Logup extends Component {
                         label="Usuario(a)"
                         name="username"
                         maxLength="25"
-                        regex={/^[a-z0-9]*$/}
+                        regex={/^[a-z0-9_]*$/}
                      />
                      <LogupInput
                         label="País"
@@ -122,18 +125,16 @@ class Logup extends Component {
                      />
                   </logupContext.Provider>
                </div>
-
                <ButtonLoader isloading={this.state.loading} />
-
                <p>
                   ¿Ya tienes cuenta?<br />
                   <Link to="/login">Ingresa</Link>
                </p>
-
             </form> 
             // : <Redirect to={{
             //    pathname: `/${this.state.data.username}/contact-networks`,
-            //    state: { exists: true }}} />
+            //    state: { exists: true }
+            // }} />
       );
    };
 

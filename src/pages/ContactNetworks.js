@@ -31,9 +31,11 @@ class ContactNetworks extends Component {
 
 
    fetchRequest = () => {
-      let { username, data } = this.state;
+      let { username, data } = this.state,
+      nextpath = {
+         pathname: `/${username}/profile-picture`,
+         state: { exists: true }};
       this.setState({ loading: true });
-      let nextpath = `/${username}/profile-picture`;
       api.post('/contact', data)
          .then(() => this.props.history.push(nextpath))
          .catch(errors => {
