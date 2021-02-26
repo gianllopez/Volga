@@ -11,12 +11,12 @@ class SearchResult extends Component {
    loadRequest = () => {
       let query = this.getQuery(), { filter, results } = this.state;
       if (results ? !results[filter] : true) {
-         api.get('/get-data/search', { query, filter })
+         api.get('/get-data/search', { query, filter }, false)
             .then(({ data }) => {
                if (results ? !results[filter] : true) {
                   this.setState({
                      results: { ...results,
-                        [filter]: data ? data.results : []
+                        [filter]: data ? data : []
                      }, query });
                };
             });
@@ -55,7 +55,7 @@ class SearchResult extends Component {
                         <p id="blank-results">
                            No se ha encontrado un producto
                            que coincida con tu consulta.
-                           </p>}
+                        </p>}
                   </div>
                </Fragment> :
                <CustomMessage

@@ -1,30 +1,35 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { NotFound } from './';
 import api from '../utils/api';
-import { Opinion, UserPageExists } from './components'
+import { CustomMessage, Opinion, UserPageExists } from './components'
+import blankopinions from '../assets/ClientsOpinions/blank-opinions.png';
 import './styles/ClientsOpinions.css';
 
 class ClientsOpinions extends Component {
 
    state = {
-      username: this.props.match.params['username']
+      username: this.props.match.params['username'],
+      opinions: []
    };
 
    fetchOpinions = () => {
       api.get('/get-data/clients-opinions', { username: this.state.username })
-         .then(({ data: { opinions } }) => {this.setState({ opinions })})
+         .then(({ data }) => {this.setState({ opinions: data })})
    };
 
    render() {
       let { username, opinions } = this.state;
       return (
-         <UserPageExists userParam={username} onExists={this.fetchOpinions}>
+         <UserPageExists onExists={this.fetchOpinions}>
             <div id="clients-opinions-page">
-               <h2>Esto es lo que opinan de {username} sus clientes:</h2>
-               <div id="clients-opinions">
-                  {opinions && opinions.map((opinion, index) => 
-                     <Opinion {...opinion} key={index} />)}
-               </div>
+               {opinions.length !== 0 ?
+               <Fragment>
+                  <h2>Esto es lo que opinan de {username} sus clientes:</h2>
+                  <div id="clients-opinions">
+                     {opinions && opinions.map((opinion, index) => 
+                        <Opinion {...opinion} key={index} />)}
+                  </div>
+               </Fragment> : <CustomMessage msgimage={blankopinions} message="Este usuario no tiene opiniones de clientes"/>}
             </div>
          </UserPageExists>
       );

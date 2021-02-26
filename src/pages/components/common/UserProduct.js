@@ -5,8 +5,6 @@ import './styles/UserProduct.css';
 
 class UserProduct extends Component {
 
-   state = { fav: false };
-
    showProductNavigation = () => {
       const product = this._reactInternalFiber.child.stateNode,
          navigation = product.querySelector('.product-navigation');
@@ -38,7 +36,7 @@ class UserProduct extends Component {
                <span>{product}</span>
                <p>{price}</p>
             </div>
-            <FavButton productkey={key} isfav={isfav} />
+            <FavButton product={key} isfav={isfav} />
             <div className="product-navigation">
                <Link to={{
                   pathname: `/${userdata.username}/catalog/${key}`,

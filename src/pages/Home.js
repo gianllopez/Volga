@@ -31,7 +31,7 @@ class Home extends Component {
       document.title = 'Volga - Inicio';
       if(this.state.isauth) {
          api.get('/get-data/feed')
-         .then(({ data }) => this.setState({ ...data }));
+         .then(({ data }) => this.setState({ feed: data }));
       };
    };
 

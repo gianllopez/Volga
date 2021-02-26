@@ -27,8 +27,8 @@ class Explore extends Component {
          querytags = querytags.join(', ')
          this.setState({ querytags, loading: true }, () => {
             let { querytags } = this.state;
-            api.post('/get-data/explore', { querytags })
-               .then(({ data }) => this.setState({ ...data }))
+            api.get('/get-data/explore', { querytags })
+               .then(({ data }) => this.setState({ results: data }))
                .finally(() => this.setState({ loading: false }))
                .catch(({ response }) => {
                   if (response.status === 404) {

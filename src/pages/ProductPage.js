@@ -6,11 +6,15 @@ import './styles/ProductPage.css';
 
 class ProductPage extends Component {
 
-   state = { fetched: false, data: {} };
+   state = {
+      isauth: localStorage.getItem('user-token') ? true : false,
+      fetched: false,
+      data: {}
+   };
 
    render() {
-      let { images, product, price, description,
-            tags, isfav, key, user } = this.state.data;
+      let { isauth, images, product, price,
+            description, tags, isfav, key } = this.state.data;
       return (
          this.state.fetched ? (
             <div className="product-page">
@@ -25,10 +29,11 @@ class ProductPage extends Component {
                      <p>{description ? description : "Este producto no tiene descripción."}</p>
                      {<ProductTagsDisplayer tags={tags}/>}
                      <div id="btns">
-                        <Link to={`/${user}/contact`}>
+                        <Link to={`/${this.props.match.params.username}/contact`} >
                            <button>Preguntar</button>
                         </Link>
-                        <FavButton isfav={isfav} productkey={key} withtext />
+                        {isauth && <FavButton isfav={isfav} key={key} withtext/>}
+                        {/* <FavButton isfav={isfav} key={key} withtext/> */}
                      </div>
                   </div>
                </section>
@@ -38,11 +43,11 @@ class ProductPage extends Component {
    };
 
    componentDidMount() {
-      const { username, productkey } = this.props.match.params;
-      document.title = `Volga - ${productkey}`;
+      const { username, key } = this.props.match.params;
+      document.title = `Volga - ${key}`;
       let fromlink = this.props.location.state;
       if (!fromlink) {
-         api.get('/get-data/product', { username, productkey })
+         api.get('/get-data/product', { username, key })
             .then(({ data }) => {this.setState({ fetched: true, data })})
             .catch(({response}) => {
                if (response.status === 404) {
@@ -57,6 +62,15 @@ class ProductPage extends Component {
          this.setState({fetched: true, data: fromlink.product});
       };
    };
+
+   componentDidUpdate() {
+      if (!this.state.isauth) {
+         document.querySelectorAll('#btns a, #btns a button')
+            .forEach(el => el.style.width = '100%')
+            
+      };
+   };
+
 };
 
 export default ProductPage;

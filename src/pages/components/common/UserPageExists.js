@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { PageLoader } from '..';
 import { NotFound } from '../..';
 import api from '../../../utils/api';
@@ -17,9 +18,11 @@ class UserPageExists extends Component {
    };
 
    componentDidMount() {
-      let { userParam, onExists } = this.props;
-      if (userParam) {
-         api.post('/validation/user-exists', { username: userParam })
+      let { onExists, match, location } = this.props,
+      { username } = match.params,
+      { exists } = location.state || { exists: false };
+      if (!exists) {
+         api.post('/validation/user-exists', { username })
             .then(() => this.setState({ found: true }, onExists))
             .finally(() => this.setState({ loading: false }));
       } else {
@@ -35,4 +38,4 @@ class UserPageExists extends Component {
 
 };
 
-export default UserPageExists;
+export default withRouter(UserPageExists);

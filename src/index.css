@@ -6,11 +6,11 @@
    font-family: 'Lato', cursive;
 }
 
-#root > *:nth-child(2):not(#landing-page) {
+#root > *:nth-child(2):not(#landing-page, #post-product-page, #login-form) {
    padding-top: 75px;
 }
 @media (min-width: 768px) {
-   #root > *:nth-child(2):not(#post-product-page, #opinion-form, #login-form) {
+   #root > *:nth-child(2):not(#post-product-page, #opinion-form, #login-form, #landing-page, #contact-form) {
       padding-top: 125px;
    }
    #root > :is(#post-product-page, #opinion-form, #login-form) {

@@ -4,7 +4,7 @@ import { Footer, NavBar } from '../pages/components';
 
 const isAuthenticated = () => localStorage.getItem('user-token') ? true : false;
 
-function CustomRoute({ component: Component, disabledonauth,  ...mainprops }) {
+function ProtectedRoute({ component: Component, disabledonauth,  ...mainprops }) {
    let isauth = isAuthenticated();
    return (
       <Route {...mainprops} render={props => 
@@ -48,4 +48,4 @@ const noFooterPaths = [
    '/'
 ];
 
-export { Layout, CustomRoute, completePaths, noFooterPaths, isAuthenticated };
+export { Layout, ProtectedRoute, completePaths, noFooterPaths, isAuthenticated };

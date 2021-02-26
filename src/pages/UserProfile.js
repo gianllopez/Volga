@@ -4,6 +4,7 @@ import { UserStats, ProductCard, Opinion, FollowButton, PageLoader, UserPageExis
 import { NotFound } from './';
 import './styles/UserProfile.css';
 import api from '../utils/api';
+import { isAuthenticated } from '../utils/routing-tools';
 
 class UserProfile extends Component {
 
@@ -95,8 +96,8 @@ class UserProfile extends Component {
                      </Fragment> : <h3 className="blank-header">Este usuario no tiene opiniones de clientes.</h3>}
                      <div>
                         {opinions.length !== 0 &&
-                           <Link to={`/${username}/opinions`}>Ver todas</Link>}
-                        <Link to={`/${username}/opinions/new`}>Opinar</Link>
+                           isAuthenticated() && <Link to={`/${username}/opinions`}>Ver todas</Link>}
+                        <Link to={{pathname: `/${username}/opinions/new`, state: {exists: true}}}>Opinar</Link>
                      </div>
                </section>
             </div>

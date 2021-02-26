@@ -8,8 +8,7 @@ class UserProfilePicture extends Component {
 
    state = {
       username: this.props.match.params['username'],
-      picture: '', loading: false,
-      ...this.props.location.state
+      picture: '', loading: false
    };
 
    uploadHandler = ({ target }) => this.setState({ picture: target.files[0] });
@@ -47,9 +46,8 @@ class UserProfilePicture extends Component {
 
    };
    render() {
-      let { exists, username } = this.state;
       return (
-         <UserPageExists userParam={!exists && username}>
+         <UserPageExists>
             <form id="userpp-form" encType="multipart/form-data" onSubmit={this.submitHandler}>
                <div id="userpp-form-header">
                   <img src={userpphero} alt="userpp-hero" />

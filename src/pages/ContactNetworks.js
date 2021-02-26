@@ -16,8 +16,7 @@ class ContactNetworks extends Component {
          email: '', linkedin: ''
       },
       loading: false,
-      errors: {},
-      ...this.props.location.state
+      errors: {}
    };
 
    changeHandler = ({ target }) => {
@@ -89,9 +88,9 @@ class ContactNetworks extends Component {
       let contextContent = {
          changeHandler: this.changeHandler,
          errors: this.state.errors
-      }, { exists, username } = this.state;
+      };
       return (
-         <UserPageExists userParam={!exists && username}>
+         <UserPageExists>
             <form id="user-contact-form" onSubmit={this.submitHandler} onKeyDown={this.keyDownHandler}>
                <h2>
                   Redes para el contacto<br />con tus clientes

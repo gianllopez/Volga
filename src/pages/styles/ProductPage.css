@@ -99,11 +99,13 @@
       border-radius: 10px;
       display: flex;
       flex-direction: column;
+      min-width: 290px;  /* Pa cuando no hay auth no se recoga el parent */
    }
    #pp-product-info #btns {
       flex: 1;
       display: inherit;
       align-items: flex-end;
+      /* justify-content: center; */
    }
 }
 
