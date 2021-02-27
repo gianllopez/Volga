@@ -7,7 +7,7 @@ class UserProduct extends Component {
 
    showProductNavigation = () => {
       const product = this._reactInternalFiber.child.stateNode,
-         navigation = product.querySelector('.product-navigation');
+      navigation = product.querySelector('.product-navigation');
       navigation.classList.toggle('show-navigation');
    };
 

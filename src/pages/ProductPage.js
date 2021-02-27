@@ -35,7 +35,7 @@ class ProductPage extends Component {
                         <Link to={`/${username}/contact`} >
                            <button>Preguntar</button>
                         </Link>
-                        {this.state.isauth && <FavButton isfav={isfav} product={key} withtext/>}
+                        {this.state.isauth && <FavButton isfav={isfav} product={key} withtext />}
                      </div>
                   </div>
                </section>

@@ -29,6 +29,7 @@ class ProductCard extends Component {
    };
 
    componentDidMount() {
+      // Hacer esto en CSS, con parent:hover children
       let product = this._reactInternalFiber.child.stateNode,
       animDiv = document.querySelector('.to-page');
       product.addEventListener('mouseover',

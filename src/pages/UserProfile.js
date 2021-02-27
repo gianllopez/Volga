@@ -114,7 +114,7 @@ class UserProfile extends Component {
       let { username } = this.props.match.params;
       let prevUser = prevProps.match.params.username;
       if (username !== prevUser) {
-         this.fetchUserData(username);
+         this.setState({ fetched: false}, () => this.fetchUserData(username))         
       };
    };
 

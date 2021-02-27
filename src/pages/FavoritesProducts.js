@@ -39,11 +39,11 @@ class FavoritesProducts extends Component {
       });
    };
 
-   componentDidUpdate() {
-      document.querySelector('#footer-wrapper')
-         .style.display = this.state.favorites.length === 0 ?
-            'none' : 'block';
-   };
+   // componentDidUpdate() {
+   //    document.querySelector('#footer-wrapper')
+   //       .style.display = this.state.favorites.length === 0 ?
+   //          'none' : 'block';
+   // };
  
 };
 
