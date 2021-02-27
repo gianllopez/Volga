@@ -5,32 +5,30 @@ import './ContactLink.css';
 
 class ContactLink extends Component {
 
-   for = this.props.for;
-   url = this.props.url;
-
    render() {
+      let { way, url } = this.props;
       return (
-         <a className={`contact-link ${this.for}-link`}
+         <a className={`contact-link ${way}-link`}
             target="_blank" rel="noopener noreferrer"
-            {...this.url && { href: this.url }}>
+            {...url && { href: url }}>
             <i className={
-               this.for !== 'email' ?
-                  `fab fa-${this.for}` :
-                  'fas fa-envelope-open-text'
-            } />
-            {this.url ?
-               <div className="fake-before" /> :
+               way !== 'email' ?
+                  `fab fa-${way}` :
+                  'fas fa-envelope-open-text'}/>
+            {url ?
+               <div className="fake-before"/> :
                <p>Red no registrada</p>}
-            <h3>{capitalize(this.for)}</h3>
+            <h3>{capitalize(way)}</h3>
          </a>
       );
    };
 
    componentDidMount() {
-      let link = document.querySelector(`.${this.for}-link`),
-         bg = '';
-      if (this.for !== 'instagram') {
-         bg = sncolors[this.for];
+      let { way, url } = this.props,
+      link = document.querySelector(`.${way}-link`),
+      bg = '';
+      if (way !== 'instagram') {
+         bg = sncolors[way];
       } else {
          bg = `linear-gradient(
                   90deg, 
@@ -39,16 +37,18 @@ class ContactLink extends Component {
                   #ff6f91 100%
                )`;
       };
-      if (this.url) {
+      if (url) {
          link.querySelector('.fake-before').style.background = bg;
       } else {
          link.classList.add('nonet');
          link.addEventListener('mouseover', function () {
             this.style.color = 'black';
-         })
+         });
       };
    };
 
 };
 
 export default ContactLink;
+
+/* REVISADO Y NO HAY MÁS QUE RESUMIR: 27/02/2021 */

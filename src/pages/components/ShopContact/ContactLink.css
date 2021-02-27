@@ -22,7 +22,6 @@
 
 .contact-link i,
 .contact-link h3 {
-   position: inherit;
    z-index: 1;
 }
 
@@ -43,7 +42,6 @@
    left: -130%;
    width: 140%;
    height: 145%;
-   border-radius: inherit;
 }
 
 .contact-link:hover .fake-before {
@@ -56,3 +54,5 @@
    flex-direction: column;
    justify-content: center;
 }
+
+/* REVISADO Y NO HAY MÁS QUE RESUMIR: 27/02/2021 */

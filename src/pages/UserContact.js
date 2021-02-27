@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import api from '../utils/api';
+import React, { Component, Fragment } from 'react';
 import { ContactLink, CustomMessage, UserPageExists } from './components';
+import api from '../utils/api';
 import nocontacthero from '../assets/UserContact/no-contact-hero.png';
 import './styles/UserContact.css';
-import { Fragment } from 'react';
 
 class UserContact extends Component {
 
@@ -21,7 +20,7 @@ class UserContact extends Component {
       let { username, contact } = this.state,
       contactways = Object.entries(contact);
       return (
-         <UserPageExists userParam={username} onExists={this.fetchContactWays}>
+         <UserPageExists onExists={this.fetchContactWays}>
             <div id="contact-form">
             {contactways.length !== 0 ? 
                <Fragment>
@@ -29,13 +28,14 @@ class UserContact extends Component {
                   <div id="contact-ways">
                      {contactways.map((way, index) => 
                         <ContactLink
-                           for={way[0]}
+                           way={way[0]}
                            url={way[1]}
-                           key={index}
-                        />)}
+                           key={index}/>)}
                   </div>
-               </Fragment> : <CustomMessage msgimage={nocontacthero}
-                              message="Este usuario no registró redes de contacto."/>}
+               </Fragment> :
+               <CustomMessage
+                  msgimage={nocontacthero}
+                  message="Este usuario no registró redes de contacto."/>}
             </div>
          </UserPageExists>
       );
@@ -48,3 +48,5 @@ class UserContact extends Component {
 };
 
 export default UserContact;
+
+/* REVISADO Y NO HAY MÁS QUE RESUMIR: 27/02/2021 */

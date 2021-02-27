@@ -1,5 +1,5 @@
 #contact-form {
-   /* padding: 90px 0 40px 0; */
+   padding-top: 75px;
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -26,3 +26,5 @@
       transform: translate(-50%, -50%);
    }
 }
+
+/* REVISADO Y NO HAY MÁS QUE RESUMIR: 27/02/2021 */
