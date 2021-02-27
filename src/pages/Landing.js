@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import landinghero from '../assets/Landing/landing-hero.jpg';
 import './styles/Landing.css';
 
-function Landing(props) {
+function Landing(props={}) {
    return (
       <div id="landing-page">
          <figure>

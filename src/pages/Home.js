@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import api from '../utils/api';
 import { CustomMessage, UserProduct } from './components/';
 import { Landing } from './';
+import api from '../utils/api';
 import { isAuthenticated } from '../utils/routing-tools';
 import missingfollower from '../assets/Home/missing-follower.svg';
 import './styles/Home.css';
@@ -31,7 +31,7 @@ class Home extends Component {
       document.title = 'Volga - Inicio';
       if(this.state.isauth) {
          api.get('/get-data/feed')
-         .then(({ data }) => this.setState({ feed: data }));
+            .then(({ data }) => this.setState({ feed: data }));
       };
    };
 

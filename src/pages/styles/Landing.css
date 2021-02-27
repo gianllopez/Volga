@@ -1,7 +1,4 @@
 #landing-page {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
    position: absolute;
    top: 50%;
    left: 50%;
@@ -21,15 +18,11 @@
 
 #landing-page section {
    text-align: center;
-   /* background-color: #fafafb; */
-   /* padding: 15px; */
-   /* border-radius: 10px; */
    font-size: clamp(16px, 5vw, 2em);
    max-width: 550px;
 }
 
 #landing-page section a button {
-   text-decoration: none;
    background-color: #43abec;
    padding: 10px;
    border-radius: 5px;
@@ -42,16 +35,13 @@
 
 @media (min-width: 768px) {
    #landing-page {
+      display: flex;
+      align-items: center;
       flex-direction: row-reverse;
-      justify-content: center;
-      padding-top: 0;
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-   }
-   #landing-page figure {
-      margin: unset;
    }
    #landing-page section p {
       font-size: 0.8em;
