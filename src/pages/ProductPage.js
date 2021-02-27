@@ -19,7 +19,7 @@ class ProductPage extends Component {
             description, tags, isfav, key } = this.state.data,
       { username } = this.props.match.params;
       return (
-         this.state.fetched ? 
+         this.state.fetched ?
             <div className="product-page">
                <ProductGallery
                   images={images}
@@ -39,7 +39,7 @@ class ProductPage extends Component {
                      </div>
                   </div>
                </section>
-            </div> : <PageLoader />
+            </div> : <PageLoader/>
       );
    };
 
@@ -59,7 +59,7 @@ class ProductPage extends Component {
                         en el catálogo de {username}
                      </span>, [false, 'Entendido'])
                         .then(ok =>ok && this.props.history.push('/'));
-               };});
+               }});
       } else {
          this.setState({ fetched: true, data: locState.product });
       };

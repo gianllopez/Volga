@@ -1,26 +1,29 @@
-import swal from '@sweetalert/with-react';
 import React, { Component } from 'react';
+import swal from '@sweetalert/with-react';
 import './styles/ProductGallery.css';
 
 class ProductGallery extends Component {
 
    state = { index: 0 };
 
+   onChangeResponsive = matchMedia('(min-width: 768px)').matches;
+
    galleryChangeHandler = src => {
       let index = this.props.images.indexOf(src);
-      this.setState({ index });
+      if (index !== this.state.index) {
+         this.setState({ index });
+      };
    };
 
    zoomModalTrigger = ({ target }) => {
-      let { previousElementSibling } = target.parentElement;
-      swal({
-         // title: `${this.props.product}(${this.state.index})`,
-         content: <img src={previousElementSibling.src}/>,
-         className: 'displayed-zoom-modal',
-         buttons: false
-      
-      });
-
+      if (this.onChangeResponsive) {
+         let { previousElementSibling } = target.parentElement;
+         swal({
+            content: <img src={previousElementSibling.src} id="to-display" />,
+            className: 'img-modal-displayer',
+            buttons: false
+         });
+      };
    };
 
    render() {
@@ -46,6 +49,22 @@ class ProductGallery extends Component {
          </div>
       );
    };
+
+   componentDidMount() {
+      if (this.onChangeResponsive) {
+         let prodpage = document.querySelector('.product-page');
+         if (prodpage.clientHeight < 400) {
+            prodpage.classList.add('center-page');
+         } else {
+            prodpage.classList.remove('center-page');
+         };
+      };
+   };
+
+   componentDidUpdate() {
+      this.componentDidMount();
+   };
+
 };
 
 export default ProductGallery;
