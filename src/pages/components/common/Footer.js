@@ -38,27 +38,28 @@ class Footer extends Component {
    };
 
 
-   togglePosition = add => {
-      let { classList } = document.querySelector('#footer-wrapper');
-      if (add) {
-         classList.add('at-bottom');
-      } else {
-         classList.remove('at-bottom');
-      };
-   };
+   // togglePosition = add => {
+   //    let { classList } = document.querySelector('#footer-wrapper');
+   //    if (add) {
+   //       classList.add('at-bottom');
+   //    } else {
+   //       classList.remove('at-bottom');
+   //    };
+   // };
 
-   componentDidMount() {
-      if (this.props.match.path !== '/products/explore') {
-         this.togglePosition(true) 
-      } else {
-         this.togglePosition(false) 
-      };
+   // componentDidMount() {
+   //    const atBottomPages = ['/logup', '/products/explore', '/users/:username', '/me/favorites']
+   //    if (!atBottomPages.includes(this.props.match.path)) {
+   //       this.togglePosition(true) 
+   //    } else {
+   //       this.togglePosition(false) 
+   //    };
       
-   };
+   // };
    
-   componentDidUpdate() {
-      this.componentDidMount();
-   }
+   // componentDidUpdate() {
+   //    this.componentDidMount();
+   // }
 
    // componentDidUpdate(prevProps) {
    //    let { key, pathname } = this.props.location,

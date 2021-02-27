@@ -14,5 +14,5 @@ button#fav-btn {
 .btn-is-fav {
    background-color: red !important;
    color: white;
-   border-color: white !important;
+   border-color: red !important;
 }

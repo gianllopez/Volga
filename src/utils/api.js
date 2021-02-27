@@ -1,27 +1,26 @@
 import Axios from 'axios';
+import { isAuthenticated } from './routing-tools';
 
 class VolgaREST {
    
-   token = localStorage.getItem('user-token') || false;
-
-   baseconfig(endpoint, authreq) {
+   baseconfig(endpoint) {
       return {
          method: 'get',
          url: 'http://localhost:8000/api/v1/users' + endpoint + '/',
-         ...this.token && {
-            headers: { Authorization: `Token ${this.token}`}}
+         ...isAuthenticated() && {
+            headers: { Authorization: `Token ${localStorage.getItem('user-token')}`}}
       };
    };
    
-   post(endpoint, data, authreq=false) {
-      let config = this.baseconfig(endpoint, authreq);
+   post(endpoint, data) {
+      let config = this.baseconfig(endpoint);
       config.method = 'post';
       config.data = data;
       return Axios(config);
    };
 
-   get(endpoint, params={}, authreq=false) {
-      let config = this.baseconfig(endpoint, authreq);
+   get(endpoint, params={}) {
+      let config = this.baseconfig(endpoint);
       config.params = params;
       return Axios(config);
    };

@@ -16,7 +16,7 @@ class FavButton extends Component {
          event.stopPropagation();
          let { product } = this.props;
          api.post('/product-fav', { product })
-            .then(({ data: isfav }) => this.setState({ isfav }))
+            .then(({ data }) => this.setState({ ...data }))
       } else {
          this.setState({ authredirect: true });
       };

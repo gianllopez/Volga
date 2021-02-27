@@ -55,16 +55,17 @@ class UserProfile extends Component {
                      <h2>{username}</h2>
                      <h4>{name}</h4>
                   </div>
-                  <div id="interaction-btns">
-                     <Link to={`/${username}/contact`}>
-                        <button>Contactar</button>
-                     </Link>
-                     <FollowButton
-                        user={username}
-                        following={following}
-                        history={this.props.history}
-                     />
-                  </div>
+                  {!itsme && 
+                     <div id="interaction-btns">
+                        <Link to={`/${username}/contact`}>
+                           <button>Contactar</button>
+                        </Link>
+                        <FollowButton
+                           user={username}
+                           following={following}
+                           history={this.props.history}
+                           />
+                     </div>}
                </section>
                <section id="user-stats" className="profile-section sub-section">
                   <UserStats stats={stats} />
@@ -97,7 +98,8 @@ class UserProfile extends Component {
                      <div>
                         {opinions.length !== 0 &&
                            isAuthenticated() && <Link to={`/${username}/opinions`}>Ver todas</Link>}
-                        <Link to={{pathname: `/${username}/opinions/new`, state: {exists: true}}}>Opinar</Link>
+                        {!itsme &&
+                           <Link to={{pathname: `/${username}/opinions/new`, state: {exists: true}}}>Opinar</Link>}
                      </div>
                </section>
             </div>

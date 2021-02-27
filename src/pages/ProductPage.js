@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../utils/api';
+import { isAuthenticated } from '../utils/routing-tools';
 import { CustomModal, FavButton, PageLoader, ProductGallery, ProductTagsDisplayer } from './components';
 import './styles/ProductPage.css';
 
 class ProductPage extends Component {
 
    state = {
-      isauth: localStorage.getItem('user-token') ? true : false,
+      isauth: isAuthenticated(),
       fetched: false,
       data: {}
    };
 
    render() {
-      let { isauth, images, product, price,
+      let { images, product, price,
             description, tags, isfav, key } = this.state.data;
       return (
          this.state.fetched ? (
@@ -32,8 +33,7 @@ class ProductPage extends Component {
                         <Link to={`/${this.props.match.params.username}/contact`} >
                            <button>Preguntar</button>
                         </Link>
-                        {isauth && <FavButton isfav={isfav} key={key} withtext/>}
-                        {/* <FavButton isfav={isfav} key={key} withtext/> */}
+                        {this.state.isauth && <FavButton isfav={isfav} product={key} withtext/>}
                      </div>
                   </div>
                </section>

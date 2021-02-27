@@ -24,26 +24,26 @@ function Layout(props) {
          <Switch>
             {props.children}
          </Switch>
-         {/* {props.withfooter && <Footer/>} */}
+         {props.withfooter && <Footer/>}
       </Fragment>
    );
 };
 
 
 const completePaths = [
-   '/:username/opinions',
-   '/:username/contact',
    '/products/explore',
    '/users/:username',
-   '/search/results',
-   '/me/favorites',
-   '/logup'
+   '/logup',
 ];
 
 const noFooterPaths = [
    '/:username/catalog/:productkey',
    '/:username/opinions/new',
+   '/:username/opinions',
+   '/:username/contact',
    '/my-products/new',
+   '/search/results',
+   '/me/favorites',
    '/login',
    '/'
 ];

@@ -16,17 +16,17 @@ function VolgaApp(props={}) {
             <ProtectedRoute path="/:username/profile-picture" component={UserProfilePicture} />
             <Route path={completePaths} exact>
                <Layout withfooter>
-                  <ProtectedRoute path="/:username/opinions" component={ClientsOpinions} exact />
-                  <ProtectedRoute path="/me/favorites" component={FavoritesProducts} />
-                  <Route path="/:username/contact" component={UserContact} exact />
-                  <Route path="/search/results" component={SearchResults} exact />
-                  <Route path="/users/:username" component={UserProfile} exact />
                   <ProtectedRoute path="/logup" component={Logup} disabledonauth/>
                   <Route exact path="/products/explore" component={Explore} />
+                  <Route path="/users/:username" component={UserProfile} exact />
                </Layout>
             </Route>
             <Route path={noFooterPaths} exact>
                <Layout>
+                  <ProtectedRoute path="/:username/opinions" component={ClientsOpinions} exact />
+                  <ProtectedRoute path="/me/favorites" component={FavoritesProducts} />
+                  <Route path="/:username/contact" component={UserContact} exact />
+                  <Route path="/search/results" component={SearchResults} exact />
                   <Route path="/:username/catalog/:key" component={ProductPage} exact />
                   <Route path="/" component={Home} exact />
                   <ProtectedRoute path="/:username/opinions/new" component={NewOpinion} />

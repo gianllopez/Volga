@@ -31,7 +31,7 @@ class NavBar extends Component {
          <div id="navbar-wrapper">
             <BurgerMenu clickCallback={this.linksAnimations} />
             <Link to={{
-               pathname: isauth && `/users/${username}`,
+               pathname: isauth ? `/users/${username}` : '',
                state: {exists: true}}} id="profile-link">
                <figure>
                   <img

@@ -35,8 +35,14 @@ class FavoritesProducts extends Component {
       this.setState({ loading: true }, () => {
          api.get('/get-data/favorites-products')
             .then(({ data }) => this.setState({ favorites: data }))
-            .finally(() => this.setState({loading: false}));
+            .finally(() => this.setState({ loading: false }));
       });
+   };
+
+   componentDidUpdate() {
+      document.querySelector('#footer-wrapper')
+         .style.display = this.state.favorites.length === 0 ?
+            'none' : 'block';
    };
  
 };
