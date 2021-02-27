@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { CustomModal } from '..';
+// import { CustomModal } from '..';
 import api from '../../../utils/api';
 import { isAuthenticated } from '../../../utils/routing-tools';
 import './styles/FollowButton.css';
@@ -27,8 +27,8 @@ class FollowButton extends Component {
             .then(({ data }) => this.animChanger(data.following))
             .catch(({ response }) => {
                if (response.status === 404) {
-                  CustomModal(<span>{ response.data[this.props.user] }</span>, [false, 'Entendido'])
-                     .then(ok => ok && this.props.history.push('/'));
+                  // CustomModal(<span>{ response.data[this.props.user] }</span>, [false, 'Entendido'])
+                  //    .then(ok => ok && this.props.history.push('/'));
                };
             }); 
       } else {

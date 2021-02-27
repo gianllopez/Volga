@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import swal from '@sweetalert/with-react';
-import { CustomModal } from '..';
+// import { CustomModal } from '..';
 
 const clickTrigger = query => document.querySelector(query).click();
 
@@ -12,17 +12,17 @@ function areImages(files) {
       };
    };
    if (!validFormat) {
-      CustomModal((
-         <Fragment>
-            <p>Archivo(s) inválido(s)</p>
-            <span>
-               Verifica que los archivos que cargaste sean imágenes.
-               </span>
-            <p style={{ fontSize: '.8em' }}>
-               Formatos admitidos: png, jpg, jpeg
-               </p>
-         </Fragment>
-      ), [false, 'Entendido']);
+      // CustomModal((
+      //    <Fragment>
+      //       <p>Archivo(s) inválido(s)</p>
+      //       <span>
+      //          Verifica que los archivos que cargaste sean imágenes.
+      //          </span>
+      //       <p style={{ fontSize: '.8em' }}>
+      //          Formatos admitidos: png, jpg, jpeg
+      //          </p>
+      //    </Fragment>
+      // ), [false, 'Entendido']);
    } else {
       return true;
    };
@@ -30,12 +30,12 @@ function areImages(files) {
 
 function rightLength(length) {
    if (length > 4) {
-      CustomModal((
-         <Fragment>
-            <p>Límite de imágenes por producto excedido</p>
-            <span>Sólo puedes cargar 4 imágenes</span>
-         </Fragment>
-      ), [false, 'Entendido']);
+      // CustomModal((
+      //    <Fragment>
+      //       <p>Límite de imágenes por producto excedido</p>
+      //       <span>Sólo puedes cargar 4 imágenes</span>
+      //    </Fragment>
+      // ), [false, 'Entendido']);
    } else {
       return true;
    };

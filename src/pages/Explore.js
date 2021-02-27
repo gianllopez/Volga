@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Fragment } from 'react';
 import api from '../utils/api';
-import { ButtonLoader, TagsSelector, PageLoader, UserProduct, CustomModal, CustomMessage } from './components';
+import { ButtonLoader, TagsSelector, PageLoader, UserProduct, CustomMessage } from './components';
 import notags from '../assets/Explore/notags.png';
 import './styles/Explore.css';
 
@@ -37,9 +37,9 @@ class Explore extends Component {
                });
          });
       } else {
-         CustomModal(
-            <span>Para explorar tienes que tener al menos una
-            etiqueta por criterio de exploración.</span>, [false, 'Entendido'])
+         // CustomModal(
+         //    <span>Para explorar tienes que tener al menos una
+         //    etiqueta por criterio de exploración.</span>, [false, 'Entendido'])
       };
    };
 

@@ -37,46 +37,6 @@ class Footer extends Component {
       );
    };
 
-
-   // togglePosition = add => {
-   //    let { classList } = document.querySelector('#footer-wrapper');
-   //    if (add) {
-   //       classList.add('at-bottom');
-   //    } else {
-   //       classList.remove('at-bottom');
-   //    };
-   // };
-
-   // componentDidMount() {
-   //    const atBottomPages = ['/logup', '/products/explore', '/users/:username', '/me/favorites']
-   //    if (!atBottomPages.includes(this.props.match.path)) {
-   //       this.togglePosition(true) 
-   //    } else {
-   //       this.togglePosition(false) 
-   //    };
-      
-   // };
-   
-   // componentDidUpdate() {
-   //    this.componentDidMount();
-   // }
-
-   // componentDidUpdate(prevProps) {
-   //    let { key, pathname } = this.props.location,
-   //    keyChange = key !== prevProps.location.key,
-   //    pathChange = pathname !== prevProps.location.pathname;
-   //    if (keyChange && pathChange) {
-   //       let content = document.querySelector('#root > *:nth-child(2)');
-   //       if (content.style.position !== 'absolute') {
-   //          document.querySelector('#footer-wrapper')
-   //             .classList.remove('bottom-pos');
-   //       };
-   //    };
-   // };
-
-   
-
-
 };
 
 export default withRouter(Footer);

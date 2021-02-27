@@ -2,7 +2,7 @@ import React, { Component, createContext, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../utils/api';
 import { logUpFormValidator } from '../utils/validators';
-import { LogupInput, ButtonLoader, CustomModal } from './components/';
+import { LogupInput, ButtonLoader } from './components/';
 import loguphero from '../assets/Logup/logup-hero.svg';
 import './styles/Logup.css';
 
@@ -56,7 +56,7 @@ class Logup extends Component {
                               </span>
                         </Fragment>
                      );
-                     CustomModal(content, [false, 'Entendido'])
+                     // CustomModal(content, [false, 'Entendido'])
                   } else {
                      this.setState({ errors: response.data })
                   };

@@ -1,6 +1,7 @@
 import React, { Component, createContext, Fragment } from 'react';
+import { ContactNetworkInput, ButtonLoader,
+         UserPageExists, ModalDisplayer } from './components';
 import api from '../utils/api';
-import { ContactNetworkInput, ButtonLoader, CustomModal, UserPageExists } from './components';
 import { noBlankValidator } from '../utils/validators'
 import './styles/ContactNetworks.css';
 
@@ -28,57 +29,45 @@ class ContactNetworks extends Component {
       });
    };
 
-
-   fetchRequest = () => {
-      let { username, data } = this.state,
-      nextpath = {
-         pathname: `/${username}/profile-picture`,
-         state: { exists: true }};
-      this.setState({ loading: true });
+   fetchRequest = ({ data, nextpath }) => {
       api.post('/contact', data)
          .then(() => this.props.history.push(nextpath))
          .catch(errors => {
             this.setState({ loading: false });
             let { response, message } = errors;
             if (message === 'Network Error') {
-               CustomModal(
-                  <Fragment>
-                     <p>Error en el registro</p>
-                     <span>Aségurate de estar conectado a internet.</span>
-                  </Fragment>, [false, 'Entendido'])
+               ModalDisplayer({ type: 'NETWORK_ERROR' });
             } else {
-               let { user } = response.data;
-               if (user) {
-                  CustomModal(
-                     <Fragment>
-                        <p>Error en el registro</p>
-                        <span>{user}</span>
-                     </Fragment>, [false, 'Entendido'])
-                        .then(ok => ok && this.props.history.push(nextpath));
+               if (response.status === 409) {
+                  let { data } = response;
+                  ModalDisplayer({
+                     type: 'CUSTOM', title: 'Error en la petición', 
+                     message: data.user
+                  }).then(cont => cont && this.props.history.push(nextpath));
                } else {
-                  this.setState({ errors: response.data });
-               };
+                  this.setState({ errors: data });
+               };            
             };
          });
-   }
+   };
 
    submitHandler = event => {
       event.preventDefault();
       let { isValid } = noBlankValidator(this.state.data);
+      let { username, data } = this.state,
+      nextpath = {
+         pathname: `/${username}/profile-picture`,
+         state: { exists: true }};
       if (isValid) {
-         this.fetchRequest();
+         this.setState({ loading: true }, () =>
+            this.fetchRequest({ data, nextpath }));
       } else {
-         let content = (
-            <Fragment>
-               <p>
-                  Estas redes facilitan el contacto entre tú y tus clientes.
-                  Recomendamos que llenes las que te sugerimos.
-               </p>
-               <span>¿Deseas continuar así?</span>
-            </Fragment>
-         );
-         CustomModal(content)
-            .then(allowBlank => allowBlank && this.fetchRequest());
+         ModalDisplayer({
+            type: 'CUSTOM',
+            title: `Estas redes facilitan el contacto entre tú y tus clientes. 
+                    Recomendamos que llenes las que te sugerimos.`,
+            message: '¿Deseas continuar así?'
+         }).then(cont => cont && this.fetchRequest({ data, nextpath }))
       };
    };
 
@@ -93,7 +82,7 @@ class ContactNetworks extends Component {
          <UserPageExists>
             <form id="user-contact-form" onSubmit={this.submitHandler} onKeyDown={this.keyDownHandler}>
                <h2>
-                  Redes para el contacto<br />con tus clientes
+                  Redes para el contacto<br/>con tus clientes
                </h2>
                <CNcontext.Provider value={contextContent}>
                   <ContactNetworkInput
@@ -122,9 +111,7 @@ class ContactNetworks extends Component {
                      maxLength="30"
                   />
                </CNcontext.Provider>
-
-               <ButtonLoader isloading={this.state.loading} />
-
+               <ButtonLoader isloading={this.state.loading}/>
             </form>
          </UserPageExists>
       );
@@ -136,3 +123,5 @@ class ContactNetworks extends Component {
 };
 
 export default ContactNetworks;
+
+/* REVISADO Y NO HAY MÁS QUE RESUMIR: 27/02/2021 */

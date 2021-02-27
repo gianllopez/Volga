@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { CustomModal, FavButton, PageLoader,
+import { FavButton, PageLoader,
          ProductGallery, ProductTagsDisplayer } from './components';
 import api from '../utils/api';
 import { isAuthenticated } from '../utils/routing-tools';
@@ -53,12 +53,12 @@ class ProductPage extends Component {
             .then(({ data }) => this.setState({ fetched: true, data }))
             .catch(({ response }) => {
                if (response.status === 404) {
-                  CustomModal(
-                     <span>
-                        El producto que buscas no se encuentra
-                        en el catálogo de {username}
-                     </span>, [false, 'Entendido'])
-                        .then(ok =>ok && this.props.history.push('/'));
+                  // CustomModal(
+                  //    <span>
+                  //       El producto que buscas no se encuentra
+                  //       en el catálogo de {username}
+                  //    </span>, [false, 'Entendido'])
+                  //       .then(ok =>ok && this.props.history.push('/'));
                }});
       } else {
          this.setState({ fetched: true, data: locState.product });

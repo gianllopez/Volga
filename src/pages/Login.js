@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { noBlankValidator } from '../utils/validators';
 import api from '../utils/api';
-import { Input, ButtonLoader, CustomModal } from './components/';
+import { Input, ButtonLoader } from './components/';
 import loginhero from '../assets/Login/login-hero.svg';
 import './styles/Login.css';
 
@@ -40,12 +40,12 @@ class Login extends Component {
             .catch(({ response, message }) => {
                this.setState({ loading: false });
                if (message === 'Network Error') {
-                  CustomModal((
-                     <Fragment>
-                        <p>No estás conectado a internet</p>
-                        <span>Reestablece la conexión para continuar</span>
-                     </Fragment>
-                  ), [false, 'Entendido']);
+                  // CustomModal((
+                  //    <Fragment>
+                  //       <p>No estás conectado a internet</p>
+                  //       <span>Reestablece la conexión para continuar</span>
+                  //    </Fragment>
+                  // ), [false, 'Entendido']);
                } else {
                   this.setState({ loading: false, errors: response.data });
                };

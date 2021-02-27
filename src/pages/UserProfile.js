@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { UserStats, ProductCard, Opinion, FollowButton, UserPageExists, CustomModal } from './components';
+import { UserStats, ProductCard, Opinion, FollowButton, UserPageExists } from './components';
 import './styles/UserProfile.css';
 import api from '../utils/api';
 import { isAuthenticated } from '../utils/routing-tools';
@@ -25,21 +25,21 @@ class UserProfile extends Component {
    };
 
    deleteHandler = query => {
-      CustomModal((
-         <Fragment>
-            <p>Esta acción es irreversible, luego de eliminarlo ya no estará en tu catálogo.</p>
-            <span>¿Estás seguro que lo eliminas?</span>
-         </Fragment>
-      ), ['Cancelar', 'Si, eliminar']).then(del => {
-         if (del) {
-            api.post('/products/delete', query)
-               .then(({status}) => {
-                  if (status === 204) {
-                     this.setState({fetched: false, exists: true}, this.fetchUserData);
-                  };
-               });
-         };
-      });
+      // CustomModal((
+      //    <Fragment>
+      //       <p>Esta acción es irreversible, luego de eliminarlo ya no estará en tu catálogo.</p>
+      //       <span>¿Estás seguro que lo eliminas?</span>
+      //    </Fragment>
+      // ), ['Cancelar', 'Si, eliminar']).then(del => {
+      //    if (del) {
+      //       api.post('/products/delete', query)
+      //          .then(({status}) => {
+      //             if (status === 204) {
+      //                this.setState({fetched: false, exists: true}, this.fetchUserData);
+      //             };
+      //          });
+      //    };
+      // });
    };
    
    render() {

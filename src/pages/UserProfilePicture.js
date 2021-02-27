@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Uploader, ButtonLoader, CustomModal, UserPageExists } from './components';
+import { Uploader, ButtonLoader, UserPageExists } from './components';
 import api from '../utils/api';
 import userpphero from '../assets/UserProfilePicture/userpp-hero.svg';
 import './styles/UserProfilePicture.css';
@@ -32,16 +32,16 @@ class UserProfilePicture extends Component {
          });
       };
       if (!picture) {
-         CustomModal(
-            <Fragment>
-               <p>
-                  Vemos que no tienes pensado agregar una foto para
-                  tu perfil. Esta es imprescindible para que tus
-                  clientes te reconozcan.
-               </p>
-               <span>¿Deseas continuar así?</span>
-            </Fragment>
-         ).then(allowBlank => allowBlank && sendRequest());
+         // CustomModal(
+         //    <Fragment>
+         //       <p>
+         //          Vemos que no tienes pensado agregar una foto para
+         //          tu perfil. Esta es imprescindible para que tus
+         //          clientes te reconozcan.
+         //       </p>
+         //       <span>¿Deseas continuar así?</span>
+         //    </Fragment>
+         // ).then(allowBlank => allowBlank && sendRequest());
       } else { sendRequest(); };
 
    };
