@@ -4,7 +4,6 @@ import volgalogo from '../../../assets/common/logo.svg';
 import logouticon from '../../../assets/common/logout-icon.svg';
 import BurgerMenu from './BurgerMenu';
 import SearchLink from './SearchLink';
-import api from '../../../utils/api';
 import './styles/NavBar.css';
 
 class NavBar extends Component {
@@ -51,8 +50,8 @@ class NavBar extends Component {
                      <Link to="/me/favorites">Favoritos</Link>
                   </Fragment> :
                   <Fragment>
-                     <Link to="/logup">Registro</Link>
-                     <Link to="/login">Iniciar</Link>
+                     <Link to="/logup">Registrar</Link>
+                     <Link to="/login">Iniciar sesión</Link>
                   </Fragment>
                }
             </div>
@@ -93,7 +92,7 @@ class NavBar extends Component {
                      } else {
                         classList.remove(`${id}-on-scroll`)
                      };
-                  };
+                  }; return element;
                });
             this.oldScroll = this.scrollY;
          };

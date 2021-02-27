@@ -51,3 +51,14 @@
 #logup-form .btnloader-wrapper {
    margin: 7.5px 0;
 }
+
+@media (min-width: 1250px) {
+   #logup-form {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+      padding: 0 !important;
+   }
+}

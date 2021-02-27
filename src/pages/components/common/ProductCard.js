@@ -1,12 +1,8 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { CustomModal } from '..';
-import api from '../../../utils/api';
 import './styles/ProductCard.css';
 
 class ProductCard extends Component {
-
-
 
    render() {
       let { images, product, price, key } = this.props['product-data'],

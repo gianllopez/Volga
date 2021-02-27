@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import { NotFound } from './';
 import api from '../utils/api';
 import { CustomMessage, Opinion, UserPageExists } from './components'
 import blankopinions from '../assets/ClientsOpinions/blank-opinions.png';

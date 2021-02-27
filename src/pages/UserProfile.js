@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { UserStats, ProductCard, Opinion, FollowButton, PageLoader, UserPageExists, CustomModal } from './components';
-import { NotFound } from './';
+import { UserStats, ProductCard, Opinion, FollowButton, UserPageExists, CustomModal } from './components';
 import './styles/UserProfile.css';
 import api from '../utils/api';
 import { isAuthenticated } from '../utils/routing-tools';

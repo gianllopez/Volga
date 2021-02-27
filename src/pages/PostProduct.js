@@ -6,7 +6,6 @@ import { noBlankValidator } from '../utils/validators';
 import api from '../utils/api';
 import swal from 'sweetalert';
 
-
 class PostProduct extends Component {
 
    state = {
@@ -83,7 +82,7 @@ class PostProduct extends Component {
                         }).then(gotit => {
                            let { username, key } = response.data;
                            if (gotit) {
-                              // this.props.history.push(`/${username}/catalog/${key}`);
+                              this.props.history.push(`/${username}/catalog/${key}`);
                            };
                         });
                      };

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import { CustomModal } from '..';
 import api from '../../../utils/api';
 import { isAuthenticated } from '../../../utils/routing-tools';

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { RatingSelector, CommentInput, ButtonLoader, CustomModal, UserPageExists } from './components';
-import NotFound from './NotFound';
+import { RatingSelector, CommentInput, ButtonLoader, UserPageExists } from './components';
 import api from '../utils/api';
 import { noBlankValidator } from '../utils/validators';
 import opsheader from '../assets/NewOpinion/users-opinions.svg';
