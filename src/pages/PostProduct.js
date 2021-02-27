@@ -82,7 +82,7 @@ class PostProduct extends Component {
                         }).then(gotit => {
                            let { username, key } = response.data;
                            if (gotit) {
-                              this.props.history.push(`/${username}/catalog/${key}`);
+                              // this.props.history.push(`/${username}/catalog/${key}`);
                            };
                         });
                      };
@@ -96,7 +96,7 @@ class PostProduct extends Component {
 
    render() {
       return (
-         <form id="post-product-page" onSubmit={this.submitHandler} encType="multipart/form-data">
+         <form id="post-product-page" onSubmit={!this.state.loading && this.submitHandler} encType="multipart/form-data">
             <div id="ppp-header">
                <figure>
                   <img src={prodboxicon} alt="product-box-icon" />

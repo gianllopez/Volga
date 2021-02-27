@@ -1,9 +1,8 @@
 .product-page {
-   /* padding-top: 75px; */
+   padding-top: 75px;
    display: flex;
    flex-direction: column;
    align-items: center;
-   height: calc(100vh - 75px);
 }
 
 #pp-product-info {
@@ -12,24 +11,20 @@
    width: calc(100vw - 30px);
    border-radius: 20px 20px 0 0;
    margin-top: 10px;
-   flex-grow: 1;
-   overflow-wrap: break-word;
-   max-width: 475px;
-}
-
-#pp-product-info > div > *{
-   max-width: 350px;
 }
 
 #pp-product-info > div {
    padding: 10px;
    background-color: white;
    border-radius: 10px 10px 0 0;
-   height: 100%;
+}
+
+#pp-product-info > div > * {
+   max-width: 350px;
 }
 
 #pp-product-info > div h2 {
-   font-size: clamp(1em, 6vw, 1.35em);
+   font-size: clamp(1em, 6vw, 1.7em);
 }
 
 #pp-product-info > div h4 {
@@ -38,16 +33,7 @@
 }
 
 #pp-product-info > div > p {
-   font-size: clamp(0.8em, 5vw, 0.9em);;
    font-weight: bold;
-   overflow-wrap: break-word;
-   /* max-width: 325px; */
-}
-
-@media (min-width:425px) {
-   #pp-product-info > div > * {
-      max-width: 350px;
-   }
 }
 
 #btns {
@@ -58,7 +44,6 @@
    height: 40px;
    width: 100px;
    background: none;
-   border: none;
    border-radius: 5px;
    outline: none;
    font-size: 1em;
@@ -70,20 +55,12 @@
    margin-right: 10px;
 }
 
-/* #btns button:not(:first-child) {
-   width: 150px;
-   color: red;
-} */
-
 @media (min-width:768px) {
    .product-page {
+      padding-top: 120px;
       display: grid;
-      grid-template-rows: max-content;
       width: max-content;
       margin: auto;
-      /* padding-top: 135px; */
-      height: auto;
-      align-items: unset;
    }
    #pp-product-info {
       grid-column: 2;
@@ -91,27 +68,17 @@
       height: calc(100% - 30px);
       margin: 0px 0 0 -3px;
       border-radius: 0 20px 20px 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
    }
    #pp-product-info > div {
-      border-radius: 10px;
+      height: calc(100% - 20px);
       display: flex;
       flex-direction: column;
-      min-width: 290px;  /* Pa cuando no hay auth no se recoga el parent */
+      /* min-width: 290px; Pa cuando no hay auth no se recoga el parent */
    }
    #pp-product-info #btns {
       flex: 1;
       display: inherit;
       align-items: flex-end;
-      /* justify-content: center; */
-   }
-}
-
-@media (min-height: 685px) {
-   .product-page {
-      height: max-content;
    }
 }
 
