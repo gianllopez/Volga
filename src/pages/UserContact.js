@@ -11,7 +11,7 @@ class UserContact extends Component {
       contact: {}
    };
 
-   fetchContactWays = username => {
+   fetchContactWays = () => {
       api.get('/get-data/contact-networks', { username: this.state.username })
          .then(({ data }) => this.setState({ contact: {...data} }));
    };

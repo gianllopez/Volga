@@ -1,4 +1,4 @@
-import React, { Component, createContext, Fragment } from 'react';
+import React, { Component, createContext } from 'react';
 import { ContactNetworkInput, ButtonLoader,
          UserPageExists, ModalDisplayer } from './components';
 import api from '../utils/api';
@@ -39,13 +39,12 @@ class ContactNetworks extends Component {
                ModalDisplayer({ type: 'NETWORK_ERROR' });
             } else {
                if (response.status === 409) {
-                  let { data } = response;
                   ModalDisplayer({
                      type: 'CUSTOM', title: 'Error en la petición', 
-                     message: data.user
+                     message: response.data.user
                   }).then(cont => cont && this.props.history.push(nextpath));
                } else {
-                  this.setState({ errors: data });
+                  this.setState({ errors: response.data });
                };            
             };
          });
@@ -80,7 +79,8 @@ class ContactNetworks extends Component {
       };
       return (
          <UserPageExists>
-            <form id="contact-networks-form" onSubmit={this.submitHandler} onKeyDown={this.keyDownHandler}>
+            <form id="contact-networks-form" onSubmit={this.submitHandler}
+               onKeyDown={this.keyDownHandler}>
                <h2>
                   Redes para el contacto<br/>con tus clientes
                </h2>
