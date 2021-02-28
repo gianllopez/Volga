@@ -80,7 +80,7 @@ class ContactNetworks extends Component {
       };
       return (
          <UserPageExists>
-            <form id="user-contact-form" onSubmit={this.submitHandler} onKeyDown={this.keyDownHandler}>
+            <form id="contact-networks-form" onSubmit={this.submitHandler} onKeyDown={this.keyDownHandler}>
                <h2>
                   Redes para el contacto<br/>con tus clientes
                </h2>

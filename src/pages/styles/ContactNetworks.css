@@ -1,40 +1,25 @@
-#user-contact-form {
+#contact-networks-form {
    display: flex;
    flex-direction: column;
    align-items: center;
    margin: 10vh 0;
 }
 
-#user-contact-form h2 {
+#contact-networks-form h2 {
    margin-bottom: 10px;
    background-color: #c9c9c91f;
    padding: 8px;
    width: 284px;
-   font-size: 1.6em;
    border-radius: 5px;
    text-align: center;
 }
 
-#user-contact-form .contact-net {
-   margin-bottom: 12.5px;
-}
-
-#user-contact-form .btnloader-wrapper {
+#contact-networks-form .btnloader-wrapper {
    margin-top: 7.5px;
-}
-.swal2-icon.swal2-warning {
-   border-color: red;
-}
-.swal-icon--error{
-   border-color: #e64942;
-}
-
-.swal-icon--error__line {
-   background-color: #e64942;
 }
 
 @media screen and (min-height: 690px) {
-   #user-contact-form {
+   #contact-networks-form {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -42,3 +27,5 @@
       margin: 0;
    }
 }
+
+/* REVISADO Y NO HAY MÁS QUE RESUMIR: 27/02/2021 */
