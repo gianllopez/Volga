@@ -40,19 +40,30 @@
    padding-top: 25px;
 }
 
+#cn-demo h2 {
+   width: 55%;
+   margin: auto;
+   padding: 5px 5px;
+}
+
 #cn-demo h3 {
    font-weight: lighter;
-   margin-bottom: 20px;
+   margin-bottom: 5px;
+   padding: 7px;
 }
-/* 
+
+#cn-demo > * {
+   background-color: #c9c9c930;
+   border-radius: 5px;
+}
+
 #cn-demo div {
-   margin-top: 5px;
-} */
+   padding: 17px;
+}
 
 #cn-demo div img {
-   width: 100%;
+   width: 90%;
    border-radius: 5px;
-   max-width: 375px;
    margin: 2px 0;
 }
 

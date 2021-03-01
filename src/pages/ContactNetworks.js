@@ -90,15 +90,17 @@ class ContactNetworks extends Component {
                   <ContactNetworkInput
                      name="instagram"
                      maxLength="30"
-                     regex={/.*[\w_]$/}
+                     regex={/^(?!.*?\.{2}).*[\w_.]$/}
                   />
                   <ContactNetworkInput
                      name="facebook"
                      maxLength="50"
+                     regex={/^(?!.*?\.{2}).*[\w_.]$/}
                   />
                   <ContactNetworkInput
                      name="whatsapp"
                      maxLength="15"
+                     regex={/.*(?!.+\s)[\d-]$/}
                   />
                   <ContactNetworkInput
                      name="twitter"
@@ -124,7 +126,6 @@ class ContactNetworks extends Component {
       document.title = `${this.state.username} - Redes de contacto`;
       swal({
          // title: 'No te confundas con el dato requerido',
-         // icon: 'warning',
          content: 
             <div id="cn-demo">
                <h2>No te confundas</h2>

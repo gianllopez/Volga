@@ -53,7 +53,7 @@ class ContactNetworkInput extends Component {
    };
 
    render() {
-      let { name } = this.props,
+      let { name, maxLength } = this.props,
       Name = capitalize(name);
       return (
          <div className={`contact-network-input ${this.name}`} onClick={this.inputAnimation}>
@@ -69,6 +69,7 @@ class ContactNetworkInput extends Component {
                   autoComplete="off"
                   onChange={this.regexValidator}
                   placeholder={Name !== "Email" ? Name : "Correo"}
+                  maxLength={maxLength}
                />
                <img src={checkIcon} alt="check-icon" onClick={this.checkbtnAnimation}/>
             </div>
