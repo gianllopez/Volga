@@ -28,4 +28,32 @@
    }
 }
 
+.cn-demo-modal .swal-button {
+   background-color: #0069d9cc;
+}
+
+.cn-demo-modal .swal-content {
+   margin-top: 0;
+}
+
+#cn-demo {
+   padding-top: 25px;
+}
+
+#cn-demo h3 {
+   font-weight: lighter;
+   margin-bottom: 20px;
+}
+/* 
+#cn-demo div {
+   margin-top: 5px;
+} */
+
+#cn-demo div img {
+   width: 100%;
+   border-radius: 5px;
+   max-width: 375px;
+   margin: 2px 0;
+}
+
 /* REVISADO Y NO HAY MÁS QUE RESUMIR: 27/02/2021 */

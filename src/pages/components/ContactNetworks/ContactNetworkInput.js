@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { CNcontext } from '../../ContactNetworks';
-import { sncolors } from '../local-utils';
 import { capitalize } from '../../../utils/tools';
+import { CN_COLORS } from '../local-utils';
 import { cn_icons } from '../../../assets';
 import checkIcon from '../../../assets/ContactNetworks/check-icon.svg';
 import './ContactNetworkInput.css';
@@ -13,7 +13,7 @@ class ContactNetworkInput extends Component {
    static contextType = CNcontext;
 
    onFilledAnimation = () => {
-      const colors = {...sncolors, instagram: '#C32AA3'}
+      const colors = {...CN_COLORS, instagram: '#C32AA3'}
       let { input, dataInput, header } = this, { value } = input;
       dataInput.classList.remove('data-input-anim');
       header.classList.remove('header-anim');
@@ -44,6 +44,14 @@ class ContactNetworkInput extends Component {
       this.onFilledAnimation();
    };
 
+   regexValidator = event => {
+      let { regex } = this.props, { value } = event.target;
+      if (regex && !regex.test(value)) {
+         event.target.value = value.substring(0, value.length - 1);
+      };
+      this.context.changeHandler(event);
+   };
+
    render() {
       let { name } = this.props,
       Name = capitalize(name);
@@ -59,7 +67,7 @@ class ContactNetworkInput extends Component {
                   name={name}
                   spellCheck="false"
                   autoComplete="off"
-                  onChange={this.context.changeHandler}
+                  onChange={this.regexValidator}
                   placeholder={Name !== "Email" ? Name : "Correo"}
                />
                <img src={checkIcon} alt="check-icon" onClick={this.checkbtnAnimation}/>

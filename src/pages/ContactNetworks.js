@@ -4,6 +4,8 @@ import { ContactNetworkInput, ButtonLoader,
 import api from '../utils/api';
 import { noBlankValidator } from '../utils/validators'
 import './styles/ContactNetworks.css';
+import swal from '@sweetalert/with-react';
+import { DEMO_IMAGES } from '../assets';
 
 export const CNcontext = createContext({});
 
@@ -88,6 +90,7 @@ class ContactNetworks extends Component {
                   <ContactNetworkInput
                      name="instagram"
                      maxLength="30"
+                     regex={/.*[\w_]$/}
                   />
                   <ContactNetworkInput
                      name="facebook"
@@ -119,6 +122,22 @@ class ContactNetworks extends Component {
 
    componentDidMount() {
       document.title = `${this.state.username} - Redes de contacto`;
+      swal({
+         // title: 'No te confundas con el dato requerido',
+         // icon: 'warning',
+         content: 
+            <div id="cn-demo">
+               <h2>No te confundas</h2>
+               <h3>El nombre de usuario es más eficaz a la hora de identificar tus redes,
+                   ese es el dato requerido:</h3>
+               <div>
+                  {DEMO_IMAGES.map((img, index) => 
+                     <img src={img} key={index}/>)}
+               </div>
+            </div>,
+         buttons: [false, 'Entendido'],
+         className: 'cn-demo-modal'
+      })
    };
 };
 

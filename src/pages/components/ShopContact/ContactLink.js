@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { capitalize } from '../../../utils/tools';
-import { sncolors } from '../local-utils';
+import { CN_COLORS } from '../local-utils';
 import './ContactLink.css';
 
 class ContactLink extends Component {
@@ -28,7 +28,7 @@ class ContactLink extends Component {
       link = document.querySelector(`.${way}-link`),
       bg = '';
       if (way !== 'instagram') {
-         bg = sncolors[way];
+         bg = CN_COLORS[way];
       } else {
          bg = `linear-gradient(
                   90deg, 

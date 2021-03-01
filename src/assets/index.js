@@ -6,6 +6,11 @@ import twitterLogo from './ContactNetworks/twitter-icon.svg';
 import emailLogo from './ContactNetworks/email-icon.svg';
 import linkedinLogo from './ContactNetworks/linkedin-icon.svg';
 
+import igdemo from './ContactNetworks/demostration/instagram.png';
+import fbdemo from './ContactNetworks/demostration/facebook.png';
+import twdemo from './ContactNetworks/demostration/twitter.png';
+import indemo from './ContactNetworks/demostration/linkedin.png';
+
 // ---------- UserTags (Page) Imports ---------- //
 import vehicles_icon from './UserTags/tags-icons/car.svg';
 import foods_icon from './UserTags/tags-icons/food-basket.svg';
@@ -46,6 +51,8 @@ export const cn_icons = {
    email: emailLogo,
    linkedin: linkedinLogo
 };
+
+export const DEMO_IMAGES = [igdemo, fbdemo, twdemo, indemo];
 
 // ---------- UserTags (Page) Exports ---------- //
 export const tagsProps = {

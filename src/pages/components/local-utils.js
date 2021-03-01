@@ -2,7 +2,7 @@ import checkicon from '../../assets/UserProfilePicture/check-icon.svg';
 
 // The next function handles the ContactInput Component animations:
 
-const sncolors = {
+const CN_COLORS = {
    instagram: '#C32AA3',
    facebook: '#2D88FF',
    whatsapp: '#00E676',
@@ -24,4 +24,4 @@ function successAnimationsTrigger(img, span) {
    }, 500);
 };
 
-export { sncolors, successAnimationsTrigger };
+export { CN_COLORS, successAnimationsTrigger };
