@@ -65,7 +65,7 @@
    font-size: 1.6em;
    padding: 0 5px 0 20px;
    transition: transform .5s;
-   /* word-break: break-all; */
+   word-break: break-all;
 }
 
 .header-anim {

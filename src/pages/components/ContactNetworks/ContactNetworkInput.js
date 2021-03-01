@@ -20,6 +20,10 @@ class ContactNetworkInput extends Component {
       if (!this.state.error) {
          header.innerText = value ? value : input.placeholder;
          header.style.color = value ? colors[input.name] : 'initial';
+         let { offsetHeight, parentElement } = header;
+         if (value && offsetHeight > parentElement.offsetHeight) {
+            header.style.fontSize = '95%';
+         };
       };
    };
 
@@ -56,7 +60,7 @@ class ContactNetworkInput extends Component {
       let { name, maxLength } = this.props,
       Name = capitalize(name);
       return (
-         <div className={`contact-network-input ${this.name}`} onClick={this.inputAnimation}>
+         <div className={`contact-network-input ${name}`} onClick={this.inputAnimation}>
             <figure className="logo-wrapper">
                <img src={cn_icons[name]} alt={`${name}-icon`} />
             </figure>

@@ -90,21 +90,22 @@ class ContactNetworks extends Component {
                   <ContactNetworkInput
                      name="instagram"
                      maxLength="30"
-                     regex={/^(?!.*?\.{2}).*[\w_.]$/}
+                     regex={/^(?!.*?\.{2}).*[a-zA-Z0-9_.]$/}
                   />
                   <ContactNetworkInput
                      name="facebook"
                      maxLength="50"
-                     regex={/^(?!.*?\.{2}).*[\w_.]$/}
+                     regex={/^(?!.*?\.{2}).*[a-zA-Z0-9_.]$/}
                   />
                   <ContactNetworkInput
                      name="whatsapp"
                      maxLength="15"
-                     regex={/.*(?!.+\s)[\d-]$/}
+                     regex={/^(?!.*?-{2}).*[\d-]$/}
                   />
                   <ContactNetworkInput
                      name="twitter"
                      maxLength="15"
+                     regex={/.*[a-zA-Z0-9_]$/}
                   />
                   <ContactNetworkInput
                      name="email"
@@ -114,6 +115,7 @@ class ContactNetworks extends Component {
                   <ContactNetworkInput
                      name="linkedin"
                      maxLength="30"
+                     regex={/.*[\w\-\_À-ÿ%]$/}
                   />
                </CNcontext.Provider>
                <ButtonLoader isloading={this.state.loading}/>
@@ -125,7 +127,6 @@ class ContactNetworks extends Component {
    componentDidMount() {
       document.title = `${this.state.username} - Redes de contacto`;
       swal({
-         // title: 'No te confundas con el dato requerido',
          content: 
             <div id="cn-demo">
                <h2>No te confundas</h2>
@@ -138,7 +139,7 @@ class ContactNetworks extends Component {
             </div>,
          buttons: [false, 'Entendido'],
          className: 'cn-demo-modal'
-      })
+      });
    };
 };
 
