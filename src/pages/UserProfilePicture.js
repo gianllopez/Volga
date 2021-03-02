@@ -7,8 +7,8 @@ import './styles/UserProfilePicture.css';
 class UserProfilePicture extends Component {
 
    state = {
-      username: this.props.match.params['username'],
-      picture: '', loading: false
+      picture: '', loading: false,
+      ...this.props.match.params
    };
 
    uploadHandler = ({ target }) => this.setState({ picture: target.files[0] });

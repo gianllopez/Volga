@@ -12,14 +12,14 @@ export const CNcontext = createContext({});
 class ContactNetworks extends Component {
 
    state = {
-      username: this.props.match.params['username'],
       data: {
          instagram: '', facebook: '',
          whatsapp: '', twitter: '',
          email: '', linkedin: ''
       },
       loading: false,
-      errors: {}
+      errors: {},
+      ...this.props.match.params
    };
 
    changeHandler = ({ target }) => {

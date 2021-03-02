@@ -1,19 +1,19 @@
 import React, { Component, Fragment } from 'react';
-import api from '../utils/api';
 import { CustomMessage, Opinion, UserPageExists } from './components'
+import api from '../utils/api';
 import blankopinions from '../assets/ClientsOpinions/blank-opinions.png';
 import './styles/ClientsOpinions.css';
 
 class ClientsOpinions extends Component {
 
    state = {
-      username: this.props.match.params['username'],
-      opinions: []
+      opinions: [],
+      ...this.props.match.params
    };
 
    fetchOpinions = () => {
       api.get('/get-data/clients-opinions', { username: this.state.username })
-         .then(({ data }) => {this.setState({ opinions: data })})
+         .then(({ data }) => {this.setState({ opinions: data })});
    };
 
    render() {
@@ -22,13 +22,16 @@ class ClientsOpinions extends Component {
          <UserPageExists onExists={this.fetchOpinions}>
             <div id="clients-opinions-page">
                {opinions.length !== 0 ?
-               <Fragment>
-                  <h2>Esto es lo que opinan de {username} sus clientes:</h2>
-                  <div id="clients-opinions">
-                     {opinions && opinions.map((opinion, index) => 
-                        <Opinion {...opinion} key={index} />)}
-                  </div>
-               </Fragment> : <CustomMessage msgimage={blankopinions} message="Este usuario no tiene opiniones de clientes"/>}
+                  <Fragment>
+                     <h2>Esto es lo que opinan de {username} sus clientes:</h2>
+                     <div id="clients-opinions">
+                        {opinions.map((opinion, index) => 
+                           <Opinion {...opinion} key={index}/>)}
+                     </div>
+                  </Fragment> :
+                  <CustomMessage
+                     msgimage={blankopinions}
+                     message="Este usuario no tiene opiniones de clientes"/>}
             </div>
          </UserPageExists>
       );
@@ -41,3 +44,5 @@ class ClientsOpinions extends Component {
 };
 
 export default ClientsOpinions;
+
+/* REVISADO Y NO HAY MÁS QUE RESUMIR: 2/02/2021 */

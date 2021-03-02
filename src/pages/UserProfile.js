@@ -9,9 +9,9 @@ class UserProfile extends Component {
 
    state = {
       user: {
-         username: this.props.match.params['username'],
          name: '', stats: {}, picture: '', opinions: '',
          products: [], following: '',
+         ...this.props.match.params
       },
       ...this.props.location.state
    };

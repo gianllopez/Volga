@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ratingBackground } from '../local-utils';
 import './styles/RatingSelector.css';
 
 class RatingSelector extends Component {
@@ -44,19 +45,9 @@ class RatingSelector extends Component {
    };
 
    componentDidUpdate() {
-      let rating = parseFloat(this.state.rating), bgColor = '';
-      if (rating < 5) {
-         bgColor = '#FF5722';
-      } if (rating >= 5 && rating <= 7.5) {
-         bgColor = '#ffcd29';
-      } if (rating > 8) {
-         bgColor = '#6dcc6d';
-      };
+      let rating = parseFloat(this.state.rating);
       document.getElementById('rating-view')
-         .style.backgroundColor = bgColor;
-      // if (rating < 0 || rating > 10) {
-      //    this.setState({ rating: rating < 0 ? 0 : rating > 10 && 10 })
-      // };
+         .style.backgroundColor = ratingBackground(rating);
    };
 
 };

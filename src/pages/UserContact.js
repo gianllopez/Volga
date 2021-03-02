@@ -7,8 +7,8 @@ import './styles/UserContact.css';
 class UserContact extends Component {
 
    state = {
-      username: this.props.match.params['username'],
-      contact: {}
+      contact: {},
+      ...this.props.match.params
    };
 
    fetchContactWays = () => {

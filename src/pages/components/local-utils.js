@@ -1,5 +1,15 @@
 import checkicon from '../../assets/UserProfilePicture/check-icon.svg';
 
+function ratingBackground(rating) {
+   let bgColor = '#FF5722';
+   if (rating >= 5 && rating <= 7.5) {
+      bgColor = '#ffcd29';
+   } else if (rating > 8) {
+      bgColor = '#6dcc6d';
+   };
+   return bgColor;
+};
+
 // The next function handles the ContactInput Component animations:
 
 const CN_COLORS = {
@@ -24,4 +34,4 @@ function successAnimationsTrigger(img, span) {
    }, 500);
 };
 
-export { CN_COLORS, successAnimationsTrigger };
+export { ratingBackground, CN_COLORS, successAnimationsTrigger };

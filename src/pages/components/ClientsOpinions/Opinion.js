@@ -1,18 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { ratingBackground } from '../local-utils';
 import './Opinion.css';
 
 function Opinion(props) {
-   let { from, date, comment } = props;
-   return (
+   let { from, date, comment, rating } = props;
+   return (      
       <div className="opinion">
-         <div className="opinion-title">
-            <p>{from}</p>
-            <span className="gray-content">●</span>
-            <p className="gray-content">{date.replace('-', '/')}</p>
+         <div>
+            <p>{from} ({date})</p>
+            <span style={{
+               backgroundColor: ratingBackground(rating)}}>{rating}</span>
          </div>
-         <p className="gray-content">{comment}</p>
+         <p>{comment}</p>
       </div>
    );
-};
+}
 
 export default Opinion;

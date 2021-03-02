@@ -7,19 +7,19 @@
    padding: 3px 0 3px 7px;
 }
 
-.opinion p {
-   overflow-wrap: break-word;
-}
-
-.opinion-title {
+.opinion > div {
    display: flex;
-   align-items: center;
+   justify-content: space-between;
 }
 
-.gray-content {
-   color: #4f4f4f;
-} 
-
-.opinion-title span {
-   margin: 0 7px;
+.opinion > div span {
+   padding: 0 10px;
+   border-radius: 3px;
 }
+
+.opinion > p {
+   overflow-wrap: break-word;
+   color: #818181;
+}
+
+/* REVISADO Y NO HAY MÁS QUE RESUMIR: 2/02/2021 */
