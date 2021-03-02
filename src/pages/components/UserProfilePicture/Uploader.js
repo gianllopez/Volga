@@ -1,20 +1,18 @@
 import React, { Component } from 'react';
-import { successAnimationsTrigger } from '../local-utils';
 import uploadicon from '../../../assets/UserProfilePicture/upload-icon.svg';
+import checkicon from '../../../assets/UserProfilePicture/check-icon.svg';
 import './Uploader.css';
 
 class Uploader extends Component {
 
-   state = {
-      logo: ''
-   }
+   state = { picture: '' };
 
-   uploaderTrigger = () => document.getElementById('logo').click();
+   uploaderTrigger = () => document.getElementById('picture').click();
 
    render() {
       return (
          <div id="uploader-wrapper">
-            <button id="loadlogo-btn" type="button" onClick={this.uploaderTrigger}>
+            <button id="loadpic-btn" type="button" onClick={this.uploaderTrigger}>
                <figure>
                   <img src={uploadicon} alt="loader-icon" />
                </figure>
@@ -22,9 +20,9 @@ class Uploader extends Component {
             </button>
             <input
                type="file"
-               name="logo"
-               id="logo"
-               onInput={this.props.uploadHandler}
+               id="picture"
+               name="picture"
+               onInput={this.props.onUpload}
                hidden
             />
          </div>
@@ -33,12 +31,21 @@ class Uploader extends Component {
 
    componentDidUpdate() {
       if (this.props.isloaded) {
-         const loadimg = document.querySelector('#loadlogo-btn figure img'),
-            loadspan = document.querySelector('#loadlogo-btn span');
-         successAnimationsTrigger(loadimg, loadspan);
+         let img = document.querySelector('#loadpic-btn figure img'),
+         span = document.querySelector('#loadpic-btn span');         
+         img.style.animation = 'img-animation 1s';
+         span.style.animation = 'span-animation 1s';
+         img.src = checkicon;
+         img.parentElement.style.backgroundColor = '#00E077';
+         setTimeout(() => {
+            span.innerText = 'Foto cargada';
+            span.classList.add('on-success');            
+         }, 500);         
       };
    };
 
 };
 
 export default Uploader;
+
+/* REVISADO Y NO HAY MÁS QUE RESUMIR: 02/02/2021 */

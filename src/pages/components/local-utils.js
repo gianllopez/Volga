@@ -21,17 +21,4 @@ const CN_COLORS = {
    linkedin: '#0A66C2'
 };
 
-// The next function handles the Uploader Component animations:
-
-function successAnimationsTrigger(img, span) {
-   img.style.animation = 'img-animation 1s';
-   span.style.animation = 'span-animation 1s';
-   setTimeout(() => {
-      img.src = checkicon;
-      img.parentElement.style.backgroundColor = '#00E077';
-      span.innerText = 'Foto cargada';
-      span.classList.add('on-success');
-   }, 500);
-};
-
-export { ratingBackground, CN_COLORS, successAnimationsTrigger };
+export { ratingBackground, CN_COLORS };

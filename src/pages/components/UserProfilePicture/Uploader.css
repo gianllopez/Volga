@@ -1,17 +1,13 @@
 #uploader-wrapper {
-   width: calc(100% - 22px);
-   max-width: 228px;
    border: 1px solid gray;
    border-radius: 5px;
    padding: 10px;
    margin: 10px auto;
 }
 
-#loadlogo-btn {
+#loadpic-btn {
    display: flex;
    align-items: center;
-   height: 45px;
-   max-width: unset;
    width: 100%;
    color: #656565;
    border: 2px solid grey;
@@ -21,7 +17,7 @@
    overflow: hidden;
 }
 
-#loadlogo-btn figure {
+#loadpic-btn figure {
    height: 38px;
    display: inherit;
    align-items: inherit;
@@ -29,14 +25,12 @@
    border-right: 2px solid grey;
 }
 
-#loadlogo-btn figure img {
+#loadpic-btn figure img {
    height: 95%;
-   transition: transform 1s;
 }
 
-#loadlogo-btn span {
+#loadpic-btn span {
    width: 100%;
-   transition: transform .6s;
 }
 
 .on-success {
@@ -65,3 +59,5 @@
       transform: initial;
    }
 }
+
+/* REVISADO Y NO HAY MÁS QUE RESUMIR: 02/02/2021 */

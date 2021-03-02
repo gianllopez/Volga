@@ -23,7 +23,8 @@ function ModalDisplayer({type, buttons, ...rest}) {
    let { icon, dangerMode } = rest,
    config = {
       icon: icon || 'error',
-      dangerMode: dangerMode || true
+      dangerMode: dangerMode || true,
+      buttons: buttons || [false, 'Entendido']
    };
    config.content =
       <div id="modal-displayer-content">

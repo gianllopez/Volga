@@ -1,6 +1,5 @@
 #userpp-form {
    text-align: center;
-   /* margin: 5vh 0; */
    position: absolute;
    top: 50%;
    left: 50%;
@@ -12,34 +11,13 @@
 }
 
 #userpp-form-header img {
-   width: 55vw;
-   max-width: 150px;
+   width: 150px;
 }
 
 #userpp-form-header h1 {
-   font-size: 6vw;
-   line-height: 1;
+   font-size: clamp(1em, 6vw, 1.5em);
    width: 200px;
    margin: 5px auto 10px auto;
 }
 
-/* #userpp-form .btnloader-wrapper {
-   color: initial;
-   background-color: #dddddd;
-} */
-
-@media screen and (min-width:425px) {
-   #userpp-form h1 {
-      font-size: 1.5em;
-   }
-}
-/* 
-@media screen and (min-height:600px) {
-   #userpp-form {
-      margin: 0;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -55%);
-   }
-} */
+/* REVISADO Y NO HAY MÁS QUE RESUMIR: 02/02/2021 */
