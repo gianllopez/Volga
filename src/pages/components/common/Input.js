@@ -24,7 +24,7 @@ class Input extends Component {
             <label htmlFor={name}>
                {label}: {!allowblank && <span>*</span>}
             </label>
-            {children ? children : (
+            {children ? children : 
                <input
                   type={type || 'text'}
                   id={name}
@@ -33,8 +33,7 @@ class Input extends Component {
                   {...this.props}
                   onChange={this.entryValidation}
                   errors={undefined}
-               />
-            )}
+               />}
             {this.state.error && (
                <span className={`${name}-error`}>
                   { errors[name]}

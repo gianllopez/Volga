@@ -1,6 +1,8 @@
 .input-wrapper {
     display: flex;
     flex-direction: column;
+    width: 90vw;
+    max-width: 350px;
 }
 
 .input-wrapper label {

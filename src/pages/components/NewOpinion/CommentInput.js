@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
 import { Input } from '..';
+import { changeValidator } from '../../../utils/tools';
 import './styles/CommentInput.css';
 
 class CommentInput extends Component {
 
-   state = { length: 0 }
+   state = { length: 0 };
    
-   entryValidation = event => {
-      let { value } = event.target;
-      if (value.length > 125) {
-         event.target.value = value.substring(0, 125);
-      };
-      this.setState({ length: event.target.value.length })
-      this.props.onChange(event);
+   entryValidation = event => {      
+      let { length } = changeValidator(event, 125, this.props.onChange);
+      this.setState({ length });
    };
 
    render() {
@@ -20,9 +17,10 @@ class CommentInput extends Component {
          <Input {...this.props} >
             <p>{this.state.length}/125</p>
             <textarea
-               name={this.props.name}
                id="comment"
+               maxLength="125"
                placeholder="..."
+               name={this.props.name}
                onChange={this.entryValidation}
             />
          </Input>

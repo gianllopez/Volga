@@ -1,7 +1,11 @@
-#comment {
+.comment {
+   margin-bottom: 7.5px;
+   position: relative;
+}
+
+.comment textarea {
    padding: 7.5px;
    font-size: 1.1em;
-   width: calc(100% - 19px);
    height: 85px;
    resize: none;
    border: 2px solid black;
@@ -10,6 +14,13 @@
    z-index: 1;
 }
 
-#comment::placeholder {
+.comment textarea::placeholder {
    text-align: center;
 }
+
+.comment p {
+   position: absolute;
+   right: 5px;
+}
+
+/* REVISADO Y NO HAY MÁS QUE RESUMIR: 02/02/2021 */

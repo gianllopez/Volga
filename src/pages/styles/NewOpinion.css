@@ -1,50 +1,22 @@
 #opinion-form {
-   /* padding-top: calc(65px + 15px); */
+   padding-top: 75px;
    display: flex;
    flex-direction: column;
    align-items: center;
-   padding-bottom: 25px;
 }
 
 #op-header {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
    width: 80vw;
    max-width: 350px;
+   text-align: center;
 }
 
-#op-header figure {
+#op-header  img {
    width: 60%;
 }
 
-#op-header figure img {
-   width: 100%;
-}
-
 #opinion-entries {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-}
-
-#opinion-form .input-wrapper {
-   width: 85vw;
-   max-width: 350px;
-   margin-bottom: 7.5px;
-}
-
-#opinion-form .input-wrapper input[name="client"] {
-   text-transform: capitalize;
-}
-
-#rating-selector {
-   width: calc(85vw - 24px);
-   border: 2px solid;
-   max-width: 326px;
-   padding: 10px;
-   margin-bottom: 5px;
-   border-radius: 3px;
+   display: grid;
 }
 
 #opinion-form h3 {
@@ -52,17 +24,8 @@
    text-align: center;
 }
 
-#opinion-form .comment {
-   position: relative;
-}
-
-.input-wrapper.comment p {
-   position: absolute;
-   right: 5px;
-}
-
 #opinion-form .btnloader-wrapper {
-   margin-top: 5px;
+   margin: auto;
 }
 
 @media (min-width: 768px) {
@@ -72,5 +35,6 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      padding-top: 0;
    }
 }

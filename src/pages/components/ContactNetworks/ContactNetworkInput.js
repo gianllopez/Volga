@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { CNcontext } from '../../ContactNetworks';
-import { capitalize } from '../../../utils/tools';
+import { capitalize, changeValidator } from '../../../utils/tools';
 import { CN_COLORS } from '../local-utils';
 import { cn_icons } from '../../../assets';
 import checkIcon from '../../../assets/ContactNetworks/check-icon.svg';
@@ -49,11 +49,11 @@ class ContactNetworkInput extends Component {
    };
 
    regexValidator = event => {
-      let { regex } = this.props, { value } = event.target;
+      let { regex, maxLength } = this.props, { value } = event.target;
       if (regex && !regex.test(value)) {
          event.target.value = value.substring(0, value.length - 1);
       };
-      this.context.changeHandler(event);
+      changeValidator(event, maxLength, this.context.changeHandler);
    };
 
    render() {

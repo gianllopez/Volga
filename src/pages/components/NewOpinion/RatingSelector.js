@@ -6,21 +6,21 @@ class RatingSelector extends Component {
 
    state = { rating: 10 };
 
+   ratingRange = () => {
+      let { rating } = this.state;
+      this.setState({
+         rating: rating < 0 ? 0 :
+                 rating > 10 ? 10 : rating });
+   };
+
    inputChanger = ({ target }) => {
       let { action } = target.dataset, { rating } = this.state;
-      const onChange = () => this.props.onChange({ target: { name: 'rating', value: this.state.rating } });
-      if (rating >= 0 && rating <= 10) {
+      if (0 <= rating <= 10) {
          this.setState({
             rating: action === 'increment' ?
-               rating + 0.5 :
-               rating - 0.5
-         }, () => {
-            let { rating } = this.state;
-            if (rating < 0 || rating > 10) {
-               this.setState({ rating: rating < 0 ? 0 : rating > 10 && 10 }, onChange);
-            };
-            onChange();
-         });
+            rating + 0.5 : rating - 0.5 }, this.ratingRange);
+         this.props.onChange({ target: {
+            name: 'rating', value: this.state.rating }});
       };
    };
 
@@ -53,3 +53,5 @@ class RatingSelector extends Component {
 };
 
 export default RatingSelector;
+
+/* REVISADO Y NO HAY MÁS QUE RESUMIR: 02/02/2021 */
