@@ -60,10 +60,8 @@ class Login extends Component {
          <form id="login-form" onSubmit={this.submitHandler}>
             <div id="login-header">
                <img src={loginhero} alt="login-hero" />
-               <div id="header-text">
-                  <h1>Inicia sesión</h1>
-                  <p>Mantente al día con tus productos</p>
-               </div>
+               <h1>Inicia sesión</h1>
+               <p>Mantente al día con tus productos</p>
             </div>
             <div id="login-entries">
                <Input
