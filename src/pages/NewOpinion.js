@@ -55,7 +55,7 @@ class NewOpinion extends Component {
 
    render() {
       return (
-         <UserPageExists>
+         <UserPageExists onlyclients>
             <form id="opinion-form" onSubmit={this.submitHandler}>
                <div id="op-header">
                   <figure>

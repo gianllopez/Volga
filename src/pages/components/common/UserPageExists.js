@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 import { PageLoader } from '..';
 import { NotFound } from '../..';
 import api from '../../../utils/api';
@@ -9,30 +9,28 @@ class UserPageExists extends Component {
    state = { found: false, loading: true };
 
    render() {
+      let { loading, found, itsme } = this.state,
+      { onlyclients, children } = this.props;
       return (
-         this.state.loading ? <PageLoader/> :
-            this.state.found ?
-               this.props.children :
-               <NotFound />
+         onlyclients && itsme ? <Redirect to="/" /> :
+            loading ? <PageLoader/> :
+               found ? children : <NotFound />
       );
    };
 
    componentDidMount() {
       let { onExists, match, location } = this.props,
-      { username } = match.params,
-      { exists } = location.state || { exists: false };
+      { exists } = location.state || '';
       if (!exists) {
-         api.post('/validation/user-exists', { username })
+         api.post('/validation/user-exists', { ...match.params })
             .then(() => this.setState({ found: true }, onExists))
             .finally(() => this.setState({ loading: false }));
       } else {
          this.setState({ found: true, loading: false }, onExists);
       };
-   };
-
-   componentDidUpdate(prevProps) {;
-      if (prevProps.userParam !== this.props.userParam && !this.state.found) {
-         this.componentDidMount();
+      let { username } = JSON.parse(localStorage.getItem('uiprev'));
+      if (username === match.params.username) {
+         this.setState({ itsme: true });
       };
    };
 
