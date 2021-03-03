@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Input } from '..';
-import { changeValidator } from '../../../utils/tools';
+import { changeValidator } from '../../../utils/validators';
 import './styles/CommentInput.css';
 
 class CommentInput extends Component {

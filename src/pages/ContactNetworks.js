@@ -1,11 +1,11 @@
 import React, { Component, createContext } from 'react';
+import swal from '@sweetalert/with-react';
 import { ContactNetworkInput, ButtonLoader,
          UserPageExists, ModalDisplayer } from './components';
 import api from '../utils/api';
 import { noBlankValidator } from '../utils/validators'
-import './styles/ContactNetworks.css';
-import swal from '@sweetalert/with-react';
 import { DEMO_IMAGES } from '../assets';
+import './styles/ContactNetworks.css';
 
 export const CNcontext = createContext({});
 

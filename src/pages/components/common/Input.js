@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { changeValidator } from '../../../utils/tools';
+import { changeValidator } from '../../../utils/validators';
 import { logupContext } from '../../Logup';
 import './styles/Input.css';
 
@@ -24,7 +24,7 @@ class Input extends Component {
 
    render() {
       let { name, type, label, allowblank,
-            errors, children, maxLength } = this.props;
+            errors, children, maxLength, minLength } = this.props;
       return (
          <div className={`input-wrapper ${name}`}>
             <label htmlFor={name}>
@@ -38,6 +38,7 @@ class Input extends Component {
                   autoComplete="off"
                   type={type || 'text'}
                   onChange={this.onChangeExtension}
+                  minLength={minLength}
                />}
             {this.state.error && 
                <span className={`${name}-error`}>

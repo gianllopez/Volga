@@ -77,29 +77,33 @@ class Logup extends Component {
                      label="Nombre completo"
                      name="name"
                      maxLength="65"
+                     minLength="15"
                      regex={/(?!.*\s{2})^[a-zA-ZÀ-úñÑ\s]+$/}
                   />
                   <LogupInput
                      label="Usuario(a)"
                      name="username"
                      maxLength="25"
+                     minLength="8"
                      regex={/^[a-z0-9_]*$/}
                   />
                   <LogupInput
                      label="País"
                      name="country"
                      maxLength="30"
+                     minLength="5"
                      regex={/(?!.*\s{2})^[a-zA-Z ]*$/}
                   />
                   <LogupInput
                      label="Ciudad"
                      name="city"
                      maxLength="50"
+                     minLength="5"
                      regex={/(?!.*\s{2})^[a-zA-Z ]*$/}
                   />
                   <LogupInput
                      label="Género"
-                     name="gender"
+                     name="gender"                  
                   />
                   <LogupInput
                      label="Correo"
@@ -112,12 +116,14 @@ class Logup extends Component {
                      name="password"
                      type="password"
                      maxLength="30"
+                     minLength="8"
                   />
                   <LogupInput
                      label="Confirmar contraseña"
                      name="confirmpwd"
                      type="password"
                      maxLength="30"
+                     minLength="8"
                   />
                </logupContext.Provider>
             </div>

@@ -1,4 +1,4 @@
-export function noBlankValidator(data, allowfields = []) {
+function noBlankValidator(data, allowfields = []) {
    let isValid = true;
    const formData = Object.entries(data);
    let errors = {};
@@ -10,3 +10,18 @@ export function noBlankValidator(data, allowfields = []) {
    };
    return { isValid, errors };
 };
+
+function changeValidator(event, length=0, changeHandler) {
+   let isMobile = matchMedia('(max-width: 768px)').matches,
+   { target } = event;
+   if (isMobile) {
+      let { value } = target;
+      if (value.length > length) {
+         target.value = value.substring(0, length)
+      };
+   };
+   changeHandler && changeHandler(event);
+   return target.value;
+};
+
+export { noBlankValidator, changeValidator };

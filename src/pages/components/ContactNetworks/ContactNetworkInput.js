@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { CNcontext } from '../../ContactNetworks';
-import { capitalize, changeValidator } from '../../../utils/tools';
+import { changeValidator } from '../../../utils/validators';
+import { capitalize } from '../../../utils/tools';
 import { CN_COLORS } from '../local-utils';
 import { cn_icons } from '../../../assets';
 import checkIcon from '../../../assets/ContactNetworks/check-icon.svg';
