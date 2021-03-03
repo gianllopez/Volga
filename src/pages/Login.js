@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Input, ButtonLoader, ModalDisplayer } from './components/';
 import { noBlankValidator } from '../utils/validators';
 import api from '../utils/api';
-import { Input, ButtonLoader } from './components/';
 import loginhero from '../assets/Login/login-hero.svg';
 import './styles/Login.css';
 
@@ -38,17 +38,13 @@ class Login extends Component {
                window.location = '/';
             })
             .catch(({ response, message }) => {
-               this.setState({ loading: false });
-               if (message === 'Network Error') {
-                  // CustomModal((
-                  //    <Fragment>
-                  //       <p>No estás conectado a internet</p>
-                  //       <span>Reestablece la conexión para continuar</span>
-                  //    </Fragment>
-                  // ), [false, 'Entendido']);
-               } else {
-                  this.setState({ loading: false, errors: response.data });
-               };
+               this.setState({ loading: false }, () => {
+                  if (message === 'Network Error') {
+                     ModalDisplayer({ type: 'NETWORK_ERROR' });
+                  } else {
+                     this.setState({ loading: false, errors: response.data });
+                  };
+               });
             });
       } else {
          this.setState({ errors });
@@ -60,8 +56,10 @@ class Login extends Component {
          <form id="login-form" onSubmit={this.submitHandler}>
             <div id="login-header">
                <img src={loginhero} alt="login-hero" />
-               <h1>Inicia sesión</h1>
-               <p>Mantente al día con tus productos</p>
+               <div id="header-text">
+                  <h1>Inicia sesión</h1>
+                  <p>Mantente al día con tus productos</p>
+               </div>
             </div>
             <div id="login-entries">
                <Input
@@ -69,7 +67,7 @@ class Login extends Component {
                   name="username"
                   onChange={this.changeHandler}
                   errors={this.state.errors}
-                  regex={/^[a-z0-9]*$/}
+                  regex={/^[a-z0-9_]*$/}
                />
                <Input
                   label="Contraseña"
@@ -88,8 +86,10 @@ class Login extends Component {
       );
    };
    componentDidMount() {
-      document.title = 'Volga - Inicio de sesión';
+      document.title = 'Volga - Iniciar sesión';
    };
 };
 
 export default Login;
+
+/* REVISADO Y NO HAY MÁS QUE RESUMIR: 02/02/2021 */
