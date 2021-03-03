@@ -1,8 +1,8 @@
 import React, { Component, createContext, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import api from '../utils/api';
-import { logUpFormValidator } from '../utils/validators';
 import { LogupInput, ButtonLoader } from './components/';
+import { noBlankValidator } from '../utils/validators';
+import api from '../utils/api';
 import loguphero from '../assets/Logup/logup-hero.svg';
 import './styles/Logup.css';
 
@@ -24,51 +24,46 @@ class Logup extends Component {
       this.setState({
          data: {
             ...this.state.data,
-            [target.name]: target.value
+            [target.name]: target.value.trim()
          }
       });
    };
 
+   logupRequest = data => {
+      api.post('/logup', data)
+         .then(({ data }) => {
+            localStorage.setItem('uiprev', JSON.stringify(data.uiprev));
+            localStorage.setItem('user-token', data.token);
+            this.props.history.push({
+               pathname: `/${data.username}/contact-networks`,
+               state: { exists: true }
+            });
+         })
+         .catch(({ response }) =>
+            this.setState({ errors: response.data }));
+   };
+
    submitHandler = event => {
       event.preventDefault();
-      let { data } = this.state;
-      logUpFormValidator(data)
-         .then(() => {
-            this.setState({ loading: true, errors: {} });
-            api.post('/logup', data)
-               .then(({ data }) => {
-                  localStorage.setItem('uiprev', JSON.stringify(data.uiprev));
-                  localStorage.setItem('user-token', data.token);
-                  this.props.history.push({
-                     pathname: `/${data.uiprev.username}/contact-networks`,
-                     state: { exists: true }
-                  });
-               })
-               .catch(errors => {
-                  this.setState({ loading: false });
-                  let { response, message } = errors;
-                  if (message === 'Network Error') {
-                     const content = (
-                        <Fragment>
-                           <p>Error en el registro</p>
-                           <span>
-                              Aségurate de estar conectado a internet.
-                              </span>
-                        </Fragment>
-                     );
-                     // CustomModal(content, [false, 'Entendido'])
-                  } else {
-                     this.setState({ errors: response.data })
-                  };
-               });
-         }).catch(errors => this.setState({ errors }));
+      let { data } = this.state,
+      { isValid, errors } = noBlankValidator(data),
+      { password, confirmpwd } = data,
+      validpwd = password === confirmpwd;
+      if (isValid && validpwd) {
+         this.logupRequest(data);
+      } else {
+         if (!validpwd) {
+            errors.password =
+            errors.confirmpwd = 'Las contraseñas no coinciden.'
+         };
+         this.setState({ errors });
+      };
    };
 
    render() {
-      const contextContent = {
-         changeHandler: this.changeHandler,
-         errors: this.state.errors
-      };
+      let ctxContent = {
+         onChange: this.changeHandler,
+         errors: this.state.errors };
       return (
          <form id="logup-form" onSubmit={this.submitHandler}>
             <div id="logup-header">
@@ -77,8 +72,8 @@ class Logup extends Component {
                <p>Vende tus productos con nosotros</p>
             </div>
             <div id="logup-entries">
-               <logupContext.Provider value={contextContent}>
-                  <LogupInput
+               <logupContext.Provider value={ctxContent}>
+                  <LogupInput 
                      label="Nombre completo"
                      name="name"
                      maxLength="65"
@@ -100,6 +95,7 @@ class Logup extends Component {
                      label="Ciudad"
                      name="city"
                      maxLength="50"
+                     regex={/(?!.*\s{2})^[a-zA-Z ]*$/}
                   />
                   <LogupInput
                      label="Género"

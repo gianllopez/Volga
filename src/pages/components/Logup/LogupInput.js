@@ -10,27 +10,25 @@ class LogupInput extends Component {
    GENDERS = ['Masculino', 'Femenino', 'No definido']
 
    render() {
-      let default_props = {
-         onChange: this.context.changeHandler,
-         errors: this.context.errors,
-         ...this.props
-      };
+      let ctxprops = {...this.context, ...this.props};
       return (
          this.props.name !== 'gender' ?
-            <Input {...default_props} /> :
-            <Input {...default_props}>
+            <Input {...ctxprops} /> :
+            <Input {...ctxprops}>
                <select
                   id="gender-select"
-                  name={default_props.name}
-                  onChange={default_props.onChange}>
-                  {this.GENDERS.map((gender, i) => (
-                     <option value={gender} key={i}>{gender}</option>
-                  ))}
+                  name={ctxprops.name}
+                  onChange={ctxprops.onChange}>
+                  {this.GENDERS.map((gender, i) => 
+                     <option value={gender} key={i}>
+                        {gender}
+                     </option>)}
                </select>
             </Input>
       );
    };
-
 };
 
 export default LogupInput;
+
+// terminado

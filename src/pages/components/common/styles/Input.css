@@ -10,11 +10,6 @@
     font-weight: bold;
 }
 
-.input-wrapper input,
-.input-wrapper span {
-    position: relative;
-}
-
 .input-wrapper input {
     height: 40px;
     outline: none;
@@ -26,17 +21,9 @@
 }
 
 .input-wrapper span {
+    transform: translateY(-45px);
     color: red;
     padding: 1.5px 0 0 3px;
+    transition: .4s transform;
 }
-
-.input-wrapper > span {
-    z-index: 0;
-    transform: translateY(-45px);
-    transition: .7s transform;
-}
-
-.input-wrapper input[type="date"] {
-    background-color: white;
-    width: calc(100% - 9px);
-}
+/*  Teminado */

@@ -11,7 +11,7 @@ function changeValidator(event, length=0, changeHandler) {
          target.value = value.substring(0, length)
       };
    };
-   changeHandler(event);
+   changeHandler && changeHandler(event);
    return target.value;
 };
 

@@ -10,21 +10,3 @@ export function noBlankValidator(data, allowfields = []) {
    };
    return { isValid, errors };
 };
-
-export const logUpFormValidator = data => (
-   new Promise((resolve, reject) => {
-      let { isValid, errors } = noBlankValidator(data),
-         { password, confirmpwd } = data;
-      if (!isValid) {
-         reject(errors);
-      };
-      if (password !== confirmpwd) {
-         let msg = 'Las contraseñas no coinciden.';
-         errors.password = msg;
-         errors.confirmpwd = msg;
-         reject(errors);
-      } else {
-         resolve(isValid);
-      };
-   })
-);

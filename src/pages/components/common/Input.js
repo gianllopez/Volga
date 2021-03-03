@@ -1,24 +1,30 @@
 import React, { Component } from 'react';
+import { changeValidator } from '../../../utils/tools';
+import { logupContext } from '../../Logup';
 import './styles/Input.css';
 
 class Input extends Component {
 
    state = { error: false };
 
-   entryValidation = event => {
-      let { maxLength, regex } = this.props, { value } = event.target;
-      if (value.length > maxLength) {
-         event.target.value = value.substring(0, maxLength);
-      };
+   onChangeExtension = event => {
+      let { maxLength, regex, onChange } = this.props,
+      value = changeValidator(event, maxLength);
       if (regex && !regex.test(value)) {
          event.target.value = value.substring(0, value.length - 1);
       };
-      this.props.onChange(event);
+      onChange(event);
+   };
+
+   spanErrorAnimation = () => {
+      setTimeout(() =>
+         document.querySelector(`span.${this.props.name}-error`)
+            .style.transform = 'initial', 1);
    };
 
    render() {
-      const { name, type, label, allowblank, errors, children } = this.props;
-      this.name = name; this.errors = errors || {};
+      let { name, type, label, allowblank,
+            errors, children, maxLength } = this.props;
       return (
          <div className={`input-wrapper ${name}`}>
             <label htmlFor={name}>
@@ -26,36 +32,30 @@ class Input extends Component {
             </label>
             {children ? children : 
                <input
-                  type={type || 'text'}
                   id={name}
-                  autoComplete="off"
+                  name={name}
                   spellCheck="false"
-                  {...this.props}
-                  onChange={this.entryValidation}
-                  errors={undefined}
+                  autoComplete="off"
+                  type={type || 'text'}
+                  onChange={this.onChangeExtension}
                />}
-            {this.state.error && (
+            {this.state.error && 
                <span className={`${name}-error`}>
-                  { errors[name]}
-               </span>
-            )}
+                  {errors[name]}
+               </span>}
          </div>
       );
    };
 
-   componentDidUpdate() {
-      let gotError = this.errors[this.name] || false;
-      if (gotError && !this.state.error) {
-         this.setState({ error: true });
-         setTimeout(() => {
-            document.querySelector(`.${this.name}-error`)
-               .style.transform = 'initial';
-         }, 1);
-      } else if (!gotError && this.state.error) {
-         this.setState({ error: false });
+   componentDidUpdate(prevProps) {
+      let { errors, name } = this.props,
+      error = errors[name] ? true : false;
+      if (error && !this.state.error) {
+         this.setState({ error }, this.spanErrorAnimation);
       };
    };
 
 };
 
 export default Input;
+// terminado

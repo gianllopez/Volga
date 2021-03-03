@@ -20,15 +20,6 @@
    font-size: 1.5em;
 }
 
-#logup-header p {
-   font-size: 1.1em;
-}
-
-/* #logup-entries {
-   max-width: 350px;
-   width: 90vw;
-} */
-
 #logup-entries .input-wrapper {
    margin: 5px 0;
 }
@@ -39,7 +30,8 @@
 }
 
 .input-wrapper input[name="name"],
-.input-wrapper input[name="country"] {
+.input-wrapper input[name="country"],
+.input-wrapper input[name="city"] {
    text-transform: capitalize;
 }
 
@@ -53,9 +45,8 @@
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      margin: 0;
-      padding: 0 !important;
+      padding: 0;
    }
 }
 
-/* ... */
+/* NO HAY MAS QUE RESUMIR */
