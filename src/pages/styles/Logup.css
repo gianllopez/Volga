@@ -1,5 +1,5 @@
 #logup-form {
-   /* padding-top: 90px; */
+   padding-top: 75px;
    margin-bottom: 5vh;
    display: flex;
    flex-direction: column;
@@ -24,13 +24,13 @@
    font-size: 1.1em;
 }
 
-#logup-entries {
+/* #logup-entries {
    max-width: 350px;
    width: 90vw;
-}
+} */
 
 #logup-entries .input-wrapper {
-   margin: 5px auto;
+   margin: 5px 0;
 }
 
 #logup-form > p {
@@ -38,13 +38,8 @@
    font-size: 1.1em;
 }
 
-/* @media screen and (min-width: 768px) {
-   #logup-form {
-      padding-top: 125px;
-   }
-} */
-
-.input-wrapper.name input[name="name"] {
+.input-wrapper input[name="name"],
+.input-wrapper input[name="country"] {
    text-transform: capitalize;
 }
 
@@ -62,3 +57,5 @@
       padding: 0 !important;
    }
 }
+
+/* ... */

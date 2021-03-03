@@ -70,76 +70,72 @@ class Logup extends Component {
          errors: this.state.errors
       };
       return (
-         // !this.state.redirect ?
-            <form id="logup-form" onSubmit={this.submitHandler}>
-               <div id="logup-header">
-                  <img src={loguphero} alt="logup-hero" />
-                  <h1>Crea tu cuenta de Volga</h1>
-                  <p>Vende tus productos con nosotros</p>
-               </div>
-               <div id="logup-entries">
-                  <logupContext.Provider value={contextContent}>
-                     <LogupInput
-                        label="Nombre completo"
-                        name="name"
-                        maxLength="65"
-                        regex={/(?!.*\s{2})^[a-zA-ZÀ-úñÑ\s]+$/}
-                     />
-                     <LogupInput
-                        label="Usuario(a)"
-                        name="username"
-                        maxLength="25"
-                        regex={/^[a-z0-9_]*$/}
-                     />
-                     <LogupInput
-                        label="País"
-                        name="country"
-                        maxLength="30"
-                     />
-                     <LogupInput
-                        label="Ciudad"
-                        name="city"
-                        maxLength="50"
-                     />
-                     <LogupInput
-                        label="Género"
-                        name="gender"
-                     />
-                     <LogupInput
-                        label="Correo"
-                        name="email"
-                        type="email"
-                        maxLength="75"
-                     />
-                     <LogupInput
-                        label="Contraseña"
-                        name="password"
-                        type="password"
-                        maxLength="30"
-                     />
-                     <LogupInput
-                        label="Confirmar contraseña"
-                        name="confirmpwd"
-                        type="password"
-                        maxLength="30"
-                     />
-                  </logupContext.Provider>
-               </div>
-               <ButtonLoader isloading={this.state.loading} />
-               <p>
-                  ¿Ya tienes cuenta?<br />
-                  <Link to="/login">Ingresa</Link>
-               </p>
-            </form> 
-            // : <Redirect to={{
-            //    pathname: `/${this.state.data.username}/contact-networks`,
-            //    state: { exists: true }
-            // }} />
+         <form id="logup-form" onSubmit={this.submitHandler}>
+            <div id="logup-header">
+               <img src={loguphero} alt="logup-hero" />
+               <h1>Crea tu cuenta de Volga</h1>
+               <p>Vende tus productos con nosotros</p>
+            </div>
+            <div id="logup-entries">
+               <logupContext.Provider value={contextContent}>
+                  <LogupInput
+                     label="Nombre completo"
+                     name="name"
+                     maxLength="65"
+                     regex={/(?!.*\s{2})^[a-zA-ZÀ-úñÑ\s]+$/}
+                  />
+                  <LogupInput
+                     label="Usuario(a)"
+                     name="username"
+                     maxLength="25"
+                     regex={/^[a-z0-9_]*$/}
+                  />
+                  <LogupInput
+                     label="País"
+                     name="country"
+                     maxLength="30"
+                     regex={/(?!.*\s{2})^[a-zA-Z ]*$/}
+                  />
+                  <LogupInput
+                     label="Ciudad"
+                     name="city"
+                     maxLength="50"
+                  />
+                  <LogupInput
+                     label="Género"
+                     name="gender"
+                  />
+                  <LogupInput
+                     label="Correo"
+                     name="email"
+                     type="email"
+                     maxLength="75"
+                  />
+                  <LogupInput
+                     label="Contraseña"
+                     name="password"
+                     type="password"
+                     maxLength="30"
+                  />
+                  <LogupInput
+                     label="Confirmar contraseña"
+                     name="confirmpwd"
+                     type="password"
+                     maxLength="30"
+                  />
+               </logupContext.Provider>
+            </div>
+            <ButtonLoader isloading={this.state.loading} />
+            <p>
+               ¿Ya tienes cuenta?<br />
+               <Link to="/login">Ingresa</Link>
+            </p>
+         </form>
       );
    };
 
    componentDidMount() {
-      document.title = 'Volga - Registro';
+      document.title = 'Volga - Registrar';
    };
 
 };
