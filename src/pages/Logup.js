@@ -84,7 +84,7 @@ class Logup extends Component {
                      label="Usuario(a)"
                      name="username"
                      maxLength="25"
-                     minLength="8"
+                     minLength="4"
                      regex={/^[a-z0-9_]*$/}
                   />
                   <LogupInput

@@ -64,6 +64,8 @@ class Login extends Component {
             <div id="login-entries">
                <Input
                   label="Nombre de usuario"
+                  minLength="4"
+                  maxLength="25"
                   name="username"
                   onChange={this.changeHandler}
                   errors={this.state.errors}
@@ -71,6 +73,8 @@ class Login extends Component {
                />
                <Input
                   label="Contraseña"
+                  minLength="8"
+                  maxLength="30"
                   name="password"
                   type="password"
                   onChange={this.changeHandler}

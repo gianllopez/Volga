@@ -9,7 +9,7 @@ class Input extends Component {
 
    onChangeExtension = event => {
       let { maxLength, regex, onChange } = this.props,
-      value = changeValidator(event, maxLength);
+      value = changeValidator(event, maxLength, onChange);
       if (regex && !regex.test(value)) {
          event.target.value = value.substring(0, value.length - 1);
       };

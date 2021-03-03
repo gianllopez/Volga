@@ -20,7 +20,8 @@ function changeValidator(event, length=0, changeHandler) {
          target.value = value.substring(0, length)
       };
    };
-   changeHandler && changeHandler(event);
+   if (changeHandler) {
+      changeHandler(event)};
    return target.value;
 };
 
