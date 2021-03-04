@@ -4,9 +4,7 @@ import closeicon from '../../../assets/PostProduct/close-img.svg';
 import './styles/LoadedImage.css';
 
 function LoadedImage(props) {
-
    let { image, removeHandler } = props, { name } = image;
-
    return (
       <div className="loaded-image">
          <button type="button" onClick={() => showImage(image, name)}>

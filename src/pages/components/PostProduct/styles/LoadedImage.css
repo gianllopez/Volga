@@ -2,7 +2,7 @@
    background-color: white;
    padding: 10px;
    border-radius: 5px;
-   text-align: center;
+   /* text-align: center; */
    width: calc(100% - 25px);
    margin: 5px 0;
    position: relative;
@@ -26,10 +26,12 @@
    margin: -5px;
 }
 
-.img-on-modal {
+img.img-on-modal {
    width: 100%;
    border-radius: 3px;
    max-width: 425px;
    max-height: 425px;
    object-fit: contain;
 }
+
+/* Terminado */

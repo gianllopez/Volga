@@ -37,26 +37,21 @@ class ImagesUploader extends Component {
                Cargar imágenes
             </button>
             <div>
-               {this.loaded.length >= 1 ? (
-                  this.loaded.map((loadedimg, index) => (
+               {this.loaded.length >= 1 ?
+                  this.loaded.map((loadedimg, index) => 
                      <LoadedImage
                         image={loadedimg[1]}
                         removeHandler={() => this.props.removeHandler(loadedimg[0])}
-                        key={index}
-                     />
-                  ))
-               ) : (
+                        key={index} /> ):
                      <p>
                         No has cargado ninguna imagen <br />
                         (Puedes subir hasta 4 por producto)
-                     </p>
-                  )}
+                     </p>}
             </div>
-            {this.state.error && (
+            {this.state.error &&
                <span id="images-blank-error">
                   Tienes que subir al menos una imagen.
-               </span>
-            )}
+               </span>}
             <input
                type="file"
                id="loader"
@@ -72,12 +67,9 @@ class ImagesUploader extends Component {
    componentDidUpdate() {
       let { errors, name } = this.props;
       if (errors[name] && !this.state.error) {
-         this.setState({ error: true }, () => {
-            setTimeout(() => {
-               document.querySelector('span#images-blank-error')
-                  .style.transform = 'initial';
-            }, 1);
-         });
+         this.setState({ error: true }, () =>
+            document.querySelector('span#images-blank-error')
+               .style.transform = 'initial');
       } else if (!errors[name] && this.state.error) {
          this.setState({ error: false });
       };

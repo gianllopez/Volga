@@ -8,7 +8,9 @@ class PriceInput extends Component {
       return (
          <div id="price-input">
             <Input {...this.props} />
-            <select name="pricetype" id="price-type" defaultValue="COP" onChange={this.props.onChange}>
+            <select
+               name="pricetype" id="price-type"
+               defaultValue="COP" onChange={this.props.onChange}>
                <option value="COP">COP</option>
                <option value="USD">USD</option>
                <option value="€">EUR</option>
@@ -19,8 +21,8 @@ class PriceInput extends Component {
 
    componentDidUpdate() {
       if (this.props.errors['price']) {
-         document.querySelector('select#price-type')
-            .style.marginBottom = '19px';
+         document.querySelector('#price-input')
+            .style.alignItems = 'center';
       };
    };
 
@@ -28,3 +30,4 @@ class PriceInput extends Component {
 };
 
 export default PriceInput;
+// Terminado

@@ -1,26 +1,16 @@
 import React from 'react';
-import { Input } from '..';
+import { Input } from '../';
+import { changeValidator } from '../../../utils/validators';
 import './styles/DescriptionInput.css';
 
 function DescriptionInput(props) {
-   let { currentLength, maxLength, ...rest } = props;
-
-   const maxLengthHandler = ({ target }) => {
-      let { value } = target;
-      if (value.length >= maxLength) {
-         target.value = value.substring(0, maxLength);
-      };
-      props.onChange({target});
-   };
-
+   let { currentLength, maxLength, onChange, ...rest } = props;
    return (
       <Input {...rest}>
          <textarea
             id="ppp-description"
             name="description"
-            errors={undefined}
-            onChange={maxLengthHandler}
-            // {...rest}
+            onChange={(e) => changeValidator(e, 100, onChange)}
          />
          <p id="ml-indicator">
             {currentLength}/{maxLength}
@@ -30,3 +20,5 @@ function DescriptionInput(props) {
 };
 
 export default DescriptionInput;
+
+// Treminado

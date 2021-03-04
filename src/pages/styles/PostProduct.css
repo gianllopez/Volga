@@ -1,61 +1,33 @@
 #post-product-page {
-   /* padding: 75px 0; */
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-}
-
-#ppp-header, #ppp-images-uploader {
+   padding-top: 75px;
    display: flex;
    flex-direction: column;
    align-items: center;
 }
 
 #ppp-header {
-   max-width: 350px;
+   text-align: center;
 }
 
-#ppp-header figure {
+#ppp-header img {
    width: 60%;
 }
 
-#ppp-header figure img {
-   width: 100%;
-}
-
 #ppp-header p {
-   text-align: center;
-   max-width: 250px;
-}
-
-#ppp-images-uploader div {
-   display: flex;
-   justify-content: center;
-   flex-wrap: wrap;
-   max-width: 270px;
+   width: 250px;
+   margin: auto;
 }
 
 #ppp-product-info {
-   width: 90vw;
-   max-width: 350px;
-   display: inherit;
-   flex-direction: inherit;
+   display: grid;
 }
 
-#ppp-product-info > .input-wrapper,
-#ppp-product-info #price-input {
+#ppp-product-info > .input-wrapper, #price-input {
    margin-bottom: 5px;
 }
 
 #post-product-page .btnloader-wrapper {
-   margin: 7px auto;
-}
-
-#imgs-treat-modal {
-   font-size: 1.3em;
-   max-width: 395px;
-   margin: auto;
+   margin: 5px auto;
 }
 
 @media (min-width:768px) {
@@ -65,12 +37,12 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-   }
-   #images-uploader {
-      grid-column: 1;
+      padding-top: 0;
    }
    #ppp-product-info {
       grid-column: 2;
       grid-row: 1/3;
    }
 }
+
+/* No revises, it's ok */

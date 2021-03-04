@@ -10,11 +10,9 @@ class PostProduct extends Component {
 
    state = {
       data: {
-         images: null,
-         product: '',
+         images: null, product: '',
          price: null, pricetype: 'COP',
-         description: '',
-         tags: []
+         description: '', tags: []
       },
       loading: false,
       errors: {}
@@ -39,7 +37,7 @@ class PostProduct extends Component {
             ...this.state.data,
             [target.name]: target.value
          }
-      })
+      });
    };
 
    submitHandler = event => {
@@ -98,9 +96,7 @@ class PostProduct extends Component {
       return (
          <form id="post-product-page" onSubmit={this.submitHandler} encType="multipart/form-data">
             <div id="ppp-header">
-               <figure>
-                  <img src={prodboxicon} alt="product-box-icon" />
-               </figure>
+               <img src={prodboxicon} alt="product-box-icon" />
                <h2>Postea tu producto</h2>
                <p>Procura que las fotos sean claras y la descripción explícita</p>
             </div>
@@ -131,7 +127,7 @@ class PostProduct extends Component {
                <DescriptionInput
                   label="Descripción"
                   name="description"
-                  maxLength="145"
+                  maxLength="100"
                   currentLength={this.state.data.description.length}
                   onChange={this.changeHandler}
                   errors={this.state.errors}
