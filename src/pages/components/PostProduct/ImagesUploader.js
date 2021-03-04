@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
+import { Fragment } from 'react';
 import { LoadedImage } from '..';
 import { clickTrigger, areImages, rightLength } from './local-utils';
 import './styles/ImagesUploader.css';
 
 class ImagesUploader extends Component {
 
-   state = { error: false };
+   state = { error: false, display: false };
 
    loadedValidation = ({ target }) => {
 
       let { files } = target, valid = areImages(files);
-
+      
       if (valid) {
          let validlength = rightLength(files.length);
          if (!validlength) {
@@ -31,23 +32,34 @@ class ImagesUploader extends Component {
 
    render() {
       this.loaded = this.props.loaded;
+      let { display } = this.state;
       return (
          <div id="images-uploader">
             <button type="button" onClick={() => clickTrigger('input#loader')}>
                Cargar imágenes
             </button>
             <div>
-               {this.loaded.length >= 1 ?
-                  this.loaded.map((loadedimg, index) => 
-                     <LoadedImage
-                        image={loadedimg[1]}
-                        removeHandler={() => this.props.removeHandler(loadedimg[0])}
-                        key={index} /> ):
-                     <p>
-                        No has cargado ninguna imagen <br />
-                        (Puedes subir hasta 4 por producto)
-                     </p>}
+               {this.loaded.length !== 0 ?
+                  <Fragment>
+                     <p>Imágenes cargadas</p>
+                     <i className={`fas fa-caret-${display ? "up" : "down"}`}
+                        onClick={() => this.setState({ display: !display })}/>
+                  </Fragment> :
+                  <p>
+                     No has cargado ninguna imagen <br />
+                     (Puedes subir hasta 4 por producto)
+                  </p>}
             </div>
+            {display && 
+               <div id="loaded-list" className={display && ""}>
+                  {this.loaded.map((img, index) => 
+                     <LoadedImage
+                        image={img}
+                        removeHandler={this.props.removeHandler}
+                        key={index}
+                     />
+                  )}
+               </div>}
             {this.state.error &&
                <span id="images-blank-error">
                   Tienes que subir al menos una imagen.

@@ -4,7 +4,7 @@
    border-radius: 5px;
    /* text-align: center; */
    width: calc(100% - 25px);
-   margin: 5px 0;
+   margin: 8px 0;
    position: relative;
 }
 
@@ -34,10 +34,10 @@ img.img-on-modal {
    object-fit: contain;
 }
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
    .loaded-image {
-      width: 110px;
+      width: 130px;
    }
-}
+} */
 
 /* Terminado */

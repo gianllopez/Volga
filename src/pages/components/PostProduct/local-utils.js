@@ -33,14 +33,8 @@ function rightLength(length) {
    if (length > 4) {
       ModalDisplayer({
          type: 'CUSTOM',
-         buttons: 
-      })
-      // CustomModal((
-      //    <Fragment>
-      //       <p>Límite de imágenes por producto excedido</p>
-      //       <span>Sólo puedes cargar 4 imágenes</span>
-      //    </Fragment>
-      // ), [false, 'Entendido']);
+         title: 'Límite de imágenes por producto excedido',
+         message: 'Sólo puedes cargar 4 imágenes'});
    } else {
       return true;
    };
