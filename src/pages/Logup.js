@@ -92,14 +92,14 @@ class Logup extends Component {
                      name="country"
                      maxLength="30"
                      minLength="5"
-                     regex={/(?!.*\s{2})^[a-zA-Z ]*$/}
+                     regex={/(?!.*\s{2})^[a-zA-Z\u00F1A ]*$/}
                   />
                   <LogupInput
                      label="Ciudad"
                      name="city"
                      maxLength="50"
                      minLength="5"
-                     regex={/(?!.*\s{2})^[a-zA-Z ]*$/}
+                     regex={/(?!.*\s{2})^[a-zA-Z\u00F1A ]*$/}
                   />
                   <LogupInput
                      label="Género"

@@ -1,6 +1,6 @@
-/* #favorites-products {
+#favorites-products {
   padding-top: 75px;
-} */
+}
 
 #favorites-products > h2 {
   text-align: center;
@@ -12,8 +12,9 @@
   justify-content: center;
 }
 
-/* @media (min-width: 768px) {
+@media (min-width: 768px) {
   #favorites-products {
-    padding-top: 115px;
+    padding-top: 120px;
   }
-} */
+}
+/* Nada que resumir */

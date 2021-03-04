@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { CustomMessage, PageLoader, UserProduct } from './components/';
 import api from '../utils/api';
-import './styles/FavoritesProducts.css';
 import nofavsicon from '../assets/FavoritesProducts/nofavs.png';
+import './styles/FavoritesProducts.css';
 
 class FavoritesProducts extends Component {
 
@@ -39,12 +39,6 @@ class FavoritesProducts extends Component {
       });
    };
 
-   // componentDidUpdate() {
-   //    document.querySelector('#footer-wrapper')
-   //       .style.display = this.state.favorites.length === 0 ?
-   //          'none' : 'block';
-   // };
- 
 };
 
 export default FavoritesProducts;
