@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import swal from '@sweetalert/with-react';
+import { ModalDisplayer } from '..';
 // import { CustomModal } from '..';
 
 const clickTrigger = query => document.querySelector(query).click();
@@ -30,6 +31,10 @@ function areImages(files) {
 
 function rightLength(length) {
    if (length > 4) {
+      ModalDisplayer({
+         type: 'CUSTOM',
+         buttons: 
+      })
       // CustomModal((
       //    <Fragment>
       //       <p>Límite de imágenes por producto excedido</p>

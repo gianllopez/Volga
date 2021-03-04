@@ -32,4 +32,12 @@ span#images-blank-error {
    color: red;
 }
 
+@media (min-width: 768px) {
+   #images-uploader div {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+   }
+}
+
 /* Teerminado */

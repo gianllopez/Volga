@@ -148,29 +148,3 @@ class PostProduct extends Component {
 };
 
 export default PostProduct;
-
-
-
-
-// ProductTags(tag => {
-   
-//    let { tags } = this.state.data;
-//    if (tags.includes(tag))
-//       tags.splice(tags.indexOf(tag), 1);
-//    else tags = tags.concat(tag);
-//    this.setState({ data: { ...this.state.data, tags } });
-
-// }).then(() => {
-
-//    fdata.set('tags', this.state.data.tags.slice(0, 10).join(', '));
-//    api.post('/products/new', fdata)
-//       .then(({ data }) => {
-//          swal({
-//             title: '¡Tu producto ha sido posteado!',
-//             icon: 'success',
-//             buttons: [false, 'Continuar']
-//          }).then(cont => {
-//             cont && this.props.history.push(`/${data.user}/catalog/${data.key}`)
-//          })
-//       })
-//       .catch(errors => console.error(errors))});

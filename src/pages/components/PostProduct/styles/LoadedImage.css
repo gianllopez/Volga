@@ -34,4 +34,10 @@ img.img-on-modal {
    object-fit: contain;
 }
 
+@media (min-width: 768px) {
+   .loaded-image {
+      width: 110px;
+   }
+}
+
 /* Terminado */

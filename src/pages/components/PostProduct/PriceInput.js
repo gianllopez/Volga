@@ -26,7 +26,6 @@ class PriceInput extends Component {
       };
    };
 
-
 };
 
 export default PriceInput;
