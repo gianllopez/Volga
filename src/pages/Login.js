@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Input, ButtonLoader, ModalDisplayer } from './components/';
-import { noBlankValidator } from '../utils/validators';
+import { blankForm } from '../utils/validators';
 import api from '../utils/api';
 import loginhero from '../assets/Login/login-hero.svg';
 import './styles/Login.css';
@@ -28,8 +28,8 @@ class Login extends Component {
 
    submitHandler = event => {
       event.preventDefault();
-      let { isValid, errors } = noBlankValidator(this.state.data);
-      if (isValid) {
+      let { valid, errors } = blankForm(this.state.data);
+      if (valid) {
          this.setState({ loading: true });
          api.post('/login', this.state.data)
             .then(({ data }) => {

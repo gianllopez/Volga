@@ -1,7 +1,7 @@
 import React, { Component, createContext, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { LogupInput, ButtonLoader } from './components/';
-import { noBlankValidator } from '../utils/validators';
+import { blankForm } from '../utils/validators';
 import api from '../utils/api';
 import loguphero from '../assets/Logup/logup-hero.svg';
 import './styles/Logup.css';
@@ -46,10 +46,10 @@ class Logup extends Component {
    submitHandler = event => {
       event.preventDefault();
       let { data } = this.state,
-      { isValid, errors } = noBlankValidator(data),
+      { valid, errors } = blankForm(data),
       { password, confirmpwd } = data,
       validpwd = password === confirmpwd;
-      if (isValid && validpwd) {
+      if (valid && validpwd) {
          this.logupRequest(data);
       } else {
          if (!validpwd) {

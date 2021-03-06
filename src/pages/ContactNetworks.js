@@ -3,7 +3,7 @@ import swal from '@sweetalert/with-react';
 import { ContactNetworkInput, ButtonLoader,
          UserPageExists, ModalDisplayer } from './components';
 import api from '../utils/api';
-import { noBlankValidator } from '../utils/validators'
+import { blankForm } from '../utils/validators'
 import { DEMO_IMAGES } from '../assets';
 import './styles/ContactNetworks.css';
 
@@ -54,12 +54,12 @@ class ContactNetworks extends Component {
 
    submitHandler = event => {
       event.preventDefault();
-      let { isValid } = noBlankValidator(this.state.data);
-      let { username, data } = this.state,
+      let { valid } = blankForm(this.state.data),
+      { username, data } = this.state,
       nextpath = {
          pathname: `/${username}/profile-picture`,
          state: { exists: true }};
-      if (isValid) {
+      if (valid) {
          this.setState({ loading: true }, () =>
             this.fetchRequest({ data, nextpath }));
       } else {

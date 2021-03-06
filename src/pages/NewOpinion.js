@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { RatingSelector, CommentInput,
          ButtonLoader, UserPageExists } from './components';
-import { noBlankValidator } from '../utils/validators';
+import { blankForm } from '../utils/validators';
 import swal from 'sweetalert';
 import api from '../utils/api';
 import opsheader from '../assets/NewOpinion/users-opinions.svg';
@@ -30,8 +30,8 @@ class NewOpinion extends Component {
 
    submitHandler = event => {
       event.preventDefault();
-      let { isValid, errors } = noBlankValidator(this.state.data);
-      if (isValid) {
+      let { valid, errors } = blankForm(this.state.data);
+      if (valid) {
          this.setState({ loading: true });
          api.post('/opinions', this.state.data)
             .then(() => {

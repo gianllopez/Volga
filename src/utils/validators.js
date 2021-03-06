@@ -1,14 +1,14 @@
-function noBlankValidator(data, allowfields = []) {
-   let isValid = true;
+function blankForm(data, allowfields = []) {
+   let valid = true;
    const formData = Object.entries(data);
    let errors = {};
    for (let x of formData) {
       if (!x[1] && !allowfields.includes(x[0])) {
          errors[x[0]] = 'Este campo es requerido.';
-         isValid = false;
+         valid = false;
       }
    };
-   return { isValid, errors };
+   return { valid, errors };
 };
 
 function changeValidator(event, length=0, changeHandler) {
@@ -25,4 +25,4 @@ function changeValidator(event, length=0, changeHandler) {
    return target.value;
 };
 
-export { noBlankValidator, changeValidator };
+export { blankForm, changeValidator };
