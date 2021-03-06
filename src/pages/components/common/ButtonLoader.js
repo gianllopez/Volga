@@ -2,7 +2,7 @@ import React from 'react';
 import './styles/ButtonLoader.css';
 
 const ButtonLoader = ({ type, isloading, label }) => (
-   <button className="btnloader-wrapper" type={isloading ? "button" : "submit"}>
+   <button className="btnloader-wrapper" type={type || "submit"}>
       {isloading ?
          <div className="loader" /> :
          label || 'Continuar'

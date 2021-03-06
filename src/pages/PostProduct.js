@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-import { ButtonLoader, DescriptionInput, ImagesUploader, Input, ModalDisplayer, PriceInput, ProductTags } from './components/';
+import { ButtonLoader, DescriptionInput, ImagesUploader,
+         Input, PriceInput, ProductTags } from './components/';
+import swal from 'sweetalert';
+import api from '../utils/api';
+import { blankForm } from '../utils/validators';
 import prodboxicon from '../assets/PostProduct/product-box.svg';
 import './styles/PostProduct.css';
-import { blankForm } from '../utils/validators';
-import api from '../utils/api';
-import swal from 'sweetalert';
 
 class PostProduct extends Component {
 
    state = {
       data: {
          images: null, product: '',
-         price: null, pricetype: 'COP',
+         price: 0, pricetype: 'COP',
          description: '', tags: []
       },
       loading: false,
@@ -25,8 +26,7 @@ class PostProduct extends Component {
       this.setState({
          data: {
             ...this.state.data,
-            images: hasImages ? images : null
-         }
+            images: hasImages ? images : null }
       });
    };
 
@@ -34,14 +34,13 @@ class PostProduct extends Component {
       this.setState({
          data: {
             ...this.state.data,
-            [target.name]: target.value
-         }
+            [target.name]: target.value }
       });
    };
 
-   formatData = () => {
+   formatData = stateData => {
       let form = new FormData(),
-      dataArray = Object.entries(this.state.data);
+      dataArray = Object.entries(stateData);
       for (let data of dataArray) {
          let [name, value] = data;
          if (name === 'images') {
@@ -66,21 +65,23 @@ class PostProduct extends Component {
 
    submitHandler = event => {
       event.preventDefault();
-      let { valid, errors } = blankForm(this.state.data, ['description', 'type']);
+      let { data } = this.state;
+      let { valid, errors } = blankForm(data, ['description', 'type']);
       if (valid) {
          this.setState({ loading: true });
-         let fdata = this.formatData();
+         let fdata = this.formatData(data);
          ProductTags(tag => this.tagsHandler(tag))
             .then(() => {
-               fdata.set('tags', this.state.data.tags);
+               fdata.set('tags', this.state.data.tags.splice(0, 10));
                api.post('/products/new', fdata)
-                  .then(response => 
+                  .then(({ data }) => 
                      swal({
                         icon: 'success',
                         title: '¡ENHORABUENA!',
+                        className: 'good-post',
                         text: 'Tu producto ha sido posteado de manera satisfactoria.'
                      }).then(() => {
-                        let { username, key } = response.data;
+                        let { username, key } = data;
                         this.props.history.push(`/${username}/catalog/${key}`);
                      })
                   );
@@ -89,51 +90,49 @@ class PostProduct extends Component {
          this.setState({ errors });
       };
    };
-
+   
    render() {
+      let { errors, data, loading } = this.state;
       return (
-         <form id="post-product-page" onSubmit={this.submitHandler} encType="multipart/form-data">
+         <form id="post-product-page" onSubmit={this.submitHandler}>
             <div id="ppp-header">
-               <img src={prodboxicon} alt="product-box-icon" />
+               <img src={prodboxicon} alt="product-box-icon"/>
                <h2>Postea tu producto</h2>
                <p>Procura que las fotos sean claras y la descripción explícita</p>
             </div>
             <ImagesUploader
-               name="images"
+               errors={errors}
                onChange={this.changeHandler}
-               errors={this.state.errors}
-               loaded={Object.entries(this.state.data.images || {})}
-               removeHandler={this.removeImageHandler}
+               onRemove={this.removeImageHandler}
+               loaded={Object.entries(data.images || {})}
             />
             <div id="ppp-product-info">
                <Input
-                  label="Producto"
                   name="product"
-                  onChange={this.changeHandler}
                   maxLength="50"
-                  errors={this.state.errors}
+                  errors={errors}
+                  label="Producto"
+                  onChange={this.changeHandler}
                   regex={/(?!.*\s{2})[a-zA-Z0-9]/}
                />
                <PriceInput
-                  label="Precio"
                   name="price"
                   type="number"
+                  label="Precio"
                   maxLength="11"
+                  errors={errors}
                   onChange={this.changeHandler}
-                  errors={this.state.errors}
                />
                <DescriptionInput
-                  label="Descripción"
-                  name="description"
                   maxLength="100"
-                  currentLength={this.state.data.description.length}
+                  errors={errors}
+                  name="description"
+                  label="Descripción"
                   onChange={this.changeHandler}
-                  errors={this.state.errors}
+                  currentLength={data.description.length}
                   allowblank
                />
-
-               <ButtonLoader isloading={this.state.loading} />
-
+               <ButtonLoader isloading={loading} />
             </div>
          </form>
       );
@@ -146,3 +145,5 @@ class PostProduct extends Component {
 };
 
 export default PostProduct;
+
+// Terminado, nada más que resumir...

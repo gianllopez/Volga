@@ -4,7 +4,6 @@
    flex-direction: column;
    align-items: center;
 }
-
 #ppp-header {
    text-align: center;
    max-width: 330px;
@@ -14,10 +13,10 @@
    width: 60%;
 }
 
-#ppp-header p {
+/* #ppp-header p {
    width: 250px;
    margin: auto;
-}
+} */
 
 #ppp-product-info {
    display: grid;
@@ -26,10 +25,11 @@
 #ppp-product-info > .input-wrapper, #price-input {
    margin-bottom: 5px;
 }
-
 #post-product-page .btnloader-wrapper {
    margin: 5px auto;
 }
+
+/* LISTO HASTA AQUí */
 
 @media (min-width:768px) {
    #post-product-page {
@@ -46,4 +46,8 @@
    }
 }
 
-/* No revises, it's ok */
+.good-post .swal-text {
+   text-align: center;
+}
+
+/* Terminado, nada más que revisar... */

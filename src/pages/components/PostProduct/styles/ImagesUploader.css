@@ -2,17 +2,11 @@
    margin: 5px 0;
    text-align: center;
 }
-   
+/* LISTO HASTA AQUí */
 #images-uploader > button {
+   max-width: unset;
    width: 60%;
-   height: 45px;
-   border: none;
    border-radius: 3px;
-   font-size: 1em;
-   background-color: #2c87f0;
-   color: white;
-   margin: 10px 0;
-   outline: none;
 }
 
 #images-uploader > div, #loaded-list {

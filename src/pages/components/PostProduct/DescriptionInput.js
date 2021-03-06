@@ -21,4 +21,4 @@ function DescriptionInput(props) {
 
 export default DescriptionInput;
 
-// Treminado
+// Terminado, nada más que revisar...

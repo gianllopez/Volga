@@ -24,7 +24,7 @@ class Input extends Component {
 
    render() {
       let { name, type, label, allowblank,
-            errors, children, maxLength, minLength } = this.props;
+            errors, children, minLength } = this.props;
       return (
          <div className={`input-wrapper ${name}`}>
             <label htmlFor={name}>
@@ -48,7 +48,7 @@ class Input extends Component {
       );
    };
 
-   componentDidUpdate(prevProps) {
+   componentDidUpdate() {
       let { errors, name } = this.props,
       error = errors[name] ? true : false;
       if (error && !this.state.error) {
@@ -59,4 +59,5 @@ class Input extends Component {
 };
 
 export default Input;
-// terminado
+
+// Terminado, nada más que revisar...

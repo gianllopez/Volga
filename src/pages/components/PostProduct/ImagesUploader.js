@@ -1,57 +1,74 @@
-import React, { Component } from 'react';
-import { Fragment } from 'react';
-import { LoadedImage } from '..';
-import { clickTrigger, areImages, rightLength } from './local-utils';
+import React, { Component, Fragment } from 'react';
+import { ButtonLoader, LoadedImage, ModalDisplayer } from '../';
 import './styles/ImagesUploader.css';
 
 class ImagesUploader extends Component {
 
-   state = { error: false, display: false };
+   state = { error: false, showloaded: false };
+
+   clickEvent = () => document.querySelector('input#loader').click();
+
+   areImages = files => {
+      let formats = ['image/png', 'image/jpeg', 'image/jpg'],
+      validFormat = Array.from(files).every((file) => formats.includes(file.type));
+      if (!validFormat) {
+         ModalDisplayer({
+            type: 'CUSTOM',
+            title: 'Archivo(s) inválido(s)',
+            message: 'Verifica que los archivos que cargaste sean imágenes (png, jpg).'
+         });
+      } else {
+         return true;
+      };
+   };
+
+   rightLength = length => {
+      if (length > 4) {
+         ModalDisplayer({
+            type: 'CUSTOM',
+            title: 'Límite de imágenes por producto excedido',
+            message: 'Sólo puedes cargar 4 imágenes'});
+      } else {
+         return true;
+      };
+   };
 
    loadedValidation = ({ target }) => {
-
-      let { files } = target, valid = areImages(files);
-      
-      if (valid) {
-         let validlength = rightLength(files.length);
-         if (!validlength) {
-            target.value = '';
-         };
-      } else {
+      let { files } = target,
+      valid = this.areImages(files) && this.rightLength(files.length);
+      if (!valid) {
          target.value = '';
       };
-
       this.props.onChange({
          target: {
-            name: this.props.name,
+            name: 'images',
             value: target.value ? { ...target.files } : null
          }
       });
-
    };
-
+   
    render() {
-      this.loaded = this.props.loaded;
-      let { display } = this.state;
+      let { loaded, onRemove } = this.props, { showloaded } = this.state;
       return (
          <div id="images-uploader">
-            <button type="button" onClick={() => clickTrigger('input#loader')}>
-               Cargar imágenes
-            </button>
+            <ButtonLoader
+               type="button"
+               isloading={false}
+               label="Cargar imágenes"
+               onClick={this.clickEvent}/>
             <div>
-               {this.loaded.length !== 0 ?
+               {loaded.length !== 0 ?
                   <Fragment>
                      <p>Imágenes cargadas</p>
-                     <i className={`fas fa-caret-${display ? "up" : "down"}`}
-                        onClick={() => this.setState({ display: !display })}/>
-                     {display && 
-                        <div id="loaded-list" className={display && ""}>
-                           {this.loaded.map((data, index) => 
+                     <i className={`fas fa-caret-${showloaded ? "up" : "down"}`}
+                        onClick={() => this.setState({ showloaded: !showloaded })}/>
+                     {showloaded && 
+                        <div id="loaded-list">
+                           {loaded.map((data, index) => 
                               <LoadedImage
-                                 image={data[1]}
-                                 removeHandler={() => this.props.removeHandler(data[0])}
                                  key={index}
-                              />)}
+                                 image={data[1]}
+                                 onRemove={() => onRemove(data[0])}/>)}
                         </div>}
                   </Fragment> :
                   <p>
@@ -59,7 +76,6 @@ class ImagesUploader extends Component {
                      (Puedes subir hasta 4 por producto)
                   </p>}
             </div>
-
             {this.state.error &&
                <span id="images-blank-error">
                   Tienes que subir al menos una imagen.
@@ -72,20 +88,18 @@ class ImagesUploader extends Component {
                multiple
                hidden
             />
-         </div >
+         </div>
       )
    };
 
    componentDidUpdate() {
-      let { errors, name } = this.props;
-      if (errors[name] && !this.state.error) {
+      let { errors, loaded } = this.props;
+      if (errors['images'] && !this.state.error) {
          this.setState({ error: true }, () =>
             document.querySelector('span#images-blank-error')
                .style.transform = 'initial');
-      } else if (!errors[name] && this.state.error) {
-         this.setState({ error: false });
       };
-      if (this.loaded.length === 0) {
+      if (loaded.length === 0) {
          document.querySelector('input#loader').value = '';
       };
    };
@@ -93,3 +107,6 @@ class ImagesUploader extends Component {
 };
 
 export default ImagesUploader;
+
+
+// Terminado, nada más que revisar...
