@@ -44,22 +44,23 @@ class ImagesUploader extends Component {
                      <p>Imágenes cargadas</p>
                      <i className={`fas fa-caret-${display ? "up" : "down"}`}
                         onClick={() => this.setState({ display: !display })}/>
+                     {display && 
+                        <div id="loaded-list" className={display && ""}>
+                           {this.loaded.map((img, index) => 
+                              <LoadedImage
+                                 image={img}
+                                 removeHandler={this.props.removeHandler}
+                                 key={index}
+                              />
+                           )}
+                        </div>}
                   </Fragment> :
                   <p>
                      No has cargado ninguna imagen <br />
                      (Puedes subir hasta 4 por producto)
                   </p>}
             </div>
-            {display && 
-               <div id="loaded-list" className={display && ""}>
-                  {this.loaded.map((img, index) => 
-                     <LoadedImage
-                        image={img}
-                        removeHandler={this.props.removeHandler}
-                        key={index}
-                     />
-                  )}
-               </div>}
+
             {this.state.error &&
                <span id="images-blank-error">
                   Tienes que subir al menos una imagen.
