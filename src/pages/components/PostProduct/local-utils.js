@@ -13,17 +13,11 @@ function areImages(files) {
       };
    };
    if (!validFormat) {
-      // CustomModal((
-      //    <Fragment>
-      //       <p>Archivo(s) inválido(s)</p>
-      //       <span>
-      //          Verifica que los archivos que cargaste sean imágenes.
-      //          </span>
-      //       <p style={{ fontSize: '.8em' }}>
-      //          Formatos admitidos: png, jpg, jpeg
-      //          </p>
-      //    </Fragment>
-      // ), [false, 'Entendido']);
+      ModalDisplayer({
+         type: 'CUSTOM',
+         title: 'Archivo(s) inválido(s)',
+         message: 'Verifica que los archivos que cargaste sean imágenes (png, jpg).'
+      });
    } else {
       return true;
    };

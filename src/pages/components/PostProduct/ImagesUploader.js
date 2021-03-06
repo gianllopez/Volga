@@ -46,13 +46,12 @@ class ImagesUploader extends Component {
                         onClick={() => this.setState({ display: !display })}/>
                      {display && 
                         <div id="loaded-list" className={display && ""}>
-                           {this.loaded.map((img, index) => 
+                           {this.loaded.map((data, index) => 
                               <LoadedImage
-                                 image={img}
-                                 removeHandler={this.props.removeHandler}
+                                 image={data[1]}
+                                 removeHandler={() => this.props.removeHandler(data[0])}
                                  key={index}
-                              />
-                           )}
+                              />)}
                         </div>}
                   </Fragment> :
                   <p>
