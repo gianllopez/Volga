@@ -1,5 +1,5 @@
 import React from 'react';
-import swal from 'sweetalert';
+import swal from '@sweetalert/with-react';
 import closeicon from '../../../assets/PostProduct/close-img.svg';
 import './styles/LoadedImage.css';
 

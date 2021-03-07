@@ -36,9 +36,7 @@ class ImagesUploader extends Component {
    loadedValidation = ({ target }) => {
       let { files } = target,
       valid = this.areImages(files) && this.rightLength(files.length);
-      if (!valid) {
-         target.value = '';
-      };
+      target.value = valid ? target.value : '';
       this.props.onChange({
          target: {
             name: 'images',

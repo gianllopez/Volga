@@ -29,4 +29,5 @@ class PriceInput extends Component {
 };
 
 export default PriceInput;
-// Terminado
+
+// Terminado, nada más que revisar...
