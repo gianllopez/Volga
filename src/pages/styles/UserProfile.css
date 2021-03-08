@@ -34,12 +34,12 @@
 
 /* -------------------------------------- */
 
-/* ProductsSection styles */
-
-/* ----------------------------- */
-
-
-
+@media (min-width: 768px) {
+   #clients-opinions {
+      position: sticky;
+      top: 75px;
+   }
+}
 
 @media (min-width:768px) {
    #user-profile {

@@ -24,7 +24,7 @@ class ClientsOpinions extends Component {
                {opinions.length ?
                   <Fragment>
                      <h2>Esto es lo que opinan de {username} sus clientes:</h2>
-                     <div id="clients-opinions">
+                     <div id="opinions-result">
                         {opinions.map((opinion, index) => 
                            <Opinion {...opinion} key={index}/>)}
                      </div>

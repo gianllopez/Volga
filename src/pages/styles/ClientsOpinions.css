@@ -8,7 +8,7 @@
    text-align: center;
 }
 
-#clients-opinions {
+#opinions-result {
    display: flex;
    flex-wrap: wrap;
    justify-content: center;
