@@ -1,7 +1,7 @@
 import React, { Component, createContext, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { UserStats, ProductCard, Opinion,
-         FollowButton, UserPageExists, PresentationHeader } from './components';
+         FollowButton, UserPageExists, PresentationHeader, ProductsPresentation } from './components';
 import './styles/UserProfile.css';
 import api from '../utils/api';
 import { isAuthenticated } from '../utils/routing-tools';
@@ -57,25 +57,7 @@ class UserProfile extends Component {
 
                   <UserStats className="profile-section"/>                  
 
-                  <section id="user-products" className="profile-section">
-                     {products.length ?
-                        <Fragment>
-                           <h3 className="section-title">Aquí puedes encontrar:</h3>
-                           <div id="products">                         
-                              {products.map((product, index) => 
-                                 <ProductCard
-                                    key={index}
-                                    user={username}
-                                    product-data={product}
-                                    isowner={itsme || false}
-                                    onDelete={this.deleteHandler}
-                                 />)}
-                           </div>
-                        </Fragment> :
-                        <h3 className="blank-header">
-                           Este usuario no ha posteado ningún producto.
-                        </h3>}
-                  </section>
+                  <ProductsPresentation className="profile-section"/>
 
                   <section id="clients-opinions" className="profile-section">
                      {opinions.length !== 0 ?

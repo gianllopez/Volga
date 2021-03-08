@@ -32,4 +32,5 @@ export { default as ProductTagsDisplayer } from './ProductPage/ProductTagsDispla
 export { default as CustomMessage } from './common/CustomMessage';
 export { default as UserPageExists } from './common/UserPageExists';
 export { default as PresentationHeader } from './UserProfile/PresentationHeader';
+export { default as ProductsPresentation } from './UserProfile/ProductsPresentation';
 

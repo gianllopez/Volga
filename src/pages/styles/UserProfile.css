@@ -35,26 +35,6 @@
 /* -------------------------------------- */
 
 /* ProductsSection styles */
-#products {
-   display: inherit;
-   flex-wrap: wrap;
-   justify-content: center;
-   width: 100%;
-}
-
-
-@media (min-width: 768px) {
-   #clients-opinions {
-      position: sticky;
-      top: 75px;
-   }
-}
-@media (min-width: 1500px) {
-   #products {
-      display: grid;
-      grid-template-columns: repeat(3, 33%); 
-   }
-}
 
 /* ----------------------------- */
 
