@@ -1,28 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { tagsProps } from '../../../assets';
 import './TagsSelector.css';
 
-class TagsSelector extends Component {
-
-
-   clickHandler = ({ target }) => {
+function TagsSelector(props) {
+   
+   const clickHandler = ({ target }) => {
       target.classList.toggle('selected-tag');
-      this.props.onSelect(target);
+      props.onSelect(target);
    };
 
-   render() {
-      let tags = Object.keys(tagsProps).sort((a, b) => a.length - b.length);
-      return (
-         <div id="tags-selector">
-            {tags.map((tag, index) => (
-               <p key={index} onClick={this.clickHandler}>
-                  {tag}
-               </p>
-            ))}
-         </div>
-      );
-   };
-
+   let tags = Object.keys(tagsProps).sort((a, b) => a.length - b.length);
+   return (
+      <div id="tags-selector">
+         {tags.map((tag, index) =>
+            <p key={index} onClick={clickHandler}>
+               {tag}
+            </p>)}
+      </div>
+   );
 };
 
 export default TagsSelector;
+
+// Terminado, nada más que revisar...

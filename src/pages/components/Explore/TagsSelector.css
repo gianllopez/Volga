@@ -19,7 +19,10 @@
 
 @media (min-width: 1035px) {
    #tags-selector {
-      grid-template-columns: repeat(3, 33%);
+      grid-template-columns: repeat(4, 25%);
+   }
+   #tags-selector p {
+      width: 275px;
    }
 }
 
@@ -27,3 +30,5 @@
    background-color: #3387E1 !important;
    color: white;
 }
+
+/* Terminado, nada más que revisar... */

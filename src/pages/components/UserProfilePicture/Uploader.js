@@ -23,6 +23,7 @@ class Uploader extends Component {
                id="picture"
                name="picture"
                onInput={this.props.onUpload}
+               accept="image/png, image/jpeg"
                hidden
             />
          </div>

@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
+import { ButtonLoader, TagsSelector, PageLoader,
+         UserProduct, CustomMessage, ModalDisplayer } from './components';
 import api from '../utils/api';
-import { ButtonLoader, TagsSelector, PageLoader, UserProduct, CustomMessage } from './components';
 import notags from '../assets/Explore/notags.png';
 import './styles/Explore.css';
 
@@ -11,7 +11,7 @@ class Explore extends Component {
 
    selectHandler = target => {
       let tag = target.innerText,
-         { querytags } = this.state;
+      { querytags } = this.state;
       if (querytags.includes(tag)) {
          querytags.splice(querytags.indexOf(tag), 1);
       } else {
@@ -20,26 +20,27 @@ class Explore extends Component {
       this.setState({ querytags });
    };
 
+   fetchExplore = () => {
+      let { querytags } = this.state;
+      api.get('/get-data/explore', { querytags })
+         .then(({ data }) => this.setState({ results: data }))
+         .catch(({ response }) =>
+            this.setState({ blank_results: response.status === 404 }))
+         .finally(() => this.setState({ loading: false }))
+   };
+
    submitHandler = event => {
       event.preventDefault();
       let { querytags } = this.state;
       if (querytags.length !== 0) {
          querytags = querytags.join(', ')
-         this.setState({ querytags, loading: true }, () => {
-            let { querytags } = this.state;
-            api.get('/get-data/explore', { querytags })
-               .then(({ data }) => this.setState({ results: data }))
-               .finally(() => this.setState({ loading: false }))
-               .catch(({ response }) => {
-                  if (response.status === 404) {
-                     this.setState({ blank_results: true });
-                  };
-               });
-         });
+         this.setState({ querytags, loading: true }, this.fetchExplore);
       } else {
-         // CustomModal(
-         //    <span>Para explorar tienes que tener al menos una
-         //    etiqueta por criterio de exploración.</span>, [false, 'Entendido'])
+         ModalDisplayer({
+            type: 'CUSTOM',
+            message: `Para explorar tienes que tener al menos una
+                      etiqueta por criterio de exploración.`
+         });
       };
    };
 
@@ -54,9 +55,11 @@ class Explore extends Component {
                         <h1>Etiquetas a explorar:</h1>
                         <TagsSelector onSelect={this.selectHandler} />
                         <ButtonLoader isloading={false} label="Explorar" />
-                     </Fragment> : <CustomMessage msgimage={notags}
-                                    message="Aún no se ha registrado un
-                                             producto con tales etiquetas."/> :
+                     </Fragment> :
+                     <CustomMessage
+                        msgimage={notags}
+                        message="Aún no se ha registrado un
+                                 producto con tales etiquetas."/> :
                   <div id="explore-results">
                      {results.map((result, index) =>
                         <UserProduct data={result} key={index} />)}
@@ -79,3 +82,5 @@ class Explore extends Component {
 };
 
 export default Explore;
+
+// Terminado, nada más que revisar...

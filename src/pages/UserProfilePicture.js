@@ -4,6 +4,7 @@ import { Uploader, ButtonLoader,
 import api from '../utils/api';
 import userpphero from '../assets/UserProfilePicture/userpp-hero.svg';
 import './styles/UserProfilePicture.css';
+import { imagesFormat } from '../utils/validators';
 
 class UserProfilePicture extends Component {
 
@@ -12,7 +13,12 @@ class UserProfilePicture extends Component {
       ...this.props.match.params
    };
 
-   uploadHandler = ({ target }) => this.setState({ picture: target.files[0] });
+   uploadHandler = ({ target }) => {
+      let validFormat = imagesFormat(target.files);
+      if (validFormat) {
+         this.setState({ picture: target.files[0] })
+      };
+   };
 
    uploadRedirect = () => {
       let redirectcnf = {
@@ -26,7 +32,10 @@ class UserProfilePicture extends Component {
       let binaries = new FormData()
       binaries.append('picture', this.state.picture)
       api.post('/profile-picture', binaries)
-         .then(() => this.uploadRedirect());
+         .then(({ data }) => {
+            localStorage.setItem('uiprev', JSON.stringify(data));
+            this.uploadRedirect();
+         });
    };
 
    submitHandler = event => {
@@ -38,7 +47,6 @@ class UserProfilePicture extends Component {
                     tu perfil. Esta es imprescindible para que tus clientes te reconozcan.`,
             message: '¿Deseas continuar así?',
             buttons: [false, 'Si, continuar']}).then(cont => cont && this.uploadRedirect())
-
       } else {
          this.setState({ loading: true }, this.uploadRequest);
       };

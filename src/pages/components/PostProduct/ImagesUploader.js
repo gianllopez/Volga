@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { ButtonLoader, LoadedImage, ModalDisplayer } from '../';
+import { imagesFormat } from '../../../utils/validators';
 import './styles/ImagesUploader.css';
 
 class ImagesUploader extends Component {
@@ -7,20 +8,6 @@ class ImagesUploader extends Component {
    state = { error: false, showloaded: false };
 
    clickEvent = () => document.querySelector('input#loader').click();
-
-   areImages = files => {
-      let formats = ['image/png', 'image/jpeg', 'image/jpg'],
-      validFormat = Array.from(files).every((file) => formats.includes(file.type));
-      if (!validFormat) {
-         ModalDisplayer({
-            type: 'CUSTOM',
-            title: 'Archivo(s) inválido(s)',
-            message: 'Verifica que los archivos que cargaste sean imágenes (png, jpg).'
-         });
-      } else {
-         return true;
-      };
-   };
 
    rightLength = length => {
       if (length > 4) {
@@ -35,8 +22,8 @@ class ImagesUploader extends Component {
 
    loadedValidation = ({ target }) => {
       let { files } = target,
-      valid = this.areImages(files) && this.rightLength(files.length);
-      target.value = valid ? target.value : '';
+      valid = imagesFormat(files) && this.rightLength(files.length);
+      if (!valid) target.value = '';
       this.props.onChange({
          target: {
             name: 'images',

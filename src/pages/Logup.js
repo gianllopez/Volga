@@ -35,7 +35,7 @@ class Logup extends Component {
             localStorage.setItem('uiprev', JSON.stringify(data.uiprev));
             localStorage.setItem('user-token', data.token);
             this.props.history.push({
-               pathname: `/${data.username}/contact-networks`,
+               pathname: `/${data.uiprev.username}/contact-networks`,
                state: { exists: true }
             });
          })

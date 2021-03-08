@@ -2,7 +2,7 @@
    display: flex;
    flex-direction: column;
    position: relative;
-   width: 290px;
+   max-width: 340px;
    margin: 10px;
    padding: 10px;
    border: 2px solid black;
@@ -24,17 +24,14 @@
 
 .product-user .product-user-info {
    font-size: 0.8em;
-   height: 45px;
+   /* height: 45px; */
 }
 
 .product-wrapper .product-img {
    height: 225px;
-   margin: 20px 0;
-   align-self: center;
+   margin: 10px 0;
    width: 100%;
    object-fit: contain;
-   background-color: #fbfbfb;
-   border-radius: 5px;
 }
 
 .product-footer {
@@ -64,9 +61,8 @@
    display: flex;
    align-items: center;
    justify-content: center;
-   border-radius: 5px;
    transition: .5s;
-   transform: translateY(101%);
+   transform: translateY(100%);
 }
 
 .product-navigation button {
@@ -80,3 +76,5 @@
 .show-navigation {
    transform: initial !important;
 }
+
+/* Terminado, nada más que revisar... */

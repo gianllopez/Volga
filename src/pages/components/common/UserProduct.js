@@ -6,13 +6,13 @@ import './styles/UserProduct.css';
 class UserProduct extends Component {
 
    showProductNavigation = () => {
-      const product = this._reactInternalFiber.child.stateNode,
-      navigation = product.querySelector('.product-navigation');
-      navigation.classList.toggle('show-navigation');
+      let { stateNode } = this._reactInternalFiber.child,
+      { classList } = stateNode.querySelector('.product-navigation');
+      classList.toggle('show-navigation');
    };
 
    render() {
-      let { user, images, key, price, product, isfav } = this.props.data || '',
+      let { user, images, key, price, product, isfav } = this.props.data,
       userdata = user ? user : { username: '', name: '', picture: '' };
       return (
          <div className="product-wrapper" onClick={this.showProductNavigation}>
@@ -49,3 +49,5 @@ class UserProduct extends Component {
 };
 
 export default UserProduct;
+
+// Terminado, nada más que resumir...

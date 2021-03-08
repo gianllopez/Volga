@@ -1,3 +1,5 @@
+import { ModalDisplayer } from "../pages/components";
+
 function blankForm(data, allowfields = []) {
    let valid = true;
    const formData = Object.entries(data);
@@ -25,4 +27,18 @@ function changeValidator(event, length=0, changeHandler) {
    return target.value;
 };
 
-export { blankForm, changeValidator };
+function imagesFormat(files) {
+   let formats = ['image/png', 'image/jpeg', 'image/jpg'],
+   validFormat = Array.from(files).every((file) => formats.includes(file.type));
+   if (!validFormat) {
+      ModalDisplayer({
+         type: 'CUSTOM',
+         title: 'Archivo(s) inválido(s)',
+         message: 'Verifica que los archivos que cargaste sean imágenes (png, jpg).'
+      });
+   } else {
+      return true;
+   };
+};
+
+export { blankForm, changeValidator, imagesFormat };
