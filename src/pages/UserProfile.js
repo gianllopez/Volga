@@ -1,7 +1,8 @@
 import React, { Component, createContext, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { UserStats, ProductCard, Opinion,
-         FollowButton, UserPageExists, PresentationHeader, ProductsPresentation, OpinionsPresentation, ModalDisplayer } from './components';
+import { ProductsPresentation, OpinionsPresentation, ModalDisplayer,
+         UserStats, ProductCard, Opinion, FollowButton,
+         UserPageExists, PresentationHeader } from './components';
 import './styles/UserProfile.css';
 import api from '../utils/api';
 import { isAuthenticated } from '../utils/routing-tools';
@@ -23,7 +24,8 @@ class UserProfile extends Component {
       if (!this.state.fetched) {
          let username = userQuery || this.state.user.username;
          api.get('/get-data/user', { username })
-            .then(({data}) => this.setState({ fetched: true, user: {...data} }));
+            .then(({ data }) =>
+               this.setState({ fetched: true, user: data }));
       };
    };
 
@@ -41,12 +43,10 @@ class UserProfile extends Component {
    };
    
    render() {
-      let { picture, username, name, stats, opinions,
-            products, following, itsme } = this.state.user;
       return (
          <UserPageExists onExists={this.fetchUserData}>
             <div id="user-profile">
-               <UserProfileContext.Provider value={{...this.state.user}}>
+               <UserProfileContext.Provider value={this.state.user}>
                   <PresentationHeader className="profile-section"/>
                   <UserStats className="profile-section"/>                  
                   <ProductsPresentation deleteHandler={this.deleteHandler} className="profile-section"/>
