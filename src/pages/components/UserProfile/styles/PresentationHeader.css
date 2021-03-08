@@ -1,4 +1,4 @@
-#profile-header img {
+#presentation-header img {
   height: 150px;
   width: 150px;
   border-radius: 50%;
@@ -24,10 +24,12 @@
   height: 37px;
   outline: none;
   border-radius: 5px;
-  font-size: .9em;
+  font-size: 14px;
 }
 
 #interaction-btns a button:first-of-type {
   border: 2px solid black;
   background: none;
-} 
+}
+
+/* Terminado, nada más que resumir... */

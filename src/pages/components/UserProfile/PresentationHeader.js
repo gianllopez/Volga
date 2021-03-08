@@ -8,7 +8,7 @@ function PresentationHeader({ className }) {
    let { picture, username, name,
          itsme, following } = useContext(UserProfileContext);
    return (
-      <section id="profile-header" className={className}>
+      <section id="presentation-header" className={className}>
          <img src={picture} alt={`${username}-profpic`} />
          <div id="user-info">
             <h2>{username}</h2>
@@ -28,3 +28,5 @@ function PresentationHeader({ className }) {
 };
 
 export default PresentationHeader;
+
+// Terminado, nada más que resumir...

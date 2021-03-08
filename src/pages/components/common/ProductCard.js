@@ -1,43 +1,41 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './styles/ProductCard.css';
 
-class ProductCard extends Component {
+function ProductCard(props) {
 
-   render() {
-      let { images, product, price, key } = this.props['product-data'],
-      { user, isowner, onDelete } = this.props;
-      return (
-         <div className="product-card">
-            <figure>
-               <img src={images[0]} alt="user-product" />
-            </figure>
-            <div id="product-info">
-               <h2>{product}</h2>
-               <span>{price}</span>
-            </div>
-            <div className="to-page">
-               <Link to={`/${user}/catalog/${key}`}>
-                  <button>Ver producto</button>
-               </Link>
-            </div>
+   let { images, product, price, key } = props['product-data'],
+   { user, isowner, onDelete } = props;
+
+   useEffect(() => {
+      let prod = document.getElementById(key),
+      { classList } = prod.lastElementChild;
+      prod.addEventListener('mouseover',
+         () => classList.add('show-to-page'));
+         prod.addEventListener('mouseout',
+         () => classList.remove('show-to-page'));
+   }, []);
+   
+   return (
+      <div className="product-card" id={key}>
+         <img src={images[0]} alt="user-product" />
+         <div id="product-info">
+            <h3>{product}</h3>
+            <span>{price}</span>
+         </div>
+         <div className="page-link">
+            <Link to={`/${user}/catalog/${key}`}>
+               <button>Ver producto</button>
+            </Link>
             {isowner &&
                <i className="fas fa-trash-alt" id="delete-btn"
                   onClick={() => onDelete({user, key})}/>}
          </div>
-      );
-   };
-
-   componentDidMount() {
-      // Hacer esto en CSS, con parent:hover children
-      let product = this._reactInternalFiber.child.stateNode,
-      animDiv = document.querySelector('.to-page');
-      product.addEventListener('mouseover',
-         () => animDiv.classList.add('show-to-page'));
-      product.addEventListener('mouseout',
-         () => animDiv.classList.remove('show-to-page'));
-   };
+      </div>
+   );
 
 };
 
 export default ProductCard;
+
+/* Terminado, nada más que revisar...*/
