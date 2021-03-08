@@ -22,7 +22,7 @@ class PostProduct extends Component {
    removeImageHandler = index => {
       let { images } = this.state.data;
       delete images[index];
-      let hasImages = Object.entries(images).length >= 1;
+      let hasImages = Object.entries(images).length;
       this.setState({
          data: {
             ...this.state.data,

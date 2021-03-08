@@ -5,6 +5,8 @@
    border: 2px solid black;
    padding: 10px;
    border-radius: 5px;
+   margin: 5px;
+   overflow-wrap: anywhere;
 }
 
 .user-card img {
@@ -15,14 +17,14 @@
 }
 
 .user-card div {
-   flex: 1;
+   /* flex: 1; */
    padding-left: 10px;
    display: inherit;
    flex-direction: column;
    justify-content: center;
 }
 
-.user-card div *:not(h3) {
+.user-card div p {
    font-size: .9em;
 }
 
@@ -30,3 +32,5 @@
    color: #999999;
    font-weight: lighter;
 }
+
+/* Terminado, nada más que resumir... */

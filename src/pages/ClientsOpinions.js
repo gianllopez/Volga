@@ -21,7 +21,7 @@ class ClientsOpinions extends Component {
       return (
          <UserPageExists onExists={this.fetchOpinions}>
             <div id="clients-opinions-page">
-               {opinions.length !== 0 ?
+               {opinions.length ?
                   <Fragment>
                      <h2>Esto es lo que opinan de {username} sus clientes:</h2>
                      <div id="clients-opinions">

@@ -32,7 +32,7 @@ class Explore extends Component {
    submitHandler = event => {
       event.preventDefault();
       let { querytags } = this.state;
-      if (querytags.length !== 0) {
+      if (querytags.length) {
          querytags = querytags.join(', ')
          this.setState({ querytags, loading: true }, this.fetchExplore);
       } else {

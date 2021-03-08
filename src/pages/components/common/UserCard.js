@@ -25,3 +25,5 @@ class UserCard extends Component {
 };
 
 export default UserCard;
+
+// Terminado, nada más que revisar...

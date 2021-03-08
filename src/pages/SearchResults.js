@@ -8,38 +8,33 @@ class SearchResult extends Component {
 
    state = { filter: 'products' };
 
+   getQuery = () => {
+      let { state } = this.props.location;
+      return state ? state.query : '';
+   };
+
    loadRequest = () => {
       let query = this.getQuery(), { filter, results } = this.state;
       if (results ? !results[filter] : true) {
          api.get('/get-data/search', { query, filter }, false)
-            .then(({ data }) => {
-               if (results ? !results[filter] : true) {
-                  this.setState({
-                     results: { ...results,
-                        [filter]: data ? data : []
-                     }, query });
-               };
-            });
+            .then(({ data }) => 
+               this.setState({
+                  results: { ...results, [filter]: data ? data : [] }, query }));
       };
    };
 
    filterChangeHandler = filter => {
       if (filter !== this.state.filter) {
-         this.setState({ filter }, this.loadRequest)
+         this.setState({ filter }, this.loadRequest);
       };
    };
 
-   getQuery = () => {
-      let { state } = this.props.location;
-      return state ? state.query : '';
-   }
-
    render() {
       let { filter, query, results } = this.state,
-         items = results ? filter in results ? results[filter] : [] : [];
+      items = results ? filter in results ? results[filter] : [] : {};
       return (
          <div id="search-results-page">
-            {this.state.query ?
+            {query ?
                <Fragment>
                   <div id="srp-header">
                      <h2>Resultados para "{query}"</h2>
@@ -47,7 +42,7 @@ class SearchResult extends Component {
                      <h4>Encontrados: {items.length}</h4>
                   </div>
                   <div id="srp-results">
-                     {items.length !== 0 ?
+                     {items.length ?
                         items.map((item, index) =>
                            filter === 'products' ?
                               <UserProduct data={item} key={index} /> :
@@ -74,12 +69,14 @@ class SearchResult extends Component {
    };
 
    componentDidUpdate() {
-      let propQuery = this.getQuery()
+      let propQuery = this.getQuery();
       if (this.state.query !== propQuery) {
-         this.setState({results: {}, query: propQuery}, this.loadRequest);
+         this.setState({ results: {}, query: propQuery }, this.loadRequest);
       };
    };
 
 };
 
 export default SearchResult;
+
+// Terminado, nada más que revisar...

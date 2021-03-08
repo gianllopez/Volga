@@ -10,7 +10,7 @@ class FavoritesProducts extends Component {
 
    render() {
       let { favorites, loading } = this.state,
-      hasfavs = favorites.length !== 0;
+      hasfavs = favorites.length;
       return (
          <div id="favorites-products">
             {!loading ?
