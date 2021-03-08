@@ -1,9 +1,12 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, createContext, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { UserStats, ProductCard, Opinion, FollowButton, UserPageExists } from './components';
+import { UserStats, ProductCard, Opinion,
+         FollowButton, UserPageExists, PresentationHeader } from './components';
 import './styles/UserProfile.css';
 import api from '../utils/api';
 import { isAuthenticated } from '../utils/routing-tools';
+
+export const UserProfileContext = createContext({});
 
 class UserProfile extends Component {
 
@@ -48,62 +51,48 @@ class UserProfile extends Component {
       return (
          <UserPageExists onExists={this.fetchUserData}>
             <div id="user-profile">
+               <UserProfileContext.Provider value={{...this.state.user}}>
 
-               <section id="profile-header" className="profile-section">
-                  <img src={picture} alt={`${username}-profpic`} />
-                  <div id="user-info">
-                     <h2>{username}</h2>
-                     <h4>{name}</h4>
-                  </div>
-                  {!itsme && 
-                     <div id="interaction-btns">
-                        <Link to={`/${username}/contact`}>
-                           <button>Contactar</button>
-                        </Link>
-                        <FollowButton
-                           user={username}
-                           following={following}
-                           history={this.props.history}
-                           />
-                     </div>}
-               </section>
+                  <PresentationHeader className="profile-section" />
 
-               <section id="user-stats" className="profile-section">
-                  <UserStats stats={stats} />
-               </section>
+                  <section id="user-stats" className="profile-section">
+                     <UserStats stats={stats} />
+                  </section>
 
-               <section id="user-products"
-                  className={`profile-section${products.length === 0 ? " no-prods-styles" : ""}`}>
-                  {products.length !== 0 && <h3 className="section-title">Aquí puedes encontrar:</h3>}
-                  <div id="products">
-                     {products.length !== 0 ?
-                        <Fragment>
-                           {products.map((product, index) => 
-                              <ProductCard
-                                 product-data={product}
-                                 onDelete={this.deleteHandler}
-                                 user={username}
-                                 key={index}
-                                 isowner={itsme || false}
-                              />)}
-                        </Fragment> :
-                        <h3 className="blank-header">Este usuario no ha posteado ningún producto.</h3>}
-                  </div>
-               </section>
-               <section id="clients-opinions" className="profile-section">
-                  {opinions.length !== 0 ?
-                     <Fragment>
-                        <h3 className="section-title">Opiniones de clientes:</h3>
-                        {opinions.map((opinion, index) => 
-                           <Opinion {...opinion} key={index}/>)}
-                     </Fragment> : <h3 className="blank-header">Este usuario no tiene opiniones de clientes.</h3>}
-                     <div>
-                        {opinions.length !== 0 &&
-                           isAuthenticated() && <Link to={`/${username}/opinions`}>Ver todas</Link>}
-                        {!itsme &&
-                           <Link to={{pathname: `/${username}/opinions/new`, state: {exists: true}}}>Opinar</Link>}
+                  <section id="user-products"
+                     className={`profile-section${products.length === 0 ? " no-prods-styles" : ""}`}>
+                     {products.length !== 0 && <h3 className="section-title">Aquí puedes encontrar:</h3>}
+                     <div id="products">
+                        {products.length !== 0 ?
+                           <Fragment>
+                              {products.map((product, index) => 
+                                 <ProductCard
+                                    product-data={product}
+                                    onDelete={this.deleteHandler}
+                                    user={username}
+                                    key={index}
+                                    isowner={itsme || false}
+                                 />)}
+                           </Fragment> :
+                           <h3 className="blank-header">Este usuario no ha posteado ningún producto.</h3>}
                      </div>
-               </section>
+                  </section>
+                  <section id="clients-opinions" className="profile-section">
+                     {opinions.length !== 0 ?
+                        <Fragment>
+                           <h3 className="section-title">Opiniones de clientes:</h3>
+                           {opinions.map((opinion, index) => 
+                              <Opinion {...opinion} key={index}/>)}
+                        </Fragment> : <h3 className="blank-header">Este usuario no tiene opiniones de clientes.</h3>}
+                        <div>
+                           {opinions.length !== 0 &&
+                              isAuthenticated() && <Link to={`/${username}/opinions`}>Ver todas</Link>}
+                           {!itsme &&
+                              <Link to={{pathname: `/${username}/opinions/new`, state: {exists: true}}}>Opinar</Link>}
+                        </div>
+                  </section>
+
+               </UserProfileContext.Provider>
             </div>
          </UserPageExists>
       );

@@ -1,0 +1,33 @@
+#profile-header img {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 5px;
+}
+
+#user-info {
+  text-align: center;
+  color: #6f6f6f;
+}
+
+#user-info h2 {
+  color: initial;   
+}
+
+#interaction-btns {
+  margin-top: 10px;
+}
+
+#interaction-btns button {
+  width: 100px;
+  height: 37px;
+  outline: none;
+  border-radius: 5px;
+  font-size: .9em;
+}
+
+#interaction-btns a button:first-of-type {
+  border: 2px solid black;
+  background: none;
+} 

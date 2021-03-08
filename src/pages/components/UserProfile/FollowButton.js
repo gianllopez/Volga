@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 // import { CustomModal } from '..';
 import api from '../../../utils/api';
 import { isAuthenticated } from '../../../utils/routing-tools';
@@ -50,4 +51,4 @@ class FollowButton extends Component {
 
 };
 
-export default FollowButton;
+export default withRouter(FollowButton);
