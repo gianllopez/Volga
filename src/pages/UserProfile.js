@@ -1,7 +1,7 @@
 import React, { Component, createContext, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { UserStats, ProductCard, Opinion,
-         FollowButton, UserPageExists, PresentationHeader, ProductsPresentation, OpinionsPresentation } from './components';
+         FollowButton, UserPageExists, PresentationHeader, ProductsPresentation, OpinionsPresentation, ModalDisplayer } from './components';
 import './styles/UserProfile.css';
 import api from '../utils/api';
 import { isAuthenticated } from '../utils/routing-tools';
@@ -12,8 +12,8 @@ class UserProfile extends Component {
 
    state = {
       user: {
-         name: '', stats: {}, picture: '', opinions: '',
-         products: [], following: '',
+         name: '', stats: {}, picture: '',
+         opinions: '', products: [], following: '',
          ...this.props.match.params
       },
       ...this.props.location.state
@@ -28,21 +28,16 @@ class UserProfile extends Component {
    };
 
    deleteHandler = query => {
-      // CustomModal((
-      //    <Fragment>
-      //       <p>Esta acción es irreversible, luego de eliminarlo ya no estará en tu catálogo.</p>
-      //       <span>¿Estás seguro que lo eliminas?</span>
-      //    </Fragment>
-      // ), ['Cancelar', 'Si, eliminar']).then(del => {
-      //    if (del) {
-      //       api.post('/products/delete', query)
-      //          .then(({status}) => {
-      //             if (status === 204) {
-      //                this.setState({fetched: false, exists: true}, this.fetchUserData);
-      //             };
-      //          });
-      //    };
-      // });
+      ModalDisplayer({
+         type: 'CUSTOM',
+         title: `Esta acción es irreversible, luego de
+                 eliminarlo ya no estará en tu catálogo.`,
+         message: '¿Estás seguro que lo eliminas?'
+      }).then(() =>
+         api.post('/products/delete', query)
+            .then(() =>
+               this.setState({ fetched: false, exists: true }, this.fetchUserData)
+      ));
    };
    
    render() {
@@ -54,7 +49,7 @@ class UserProfile extends Component {
                <UserProfileContext.Provider value={{...this.state.user}}>
                   <PresentationHeader className="profile-section"/>
                   <UserStats className="profile-section"/>                  
-                  <ProductsPresentation className="profile-section"/>
+                  <ProductsPresentation deleteHandler={this.deleteHandler} className="profile-section"/>
                   <OpinionsPresentation className="profile-section"/>
                </UserProfileContext.Provider>
             </div>
