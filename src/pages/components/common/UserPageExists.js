@@ -28,7 +28,7 @@ class UserPageExists extends Component {
       } else {
          this.setState({ found: true, loading: false }, onExists);
       };
-      let { username } = JSON.parse(localStorage.getItem('uiprev'));
+      let { username } = JSON.parse(localStorage.getItem('uiprev')) || '';
       if (username === match.params.username) {
          this.setState({ itsme: true });
       };

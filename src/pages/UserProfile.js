@@ -46,10 +46,11 @@ class UserProfile extends Component {
       let { picture, username, name, stats, opinions,
             products, following, itsme } = this.state.user;
       return (
-         <UserPageExists userParam={!this.state.exists && username} onExists={this.fetchUserData}>
+         <UserPageExists onExists={this.fetchUserData}>
             <div id="user-profile">
-               <section id="profile-header" className="profile-section sub-section">
-                  <img src={picture} alt="user-profilepic" />
+
+               <section id="profile-header" className="profile-section">
+                  <img src={picture} alt={`${username}-profpic`} />
                   <div id="user-info">
                      <h2>{username}</h2>
                      <h4>{name}</h4>
@@ -66,9 +67,11 @@ class UserProfile extends Component {
                            />
                      </div>}
                </section>
-               <section id="user-stats" className="profile-section sub-section">
+
+               <section id="user-stats" className="profile-section">
                   <UserStats stats={stats} />
                </section>
+
                <section id="user-products"
                   className={`profile-section${products.length === 0 ? " no-prods-styles" : ""}`}>
                   {products.length !== 0 && <h3 className="section-title">Aquí puedes encontrar:</h3>}
@@ -87,7 +90,7 @@ class UserProfile extends Component {
                         <h3 className="blank-header">Este usuario no ha posteado ningún producto.</h3>}
                   </div>
                </section>
-               <section id="clients-opinions" className="profile-section sub-section">
+               <section id="clients-opinions" className="profile-section">
                   {opinions.length !== 0 ?
                      <Fragment>
                         <h3 className="section-title">Opiniones de clientes:</h3>

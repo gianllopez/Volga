@@ -1,7 +1,9 @@
+
+/* User Profile page styles (IT'S DONE) */
+
 #user-profile {
+   padding: 75px 0 25px 0;
    background-color: #d5d5e040;
-   /* padding-top: calc(75px + 15px); */
-   padding-bottom: 25px;
 }
 
 #user-profile section:not(:first-child) {
@@ -19,14 +21,14 @@
    background-color: white;
 }
 
-.sub-section {
-   max-width: 600px;
-}
-
 .section-title {
-   font-size: 6vw;
+   font-size: clamp(1em, 6vw, 1.45em);
    margin-bottom: 5px;
 }
+
+/* --------------------------------------- */
+
+/* Profile header styles (IT'S DONE) */
 
 #profile-header img {
    height: 150px;
@@ -38,17 +40,11 @@
 
 #user-info {
    text-align: center;
-   color: #4f4f4f;
+   color: #6f6f6f;
 }
 
 #user-info h2 {
    color: initial;   
-}
-
-#user-info p {  
-   max-width: 300px;
-   margin: 5px auto;
-   padding: 0 10px;
 }
 
 #interaction-btns {
@@ -68,6 +64,9 @@
    background: none;
 } 
 
+/* -------------------- */
+
+
 #products {
    display: inherit;
    flex-wrap: wrap;
@@ -84,25 +83,14 @@
    }
 }
 
-@media (min-width:600px) {
-   .section-title {
-      font-size: 1.5em;
-   }
-}
-
 @media (min-width:768px) {
    #user-profile {
       display: grid;
       grid-template-rows: max-content max-content;
       justify-content: center;
-      /* padding-top: 135px; */
    }
    #user-stats {
-      /* flex-direction: row; */
       grid-row: 2;
-   }
-   .profile-section {
-      /* height: max-content; */
    }
    .opinion {
       width: calc(90% - 10px);
@@ -113,7 +101,6 @@
       width: 60vw;
       max-width: 1250px;
       height: calc(100% - 8vh);
-      /* justify-content: center; */
    }
 }
 
@@ -131,15 +118,6 @@
       margin: 10px 0;
    }
 }
-
-/* .profile-section p {
-   text-align: center;
-} */
-/* @media (min-width:1400px) {
-   #user-stats {
-      justify-content: center;
-   }
-} */
 
 /* añadir esta clase cuando no hay productos al #user-products */
 .no-prods-styles {
