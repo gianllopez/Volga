@@ -1,70 +1,17 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import volgalogo from '../../../assets/common/logo.svg';
 import logouticon from '../../../assets/common/logout-icon.svg';
 import BurgerMenu from './BurgerMenu';
+import { isAuthenticated } from '../../../utils/routing-tools'
 import SearchLink from './SearchLink';
 import './styles/NavBar.css';
 
 class NavBar extends Component {
 
-   state = {
-      isauth: localStorage.getItem('user-token') ? true : false,
-      ...JSON.parse(localStorage.getItem('uiprev'))
-   };
-
-   linksAnimations = () => {
-      document.getElementById('navbar-links')
-         .classList
-            .toggle('show-links');
-   };
-
-   logOut = () => {
-      window.location = '/';
-      localStorage.clear();
-   };
-
    render() {
       let { isauth, username, picture } = this.state;
-      return (
-         <div id="navbar-wrapper">
-            <BurgerMenu clickCallback={this.linksAnimations} />
-            <Link to={{
-               pathname: isauth ? `/users/${username}` : '',
-               state: {exists: true}}} id="profile-link">
-               <figure>
-                  <img
-                     {...isauth && { className: 'user-rounded-picture' }}
-                     src={isauth ? picture : volgalogo}
-                     alt="navbar-user-pic"
-                  />
-               </figure>
-            </Link>
-            <div id="navbar-links">
-               <Link to="/">Inicio</Link>
-               <SearchLink />
-               <Link to="/products/explore">Explorar</Link>
-               {isauth ?
-                  <Fragment>
-                     <Link to="/my-products/new">Postear</Link>
-                     <Link to="/me/favorites">Favoritos</Link>
-                  </Fragment> :
-                  <Fragment>
-                     <Link to="/logup">Registrar</Link>
-                     <Link to="/login">Iniciar sesión</Link>
-                  </Fragment>
-               }
-            </div>
-            {isauth &&
-               <img
-                  id="logout-btn"
-                  src={logouticon}
-                  alt="logout-icon"
-                  onClick={this.logOut}
-               />}
-
-         </div>
-      );
+      
    };
 
    componentDidMount() {
@@ -100,5 +47,68 @@ class NavBar extends Component {
    };
 
 };
+
+function NavBar(props) {
+
+   const [state, setState] = useState({
+      isauth: isAuthenticated(),
+      ...JSON.parse(localStorage.getItem('uiprev'))});
+
+   const linksAnimations = () => {
+      document.getElementById('navbar-links')
+         .classList
+            .toggle('show-links');
+   };
+
+   const logOut = () => {
+      window.location = '/';
+      localStorage.clear();
+   };
+
+   let { isauth, username, picture } = state;
+
+   return (
+      <div id="navbar-wrapper">
+         <BurgerMenu clickCallback={this.linksAnimations} />
+         <Link to={{
+            pathname: isauth ? `/users/${username}` : '',
+            state: {exists: true}}} id="profile-link">
+            <figure>
+               <img
+                  {...isauth && { className: 'user-rounded-picture' }}
+                  src={isauth ? picture : volgalogo}
+                  alt="navbar-user-pic"
+               />
+            </figure>
+         </Link>
+         <div id="navbar-links">
+            <Link to="/">Inicio</Link>
+            <SearchLink />
+            <Link to="/products/explore">Explorar</Link>
+            {isauth ?
+               <Fragment>
+                  <Link to="/my-products/new">Postear</Link>
+                  <Link to="/me/favorites">Favoritos</Link>
+               </Fragment> :
+               <Fragment>
+                  <Link to="/logup">Registrar</Link>
+                  <Link to="/login">Iniciar sesión</Link>
+               </Fragment>
+            }
+         </div>
+         {isauth &&
+            <img
+               id="logout-btn"
+               src={logouticon}
+               alt="logout-icon"
+               onClick={this.logOut}
+            />}
+
+      </div>
+   );
+
+};
+
+
 
 export default NavBar;

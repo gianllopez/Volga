@@ -29,7 +29,7 @@ function Input(props) {
          setError(true);
          spanErrorAnimation();
       };
-   }, [error, errors]);
+   }, [errors]);
 
    return (
       <div className={`input-wrapper ${name}`}>

@@ -1,11 +1,7 @@
 #footer-wrapper {
    background-color: #36393F;
    color: white;
-   text-align: center;
    padding: 10px 0;
-   /* position: absolute;
-   bottom: 0;
-   width: 100%; */
 }
 
 #my-social-contact {
@@ -31,7 +27,6 @@
 #contact-me {
    width: max-content;
    margin: auto;
-   text-align: left;
    border-left: 5px solid #23252b;
    padding: 5px;
    color: #959494;
@@ -41,13 +36,12 @@
    padding: 5px;
    background-color: #23252b;
    margin-top: 5px;
+   text-align: center;
 }
 
 @media (min-width: 768px) {
    #contact-me {
-      /* width: ; */
       display: flex;
-      justify-content: center;
       border: none;
    }
 
@@ -58,3 +52,7 @@
       margin: 0 5px;
    }
 }
+
+/* @media (min-width) */
+
+/* Terminado, nada más que revisar... */

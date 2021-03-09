@@ -18,7 +18,6 @@ function VolgaApp(props={}) {
                <Layout withfooter>
                   <ProtectedRoute path="/logup" component={Logup} disabledonauth/>
                   <Route exact path="/products/explore" component={Explore} />
-                  <Route path="/users/:username" component={UserProfile} exact />
                </Layout>
             </Route>
             <Route path={noFooterPaths} exact>
@@ -28,6 +27,7 @@ function VolgaApp(props={}) {
                   <Route path="/:username/contact" component={UserContact} exact />
                   <Route path="/search/results" component={SearchResults} exact />
                   <Route path="/:username/catalog/:key" component={ProductPage} exact />
+                  <Route path="/users/:username" component ={UserProfile} exact />
                   <Route path="/" component={Home} exact />
                   <ProtectedRoute path="/:username/opinions/new" component={NewOpinion} />
                   <ProtectedRoute path="/my-products/new" component={PostProduct} exact />

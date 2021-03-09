@@ -25,12 +25,6 @@ class VolgaREST {
       return Axios(config);
    };
 
-   delete(endpoint) {
-      let config = this.baseconfig(endpoint);
-      config.method = 'delete';
-      return Axios(config);
-   };
-
 };
 
 export default new VolgaREST();

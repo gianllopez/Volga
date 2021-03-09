@@ -45,13 +45,18 @@
    }
 }
 
-@media (min-height: 1075px) {
+@media (min-width: 768px) and (min-height: 1075px) {
    #logup-form {
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
       padding: 0;
+   }
+   #logup-form + #footer-wrapper {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
    }
 }
 

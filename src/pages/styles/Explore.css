@@ -22,7 +22,22 @@
    }
 }
 
-#explore-page .btnloaderpper {
+@media (min-width: 768px) and (min-height: 750px) {
+   #explore-page {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 0;
+   }
+   #explore-page + #footer-wrapper {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+   }
+}
+
+#explore-page .btnloader {
    margin: 10px;
 }
 

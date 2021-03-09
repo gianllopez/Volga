@@ -32,7 +32,6 @@ function Layout(props) {
 
 const completePaths = [
    '/products/explore',
-   '/users/:username',
    '/logup',
 ];
 
@@ -41,6 +40,7 @@ const noFooterPaths = [
    '/:username/opinions/new',
    '/:username/opinions',
    '/:username/contact',
+   '/users/:username',
    '/my-products/new',
    '/search/results',
    '/me/favorites',
