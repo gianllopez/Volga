@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { changeValidator } from '../../../utils/validators';
-import { logupContext } from '../../Logup';
 import './styles/Input.css';
 
 class Input extends Component {

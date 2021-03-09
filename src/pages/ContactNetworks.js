@@ -115,7 +115,7 @@ class ContactNetworks extends Component {
                   <ContactNetworkInput
                      name="linkedin"
                      maxLength="30"
-                     regex={/.*[\w\-\_À-ÿ%]$/}
+                     regex={/.*[\w\-_À-ÿ%]$/}
                   />
                </CNcontext.Provider>
                <ButtonLoader isloading={this.state.loading}/>
@@ -134,7 +134,7 @@ class ContactNetworks extends Component {
                    ese es el dato requerido:</h3>
                <div>
                   {DEMO_IMAGES.map((img, index) => 
-                     <img src={img} key={index}/>)}
+                     <img src={img} key={index} alt="data-example-pic"/>)}
                </div>
             </div>,
          buttons: [false, 'Entendido'],

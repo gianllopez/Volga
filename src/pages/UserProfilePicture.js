@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Uploader, ButtonLoader,
          UserPageExists, ModalDisplayer } from './components';
 import api from '../utils/api';

@@ -34,13 +34,6 @@
 
 /* -------------------------------------- */
 
-@media (min-width: 768px) {
-   #clients-opinions {
-      position: sticky;
-      top: 75px;
-   }
-}
-
 @media (min-width:768px) {
    #user-profile {
       display: grid;
@@ -53,30 +46,11 @@
    .opinion {
       width: calc(90% - 10px);
    }
-   #user-profile #user-products {
+   #user-products {
       grid-row: 1/4;
       margin-top: 0;
       width: 60vw;
       max-width: 1250px;
       height: calc(100% - 8vh);
    }
-}
-
-@media (min-width:768px) and (max-width:1400px) {
-   #user-stats {
-      flex-direction: column;
-   }
-   .stat {
-      margin: 10px 0;
-   }
-}
-
-/* añadir esta clase cuando no hay productos al #user-products */
-.no-prods-styles {
-   height: calc(100% - 8vh);
-   justify-content: center;
-}
-
-.blank-header {
-   text-align: center;
 }

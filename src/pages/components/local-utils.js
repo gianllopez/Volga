@@ -1,5 +1,3 @@
-import checkicon from '../../assets/UserProfilePicture/check-icon.svg';
-
 function ratingBackground(rating) {
    let bgColor = '#FF5722';
    if (rating >= 5 && rating <= 7.5) {

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Opinion } from '../';
 import { UserProfileContext } from '../../UserProfile';
 import { isAuthenticated } from '../../../utils/routing-tools';
+import './styles/OpinionsPresentation.css';
 
 function OpinionsPresentation(props) {
    let { opinions, username, itsme } = useContext(UserProfileContext);

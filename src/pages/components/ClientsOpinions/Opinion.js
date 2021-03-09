@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { ratingBackground } from '../local-utils';
 import './Opinion.css';
 

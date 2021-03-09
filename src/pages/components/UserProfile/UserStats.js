@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import React, { useContext } from 'react';
 import { UserProfileContext } from '../../UserProfile';
 import { statsicons } from '../../../assets';
 import './styles/UserStats.css';

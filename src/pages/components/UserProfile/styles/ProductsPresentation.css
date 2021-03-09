@@ -11,3 +11,8 @@
      grid-template-columns: repeat(3, 33%); 
   }
 }
+
+.no-prods-styles {
+  height: calc(100% - 8vh);
+  justify-content: center;
+}

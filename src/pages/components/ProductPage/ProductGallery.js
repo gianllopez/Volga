@@ -19,7 +19,7 @@ class ProductGallery extends Component {
       if (this.onChangeResponsive) {
          let { previousElementSibling } = target.parentElement;
          swal({
-            content: <img src={previousElementSibling.src} id="to-display" />,
+            content: <img src={previousElementSibling.src} id="to-display" alt="product-pic" />,
             className: 'img-modal-displayer',
             buttons: false
          });

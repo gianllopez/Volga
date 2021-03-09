@@ -1,4 +1,4 @@
-import React, { Component, createContext, Fragment } from 'react';
+import React, { Component, createContext } from 'react';
 import { Link } from 'react-router-dom';
 import { LogupInput, ButtonLoader } from './components/';
 import { blankForm } from '../utils/validators';

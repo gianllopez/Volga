@@ -14,7 +14,7 @@ function ProductCard(props) {
          () => classList.add('show-to-page'));
          prod.addEventListener('mouseout',
          () => classList.remove('show-to-page'));
-   }, []);
+   });
    
    return (
       <div className="product-card" id={key}>

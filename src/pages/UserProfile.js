@@ -1,11 +1,8 @@
-import React, { Component, createContext, Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component, createContext } from 'react';
 import { ProductsPresentation, OpinionsPresentation, ModalDisplayer,
-         UserStats, ProductCard, Opinion, FollowButton,
-         UserPageExists, PresentationHeader } from './components';
+         UserStats, UserPageExists, PresentationHeader } from './components';
 import './styles/UserProfile.css';
 import api from '../utils/api';
-import { isAuthenticated } from '../utils/routing-tools';
 
 export const UserProfileContext = createContext({});
 
@@ -58,19 +55,19 @@ class UserProfile extends Component {
    };
 
    componentDidMount() {
-      document.title = `Volga - ${this.state.user.username}`;
-      let { length } = this.state.user.products,
+      let { username, products } = this.state.user,
       prodsect = document.querySelector('section#user-products');
-      if (!length && prodsect) {
+      document.title = `Volga - ${username}`;
+      if (!products.length && prodsect) {
          prodsect.classList.add('no-prods-styles');
       };
    };
 
    componentDidUpdate(prevProps) {
-      let { username } = this.props.match.params;
+      let { username } = this.state.user;
       let prevUser = prevProps.match.params.username;
       if (username !== prevUser) {
-         this.setState({ fetched: false}, () => this.fetchUserData(username))         
+         this.setState({ fetched: false }, () => this.fetchUserData(username))         
       };
    };
 
