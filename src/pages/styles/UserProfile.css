@@ -1,6 +1,3 @@
-
-/* User Profile page styles (IT'S DONE) */
-
 #user-profile {
    padding: 75px 0 25px 0;
    background-color: #d5d5e040;
@@ -8,6 +5,29 @@
 
 #user-profile section:not(:first-child) {
    margin-top: 15px;
+}
+
+@media (min-width: 768px) {
+   #user-profile {
+      padding-top: 120px;
+   }
+}
+
+@media (min-width:768px) {
+   #user-profile {
+      display: grid;
+      grid-template-rows: max-content max-content;
+      justify-content: center;
+   }
+   #user-stats {
+      grid-row: 2;
+   }
+   #user-profile #user-products {
+      grid-row: 1/4;
+      margin-top: 0;
+      width: 60vw;
+      max-width: 1250px;
+   }
 }
 
 .profile-section {
@@ -26,31 +46,9 @@
    margin-bottom: 5px;
 }
 
-@media (min-width: 768px) {
-   #user-profile {
-      padding-top: 120px;
-   }
-}
+.blank-header {
+   text-align: center;
+ }
+ 
 
-/* -------------------------------------- */
-
-@media (min-width:768px) {
-   #user-profile {
-      display: grid;
-      grid-template-rows: max-content max-content;
-      justify-content: center;
-   }
-   #user-stats {
-      grid-row: 2;
-   }
-   .opinion {
-      width: calc(90% - 10px);
-   }
-   #user-products {
-      grid-row: 1/4;
-      margin-top: 0;
-      width: 60vw;
-      max-width: 1250px;
-      height: calc(100% - 8vh);
-   }
-}
+/* Terminado, nada más que resumir... */

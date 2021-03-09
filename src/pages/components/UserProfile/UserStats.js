@@ -15,16 +15,16 @@ function Stat ({ name, label, value }) {
    );
 };
 
-function UserStats(props) {
-   let { ratingavg, followers, nproducts } = useContext(UserProfileContext);
+function UserStats(props={}) {
+   let { rating_avg, followers, total_products } = useContext(UserProfileContext);
    return (
       <section id="user-stats" className={props.className}>
          <Stat name="rating" label="Calificación"
-            value={ratingavg || 0} />
+            value={rating_avg || 0} />
          <Stat name="followers" label="Seguidores"
             value={followers || 0} />
          <Stat name="products" label="Productos"
-            value={nproducts || 0} />
+            value={total_products || 0} />
       </section>
    );
 };

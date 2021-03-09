@@ -1,16 +1,18 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router';
-// import { CustomModal } from '..';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
+import { ModalDisplayer } from '..';
 import api from '../../../utils/api';
 import { isAuthenticated } from '../../../utils/routing-tools';
 import './styles/FollowButton.css';
 
-class FollowButton extends Component {
+function FollowButton(props) {
 
-   state = { isauth: isAuthenticated() };
+   const [isauth] = useState(isAuthenticated());
 
-   animChanger = following => {
-      if (this.state.isauth) {
+   const history = useHistory();
+
+   const favAnimation = following => {
+      if (isauth) {
          let btn = document.querySelector('.follow-btn');
          if (following) {
             btn.classList.add('following');
@@ -21,34 +23,35 @@ class FollowButton extends Component {
          };
       };
    };
-   
-   actionSubmit = () => {
-      if(this.state.isauth) {
-         api.post('/follow', { user: this.props.user })
-            .then(({ data }) => this.animChanger(data.following))
+
+   const favSubmit = () => {
+      if(isauth) {
+         api.post('/follow', { user: props.user })
+            .then(({ data }) => favAnimation(data.following))
             .catch(({ response }) => {
                if (response.status === 404) {
-                  // CustomModal(<span>{ response.data[this.props.user] }</span>, [false, 'Entendido'])
-                  //    .then(ok => ok && this.props.history.push('/'));
+                  ModalDisplayer({
+                     type: 'CUSTOM',
+                     title: 'Error',
+                     message: response.data[props.user]
+                  }).then(() => history.push('/'));
                };
             }); 
       } else {
-         this.props.history.push('/login');
+         history.push('/login');
       };
    };
 
-   render() {
-      return (
-         <button className="follow-btn" onClick={this.actionSubmit}>
-            Seguir
-         </button>
-      );
-   };
+   useEffect(() => favAnimation(props.following && 'following'));
 
-   componentDidUpdate() {
-      this.animChanger(this.props.following && 'following');
-   };
+   return (
+      <button className="follow-btn" onClick={favSubmit}>
+         Seguir
+      </button>
+   );
 
 };
 
-export default withRouter(FollowButton);
+export default FollowButton;
+
+// Terminado, nada más que revisar...

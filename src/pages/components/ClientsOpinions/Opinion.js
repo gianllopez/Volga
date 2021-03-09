@@ -2,14 +2,14 @@ import React from 'react';
 import { ratingBackground } from '../local-utils';
 import './Opinion.css';
 
-function Opinion(props) {
-   let { from, date, comment, rating } = props;
+function Opinion({ from, date, comment, rating }) {
    return (      
       <div className="opinion">
          <div>
             <p>{from} ({date})</p>
-            <span style={{
-               backgroundColor: ratingBackground(rating)}}>{rating}</span>
+            <span style={{backgroundColor: ratingBackground(rating)}}>
+               {rating}
+            </span>
          </div>
          <p>{comment}</p>
       </div>
@@ -17,3 +17,5 @@ function Opinion(props) {
 }
 
 export default Opinion;
+
+// Terminado, nada más que revisar...

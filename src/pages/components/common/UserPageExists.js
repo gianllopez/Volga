@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect, withRouter } from 'react-router-dom';
-import { PageLoader } from '..';
-import { NotFound } from '../..';
+import { PageLoader } from '../';
+import { NotFound } from '../../';
 import api from '../../../utils/api';
 
 class UserPageExists extends Component {
@@ -20,7 +20,7 @@ class UserPageExists extends Component {
 
    componentDidMount() {
       let { onExists, match, location } = this.props,
-      { exists } = location.state || '';
+      { exists } = location.state || false;
       if (!exists) {
          api.post('/validation/user-exists', { ...match.params })
             .then(() => this.setState({ found: true }, onExists))
@@ -37,3 +37,5 @@ class UserPageExists extends Component {
 };
 
 export default withRouter(UserPageExists);
+
+// Terminado, nada más que revisar...

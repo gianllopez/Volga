@@ -2,7 +2,6 @@
   display: inherit;
   flex-wrap: wrap;
   justify-content: center;
-  width: 100%;
 }
 
 @media (min-width: 1500px) {
@@ -16,3 +15,5 @@
   height: calc(100% - 8vh);
   justify-content: center;
 }
+
+/* Terminado, nada más que revisar... */

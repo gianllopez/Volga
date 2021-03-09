@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment, useContext, useEffect } from 'react';
 import { ProductCard } from '../';
 import { UserProfileContext } from '../../UserProfile';
 import './styles/ProductsPresentation.css';
@@ -6,6 +6,13 @@ import './styles/ProductsPresentation.css';
 function ProductsPresentation(props) {
    
    let { products, username, itsme } = useContext(UserProfileContext);
+
+   useEffect(() => {
+      if (!products.length) {
+         document.querySelector('#user-products')
+            .classList.add('no-prods-styles');
+      };
+   });
 
    return (
       <section id="user-products" className={props.className}>
@@ -31,3 +38,5 @@ function ProductsPresentation(props) {
 };
 
 export default ProductsPresentation;
+
+// Terminado, nada más que revisar...

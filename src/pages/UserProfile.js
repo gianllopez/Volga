@@ -1,6 +1,7 @@
 import React, { Component, createContext } from 'react';
-import { ProductsPresentation, OpinionsPresentation, ModalDisplayer,
-         UserStats, UserPageExists, PresentationHeader } from './components';
+import { ProductsPresentation, OpinionsPresentation,
+         UserPageExists, PresentationHeader,
+         ModalDisplayer, UserStats } from './components';
 import './styles/UserProfile.css';
 import api from '../utils/api';
 
@@ -11,7 +12,7 @@ class UserProfile extends Component {
    state = {
       user: {
          name: '', stats: {}, picture: '',
-         opinions: '', products: [], following: '',
+         opinions: '', products: [], following: false,
          ...this.props.match.params
       },
       ...this.props.location.state
@@ -38,7 +39,6 @@ class UserProfile extends Component {
                this.setState({ fetched: false, exists: true }, this.fetchUserData)
       ));
    };
-   
    render() {
       return (
          <UserPageExists onExists={this.fetchUserData}>
@@ -46,21 +46,17 @@ class UserProfile extends Component {
                <UserProfileContext.Provider value={this.state.user}>
                   <PresentationHeader className="profile-section"/>
                   <UserStats className="profile-section"/>                  
-                  <ProductsPresentation deleteHandler={this.deleteHandler} className="profile-section"/>
+                  <ProductsPresentation
+                     deleteHandler={this.deleteHandler} className="profile-section"/>
                   <OpinionsPresentation className="profile-section"/>
                </UserProfileContext.Provider>
             </div>
          </UserPageExists>
       );
    };
-
+   
    componentDidMount() {
-      let { username, products } = this.state.user,
-      prodsect = document.querySelector('section#user-products');
-      document.title = `Volga - ${username}`;
-      if (!products.length && prodsect) {
-         prodsect.classList.add('no-prods-styles');
-      };
+      document.title = `Volga - ${this.state.user.username}`;
    };
 
    componentDidUpdate(prevProps) {
@@ -74,3 +70,5 @@ class UserProfile extends Component {
 };
 
 export default UserProfile;
+
+// Terminado, nada más que revisar...

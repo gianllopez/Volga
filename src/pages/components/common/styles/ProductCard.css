@@ -1,5 +1,4 @@
-.product-card {
-   max-width: 250px;
+.product-card {   
    margin: 10px;
    padding: 20px;
    box-shadow: 0px 0px 7px 2px #00000021;
@@ -63,8 +62,15 @@
    color: red;
 }
 
+@media (max-width: 1500px) {
+   .product-card {
+      max-width: 250px;
+   }
+}
+
 .show-to-page {
    transform: initial;
 }
+
 
 /* Terminado, nada más que revisar...*/
