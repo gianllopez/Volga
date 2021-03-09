@@ -1,13 +1,16 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import { changeValidator } from '../../../utils/validators';
 import './styles/Input.css';
 
-class Input extends Component {
+function Input(props) {
 
-   state = { error: false };
+   const [error, setError] = useState(false);
 
-   onChangeExtension = event => {
-      let { maxLength, regex, onChange } = this.props,
+   let { name, type, label, allowblank,
+         errors, children, minLength } = props;
+
+   const onChangeExtension = event => {
+      let { maxLength, regex, onChange } = props,
       value = changeValidator(event, maxLength, onChange);
       if (regex && !regex.test(value)) {
          event.target.value = value.substring(0, value.length - 1);
@@ -15,45 +18,40 @@ class Input extends Component {
       onChange(event);
    };
 
-   spanErrorAnimation = () => {
+   const spanErrorAnimation = () => {
       setTimeout(() =>
-         document.querySelector(`span.${this.props.name}-error`)
+         document.querySelector(`span.${name}-error`)
             .style.transform = 'initial', 1);
    };
 
-   render() {
-      let { name, type, label, allowblank,
-            errors, children, minLength } = this.props;
-      return (
-         <div className={`input-wrapper ${name}`}>
-            <label htmlFor={name}>
-               {label}: {!allowblank && <span>*</span>}
-            </label>
-            {children ? children : 
-               <input
-                  id={name}
-                  name={name}
-                  spellCheck="false"
-                  autoComplete="off"
-                  type={type || 'text'}
-                  onChange={this.onChangeExtension}
-                  minLength={minLength}
-               />}
-            {this.state.error && 
-               <span className={`${name}-error`}>
-                  {errors[name]}
-               </span>}
-         </div>
-      );
-   };
-
-   componentDidUpdate() {
-      let { errors, name } = this.props,
-      error = errors[name] ? true : false;
-      if (error && !this.state.error) {
-         this.setState({ error }, this.spanErrorAnimation);
+   useEffect(() => {      
+      if (errors[name]) {
+         setError(true);
+         spanErrorAnimation();
       };
-   };
+   }, [error, errors]);
+
+   return (
+      <div className={`input-wrapper ${name}`}>
+         <label htmlFor={name}>
+            {label}: {!allowblank && <span>*</span>}
+         </label>
+         {children ? children : 
+            <input
+               id={name}
+               name={name}
+               spellCheck="false"
+               autoComplete="off"
+               type={type || 'text'}
+               onChange={onChangeExtension}
+               minLength={minLength}
+            />}
+         {error && 
+            <span className={`${name}-error`}>
+               {errors[name]}
+            </span>}
+      </div>
+   );
 
 };
 

@@ -2,7 +2,7 @@ import swal from '@sweetalert/with-react';
 import React, { Fragment } from 'react';
 import './styles/ModalDisplayer.css';
 
-function structure({title, message}) {
+function structure({ title, message }) {
    return (
       <Fragment>
          <p>{title}</p>
@@ -19,7 +19,7 @@ const TYPES = {
    }
 };
 
-function ModalDisplayer({type, buttons, ...rest}) {
+function ModalDisplayer({ type, buttons, ...rest }) {
    let { icon, dangerMode } = rest,
    config = {
       icon: icon || 'error',
@@ -36,3 +36,5 @@ function ModalDisplayer({type, buttons, ...rest}) {
 };
 
 export default ModalDisplayer;
+
+// Terminado, nada más que revisar...

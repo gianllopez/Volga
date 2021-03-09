@@ -21,7 +21,6 @@
 #customsg-wrapper p {
    font-size: 1.5em;
    font-weight: bold;
-   /* width: 250px;    */
    margin-top: 10px;
 }
 
@@ -30,3 +29,5 @@
       top: 60%;
    }
 }
+
+/* Terminado, nada más que revisar... */

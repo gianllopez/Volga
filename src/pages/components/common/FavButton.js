@@ -1,50 +1,46 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
+import { Redirect, useHistory } from 'react-router-dom';
+import { isAuthenticated } from '../../../utils/routing-tools';
+import api from '../../../utils/api';
 import favIcon from '../../../assets/common/heart.svg';
 import filledFavIcon from '../../../assets/common/filled-heart.svg';
-import api from '../../../utils/api';
-import { isAuthenticated } from '../../../utils/routing-tools';
 import './styles/FavButton.css';
-import { Redirect } from 'react-router-dom';
 
+function FavButton({ product, withtext, ...rest}) {
 
-class FavButton extends Component {
+   const [isfav, setIsfav] = useState(rest.isfav);
+   const history = useHistory();
 
-   state = { isfav: this.props.isfav };
-
-   fetchFav = event => {
+   const fetchFav = event => {
+      event.stopPropagation();
       if (isAuthenticated()) {
-         event.stopPropagation();
-         let { product } = this.props;
          api.post('/product-fav', { product })
-            .then(({ data }) => this.setState({ ...data }))
+            .then(({ data }) => setIsfav(data.isfav));
       } else {
-         this.setState({ authredirect: true });
+         history.push('/login');
       };
    };
 
-   render() {
-      let { isfav, authredirect } = this.state;
-      return (
-         !authredirect ? 
-            !this.props.withtext ?
-               <img
-                  className="fav-icon"
-                  src={isfav ? filledFavIcon : favIcon}
-                  alt="fav-icon"
-                  onClick={this.fetchFav}
-               /> :
-               <button
-                  id="fav-btn"
-                  onClick={this.fetchFav}
-                  className={isfav ? "btn-is-fav" : "btn-no-fav"}>
-                  {!isfav ?
-                     "Añadir a favoritos" :
-                     "Eliminar de favoritos"}
-               </button> : 
-            <Redirect to="/login" />
-            
-      );
-   }
+   return (
+      !withtext ?
+         <img
+            className="fav-icon"
+            src={isfav ? filledFavIcon : favIcon}
+            alt="fav-icon"
+            onClick={fetchFav}
+         /> :
+         <button
+            id="fav-btn"
+            onClick={fetchFav}
+            className={isfav ? "btn-is-fav" : "btn-no-fav"}>
+            {!isfav ?
+               "Añadir a favoritos" :
+               "Eliminar de favoritos"}
+         </button>
+   );
+
 };
 
 export default FavButton;
+
+// Terminado, nada más que revisar...

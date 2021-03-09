@@ -1,17 +1,13 @@
-// ---------- ContactNetInput (Component) Imports ---------- //
 import instagramLogo from './ContactNetworks/instagram-icon.svg';
 import facebookLogo from './ContactNetworks/facebook-icon.svg';
 import whatsappLogo from './ContactNetworks/whatsapp-icon.svg';
 import twitterLogo from './ContactNetworks/twitter-icon.svg';
 import emailLogo from './ContactNetworks/email-icon.svg';
 import linkedinLogo from './ContactNetworks/linkedin-icon.svg';
-
 import igdemo from './ContactNetworks/demostration/instagram.png';
 import fbdemo from './ContactNetworks/demostration/facebook.png';
 import twdemo from './ContactNetworks/demostration/twitter.png';
 import indemo from './ContactNetworks/demostration/linkedin.png';
-
-// ---------- UserTags (Page) Imports ---------- //
 import vehicles_icon from './UserTags/tags-icons/car.svg';
 import foods_icon from './UserTags/tags-icons/food-basket.svg';
 import pets_icon from './UserTags/tags-icons/dog.svg';
@@ -36,14 +32,11 @@ import jewelry_icon from './UserTags/tags-icons/rings.svg';
 import clothes_icon from './UserTags/tags-icons/clothes.svg';
 import services_icon from './UserTags/tags-icons/services.svg';
 import botanic_icon from './UserTags/tags-icons/plant.svg'
-
-// ---------- ShopProfile (Page) Imports ---------- //
 import starIcon from './UserProfile/star.svg';
 import followerIcon from './UserProfile/follower.svg';
 import productIcon from './UserProfile/product.svg';
 
-// ---------- ContactNetInput (Component) Exports ---------- //
-export const cn_icons = {
+const CN_ICONS = {
    instagram: instagramLogo,
    facebook: facebookLogo,
    whatsapp: whatsappLogo,
@@ -52,10 +45,9 @@ export const cn_icons = {
    linkedin: linkedinLogo
 };
 
-export const DEMO_IMAGES = [igdemo, fbdemo, twdemo, indemo];
+const DEMO_IMAGES = [igdemo, fbdemo, twdemo, indemo];
 
-// ---------- UserTags (Page) Exports ---------- //
-export const tagsProps = {
+const TAGS_PROPS = {
    'Vehículos': vehicles_icon,
    'Alimentos': foods_icon,
    'Mascotas': pets_icon,
@@ -82,9 +74,10 @@ export const tagsProps = {
    'Prestación de Servicios': services_icon
 };
 
-// ---------- ShopProfile (Page) Exports ---------- //
-export const statsicons = {
+const STATS_ICONS = {
    rating: starIcon,
    followers: followerIcon,
    products: productIcon
 };
+
+export { CN_ICONS, DEMO_IMAGES, TAGS_PROPS, STATS_ICONS };

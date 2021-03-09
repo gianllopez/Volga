@@ -1,5 +1,5 @@
 import React from 'react';
-import { tagsProps } from '../../../assets';
+import { TAGS_PROPS } from '../../../assets';
 import './TagsSelector.css';
 
 function TagsSelector(props) {
@@ -9,7 +9,7 @@ function TagsSelector(props) {
       props.onSelect(target);
    };
 
-   let tags = Object.keys(tagsProps).sort((a, b) => a.length - b.length);
+   let tags = Object.keys(TAGS_PROPS).sort((a, b) => a.length - b.length);
    return (
       <div id="tags-selector">
          {tags.map((tag, index) =>

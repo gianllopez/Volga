@@ -4,15 +4,17 @@
 
 button#fav-btn {
    width: 175px !important;
-   transition: .6s;
+   transition: .4s;
 }
 
-.btn-no-fav {
+button.btn-no-fav {
    color: red;
 }
 
-.btn-is-fav {
+button.btn-is-fav {
    background-color: red !important;
    color: white;
    border-color: red !important;
 }
+
+/* Terminado, nada más que revisar... */

@@ -1,11 +1,11 @@
 import React from 'react';
 import { TagBox } from '../';
 import swal from '@sweetalert/with-react';
-import { tagsProps } from '../../../assets';
+import { TAGS_PROPS } from '../../../assets';
 import './styles/ProductTags.css';
 
 function ProductTags(changeCallback) {
-   let tags = Object.entries(tagsProps);
+   let tags = Object.entries(TAGS_PROPS);
    return swal({
       title: '¿Con qué etiquetas relacionarías este producto? (10 máximo)',
       content: (

@@ -1,4 +1,4 @@
-.btnloader-wrapper {
+.btnloader {
     width: 35vw;
     height: 40px;
     background-color: #0069d9cc;
@@ -10,7 +10,7 @@
     outline: none;
 }
 
-.btnloader-wrapper .loader {
+.btnloader .loader {
     width: 10px;
     height: 10px;
     margin: auto;
@@ -28,3 +28,5 @@
         transform: rotate(360deg);
     }
 }
+
+/* Terminado, nada más que revisar... */

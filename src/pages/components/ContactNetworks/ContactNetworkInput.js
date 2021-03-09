@@ -3,7 +3,7 @@ import { CNcontext } from '../../ContactNetworks';
 import { changeValidator } from '../../../utils/validators';
 import { capitalize } from '../../../utils/tools';
 import { CN_COLORS } from '../local-utils';
-import { cn_icons } from '../../../assets';
+import { CN_ICONS } from '../../../assets';
 import checkIcon from '../../../assets/ContactNetworks/check-icon.svg';
 import './ContactNetworkInput.css';
 
@@ -63,7 +63,7 @@ class ContactNetworkInput extends Component {
       return (
          <div className={`contact-network-input ${name}`} onClick={this.inputAnimation}>
             <figure className="logo-wrapper">
-               <img src={cn_icons[name]} alt={`${name}-icon`} />
+               <img src={CN_ICONS[name]} alt={`${name}-icon`} />
             </figure>
             <div className="div-line" />
             <div className="data-input">

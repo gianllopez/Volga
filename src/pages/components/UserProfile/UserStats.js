@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { UserProfileContext } from '../../UserProfile';
-import { statsicons } from '../../../assets';
+import { STATS_ICONS } from '../../../assets';
 import './styles/UserStats.css';
 
 function Stat ({ name, label, value }) {
    return (
       <div className={`stat ${name}`}>
-         <img src={statsicons[name]} alt={`${name}-icon`} />
+         <img src={STATS_ICONS[name]} alt={`${name}-icon`} />
          <span>
             {label}
             <p>{value}</p>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { ModalDisplayer } from '..';
 import api from '../../../utils/api';
@@ -7,7 +7,7 @@ import './styles/FollowButton.css';
 
 function FollowButton(props) {
 
-   const [isauth] = useState(isAuthenticated());
+   const isauth = isAuthenticated();
 
    const history = useHistory();
 

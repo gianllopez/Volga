@@ -1,31 +1,27 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './styles/BurgerMenu.css';
 
-class BurgerMenu extends Component {
-   
-   render() {
-      return (
-         <div id="burger-menu">
-            <div className="blade blade-1"/>
-            <div className="blade blade-2"/>
-            <div className="blade blade-3"/>
-         </div>
-      );
-   };
+function BurgerMenu({ clickCallback }) {
 
-   componentDidMount() {
-      const bgmenu = this._reactInternalFiber.child.stateNode;
-      const blades = ['blade-1', 'blade-2', 'blade-3'];
+   useEffect(() => {
+      const bgmenu = document.querySelector('#burger-menu');
       bgmenu.addEventListener('click', () => {
-         blades.forEach(blade => {
-            bgmenu.querySelector(`.${blade}`)
-               .classList.toggle(`${blade}-animation`);
-         });
-         this.props.clickCallback();
+         for (let blade of bgmenu.children) {
+            blade.classList.toggle(`${blade.id}-animation`);
+         };
+         clickCallback();
       });
-   };
+   });
 
-
+   return (
+      <div id="burger-menu">
+         <div className="blade" id="blade-1"/>
+         <div className="blade" id="blade-2"/>
+         <div className="blade" id="blade-3"/>         
+      </div>
+   );
 };
 
 export default BurgerMenu;
+
+// Terminado, nada más que revisar...

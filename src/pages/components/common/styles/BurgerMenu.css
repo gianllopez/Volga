@@ -4,11 +4,9 @@
    display: flex;
    flex-direction: column;
    justify-content: center;
-   align-items: center;
 }
 
 .blade {
-   width: 95%;
    height: 20%;
    background-color: white;
    border-radius: 3px;
@@ -24,7 +22,8 @@
 }
 
 .blade-2-animation {
-   display: none;
+   transform: translateX(-150%);
+   position: absolute;
 }
 
 .blade-3-animation {
@@ -36,3 +35,5 @@
       display: none;
    }
 }
+
+/* Terminado, nada más que revisar... */
