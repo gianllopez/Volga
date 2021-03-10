@@ -40,14 +40,16 @@ class UserProfile extends Component {
       ));
    };
    render() {
+      let { user, fetched } = this.state;
       return (
          <UserPageExists onExists={this.fetchUserData}>
             <div id="user-profile">
-               <UserProfileContext.Provider value={this.state.user}>
+               <UserProfileContext.Provider value={user}>
                   <PresentationHeader className="profile-section"/>
                   <UserStats className="profile-section"/>                  
                   <ProductsPresentation
-                     deleteHandler={this.deleteHandler} className="profile-section"/>
+                     deleteHandler={this.deleteHandler}
+                     className="profile-section" fetched={fetched}/>
                   <OpinionsPresentation className="profile-section"/>
                </UserProfileContext.Provider>
             </div>

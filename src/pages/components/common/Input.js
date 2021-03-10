@@ -18,18 +18,14 @@ function Input(props) {
       onChange(event);
    };
 
-   const spanErrorAnimation = () => {
-      setTimeout(() =>
-         document.querySelector(`span.${name}-error`)
-            .style.transform = 'initial', 1);
-   };
-
    useEffect(() => {      
       if (errors[name]) {
          setError(true);
-         spanErrorAnimation();
+         setTimeout(() =>
+            document.querySelector(`span.${name}-error`)
+               .style.transform = 'initial', 1);
       };
-   }, [errors]);
+   }, [errors, name]);
 
    return (
       <div className={`input-wrapper ${name}`}>

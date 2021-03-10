@@ -1,5 +1,5 @@
-import React, { Component, useState } from 'react';
-import { Redirect, useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { isAuthenticated } from '../../../utils/routing-tools';
 import api from '../../../utils/api';
 import favIcon from '../../../assets/common/heart.svg';

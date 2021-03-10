@@ -121,12 +121,6 @@
    }
 }
 
-/* Scroll clasess: */
-
-/* .navbar-wrapper-on-scroll {
-   justify-content: space-evenly !important;
-} */
-
 .profile-link-on-scroll {
    position: absolute;
    right: 10px;

@@ -8,7 +8,7 @@ function ProductsPresentation(props) {
    let { products, username, itsme } = useContext(UserProfileContext);
 
    useEffect(() => {
-      if (!products.length) {
+      if (!products.length && props.fetched) {
          document.querySelector('#user-products')
             .classList.add('no-prods-styles');
       };

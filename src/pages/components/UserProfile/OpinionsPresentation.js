@@ -25,7 +25,7 @@ function OpinionsPresentation(props) {
                {!itsme &&
                   <Link to={{
                      pathname: `/${username}/opinions/new`,
-                     state: {exists: true}}}>Opinar</Link>}
+                     state: { exists: true }}}>Opinar</Link>}
             </div>
       </section>
    );
