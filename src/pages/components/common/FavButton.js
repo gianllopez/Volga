@@ -6,16 +6,23 @@ import favIcon from '../../../assets/common/heart.svg';
 import filledFavIcon from '../../../assets/common/filled-heart.svg';
 import './styles/FavButton.css';
 
-function FavButton({ product, withtext, ...rest}) {
+function FavButton(props) {
 
-   const [isfav, setIsfav] = useState(rest.isfav);
+   let { product, withtext, favCallback } = props;
+
+   const [isfav, setIsfav] = useState(props.isfav);
    const history = useHistory();
 
    const fetchFav = event => {
       event.stopPropagation();
       if (isAuthenticated()) {
          api.post('/product-fav', { product })
-            .then(({ data }) => setIsfav(data.isfav));
+            .then(({ data }) => {
+               setIsfav(data.isfav);
+               if (favCallback) {
+                  favCallback();
+               };
+            });
       } else {
          history.push('/login');
       };

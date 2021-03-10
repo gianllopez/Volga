@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { FavButton, PageLoader,
+import { FavButton, ModalDisplayer, PageLoader,
          ProductGallery, ProductTagsDisplayer } from './components';
 import api from '../utils/api';
 import { isAuthenticated } from '../utils/routing-tools';
@@ -11,13 +11,12 @@ class ProductPage extends Component {
    state = {
       isauth: isAuthenticated(),
       fetched: false,
-      data: {}
+      data: {...this.props.match.params}
    };
 
    render() {
-      let { images, product, price,
-            description, tags, isfav, key } = this.state.data,
-      { username } = this.props.match.params;
+      let { images, product, price, description,
+            tags, isfav, key, username } = this.state.data;
       return (
          this.state.fetched ?
             <div className="product-page">
@@ -29,13 +28,19 @@ class ProductPage extends Component {
                   <div>
                      <h2>{product}</h2>
                      <h4>{price}</h4>
-                     <p>{description ? description : "Este producto no tiene descripción."}</p>
+                     <p>{description ?
+                           description : "Este producto no tiene descripción."}</p>
                      <ProductTagsDisplayer tags={tags}/>
                      <div id="btns">
                         <Link to={`/${username}/contact`} >
                            <button>Preguntar</button>
                         </Link>
-                        {this.state.isauth && <FavButton isfav={isfav} product={key} withtext />}
+                        {this.state.isauth &&
+                           <FavButton
+                              isfav={isfav}
+                              product={key}
+                              favCallback={this.fetchProductData}
+                              withtext />}
                      </div>
                   </div>
                </section>
@@ -44,28 +49,22 @@ class ProductPage extends Component {
    };
 
    componentDidMount() {
-      const { location, match } = this.props,
-      { username, key } = match.params;
+      let { username, key } = this.state.data;
       document.title = `Volga - ${key}`;
-      let locState = location.state;
-      if (!locState) {
-         api.get('/get-data/product', { username, key })
-            .then(({ data }) => this.setState({ fetched: true, data }))
-            .catch(({ response }) => {
-               if (response.status === 404) {
-                  // CustomModal(
-                  //    <span>
-                  //       El producto que buscas no se encuentra
-                  //       en el catálogo de {username}
-                  //    </span>, [false, 'Entendido'])
-                  //       .then(ok =>ok && this.props.history.push('/'));
-               }});
-      } else {
-         this.setState({ fetched: true, data: locState.product });
+      api.get('/get-data/product', { username, key })
+         .then(({ data }) => this.setState({ fetched: true, data }))
+         .catch(({ response }) => {
+            if (response.status === 404) {
+               ModalDisplayer({
+                  type: 'CUSTOM',
+                  title: 'Se produjo un error',
+                  message: `El producto que buscas no se encuentra
+                           en el catálogo de ${username}`
+               }).then(() => this.props.history.push('/'));
+            }});
       };
-   };
 
-   componentDidUpdate() {
+   componentDidUpdate(prevProps, prevState) {
       if (!this.state.isauth) {
          document.querySelectorAll('#btns a, #btns a button')
             .forEach(el => el.style.width = '100%');
