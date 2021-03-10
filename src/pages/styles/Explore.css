@@ -22,7 +22,7 @@
    }
 }
 
-@media (min-width: 768px) and (min-height: 750px) {
+@media (min-width: 768px) and (min-height: 1035px) {
    #explore-page {
       position: absolute;
       top: 50%;

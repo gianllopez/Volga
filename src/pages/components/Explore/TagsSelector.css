@@ -17,7 +17,7 @@
    }
 }
 
-@media (min-width: 1035px) {
+@media (min-width: 1250px) {
    #tags-selector {
       grid-template-columns: repeat(4, 25%);
    }
