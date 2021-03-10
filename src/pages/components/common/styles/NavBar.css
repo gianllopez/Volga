@@ -100,7 +100,7 @@
       margin-top: 50px
    }
 }
-/* LISTO HASTA AQUí */
+
 .profile-link-on-scroll {
    position: absolute;
    right: 10px;
@@ -115,3 +115,4 @@
    transform: translateX(calc(100% + 10px)) !important;
 }
 
+/* Terminado, nada más que revisar... */

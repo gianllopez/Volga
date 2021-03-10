@@ -45,6 +45,7 @@
    #login-form {
       display: flex;
       align-items: center;
+      margin-top: 0 !important;
    }
    #login-header{   
       border-right: 5px solid black;
