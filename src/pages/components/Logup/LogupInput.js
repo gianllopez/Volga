@@ -1,32 +1,29 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
 import { Input } from '../';
 import { logupContext } from '../../Logup';
 import './LogupInput.css';
 
-class LogupInput extends Component {
+function LogupInput(props) {
 
-   static contextType = logupContext;
+   const GENDERS = ['Masculino', 'Femenino', 'No definido'];
 
-   GENDERS = ['Masculino', 'Femenino', 'No definido']
+   const ctxProps = {...useContext(logupContext), ...props};
 
-   render() {
-      let ctxprops = {...this.context, ...this.props};
-      return (
-         this.props.name !== 'gender' ?
-            <Input {...ctxprops} /> :
-            <Input {...ctxprops}>
-               <select
-                  id="gender-select"
-                  name={ctxprops.name}
-                  onChange={ctxprops.onChange}>
-                  {this.GENDERS.map((gender, i) => 
-                     <option value={gender} key={i}>
-                        {gender}
-                     </option>)}
-               </select>
-            </Input>
-      );
-   };
+   return (
+      props.name !== 'gender' ?
+         <Input {...ctxProps} /> :
+         <Input {...ctxProps}>
+            <select
+               id="gender-select"
+               name={ctxProps.name}
+               onChange={ctxProps.onChange}>
+               {GENDERS.map((gender, i) => 
+                  <option value={gender} key={i}>
+                     {gender}
+                  </option>)}
+            </select>
+         </Input>
+   );
 };
 
 export default LogupInput;

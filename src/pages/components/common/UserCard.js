@@ -11,7 +11,7 @@ function UserCard({ data }) {
    let { picture, username, name, location } = data;
 
    return (
-      redirect ?
+      !redirect ?
          <div className="user-card" onClick={toPage}>
             <img src={picture} alt="user-picard"/>
             <div>

@@ -57,5 +57,10 @@
    text-align: center;
  }
  
+ @media (min-width: 768px) {
+   .blank-header {
+      padding: 0 5vw;
+    }
+ }
 
 /* Terminado, nada más que resumir... */

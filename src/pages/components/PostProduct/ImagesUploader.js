@@ -1,15 +1,16 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { ButtonLoader, LoadedImage, ModalDisplayer } from '../';
 import { imagesFormat } from '../../../utils/validators';
 import './styles/ImagesUploader.css';
 
-class ImagesUploader extends Component {
 
-   state = { error: false, showloaded: false };
+function ImagesUploader({ onChange, onRemove, loaded }) {
 
-   clickEvent = () => document.querySelector('input#loader').click();
+   const [state, setState] = useState({ error: false, showloaded: false });
 
-   rightLength = length => {
+   const clickEvent = () => document.querySelector('input#loader').click();
+   
+   const rightLength = length => {
       if (length > 4) {
          ModalDisplayer({
             type: 'CUSTOM',
@@ -20,17 +21,32 @@ class ImagesUploader extends Component {
       };
    };
 
-   loadedValidation = ({ target }) => {
+   const loadedValidation = ({ target }) => {
       let { files } = target,
-      valid = imagesFormat(files) && this.rightLength(files.length);
-      if (!valid) target.value = '';
-      this.props.onChange({
+      valid = imagesFormat(files) && rightLength(files.length);
+      if (!valid) {
+         target.value = '';
+      };
+      onChange({
          target: {
             name: 'images',
             value: target.value ? { ...target.files } : null
          }
       });
    };
+
+   useEffect(() => {
+
+   }, [props.errors, error, ])
+
+};
+
+
+
+class ImagesUploader extends Component {
+
+
+
    
    render() {
       let { loaded, onRemove } = this.props, { showloaded } = this.state;
@@ -84,7 +100,7 @@ class ImagesUploader extends Component {
             document.querySelector('span#images-blank-error')
                .style.transform = 'initial');
       };
-      if (loaded.length === 0) {
+      if (!loaded.length) {
          document.querySelector('input#loader').value = '';
       };
    };

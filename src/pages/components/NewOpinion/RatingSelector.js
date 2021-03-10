@@ -1,54 +1,45 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ratingBackground } from '../local-utils';
 import './styles/RatingSelector.css';
 
-class RatingSelector extends Component {
+function RatingSelector(props) {
 
-   state = { rating: 10 };
+   const [rating, setRating] = useState(10);
 
-   ratingRange = () => {
-      let { rating } = this.state;
-      this.setState({
-         rating: rating < 0 ? 0 :
-                 rating > 10 ? 10 : rating });
-   };
+   const rangeValidator = val => val < 0 ? 0 : val > 10 ? 10 : val;
 
-   inputChanger = ({ target }) => {
-      let { action } = target.dataset, { rating } = this.state;
+   const inputChanger = ({ target }) => {
+      let { action } = target.dataset;
       if (0 <= rating <= 10) {
-         this.setState({
-            rating: action === 'increment' ?
-            rating + 0.5 : rating - 0.5 }, this.ratingRange);
-         this.props.onChange({ target: {
-            name: 'rating', value: this.state.rating }});
+         let newRating = action === 'increment' ?
+            rating + 0.5 : rating - 0.5
+         setRating(rangeValidator(newRating));
+         props.onChange({ target: {
+            name: 'rating', value: rating }});
       };
    };
 
-   render() {
-      return (
-         <div id="rating-selector">
-            <button
-               type="button"
-               className="far fa-minus-square"
-               data-action="decrement"
-               onClick={this.inputChanger} />
-            <div id="rating-view">
-               {this.state.rating}
-            </div>
-            <button
-               type="button"
-               className="far fa-plus-square"
-               data-action="increment"
-               onClick={this.inputChanger} />
-         </div>
-      );
-   };
-
-   componentDidUpdate() {
-      let rating = parseFloat(this.state.rating);
+   useEffect(() => {
+      let ratingColor = ratingBackground(rating);
       document.getElementById('rating-view')
-         .style.backgroundColor = ratingBackground(rating);
-   };
+         .style.backgroundColor = ratingColor;
+   }, [rating]);
+
+   return (
+      <div id="rating-selector">
+         <button
+            type="button"
+            className="far fa-minus-square"
+            data-action="decrement"
+            onClick={inputChanger} />
+         <div id="rating-view"> {rating} </div>
+         <button
+            type="button"
+            className="far fa-plus-square"
+            data-action="increment"
+            onClick={inputChanger} />
+      </div>
+   );
 
 };
 

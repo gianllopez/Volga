@@ -1,31 +1,32 @@
-import React, { Component } from 'react';
-import { Input } from '..';
+import React, { useState } from 'react';
+import { Input } from '../';
 import { changeValidator } from '../../../utils/validators';
 import './styles/CommentInput.css';
 
-class CommentInput extends Component {
+function CommentInput({ name, onChange, ...rest}) {
 
-   state = { length: 0 };
-   
-   entryValidation = event => {      
-      let { length } = changeValidator(event, 125, this.props.onChange);
-      this.setState({ length });
+   const [length, setLength] = useState(0);
+
+   const entryValidation = event => {      
+      let { length } = changeValidator(event, 100, onChange);
+      setLength(length);
    };
 
-   render() {
-      return (
-         <Input {...this.props} >
-            <p>{this.state.length}/125</p>
-            <textarea
-               id="comment"
-               maxLength="125"
-               placeholder="..."
-               name={this.props.name}
-               onChange={this.entryValidation}
-            />
-         </Input>
-      )
-   };
+   return (
+      <Input name={name} {...rest} >
+         <p>{length}/100</p>
+         <textarea
+            id="comment"
+            maxLength="100"
+            placeholder="..."
+            name={name}
+            onChange={entryValidation}
+         />
+      </Input>
+   );
+
 };
 
 export default CommentInput;
+
+// Terminado, nada más que revisar...

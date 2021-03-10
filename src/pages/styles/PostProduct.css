@@ -1,5 +1,4 @@
 #post-product-page {
-   /* padding-top: 75px; */
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -13,11 +12,6 @@
    width: 60%;
 }
 
-/* #ppp-header p {
-   width: 250px;
-   margin: auto;
-} */
-
 #ppp-product-info {
    display: grid;
 }
@@ -25,11 +19,9 @@
 #ppp-product-info > .input-wrapper, #price-input {
    margin-bottom: 5px;
 }
-#post-product-page .btnloaderpper {
+#post-product-page .btnloader {
    margin: 5px auto;
 }
-
-/* LISTO HASTA AQUí */
 
 @media (min-width:768px) {
    #post-product-page {
@@ -37,8 +29,7 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
-      /* padding-top: 0; */
+      transform: translate(-50%, -50%);      
    }
    #ppp-product-info {
       grid-column: 2;

@@ -1,6 +1,6 @@
 function ratingBackground(rating) {
    let bgColor = '#FF5722';
-   if (rating >= 5 && rating <= 7.5) {
+   if (rating >= 5 && rating <= 8) {
       bgColor = '#ffcd29';
    } else if (rating > 8) {
       bgColor = '#6dcc6d';
