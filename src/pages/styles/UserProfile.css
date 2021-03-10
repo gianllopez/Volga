@@ -1,5 +1,5 @@
 #user-profile {
-   padding: 75px 0 25px 0;
+   /* padding: 75px 0 25px 0; */
    background-color: #d5d5e040;
 }
 
@@ -9,7 +9,7 @@
 
 @media (min-width: 768px) {
    #user-profile {
-      padding-top: 120px;
+      /* padding-top: 120px; */
    }
 }
 

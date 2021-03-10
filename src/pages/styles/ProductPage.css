@@ -1,5 +1,5 @@
 .product-page {
-   padding-top: 75px;
+   /* padding-top: 75px; */
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -58,7 +58,7 @@
 
 @media (min-width:768px) {
    .product-page {
-      padding-top: 120px;
+      /* padding-top: 120px; */
       display: grid;
       width: max-content;
       margin: auto;

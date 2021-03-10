@@ -1,13 +1,14 @@
 #navbar-wrapper {
-   height: 55px;
-   display: flex;
-   background-color: #36393F;
-   justify-content: space-between;
-   padding: 5px 10px;
-   align-items: center;
-   position: fixed;
-   width: calc(100% - 20px);
+   position: sticky;
+   top: 0;
    z-index: 2;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   /* width: calc(100% - 20px); */
+   height: 55px;
+   background-color: #36393F;
+   padding: 5px 10px;
 }
 
 #navbar-wrapper a figure {

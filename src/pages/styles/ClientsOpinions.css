@@ -1,5 +1,5 @@
 #clients-opinions-page {
-   padding-top: 75px;
+   /* padding-top: 75px; */
    max-width: 1500px; /* para resooluciones supergrandes */
    margin: auto; /* para resooluciones supergrandes */
 }
@@ -17,7 +17,7 @@
 
 @media (min-width: 768px) {
    #clients-opinions-page {
-      padding-top: 120px;
+      /* padding-top: 120px; */
    }
 }
 

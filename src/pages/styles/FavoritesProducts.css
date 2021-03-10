@@ -1,5 +1,5 @@
 #favorites-products {
-  padding-top: 75px;
+  /* padding-top: 75px; */
 }
 
 #favorites-products > h2 {
@@ -14,7 +14,7 @@
 
 @media (min-width: 768px) {
   #favorites-products {
-    padding-top: 120px;
+    /* padding-top: 120px; */
   }
 }
 /* Nada que resumir */
