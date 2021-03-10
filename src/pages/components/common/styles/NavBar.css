@@ -66,6 +66,12 @@
    color: #ffffff;
 }
 
+#logout-btn {
+   height: 40px;
+   color: #f85f76;
+   font-size: 2.5em;
+}
+
 .show-links {
    transform: initial !important;
 }
@@ -78,18 +84,14 @@
    padding: 1px;
 }
 
-#logout-btn {
-   height: 40px;
-   color: #f85f76;
-   font-size: 2.5em;
+#navbar-wrapper + *:not(#user-profile) {
+   margin-top: 15px
 }
 
 @media screen and (min-width:768px) {
-   
    #navbar-wrapper {
       justify-content: center;
    }
-
    #navbar-links {      
       transform: initial;
       height: 45px;
@@ -105,20 +107,21 @@
       max-width: unset;
       overflow-y: hidden;
    }
-
    #navbar-links a {
       padding: 0;
       margin: 0;
       border: none;
       cursor: pointer;
    }
-   
    #navbar-links a:hover {
       color: #c7c7c7;
    }
    #logout-btn {
       position: absolute;
       right: 10px;
+   }
+   #navbar-wrapper + *:not(#user-profile) {
+      margin-top: 50px
    }
 }
 
