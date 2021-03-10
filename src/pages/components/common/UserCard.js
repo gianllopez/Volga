@@ -1,27 +1,30 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import './styles/UserCard.css';
 
-class UserCard extends Component {
+function UserCard({ data }) {
+   
+   const [redirect, setRedirect] = useState(false);
 
-   state = { redirect: false };
+   const toPage = () => setRedirect(true);
 
-   toPage = () => this.setState({ redirect: true });
+   let { picture, username, name, location } = data;
 
-   render() {
-      let { picture, username, name, location } = this.props.data;
-      return (
-         !this.state.redirect ?
-            <div className="user-card" onClick={this.toPage}>
-               <img src={picture} alt="user-picard"/>
-               <div>
-                  <h3>{username}</h3>
-                  <h4>{name}</h4>
-                  <p>{location}</p>
-               </div>
-            </div> : <Redirect to={`/users/${username}`}/>
-      );
-   };
+   return (
+      redirect ?
+         <div className="user-card" onClick={toPage}>
+            <img src={picture} alt="user-picard"/>
+            <div>
+               <h3>{username}</h3>
+               <h4>{name}</h4>
+               <p>{location}</p>
+            </div>
+         </div> :
+         <Redirect to={{
+            pathname: `/users/${username}`,
+            state: { exists: true }}} />
+   );
+   
 };
 
 export default UserCard;

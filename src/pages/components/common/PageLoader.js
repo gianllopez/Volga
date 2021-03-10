@@ -8,3 +8,5 @@ const PageLoader = () => (
 );
    
 export default PageLoader;
+
+// Terminado, nada más que revisar...

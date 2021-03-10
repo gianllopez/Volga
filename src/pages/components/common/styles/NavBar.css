@@ -62,7 +62,7 @@
    padding: 1px;
 }
 
-#navbar-wrapper + *:not(#user-profile) {
+#navbar-wrapper + *:not(#user-profile, #page-loader-wrapper) {
    margin-top: 15px
 }
 
@@ -96,7 +96,7 @@
       position: absolute;
       right: 10px;
    }
-   #navbar-wrapper + *:not(#user-profile) {
+   #navbar-wrapper + *:not(#user-profile, #page-loader-wrapper) {
       margin-top: 50px
    }
 }
