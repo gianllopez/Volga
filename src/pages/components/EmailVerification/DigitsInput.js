@@ -22,6 +22,7 @@ function DigitsInput({ onChange, ...rest}) {
                key={index}
                type="number"
                onChange={onChangeEntry}
+               data-pos={index}
                className="digit-entry"/>)}
       </div>
    )

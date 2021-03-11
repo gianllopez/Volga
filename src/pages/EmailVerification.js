@@ -5,12 +5,23 @@ import './styles/EmailVerification.css';
 
 class EmailVerification extends Component {
 
-   state = { digits: [] };
+   state = { digits: {} };
 
-   changeHandler = ({ target: { value } }) => {
+   changeHandler = ({ target }) => {
       let { digits } = this.state;
-      if (digits.length < 6) {
-         digits.push(value);
+      if (Object.values(digits).length < 6) {
+         this.setState({
+            digits: {
+            ...digits,
+            [target.dataset.pos]: target.value
+         }});
+      };
+   };
+
+   deleteDigitHandler = ({ key, keyCode, target }) => {
+      if (key === 'Backspace' || keyCode === 8) {
+         let { digits } = this.state;
+         delete digits[target.dataset.pos]
          this.setState({ digits });
       };
    };
@@ -24,7 +35,8 @@ class EmailVerification extends Component {
                con 6 dígitos para la verificación del mismo:
             </h3>
             <DigitsInput
-               onChange={this.changeHandler} />
+               onChange={this.changeHandler}
+               onKeyDown={this.deleteDigitHandler} />
          </div>
       );
    };
