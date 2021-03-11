@@ -22,8 +22,7 @@
    cursor: pointer;
 }
 
-.tagbox-wrapper label,
-:checked + label {
+.tagbox-wrapper label {
    border-radius: 10px;
 }
 
@@ -40,15 +39,16 @@
    top: 8px;
 }
 
+.tagbox-wrapper label * {
+   opacity: .5;
+}
+
 .tagbox-wrapper label img {
    width: 70%;
-   opacity: 0.5;
 }
 
 .tagbox-wrapper label h2 {
    font-size: 1em;
-   text-align: center;
-   opacity: 0.5;
 }
 
 :checked + label {
@@ -67,3 +67,5 @@
 :checked + label h2 {
    opacity: 1;
 }
+
+/* Terminado, nada más que revisar... */

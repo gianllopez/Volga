@@ -29,11 +29,13 @@ function ProductGallery({ images }) {
    };
 
    const centerPage = () => {
-      let { clientHeight, classList } = document.querySelector('.product-page');
-      if (clientHeight < 400) {
-         classList.add('center-page');
-      } else {
-         classList.remove('center-page');
+      if (isBigScreen) {
+         let { clientHeight, classList } = document.querySelector('.product-page');
+         if (clientHeight < 400) {
+            classList.add('center-page');
+         } else {
+            classList.remove('center-page');
+         };
       };
    };
    
@@ -63,5 +65,6 @@ function ProductGallery({ images }) {
 
 };
 
-
 export default ProductGallery;
+
+// Terminado, nada más que revisar...

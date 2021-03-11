@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Uploader, ButtonLoader,
+import { PictureUploader, ButtonLoader,
          UserPageExists, ModalDisplayer } from './components';
 import api from '../utils/api';
 import userpphero from '../assets/UserProfilePicture/userpp-hero.svg';
@@ -60,7 +60,7 @@ class UserProfilePicture extends Component {
                   <img src={userpphero} alt="profile-pic-hero" />
                   <h1>Selecciona una foto para tu perfil</h1>
                </div>
-               <Uploader
+               <PictureUploader
                   isloaded={this.state.picture}
                   onUpload={this.uploadHandler} />
                <ButtonLoader

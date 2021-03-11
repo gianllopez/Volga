@@ -6,7 +6,7 @@ export { default as Footer } from './common/Footer';
 export { default as ModalDisplayer } from './common/ModalDisplayer';
 export { default as PageLoader } from './common/PageLoader';
 export { default as LogupInput } from './Logup/LogupInput';
-export { default as Uploader } from './UserProfilePicture/Uploader';
+export { default as PictureUploader } from './UserProfilePicture/PictureUploader';
 export { default as TagBox } from './UserTags/TagBox';
 export { default as ContactNetworkInput } from './ContactNetworks/ContactNetworkInput';
 export { default as UserStats } from './UserProfile/UserStats';

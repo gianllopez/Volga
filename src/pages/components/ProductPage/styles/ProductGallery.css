@@ -4,18 +4,18 @@
    background-color: #f1f1f1;
    padding: 15px;
    border-radius: 5px 0 0 5px;
-   position: relative;
+   /* position: relative; */
    overflow: hidden;
+}
+
+#product-gallery figure {
+   position: relative;
 }
 
 #product-gallery figure img {
    border-radius: 5px;
    width: 100%;
    object-fit: cover;
-}
-
-#product-gallery figure {
-   position: relative;
 }
 
 #zoom-modal {
@@ -98,6 +98,8 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      padding: 0 !important;
+      margin-top: 0 !important;
    }
 }
+
+/* Terminado, nada más que revisar... */
