@@ -10,10 +10,10 @@ class UserPageExists extends Component {
 
    render() {
       let { loading, found, itsme } = this.state,
-      { onlyclients, children } = this.props;
+      { onlyclients, children, forceLoading } = this.props;
       return (
          onlyclients && itsme ? <Redirect to="/" /> :
-            loading ? <PageLoader/> :
+            loading || forceLoading ? <PageLoader/> :
                found ? children : <NotFound />
       );
    };

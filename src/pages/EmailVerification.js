@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-import { ButtonLoader, DigitsInput } from './components';
+import { ButtonLoader, DigitsInput, UserPageExists } from './components';
 import emailicon from '../assets/EmailVerification/email-icon.svg';
 import './styles/EmailVerification.css';
+import api from '../utils/api';
+import { Redirect } from 'react-router';
+import swal from 'sweetalert';
 
 class EmailVerification extends Component {
 
-   state = { digits: {}, loading: false };
+   state = { digits: {}, loading: true,
+             redirect: false, ...this.props.location.state };
 
    changeHandler = ({ target }) => {
       let { digits } = this.state;
@@ -42,26 +46,56 @@ class EmailVerification extends Component {
       event.preventDefault();
       let valid = this.digitsAreValid();
       if (valid) {
-         console.log('Valid!');
+         let digitsArray = Object.values(this.state.digits),
+         { username } = this.props.match.params;
+         api.post('/validation/digits-verification', digitsArray)
+            .then(() => {
+               swal({
+                  title: '¡Enhorabuena!',
+                  text: 'Tu correo ha sido verificado.',
+                  icon: 'success'
+               }).then(() =>
+                  this.props.history.push({
+                     pathname: `/${username}/contact-networks`,
+                     state: { exists: true }}));
+            })
+            .catch(() => this.setState({ invalid: true }));
       };
    };
  
    render() {
+      let { redirect, loading, email, invalid } = this.state;
       return (
-         <form id="email-verification-page" onSubmit={this.submitHandler}>
-            <img src={emailicon} alt="email-icon"/>
-            <h3>
-               Te enviamos un correo a {"EMAIL"} con un código
-               con 6 dígitos para la verificación del mismo:
-            </h3>
-            <DigitsInput
-               onChange={this.changeHandler}
-               onKeyDown={this.deleteDigitHandler} />
-            <ButtonLoader
-               isloading={this.state.loading}
-               label="Verificar"/>
-         </form>
+         <UserPageExists forceLoading={loading}>
+            {!redirect ?
+               <form id="email-verification-page" onSubmit={this.submitHandler}>
+                  <img src={emailicon} alt="email-icon"/>
+                  <h3>
+                     Te enviamos un correo a {email} con un código
+                     con 6 dígitos para la verificación del mismo:
+                  </h3>
+                  {invalid && 
+                     <p id="incorrect-code">Código incorrecto.</p>}
+                  <DigitsInput
+                     onChange={this.changeHandler}
+                     onKeyDown={this.deleteDigitHandler}/>
+                  <ButtonLoader
+                     isloading={loading}
+                     label="Verificar"/>
+               </form> : <Redirect to="/" />}
+         </UserPageExists>
       );
+   };
+
+   componentDidMount() {
+      let { email } = this.state;
+      if (email) {    
+         api.post('/validation/email-verification', { email })
+            .catch(errors => console.error(errors))
+            .finally(() => this.setState({ loading: false }));
+      } else {
+         this.setState({ redirect: true });
+      };
    };
 
 };
