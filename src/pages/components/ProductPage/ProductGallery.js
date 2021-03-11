@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import swal from '@sweetalert/with-react';
 import './styles/ProductGallery.css';
 
@@ -27,6 +27,18 @@ function ProductGallery({ images }) {
          });
       };
    };
+
+   const centerPage = () => {
+      let { clientHeight, classList } = document.querySelector('.product-page');
+      if (clientHeight < 400) {
+         classList.add('center-page');
+      } else {
+         classList.remove('center-page');
+      };
+   };
+   
+   useEffect(centerPage);
+   useEffect(centerPage, [index]);
 
    return (
       <div id="product-gallery">

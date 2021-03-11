@@ -25,11 +25,11 @@ function UserProduct({ data }) {
    let { user, images, key, price, product, isfav } = data;
 
    const toggleNav = () =>
-      document.querySelector(`#${key} .product-nav`)
+      document.querySelector(`#prod-${key} .product-nav`)
          .classList.toggle('show-navigation');
 
    return (
-      <div className="product-wrapper" id={key} onClick={toggleNav}>
+      <div className="product-wrapper" id={`prod-${key}`} onClick={toggleNav}>
          <ProductUserInfo {...user}/>
          <img
             className="product-img"

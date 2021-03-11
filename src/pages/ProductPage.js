@@ -32,7 +32,7 @@ class ProductPage extends Component {
                            description : "Este producto no tiene descripción."}</p>
                      <ProductTagsDisplayer tags={tags}/>
                      <div id="btns">
-                        <Link to={`/${username}/contact`} >
+                        <Link to={{ pathname:`/${username}/contact`, state: { exists: true } }} >
                            <button>Preguntar</button>
                         </Link>
                         {this.state.isauth &&
@@ -52,7 +52,8 @@ class ProductPage extends Component {
       let { username, key } = this.state.data;
       document.title = `Volga - ${key}`;
       api.get('/get-data/product', { username, key })
-         .then(({ data }) => this.setState({ fetched: true, data }))
+         .then(({ data }) =>
+            this.setState({ fetched: true, data: {...data, username, key }}))
          .catch(({ response }) => {
             if (response.status === 404) {
                ModalDisplayer({
@@ -62,7 +63,7 @@ class ProductPage extends Component {
                            en el catálogo de ${username}`
                }).then(() => this.props.history.push('/'));
             }});
-      };
+   };
 
    componentDidUpdate() {
       if (!this.state.isauth) {

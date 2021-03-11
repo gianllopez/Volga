@@ -14,7 +14,6 @@ function Input(props) {
       if (regex && !regex.test(value)) {
          event.target.value = value.substring(0, value.length - 1);
       };
-      console.log(event.target.value, value);
       onChange(event);
    };
 
