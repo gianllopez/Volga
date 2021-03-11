@@ -23,7 +23,7 @@ function Input(props) {
          setError(true);
          setTimeout(() =>
             document.querySelector(`span.${name}-error`)
-               .style.transform = 'initial', 1);
+               .style.transform = 'initial', 50);
       };
    }, [errors, name]);
 

@@ -2,7 +2,7 @@
    margin: 5px 0;
    text-align: center;
 }
-/* LISTO HASTA AQUí */
+
 #images-uploader > button {
    max-width: unset;
    width: 60%;
@@ -15,10 +15,10 @@
 }
 
 #images-uploader > div:first-of-type {
-   max-width: 330px;
+   max-width: 260px;
+   margin: auto;
    width: calc(90vw - 20px);
    border-radius: 5px;
-   /* height: 20px; */
    position: relative;
    display: flex;
    align-items: center;
@@ -38,7 +38,6 @@
    top: calc(100% - 1px);
    width: 85%;
    border-radius: 0 0 5px 5px;
-   /* justify-content: space-evenly; */
 }
 
 .show-loaded {
@@ -61,8 +60,6 @@ span#images-blank-error {
       justify-content: space-evenly;
    }
    #images-uploader #loaded-list {
-      /* bottom: 44px; */
-      /* transd */
       border-radius: 5px 5px 0 0;
       transform: translateY(calc(-100% - 35px));
    }
@@ -71,4 +68,4 @@ span#images-blank-error {
    }
 }
 
-/* Teerminado */
+/* Terminado, nada más que revisar... */

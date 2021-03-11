@@ -3,10 +3,29 @@ import { ButtonLoader, LoadedImage, ModalDisplayer } from '../';
 import { imagesFormat } from '../../../utils/validators';
 import './styles/ImagesUploader.css';
 
+function UploaderIndicator(props) {
+   let { show, showToggler, loaded, onRemove } = props;
+   return (
+      <Fragment>
+         <p>Imágenes cargadas</p>
+         <i className={`fas fa-caret-${show ? "up" : "down"}`}
+            onClick={showToggler}/>
+         {show && 
+            <div id="loaded-list">
+               {loaded.map((data, index) => 
+                  <LoadedImage
+                     key={index}
+                     image={data[1]}
+                     onRemove={() => onRemove(data[0])}/>)}
+            </div>}
+      </Fragment>
+   );
+};
 
-function ImagesUploader({ onChange, onRemove, loaded }) {
+function ImagesUploader({ onChange, onRemove, loaded, errors }) {
 
-   const [state, setState] = useState({ error: false, showloaded: false });
+   const [error, setError] = useState(false);
+   const [show, setShow] = useState(false);
 
    const clickEvent = () => document.querySelector('input#loader').click();
    
@@ -36,78 +55,49 @@ function ImagesUploader({ onChange, onRemove, loaded }) {
    };
 
    useEffect(() => {
-
-   }, [props.errors, error, ])
-
-};
-
-
-
-class ImagesUploader extends Component {
-
-
-
-   
-   render() {
-      let { loaded, onRemove } = this.props, { showloaded } = this.state;
-      return (
-         <div id="images-uploader">
-            <ButtonLoader
-               type="button"
-               isloading={false}
-               label="Cargar imágenes"
-               onClick={this.clickEvent}/>
-            <div>
-               {loaded.length !== 0 ?
-                  <Fragment>
-                     <p>Imágenes cargadas</p>
-                     <i className={`fas fa-caret-${showloaded ? "up" : "down"}`}
-                        onClick={() => this.setState({ showloaded: !showloaded })}/>
-                     {showloaded && 
-                        <div id="loaded-list">
-                           {loaded.map((data, index) => 
-                              <LoadedImage
-                                 key={index}
-                                 image={data[1]}
-                                 onRemove={() => onRemove(data[0])}/>)}
-                        </div>}
-                  </Fragment> :
-                  <p>
-                     No has cargado ninguna imagen <br />
-                     (Puedes subir hasta 4 por producto)
-                  </p>}
-            </div>
-            {this.state.error &&
-               <span id="images-blank-error">
-                  Tienes que subir al menos una imagen.
-               </span>}
-            <input
-               type="file"
-               id="loader"
-               accept="image/png, image/jpeg"
-               onChange={this.loadedValidation}
-               multiple
-               hidden
-            />
-         </div>
-      )
-   };
-
-   componentDidUpdate() {
-      let { errors, loaded } = this.props;
-      if (errors['images'] && !this.state.error) {
-         this.setState({ error: true }, () =>
-            document.querySelector('span#images-blank-error')
-               .style.transform = 'initial');
+      if (errors['images'] && !error) {
+         setError(true);
       };
       if (!loaded.length) {
          document.querySelector('input#loader').value = '';
       };
-   };
+   }, [errors, error, loaded]);
 
+   return (
+      <div id="images-uploader">
+         <ButtonLoader
+            type="button"
+            label="Cargar imágenes"
+            onClick={clickEvent}/>
+         <div>
+            {loaded.length ?
+               <UploaderIndicator
+                  show={show}
+                  showToggler={() => setShow(!show)}
+                  loaded={loaded}
+                  onRemove={onRemove}/> :
+               <p>
+                  No has cargado ninguna imagen <br />
+                  (Puedes subir hasta 4 por producto)
+               </p>}
+         </div>
+         {error &&
+            <span id="images-blank-error">
+               Tienes que subir al menos una imagen.
+            </span>}
+         <input
+            type="file"
+            id="loader"
+            accept="image/png, image/jpeg"
+            onChange={loadedValidation}
+            multiple
+            hidden
+         />
+      </div>
+   );
+ 
 };
 
 export default ImagesUploader;
-
 
 // Terminado, nada más que revisar...

@@ -27,9 +27,12 @@
    #post-product-page {
       display: grid;
       position: absolute;
-      top: 50%;
+      top: calc(50% + 45px);
       left: 50%;
       transform: translate(-50%, -50%);      
+   }
+   #ppp-header {
+      width: 330px;
    }
    #ppp-product-info {
       grid-column: 2;
