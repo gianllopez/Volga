@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { DigitsInput } from './components';
+import { ButtonLoader, DigitsInput } from './components';
 import emailicon from '../assets/EmailVerification/email-icon.svg';
 import './styles/EmailVerification.css';
 
 class EmailVerification extends Component {
 
-   state = { digits: {} };
+   state = { digits: {}, loading: false };
 
    changeHandler = ({ target }) => {
       let { digits } = this.state;
@@ -25,10 +25,30 @@ class EmailVerification extends Component {
          this.setState({ digits });
       };
    };
+
+   digitsAreValid = () => {
+      let entries = document.getElementsByClassName('digit-entry'),
+      valid = true;
+      for (let entry of entries) {
+         if (!entry.value) {
+            entry.classList.add('blank-entry-error')
+            valid = false
+         };
+      };
+      return valid;
+   };
+
+   submitHandler = event => {
+      event.preventDefault();
+      let valid = this.digitsAreValid();
+      if (valid) {
+         console.log('Valid!');
+      };
+   };
  
    render() {
       return (
-         <div id="email-verification-page">
+         <form id="email-verification-page" onSubmit={this.submitHandler}>
             <img src={emailicon} alt="email-icon"/>
             <h3>
                Te enviamos un correo a {"EMAIL"} con un código
@@ -37,7 +57,10 @@ class EmailVerification extends Component {
             <DigitsInput
                onChange={this.changeHandler}
                onKeyDown={this.deleteDigitHandler} />
-         </div>
+            <ButtonLoader
+               isloading={this.state.loading}
+               label="Verificar"/>
+         </form>
       );
    };
 
