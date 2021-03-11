@@ -1,0 +1,26 @@
+#digits-input {
+   display: flex;
+   justify-content: center;
+}
+
+.digit-entry {
+   width: calc(15% - 10px);
+   height: 50px;
+   padding: 5px;
+   max-width: 50px;
+   margin: 0px 2px;
+   border: 2px solid black;
+   border-radius: 3px;
+   outline: none;
+   text-align: center;
+   font-size: 1.9em;
+}
+
+.digit-entry::-webkit-outer-spin-button,
+.digit-entry::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.digit-entry[type=number] {
+  -moz-appearance: textfield;
+}

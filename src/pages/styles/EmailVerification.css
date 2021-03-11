@@ -1,0 +1,19 @@
+#email-verification-page {
+   position: absolute;
+   top: 45%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   text-align: center;
+   width: 100%;
+}
+
+#email-verification-page img {
+   width: 50vw;
+   max-width: 200px;
+}
+
+#email-verification-page h3 {
+   font-size: clamp(1em, 4vw, 1.3em);
+   max-width: 450px;
+   margin: 7px auto;
+}

@@ -34,3 +34,4 @@ export { default as UserPageExists } from './common/UserPageExists';
 export { default as PresentationHeader } from './UserProfile/PresentationHeader';
 export { default as ProductsPresentation } from './UserProfile/ProductsPresentation';
 export { default as OpinionsPresentation } from './UserProfile/OpinionsPresentation';
+export { default as DigitsInput } from './EmailVerification/DigitsInput';
