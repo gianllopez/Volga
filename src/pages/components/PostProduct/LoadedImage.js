@@ -4,7 +4,9 @@ import closeicon from '../../../assets/PostProduct/close-img.svg';
 import './styles/LoadedImage.css';
 
 function LoadedImage(props) {
+
    let { image, onRemove } = props, { name } = image;
+   
    const showImage = () => {
       let reader = new FileReader();
       reader.onload = () => {
@@ -17,6 +19,7 @@ function LoadedImage(props) {
       };
       reader.readAsDataURL(image);
    };
+   
    return (
       <div className="loaded-image">
          <button type="button" onClick={showImage}>
@@ -25,6 +28,7 @@ function LoadedImage(props) {
          <img src={closeicon} alt="close-icon" onClick={onRemove} />
       </div>
    );
+
 };
 
 export default LoadedImage;

@@ -1,31 +1,27 @@
-import React, { Component } from 'react';
-import Input from '../common/Input';
+import React, { useEffect } from 'react';
+import { Input } from '../';
 import './styles/PriceInput.css';
 
-class PriceInput extends Component {
+function PriceInput({ errors, onChange, ...rest}) {
 
-   render() {
-      return (
-         <div id="price-input">
-            <Input {...this.props} />
-            <select
-               name="pricetype" id="price-type"
-               defaultValue="COP" onChange={this.props.onChange}>
-               <option value="COP">COP</option>
-               <option value="USD">USD</option>
-               <option value="€">EUR</option>
-            </select>
-         </div>
-      );
-   };
-
-   componentDidUpdate() {
-      if (this.props.errors['price']) {
+   useEffect(() => {
+      if (errors['price']) {
          document.querySelector('#price-input')
             .style.alignItems = 'center';
       };
-   };
+   }, [errors]);
 
+   return (
+      <div id="price-input">
+         <Input {...{ errors, onChange, ...rest }} />
+         <select name="pricetype" id="price-type"
+               defaultValue="COP" onChange={onChange}>
+            <option value="COP">COP</option>
+            <option value="USD">USD</option>
+            <option value="€">EUR</option>
+         </select>
+      </div>
+   );
 };
 
 export default PriceInput;

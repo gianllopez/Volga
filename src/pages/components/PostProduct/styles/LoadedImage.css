@@ -2,7 +2,6 @@
    background-color: white;
    padding: 10px;
    border-radius: 5px;
-   /* text-align: center; */
    width: calc(100% - 25px);
    margin: 8px 0;
    position: relative;
@@ -10,7 +9,6 @@
 
 .loaded-image button {
    font-size: 15px;
-   /* margin-top: 5px; */
    color: #2c87f0;
    text-decoration: underline;
    border: none;
@@ -34,10 +32,4 @@ img.img-on-modal {
    object-fit: contain;
 }
 
-/* @media (min-width: 768px) {
-   .loaded-image {
-      width: 130px;
-   }
-} */
-
-/* Terminado */
+/* Terminado, nada más que revisar... */

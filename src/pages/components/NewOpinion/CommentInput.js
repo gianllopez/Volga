@@ -13,7 +13,7 @@ function CommentInput({ name, onChange, ...rest}) {
    };
 
    return (
-      <Input name={name} {...rest} >
+      <Input {...{ name, ...rest }} >
          <p>{length}/100</p>
          <textarea
             id="comment"

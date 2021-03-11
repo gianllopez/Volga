@@ -6,15 +6,15 @@ function Input(props) {
 
    const [error, setError] = useState(false);
 
-   let { name, type, label, allowblank,
-         errors, children, minLength } = props;
+   let { name, type, label, allowblank, errors, children,
+         minLength, maxLength, regex, onChange } = props;
 
    const onChangeExtension = event => {
-      let { maxLength, regex, onChange } = props,
-      value = changeValidator(event, maxLength, onChange);
+      let value = changeValidator(event, maxLength, onChange, true);
       if (regex && !regex.test(value)) {
          event.target.value = value.substring(0, value.length - 1);
       };
+      console.log(event.target.value, value);
       onChange(event);
    };
 
@@ -39,8 +39,9 @@ function Input(props) {
                spellCheck="false"
                autoComplete="off"
                type={type || 'text'}
-               onChange={onChangeExtension}
                minLength={minLength}
+               // maxLength={maxLength}
+               onChange={onChangeExtension}
             />}
          {error && 
             <span className={`${name}-error`}>

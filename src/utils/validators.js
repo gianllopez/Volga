@@ -14,13 +14,9 @@ function blankForm(data, allowfields = []) {
 };
 
 function changeValidator(event, length=0, changeHandler) {
-   let isMobile = matchMedia('(max-width: 768px)').matches,
-   { target } = event;
-   if (isMobile) {
-      let { value } = target;
-      if (value.length > length) {
-         target.value = value.substring(0, length)
-      };
+   let { target } = event, { value } = target;
+   if (value.length > length) {
+      target.value = value.substring(0, length)
    };
    if (changeHandler) {
       changeHandler(event)};

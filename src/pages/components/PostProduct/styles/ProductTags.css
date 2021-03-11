@@ -2,10 +2,6 @@
    width: 90vw;
 }
 
-.product-tags-modal .swal-content {
-   margin-top: 0;
-}
-
 #product-tag-selector {
    display: flex;
    flex-wrap: wrap;
@@ -23,3 +19,4 @@
    background-color: #2c87f0;
 }
 
+/* Terminado, nada más que revisar... */

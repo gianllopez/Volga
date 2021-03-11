@@ -64,7 +64,7 @@ class ProductPage extends Component {
             }});
       };
 
-   componentDidUpdate(prevProps, prevState) {
+   componentDidUpdate() {
       if (!this.state.isauth) {
          document.querySelectorAll('#btns a, #btns a button')
             .forEach(el => el.style.width = '100%');
