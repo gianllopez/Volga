@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Logup, ContactNetworks, UserProfilePicture, Login, UserProfile,
          ProductPage, Home, PostProduct, NewOpinion, ClientsOpinions,
          UserContact, SearchResults, NotFound, Explore,
-         FavoritesProducts } from './pages/';
+         FavoritesProducts, EmailVerification } from './pages/';
 import { Layout, ProtectedRoute, completePaths, noFooterPaths } from './utils/routing-tools';
 import './index.css';
 
@@ -34,6 +34,7 @@ function VolgaApp(props={}) {
                   <ProtectedRoute path="/login" component={Login} disabledonauth/>                  
                </Layout>
             </Route>
+            <ProtectedRoute path="/:username/email-verification" component={EmailVerification} exact/>
             <Route component={NotFound}/>
          </Switch>
       </BrowserRouter>

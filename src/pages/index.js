@@ -15,3 +15,4 @@ export { default as NotFound } from './NotFound';
 export { default as Explore } from './Explore';
 export { default as FavoritesProducts } from './FavoritesProducts';
 export { default as Landing } from './Landing';
+export { default as EmailVerification } from './EmailVerification';
