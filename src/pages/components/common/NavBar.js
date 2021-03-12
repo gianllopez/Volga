@@ -72,8 +72,9 @@ function NavBar(props={}) {
    };
 
    useEffect(() => {
+      const bgmenu = document.getElementById('burger-menu');
       document.querySelectorAll('#navbar-wrapper a')
-         .forEach(link => animsOnClick(link));
+         .forEach(link => link.addEventListener('click', () => bgmenu.click()))
       if (matchMedia('(min-width: 768px)').matches) {
          window.onscroll = function() {
             const IDS = ['profile-link', 'navbar-links', 'logout-btn'];
@@ -81,7 +82,7 @@ function NavBar(props={}) {
             this.oldScroll = this.scrollY
          };
       };
-   });
+   }, []);
 
    let { isauth, username, picture } = state;
 
