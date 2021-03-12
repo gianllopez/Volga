@@ -13,9 +13,17 @@
 }
 
 #email-verification-page h3 {
-   font-size: clamp(1em, 4vw, 1.3em);
+   font-size: 1.15em;
    max-width: 450px;
    margin: 7px auto;
+}
+
+#email-verification-page h3 p {
+   font-size: 18px;
+   background-color: #8080801a;
+   padding: 7px 10px;
+   border-radius: 5px;
+   margin: 3px auto;
 }
 
 #email-verification-page .btnloader {

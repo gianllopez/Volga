@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { isAuthenticated } from '../../../utils/routing-tools'
+import { isAuthenticated, logOut } from '../../../utils/routing-tools'
 import BurgerMenu from './BurgerMenu';
 import SearchLink from './SearchLink';
 import volgalogo from '../../../assets/common/logo.svg';
@@ -50,11 +50,6 @@ function NavBar(props={}) {
       document.getElementById('navbar-links')
          .classList
             .toggle('show-links');
-   };
-
-   const logOut = () => {
-      window.location = '/';
-      localStorage.clear();
    };
 
    useEffect(() => {

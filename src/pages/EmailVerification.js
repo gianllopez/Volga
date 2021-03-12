@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import { Prompt, Redirect } from 'react-router';
+import swal from 'sweetalert';
+import api from '../utils/api';
 import { ButtonLoader, DigitsInput, UserPageExists } from './components';
 import emailicon from '../assets/EmailVerification/email-icon.svg';
 import './styles/EmailVerification.css';
-import api from '../utils/api';
-import { Redirect } from 'react-router';
-import swal from 'sweetalert';
 
 class EmailVerification extends Component {
 
@@ -13,7 +13,7 @@ class EmailVerification extends Component {
 
    changeHandler = ({ target }) => {
       let { digits } = this.state;
-      if (Object.values(digits).length < 6) {
+      if (Object.values(digits).length <= 6) {
          this.setState({
             digits: {
             ...digits,
@@ -50,29 +50,33 @@ class EmailVerification extends Component {
          { username } = this.props.match.params;
          api.post('/validation/digits-verification', digitsArray)
             .then(() => {
-               swal({
-                  title: '¡Enhorabuena!',
-                  text: 'Tu correo ha sido verificado.',
-                  icon: 'success'
-               }).then(() =>
-                  this.props.history.push({
-                     pathname: `/${username}/contact-networks`,
-                     state: { exists: true }}));
+               this.setState({ verified: true }, () => {
+                  swal({
+                     icon: 'success',
+                     title: '¡Enhorabuena!',
+                     text: 'Tu correo ha sido verificado.'
+                  }).then(() => {
+                     this.props.history.push({
+                        pathname: `/${username}/contact-networks`,
+                        state: { exists: true }});
+                  });
+               });
             })
             .catch(() => this.setState({ invalid: true }));
       };
    };
- 
+
    render() {
-      let { redirect, loading, email, invalid } = this.state;
+      let { redirect, loading, email, invalid, verified } = this.state;
       return (
          <UserPageExists forceLoading={loading}>
             {!redirect ?
                <form id="email-verification-page" onSubmit={this.submitHandler}>
                   <img src={emailicon} alt="email-icon"/>
                   <h3>
-                     Te enviamos un correo a {email} con un código
-                     con 6 dígitos para la verificación del mismo:
+                     Te envié un correo a 
+                     <p>{email}</p>
+                     con tu código de verificación del mismo:
                   </h3>
                   {invalid && 
                      <p id="incorrect-code">Código incorrecto.</p>}
@@ -83,6 +87,7 @@ class EmailVerification extends Component {
                      isloading={loading}
                      label="Verificar"/>
                </form> : <Redirect to="/" />}
+            <Prompt when={!verified} message="Hacer esto cerrará tu sesión. ¿Deseas continuar?" />
          </UserPageExists>
       );
    };
@@ -91,7 +96,6 @@ class EmailVerification extends Component {
       let { email } = this.state;
       if (email) {    
          api.post('/validation/email-verification', { email })
-            .catch(errors => console.error(errors))
             .finally(() => this.setState({ loading: false }));
       } else {
          this.setState({ redirect: true });
