@@ -11,6 +11,7 @@
    background-color: white;
    border-radius: 3px;
    transition: all .5s;
+   pointer-events: none;
 }
 
 .blade:not(:last-child) {
