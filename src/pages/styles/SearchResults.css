@@ -1,10 +1,6 @@
-#search-results-page {
-   /* padding-top: 75px; */
-}
-
 #srp-header {
    text-align: center;
-   /* margin: 15px 0 5px 0; */
+   overflow-wrap: anywhere;
 }
 
 #srp-results {
@@ -13,8 +9,13 @@
    justify-content: center;
 }
 
-@media (min-width:768px) {
-   #search-results-page {
-      /* padding-top: 120px; */
-   }
+#blank-results {
+   font-size: 1.2em;
+   max-width: 300px;
+   text-align: center;
+   margin: 10px 0;
+   background-color: #ff8282;
+   padding: 7px;
+   border-radius: 5px;
+   font-weight: bolder;
 }

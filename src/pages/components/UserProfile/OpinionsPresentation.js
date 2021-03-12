@@ -18,10 +18,10 @@ function OpinionsPresentation(props) {
             <h3 className="blank-header">
                Este usuario no tiene opiniones de clientes.
             </h3>}
-            <div>
-               {opinions.length &&
+            <div id="opinions-actions">
+               {opinions.length ?
                   isAuthenticated() &&
-                     <Link to={`/${username}/opinions`}>Ver todas</Link>}
+                     <Link to={`/${username}/opinions`}>Ver todas</Link> : ""}
                {!itsme &&
                   <Link to={{
                      pathname: `/${username}/opinions/new`,

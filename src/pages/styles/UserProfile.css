@@ -7,12 +7,6 @@
    margin-top: 15px;
 }
 
-@media (min-width: 768px) {
-   #user-profile {
-      /* padding-top: 120px; */
-   }
-}
-
 @media (min-width:768px) {
    #user-profile {
       display: grid;

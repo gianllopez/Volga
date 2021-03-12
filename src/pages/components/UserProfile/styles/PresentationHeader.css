@@ -9,10 +9,13 @@
 #user-info {
   text-align: center;
   color: #6f6f6f;
+  max-width: 335px;
+  overflow-wrap: anywhere;
 }
 
 #user-info h2 {
-  color: initial;   
+  color: initial;
+  line-height: .8;
 }
 
 #interaction-btns {

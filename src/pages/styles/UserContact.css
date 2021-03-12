@@ -1,5 +1,4 @@
 #contact-form {
-   /* padding-top: 75px; */
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -8,6 +7,7 @@
 #contact-form h2 {
    text-align: center;
    max-width: 300px;
+   overflow-wrap: anywhere;
 }
 
 #contact-ways {
@@ -16,12 +16,6 @@
    grid-gap: 15px;
    justify-content: center;
    margin: 10px 0;
-}
-
-@media (max-width: 600px) {
-   #contact-form {
-      /* padding-top: 75px; */
-   }
 }
 
 @media (min-width: 768px) {

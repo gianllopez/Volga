@@ -53,4 +53,5 @@ const noFooterPaths = [
    '/'
 ];
 
-export { Layout, ProtectedRoute, completePaths, noFooterPaths, isAuthenticated, logOut };
+export { Layout, ProtectedRoute, completePaths,
+         noFooterPaths, isAuthenticated, logOut };

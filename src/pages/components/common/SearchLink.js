@@ -12,7 +12,7 @@ class SearchLink extends Component {
          title: '¿Que deseas buscar?',
          content: (
             <div>
-               <input placeholder="..." id="search-input" />
+               <input placeholder="..." id="search-input" maxLength="50" />
                {this.state.blankerror && (
                   <p id="blank-error">Debes rellenar el campo de búsqueda.</p>
                )}

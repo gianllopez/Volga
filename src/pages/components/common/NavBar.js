@@ -54,7 +54,7 @@ function NavBar(props={}) {
 
    useEffect(() => {
       const bgmenu = document.getElementById('burger-menu');
-      document.querySelectorAll('#navbar-wrapper a')
+      document.querySelectorAll('#navbar-links a')
          .forEach(link => link.addEventListener('click', () => bgmenu.click()))
       if (matchMedia('(min-width: 768px)').matches) {
          window.onscroll = function() {
