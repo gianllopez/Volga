@@ -1,10 +1,25 @@
 #user-profile {
    padding: 15px 0;
+   position: relative;
+}
+
+#user-profile::before {
+   content: '';
+   position: absolute;
+   height: 100%;
+   width: 100%;
    background-color: #d5d5e040;
+   z-index: -1;
 }
 
 #user-profile section:not(:first-child) {
    margin-top: 15px;
+}
+
+@media (min-width: 768px) and (min-height: 750px) {
+   #user-profile::before {
+      height: 100vh;
+   }
 }
 
 @media (min-width:768px) {
