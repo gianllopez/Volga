@@ -109,7 +109,7 @@ class ContactNetworks extends Component {
                   />
                   <ContactNetworkInput
                      name="email"
-                     maxLength="100"
+                     maxLength="75"
                      type="email"
                   />
                   <ContactNetworkInput

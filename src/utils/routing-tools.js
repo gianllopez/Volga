@@ -4,6 +4,11 @@ import { Footer, NavBar } from '../pages/components';
 
 const isAuthenticated = () => localStorage.getItem('user-token') ? true : false;
 
+const logOut = () => {
+   window.location = '/';
+   localStorage.clear();
+};
+
 function ProtectedRoute({ component: Component, disabledonauth,  ...mainprops }) {
    let isauth = isAuthenticated();
    return (
@@ -48,4 +53,5 @@ const noFooterPaths = [
    '/'
 ];
 
-export { Layout, ProtectedRoute, completePaths, noFooterPaths, isAuthenticated };
+export { Layout, ProtectedRoute, completePaths,
+         noFooterPaths, isAuthenticated, logOut };

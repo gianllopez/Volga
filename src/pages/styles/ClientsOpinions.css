@@ -6,6 +6,7 @@
 
 #clients-opinions-page h2 {
    text-align: center;
+   overflow-wrap: anywhere;
 }
 
 #opinions-result {

@@ -24,7 +24,7 @@
 
 .product-user .product-user-info {
    font-size: 0.8em;
-   /* height: 45px; */
+   overflow-wrap: anywhere;
 }
 
 .product-wrapper .product-img {
@@ -48,7 +48,8 @@
 .product-wrapper .fav-icon {
    position: absolute;
    right: 0;
-   padding-right: 10px;
+   padding: 0 10px 0 5px;
+   background-color: white;
 }
 
 .product-wrapper .product-nav {

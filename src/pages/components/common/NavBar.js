@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { isAuthenticated } from '../../../utils/routing-tools'
+import { isAuthenticated, logOut } from '../../../utils/routing-tools'
 import BurgerMenu from './BurgerMenu';
 import SearchLink from './SearchLink';
 import volgalogo from '../../../assets/common/logo.svg';
@@ -34,20 +34,6 @@ function NavBar(props={}) {
       isauth: isAuthenticated(),
       ...JSON.parse(localStorage.getItem('uiprev'))});
 
-   const animsOnClick = el => {
-      let bgmen = document.querySelector('#burger-menu');
-      el.addEventListener('click', () => {
-         if (el.id !== 'profile-link') {
-            bgmen.click();
-         } else {
-            let { classList } = document.querySelector('#navbar-links');
-            if (classList.contains('show-links')) {
-               bgmen.click();
-            };
-         };
-      });
-   };
-
    const linksOnScrollAnim = (id, oldScroll, scrollY) => {
       const navlink = document.getElementById(id);
       if (navlink) {              
@@ -66,14 +52,9 @@ function NavBar(props={}) {
             .toggle('show-links');
    };
 
-   const logOut = () => {
-      window.location = '/';
-      localStorage.clear();
-   };
-
    useEffect(() => {
       const bgmenu = document.getElementById('burger-menu');
-      document.querySelectorAll('#navbar-wrapper a')
+      document.querySelectorAll('#navbar-links a')
          .forEach(link => link.addEventListener('click', () => bgmenu.click()))
       if (matchMedia('(min-width: 768px)').matches) {
          window.onscroll = function() {

@@ -33,9 +33,24 @@ class Login extends Component {
          this.setState({ loading: true });
          api.post('/login', this.state.data)
             .then(({ data }) => {
-               localStorage.setItem('uiprev', JSON.stringify(data.uiprev));
                localStorage.setItem('user-token', data.token);
-               window.location = '/';
+               const uiprev = JSON.stringify(data.uiprev);
+               if (data.verified_email) {
+                  localStorage.setItem('uiprev', uiprev);
+                  window.location = '/';
+               } else {
+                  ModalDisplayer({
+                     type: 'CUSTOM',
+                     title: 'Esta cuenta no ha verificado su correo',
+                     message: 'Para continuar usando Volga, su correo debe estar verificado.',
+                     buttons: [false, 'Ir a verificar']
+                  }).then(() => {
+                     this.props.history.push({
+                        pathname: `/${data.uiprev.username}/email-verification`,
+                        state: { email: data.email}});
+                     localStorage.setItem('uiprev', uiprev);
+                  });
+               };
             })
             .catch(({ response, message }) => {
                this.setState({ loading: false }, () => {

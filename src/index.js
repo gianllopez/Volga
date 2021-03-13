@@ -5,12 +5,20 @@ import { Logup, ContactNetworks, UserProfilePicture, Login, UserProfile,
          ProductPage, Home, PostProduct, NewOpinion, ClientsOpinions,
          UserContact, SearchResults, NotFound, Explore,
          FavoritesProducts, EmailVerification } from './pages/';
-import { Layout, ProtectedRoute, completePaths, noFooterPaths } from './utils/routing-tools';
+import { Layout, ProtectedRoute, completePaths,
+         noFooterPaths, logOut } from './utils/routing-tools';
 import './index.css';
+
+function userConfirmation(message) {
+   const answer = window.confirm(message);
+   if (answer) {
+      logOut();
+   };
+};
 
 function VolgaApp(props={}) {
    return (
-      <BrowserRouter>
+      <BrowserRouter getUserConfirmation={userConfirmation}>
          <Switch>
             <ProtectedRoute path="/:username/contact-networks" component={ContactNetworks} />
             <ProtectedRoute path="/:username/profile-picture" component={UserProfilePicture} />
@@ -34,7 +42,7 @@ function VolgaApp(props={}) {
                   <ProtectedRoute path="/login" component={Login} disabledonauth/>                  
                </Layout>
             </Route>
-            <ProtectedRoute path="/:username/email-verification" component={EmailVerification} exact/>
+            <ProtectedRoute path="/:username/email-verification" component={EmailVerification} onLeave={ () => console.log(12)} exact/>
             <Route component={NotFound}/>
          </Switch>
       </BrowserRouter>
