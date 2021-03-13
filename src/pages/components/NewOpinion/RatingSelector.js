@@ -45,4 +45,3 @@ function RatingSelector(props) {
 
 export default RatingSelector;
 
-/* REVISADO Y NO HAY MÁS QUE RESUMIR: 02/02/2021 */

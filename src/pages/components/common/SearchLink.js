@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import swal from '@sweetalert/with-react';
 import './styles/SearchLink.css';
 
-class SearchLink extends Component {
+function SearchLink(props) {
 
-   state = { blankerror: false, redirect: false };
+   const [error, setError] = useState(false);
+   const history = useHistory();
 
-   showSearchModal = () => (
+   const showSearchModal = () => (
       swal({
          title: '¿Que deseas buscar?',
          content: (
             <div>
                <input placeholder="..." id="search-input" maxLength="50" />
-               {this.state.blankerror && (
-                  <p id="blank-error">Debes rellenar el campo de búsqueda.</p>
-               )}
+               {error &&
+                  <p id="blank-error">Debes rellenar el campo de búsqueda.</p>}
             </div>
          ),
          buttons: ['Cancelar', { text: 'Buscar', closeModal: false }],
@@ -24,32 +24,26 @@ class SearchLink extends Component {
       })
    );
 
-   searchRequest = () => {
-      this.showSearchModal().then(search => {
+   const searchRequest = event => {
+      event.preventDefault();
+      showSearchModal().then(search => {
          if (search) {
             let { value } = document.querySelector('input#search-input');
             if (value) {
-               this.setState({
-                  redirect: true, query: value
-               }, () => {
-                  swal.close();
-                  this.setState({ redirect: false });
-               });
+               history.push({
+                  pathname: '/search/results',
+                  state: { query: value }});               
+               swal.close();
             } else {
-               this.setState({ blankerror: true }, this.searchRequest);
+               setError(true);
+               searchRequest();
             };
          };
       });
    };
 
-   render = () => (
-      !this.state.redirect ?
-         // eslint-disable-next-line
-         <a onClick={this.searchRequest}>Buscar</a> :
-         <Redirect to={{
-            pathname: '/search/results',
-            state: { query: this.state.query }
-         }} />
+   return (
+      <a onClick={searchRequest} href="/">Buscar</a>
    );
 
 };

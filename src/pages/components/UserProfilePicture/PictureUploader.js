@@ -44,5 +44,3 @@ function PictureUploader({ onUpload, isloaded }) {
 };
 
 export default PictureUploader;
-
-/* REVISADO Y NO HAY MÁS QUE RESUMIR: 02/02/2021 */

@@ -8,8 +8,6 @@ function ratingBackground(rating) {
    return bgColor;
 };
 
-// The next function handles the ContactInput Component animations:
-
 const CN_COLORS = {
    instagram: '#C32AA3',
    facebook: '#2D88FF',

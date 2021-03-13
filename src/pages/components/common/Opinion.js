@@ -1,6 +1,6 @@
 import React from 'react';
 import { ratingBackground } from '../local-utils';
-import './Opinion.css';
+import './styles/Opinion.css';
 
 function Opinion({ from, date, comment, rating }) {
    return (      
@@ -17,5 +17,3 @@ function Opinion({ from, date, comment, rating }) {
 }
 
 export default Opinion;
-
-// Terminado, nada más que revisar...

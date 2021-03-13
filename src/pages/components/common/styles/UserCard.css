@@ -17,7 +17,6 @@
 }
 
 .user-card div {
-   /* flex: 1; */
    padding-left: 10px;
    display: inherit;
    flex-direction: column;
@@ -32,5 +31,3 @@
    color: #999999;
    font-weight: lighter;
 }
-
-/* Terminado, nada más que resumir... */

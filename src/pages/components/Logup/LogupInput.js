@@ -27,5 +27,3 @@ function LogupInput(props) {
 };
 
 export default LogupInput;
-
-// terminado

@@ -36,5 +36,3 @@ function ModalDisplayer({ type, buttons, ...rest }) {
 };
 
 export default ModalDisplayer;
-
-// Terminado, nada más que revisar...

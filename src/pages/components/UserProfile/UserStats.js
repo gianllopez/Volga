@@ -30,5 +30,3 @@ function UserStats(props={}) {
 };
 
 export default UserStats;
-
-// Terminado, nada más que revisar...

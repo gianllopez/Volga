@@ -30,5 +30,3 @@ function Footer(props) {
 };
 
 export default withRouter(Footer);
-
-// Terminado, nada más que revisar...

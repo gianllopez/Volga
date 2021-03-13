@@ -7,7 +7,6 @@ import volgalogo from '../../../assets/common/logo.svg';
 import logouticon from '../../../assets/common/logout-icon.svg';
 import './styles/NavBar.css';
 
-
 function NavBarLinks({ isauth }) {
    return (
       <div id="navbar-links">
@@ -97,5 +96,3 @@ function NavBar(props={}) {
 };
 
 export default NavBar;
-
-// Terminado, nada más que revisar...

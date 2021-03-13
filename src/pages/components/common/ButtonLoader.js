@@ -13,5 +13,3 @@ function ButtonLoader(props) {
 };
 
 export default ButtonLoader;
-
-// Terminado, nada más que revisar...

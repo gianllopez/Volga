@@ -50,5 +50,3 @@ class ContactLink extends Component {
 };
 
 export default ContactLink;
-
-/* REVISADO Y NO HAY MÁS QUE RESUMIR: 27/02/2021 */

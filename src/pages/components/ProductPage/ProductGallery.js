@@ -66,5 +66,3 @@ function ProductGallery({ images }) {
 };
 
 export default ProductGallery;
-
-// Terminado, nada más que revisar...

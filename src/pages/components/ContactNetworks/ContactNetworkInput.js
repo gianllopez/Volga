@@ -96,5 +96,3 @@ class ContactNetworkInput extends Component {
 };
 
 export default ContactNetworkInput;
-
-/* REVISADO Y NO HAY MÁS QUE RESUMIR: 28/02/2021 */

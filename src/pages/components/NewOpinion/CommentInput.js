@@ -28,5 +28,3 @@ function CommentInput({ name, onChange, ...rest}) {
 };
 
 export default CommentInput;
-
-// Terminado, nada más que revisar...

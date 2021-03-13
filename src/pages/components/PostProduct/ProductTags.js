@@ -28,5 +28,3 @@ function ProductTags(changeCallback) {
 };
 
 export default ProductTags;
-
-// Terminado, nada más que revisar...

@@ -37,5 +37,3 @@ class UserPageExists extends Component {
 };
 
 export default withRouter(UserPageExists);
-
-// Terminado, nada más que revisar...

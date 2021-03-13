@@ -52,5 +52,3 @@ function UserProduct({ data }) {
 };
 
 export default UserProduct;
-
-// Terminado, nada más que resumir...

@@ -49,5 +49,3 @@ function FavButton(props) {
 };
 
 export default FavButton;
-
-// Terminado, nada más que revisar...

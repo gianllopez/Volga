@@ -21,5 +21,3 @@ function TagsSelector(props) {
 };
 
 export default TagsSelector;
-
-// Terminado, nada más que revisar...

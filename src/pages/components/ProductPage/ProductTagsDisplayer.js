@@ -20,5 +20,3 @@ function ProductTagsDisplayer({ tags  }) {
 };
 
 export default ProductTagsDisplayer;
-
-// Terminado, nada más que revisar...

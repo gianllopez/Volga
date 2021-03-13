@@ -24,5 +24,3 @@ function TagBox({ name, onChange, image }) {
 };
 
 export default TagBox;
-
-// Terminado, nada más que revisar...

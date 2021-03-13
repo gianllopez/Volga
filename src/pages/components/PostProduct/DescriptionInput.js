@@ -20,5 +20,3 @@ function DescriptionInput(props) {
 };
 
 export default DescriptionInput;
-
-// Terminado, nada más que revisar...

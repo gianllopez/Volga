@@ -52,5 +52,3 @@ function Input(props) {
 };
 
 export default Input;
-
-// Terminado, nada más que revisar...

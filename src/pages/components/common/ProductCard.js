@@ -37,5 +37,3 @@ function ProductCard(props) {
 };
 
 export default ProductCard;
-
-/* Terminado, nada más que revisar...*/

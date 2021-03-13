@@ -20,5 +20,3 @@ function BurgerMenu({ clickCallback }) {
 };
 
 export default BurgerMenu;
-
-// Terminado, nada más que revisar...

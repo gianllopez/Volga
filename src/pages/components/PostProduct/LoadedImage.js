@@ -32,5 +32,3 @@ function LoadedImage(props) {
 };
 
 export default LoadedImage;
-
-// Terminado, nada más que revisar...

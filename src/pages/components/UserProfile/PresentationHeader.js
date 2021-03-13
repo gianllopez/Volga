@@ -28,5 +28,3 @@ function PresentationHeader({ className }) {
 };
 
 export default PresentationHeader;
-
-// Terminado, nada más que resumir...

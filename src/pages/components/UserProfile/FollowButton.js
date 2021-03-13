@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router';
-import { ModalDisplayer } from '..';
 import api from '../../../utils/api';
 import { isAuthenticated } from '../../../utils/routing-tools';
+import { ModalDisplayer } from '..';
 import './styles/FollowButton.css';
 
 function FollowButton(props) {
@@ -53,5 +53,3 @@ function FollowButton(props) {
 };
 
 export default FollowButton;
-
-// Terminado, nada más que revisar...

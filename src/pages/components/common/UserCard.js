@@ -6,13 +6,11 @@ function UserCard({ data }) {
    
    const [redirect, setRedirect] = useState(false);
 
-   const toPage = () => setRedirect(true);
-
    let { picture, username, name, location } = data;
 
    return (
       !redirect ?
-         <div className="user-card" onClick={toPage}>
+         <div className="user-card" onClick={() => setRedirect(true)}>
             <img src={picture} alt="user-picard"/>
             <div>
                <h3>{username}</h3>
@@ -28,5 +26,3 @@ function UserCard({ data }) {
 };
 
 export default UserCard;
-
-// Terminado, nada más que revisar...

@@ -4,7 +4,6 @@
    background-color: #f1f1f1;
    padding: 15px;
    border-radius: 5px 0 0 5px;
-   /* position: relative; */
    overflow: hidden;
 }
 
@@ -101,5 +100,3 @@
       margin-top: 0 !important;
    }
 }
-
-/* Terminado, nada más que revisar... */

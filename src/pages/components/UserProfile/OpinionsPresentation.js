@@ -1,8 +1,8 @@
 import React, { Fragment, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Opinion } from '../';
 import { UserProfileContext } from '../../UserProfile';
 import { isAuthenticated } from '../../../utils/routing-tools';
+import { Opinion } from '../';
 import './styles/OpinionsPresentation.css';
 
 function OpinionsPresentation(props) {
@@ -32,5 +32,3 @@ function OpinionsPresentation(props) {
 };
 
 export default OpinionsPresentation;
-
-// Terminado, nada más que revisar...

@@ -25,5 +25,3 @@ function PriceInput({ errors, onChange, ...rest}) {
 };
 
 export default PriceInput;
-
-// Terminado, nada más que revisar...

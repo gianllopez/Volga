@@ -99,5 +99,3 @@ function ImagesUploader({ onChange, onRemove, loaded, errors }) {
 };
 
 export default ImagesUploader;
-
-// Terminado, nada más que revisar...

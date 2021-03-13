@@ -38,5 +38,3 @@ function ProductsPresentation(props) {
 };
 
 export default ProductsPresentation;
-
-// Terminado, nada más que revisar...
