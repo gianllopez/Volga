@@ -66,7 +66,7 @@ class ContactNetworks extends Component {
          ModalDisplayer({
             type: 'CUSTOM',
             title: `Estas redes facilitan el contacto entre tú y tus clientes. 
-                    Recomendamos que llenes las que te sugerimos.`,
+                    Recomendamos que llenes TODAS las que te sugerimos.`,
             message: '¿Deseas continuar así?'
          }).then(cont => cont && this.fetchRequest({ data, nextpath }))
       };
@@ -130,8 +130,8 @@ class ContactNetworks extends Component {
          content: 
             <div id="cn-demo">
                <h2>No te confundas</h2>
-               <h3>El nombre de usuario es más eficaz a la hora de identificar tus redes,
-                   ese es el dato requerido:</h3>
+               <h3>El nombre de usuario es más eficaz a la hora
+                   de identificar tus redes, ese es el dato requerido:</h3>
                <div>
                   {DEMO_IMAGES.map((img, index) => 
                      <img src={img} key={index} alt="data-example-pic"/>)}

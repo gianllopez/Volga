@@ -6,7 +6,7 @@ class VolgaREST {
    baseconfig(endpoint) {
       return {
          method: 'get',
-         url: 'http://localhost:8000/api/v1/users' + endpoint + '/',
+         url: 'https://volgarest.herokuapp.com/api/v1' + endpoint + '/',
          ...isAuthenticated() && {
             headers: { Authorization: `Token ${localStorage.getItem('user-token')}`}}
       };
