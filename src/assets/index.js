@@ -8,6 +8,7 @@ import igdemo from './ContactNetworks/demostration/instagram.png';
 import fbdemo from './ContactNetworks/demostration/facebook.png';
 import twdemo from './ContactNetworks/demostration/twitter.png';
 import indemo from './ContactNetworks/demostration/linkedin.png';
+
 import vehicles_icon from './UserTags/tags-icons/car.svg';
 import foods_icon from './UserTags/tags-icons/food-basket.svg';
 import pets_icon from './UserTags/tags-icons/dog.svg';
@@ -32,6 +33,7 @@ import jewelry_icon from './UserTags/tags-icons/rings.svg';
 import clothes_icon from './UserTags/tags-icons/clothes.svg';
 import services_icon from './UserTags/tags-icons/services.svg';
 import botanic_icon from './UserTags/tags-icons/plant.svg'
+
 import starIcon from './UserProfile/star.svg';
 import followerIcon from './UserProfile/follower.svg';
 import productIcon from './UserProfile/product.svg';
