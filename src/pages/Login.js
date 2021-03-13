@@ -110,5 +110,3 @@ class Login extends Component {
 };
 
 export default Login;
-
-/* REVISADO Y NO HAY MÁS QUE RESUMIR: 02/02/2021 */

@@ -48,5 +48,3 @@ class UserContact extends Component {
 };
 
 export default UserContact;
-
-/* REVISADO Y NO HAY MÁS QUE RESUMIR: 27/02/2021 */

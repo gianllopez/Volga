@@ -82,5 +82,3 @@ class Explore extends Component {
 };
 
 export default Explore;
-
-// Terminado, nada más que revisar...

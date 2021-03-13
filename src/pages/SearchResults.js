@@ -78,5 +78,3 @@ class SearchResult extends Component {
 };
 
 export default SearchResult;
-
-// Terminado, nada más que revisar...

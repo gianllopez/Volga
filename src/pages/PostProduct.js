@@ -145,5 +145,3 @@ class PostProduct extends Component {
 };
 
 export default PostProduct;
-
-// Terminado, nada más que resumir...

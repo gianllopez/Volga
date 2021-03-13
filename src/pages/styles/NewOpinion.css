@@ -1,5 +1,4 @@
-#opinion-form {
-   /* padding-top: 75px; */
+#opinion-form {   
    display: flex;
    flex-direction: column;
    align-items: center;

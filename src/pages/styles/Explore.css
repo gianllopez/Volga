@@ -1,5 +1,4 @@
 #explore-page {
-   /* padding-top: 75px; */
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -15,12 +14,6 @@
 #explore-page > h1 {
    font-size: clamp(1em, 7vw, 1.7em);
    text-align: center;
-}
-
-@media (min-width: 768px) {
-   #explore-page {
-      /* padding-top: 120px; */
-   }
 }
 
 @media (min-width: 768px) and (min-height: 1035px) {
@@ -41,5 +34,3 @@
 #explore-page .btnloader {
    margin: 10px;
 }
-
-/* Terminado, nada más que resumir... */

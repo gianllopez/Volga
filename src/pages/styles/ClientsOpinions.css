@@ -1,7 +1,6 @@
 #clients-opinions-page {
-   /* padding-top: 75px; */
-   max-width: 1500px; /* para resooluciones supergrandes */
-   margin: auto; /* para resooluciones supergrandes */
+   max-width: 1500px;
+   margin: auto;
 }
 
 #clients-opinions-page h2 {
@@ -15,11 +14,3 @@
    justify-content: center;
    margin-top: 10px;
 }
-
-@media (min-width: 768px) {
-   #clients-opinions-page {
-      /* padding-top: 120px; */
-   }
-}
-
-/* REVISADO Y NO HAY MÁS QUE RESUMIR: 2/02/2021 */

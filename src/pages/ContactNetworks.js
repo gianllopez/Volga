@@ -144,5 +144,3 @@ class ContactNetworks extends Component {
 };
 
 export default ContactNetworks;
-
-/* REVISADO Y NO HAY MÁS QUE RESUMIR: 27/02/2021 */

@@ -79,5 +79,3 @@ class NewOpinion extends Component {
 };
 
 export default NewOpinion;
-
-/* REVISADO Y NO HAY MÁS QUE RESUMIR: 02/02/2021 */

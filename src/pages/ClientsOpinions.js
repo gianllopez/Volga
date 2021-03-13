@@ -44,5 +44,3 @@ class ClientsOpinions extends Component {
 };
 
 export default ClientsOpinions;
-
-/* REVISADO Y NO HAY MÁS QUE RESUMIR: 2/02/2021 */
