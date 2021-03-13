@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { capitalize } from '../../../utils/tools';
+import React, { Component } from 'react';
+import { capitalize } from '../ContactNetworks/ContactNetworkInput';
 import { CN_COLORS } from '../local-utils';
 import './ContactLink.css';
 

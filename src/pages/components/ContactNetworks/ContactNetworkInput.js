@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { CNcontext } from '../../ContactNetworks';
 import { changeValidator } from '../../../utils/validators';
-import { capitalize } from '../../../utils/tools';
 import { CN_COLORS } from '../local-utils';
 import { CN_ICONS } from '../../../assets';
 import checkIcon from '../../../assets/ContactNetworks/check-icon.svg';
 import './ContactNetworkInput.css';
+
+export const capitalize = str => str.charAt(0).toUpperCase() + str.substring(1);
 
 class ContactNetworkInput extends Component {
 

@@ -90,7 +90,7 @@ class ContactNetworks extends Component {
                   <ContactNetworkInput
                      name="instagram"
                      maxLength="30"
-                     regex={/^(?!.*?\.{2}).*[a-zA-Z0-9_.]$/}
+                     regex={/^(?!.*?\.{2}).*[a-z0-9_.]$/}
                   />
                   <ContactNetworkInput
                      name="facebook"

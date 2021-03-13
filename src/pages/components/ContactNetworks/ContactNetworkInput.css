@@ -55,6 +55,10 @@
    padding-right: 35px;
 }
 
+.data-input > input::placeholder {
+   text-transform: capitalize;
+}
+
 .data-input > img {
    height: 25px;
    position: absolute;
@@ -68,9 +72,9 @@
    word-break: break-all;
 }
 
-.contact-network-input:not(.email, .linkedin, .facebook) input {
+/* .contact-network-input:not(.email, .linkedin, .facebook) input {
    text-transform: lowercase;
-}
+} */
 
 .header-anim {
    transform: translateX(-100%);

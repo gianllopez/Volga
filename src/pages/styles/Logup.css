@@ -1,5 +1,4 @@
 #logup-form {
-   /* padding-top: 75px; */
    margin-bottom: 5vh;
    display: flex;
    flex-direction: column;
@@ -37,12 +36,6 @@
 
 #logup-form .btnloaderpper {
    margin: 7.5px 0;
-}
-
-@media (min-width: 768px) {
-   #logup-form {
-      /* padding-top: 120px; */
-   }
 }
 
 @media (min-width: 768px) and (min-height: 1075px) {

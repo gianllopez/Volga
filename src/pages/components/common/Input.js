@@ -39,7 +39,7 @@ function Input(props) {
                autoComplete="off"
                type={type || 'text'}
                minLength={minLength}
-               // maxLength={maxLength}
+               autoCapitalize="off"
                onChange={onChangeExtension}
             />}
          {error && 
