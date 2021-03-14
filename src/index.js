@@ -42,7 +42,7 @@ function VolgaApp(props={}) {
                   <ProtectedRoute path="/login" component={Login} disabledonauth/>                  
                </Layout>
             </Route>
-            <ProtectedRoute path="/:username/email-verification" component={EmailVerification} onLeave={ () => console.log(12)} exact/>
+            <ProtectedRoute path="/:username/email-verification" component={EmailVerification} exact disabledonauth/>
             <Route component={NotFound}/>
          </Switch>
       </BrowserRouter>

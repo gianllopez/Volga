@@ -16,7 +16,7 @@ function Stat ({ name, label, value }) {
 };
 
 function UserStats(props={}) {
-   let { rating_avg, followers, total_products } = useContext(UserProfileContext);
+   let { rating_avg, followers, total_products } = useContext(UserProfileContext).stats;
    return (
       <section id="user-stats" className={props.className}>
          <Stat name="rating" label="Calificación"

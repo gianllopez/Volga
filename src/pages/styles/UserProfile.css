@@ -6,6 +6,7 @@
 #user-profile::before {
    content: '';
    position: absolute;
+   top: 0;
    height: 100%;
    width: 100%;
    background-color: #d5d5e040;
