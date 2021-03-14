@@ -12,11 +12,11 @@ class VolgaREST {
       };
    };
    
-   post(endpoint, data) {
+   post(endpoint, data, ...rest) {
       let config = this.baseconfig(endpoint);
       config.method = 'post';
       config.data = data;
-      return Axios(config);
+      return Axios(config, ...rest);
    };
 
    get(endpoint, params={}) {

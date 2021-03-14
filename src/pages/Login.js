@@ -33,12 +33,7 @@ class Login extends Component {
          this.setState({ loading: true });
          api.post('/login', this.state.data)
             .then(({ data }) => {
-               localStorage.setItem('user-token', data.token);
-               const uiprev = JSON.stringify(data.uiprev);
-               if (data.verified_email) {
-                  localStorage.setItem('uiprev', uiprev);
-                  window.location = '/';
-               } else {
+               if (!data.verified_email) {
                   ModalDisplayer({
                      type: 'CUSTOM',
                      title: 'Esta cuenta no ha verificado su correo',
@@ -47,8 +42,11 @@ class Login extends Component {
                   }).then(() => {
                      this.props.history.push({
                         pathname: `/${data.uiprev.username}/email-verification`,
-                        state: { email: data.email}});
-                     localStorage.setItem('uiprev', uiprev);
+                        state: {
+                           exists: true,
+                           email: data.email,
+                           data
+                        }});
                   });
                };
             })

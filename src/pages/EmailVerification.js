@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Prompt, Redirect } from 'react-router';
+import { Redirect } from 'react-router';
 import swal from 'sweetalert';
 import api from '../utils/api';
 import { ButtonLoader, DigitsInput, UserPageExists } from './components';
@@ -46,35 +46,34 @@ class EmailVerification extends Component {
       event.preventDefault();
       let valid = this.digitsAreValid();
       if (valid) {
-         let digitsArray = Object.values(this.state.digits),
-         { username } = this.props.match.params;
-         api.post('/validation/digits-verification', digitsArray)
+         let { digits, data: { token, uiprev } } = this.state;
+         digits = Object.values(digits);
+         api.post('/validation/digits-verification', { digits, token })
             .then(() => {
-               this.setState({ verified: true }, () => {
+                  localStorage.setItem('uiprev', JSON.stringify(uiprev));
+                  localStorage.setItem('user-token', token);
                   swal({
                      icon: 'success',
                      title: '¡Enhorabuena!',
                      text: 'Tu correo ha sido verificado.'
                   }).then(() => {
                      this.props.history.push({
-                        pathname: `/${username}/contact-networks`,
+                        pathname: `/${uiprev.username}/contact-networks`,
                         state: { exists: true }});
                   });
-               });
-            })
-            .catch(() => this.setState({ invalid: true }));
+            }).catch(() => this.setState({ invalid: true }));
       };
    };
 
    render() {
-      let { redirect, loading, email, invalid, verified } = this.state;
+      let { redirect, loading, email, invalid } = this.state;
       return (
          <UserPageExists forceLoading={loading}>
             {!redirect ?
                <form id="email-verification-page" onSubmit={this.submitHandler}>
                   <img src={emailicon} alt="email-icon"/>
                   <h3>
-                     Te envié un correo a 
+                     Te enviamos un correo a 
                      <p>{email}</p>
                      con tu código de verificación del mismo:
                   </h3>
@@ -87,18 +86,18 @@ class EmailVerification extends Component {
                      isloading={loading}
                      label="Verificar"/>
                </form> : <Redirect to="/" />}
-            <Prompt when={!verified} message="Hacer esto cerrará tu sesión. ¿Deseas continuar?" />
          </UserPageExists>
       );
    };
 
    componentDidMount() {
-      let { email } = this.state;
-      if (email) {    
-         api.post('/validation/email-verification', { email })
+      let { email, data } = this.state;
+      if (email && data.token) {
+         let { token } = data || { token: localStorage.getItem('user-token') };
+         api.post('/validation/email-verification', { email, token })
             .finally(() => this.setState({ loading: false }));
       } else {
-         this.setState({ redirect: true });
+         this.setState({ loading: false, redirect: true });
       };
    };
 

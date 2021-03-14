@@ -6,19 +6,12 @@ import { Logup, ContactNetworks, UserProfilePicture, Login, UserProfile,
          UserContact, SearchResults, NotFound, Explore,
          FavoritesProducts, EmailVerification } from './pages/';
 import { Layout, ProtectedRoute, completePaths,
-         noFooterPaths, logOut } from './utils/routing-tools';
+         noFooterPaths } from './utils/routing-tools';
 import './index.css';
-
-function userConfirmation(message) {
-   const answer = window.confirm(message);
-   if (answer) {
-      logOut();
-   };
-};
 
 function VolgaApp(props={}) {
    return (
-      <BrowserRouter getUserConfirmation={userConfirmation}>
+      <BrowserRouter>
          <Switch>
             <ProtectedRoute path="/:username/contact-networks" component={ContactNetworks} />
             <ProtectedRoute path="/:username/profile-picture" component={UserProfilePicture} />
@@ -42,7 +35,7 @@ function VolgaApp(props={}) {
                   <ProtectedRoute path="/login" component={Login} disabledonauth/>                  
                </Layout>
             </Route>
-            <ProtectedRoute path="/:username/email-verification" component={EmailVerification} exact disabledonauth/>
+            <Route path="/:username/email-verification" component={EmailVerification} exact />
             <Route component={NotFound}/>
          </Switch>
       </BrowserRouter>

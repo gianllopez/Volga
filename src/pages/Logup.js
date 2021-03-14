@@ -32,11 +32,13 @@ class Logup extends Component {
    logupRequest = data => {
       api.post('/logup', data)
          .then(({ data }) => {            
-            localStorage.setItem('uiprev', JSON.stringify(data.uiprev));
-            localStorage.setItem('user-token', data.token);
             this.props.history.push({
                pathname: `/${data.uiprev.username}/email-verification`,
-               state: { exists: true, email: this.state.data.email }
+               state: {
+                  exists: true,
+                  email: this.state.data.email,
+                  data
+               }
             });
          })
          .catch(({ response }) =>
