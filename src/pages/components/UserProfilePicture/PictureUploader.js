@@ -7,20 +7,21 @@ function PictureUploader({ onUpload, isloaded }) {
 
    const uploaderTrigger = () => document.getElementById('picture').click();
 
-   useEffect(() => {
-      if (isloaded) {
-         let img = document.querySelector('#loadpic-btn figure img'),
-         span = document.querySelector('#loadpic-btn span');         
-         img.style.animation = 'img-animation 1s';
-         span.style.animation = 'span-animation 1s';
-         img.src = checkicon;
-         img.parentElement.style.backgroundColor = '#00E077';
-         setTimeout(() => {
-            span.innerText = 'Foto cargada';
-            span.classList.add('on-success');            
-         }, 500);         
-      };
-   }, [isloaded]);
+   const uploaderAnimations = () => {
+      let img = document.querySelector('#loadpic-btn figure img'),
+      span = document.querySelector('#loadpic-btn span');
+      img.style.animation = isloaded && 'img-animation 1s';
+      span.style.animation = isloaded && 'span-animation 1s';
+      img.src = isloaded ? checkicon : uploadicon;
+      img.parentElement.style.backgroundColor = isloaded ? '#00E077' : 'inherit';
+      setTimeout(() => {
+         span.innerText = isloaded ? 'Foto cargada' : 'Cargar';
+         let { classList } = span;
+         isloaded ? classList.add('on-success') : classList.remove('on-success');
+      }, isloaded ? 500 : 0);
+   };
+
+   useEffect(uploaderAnimations, [isloaded]);
 
    return (
       <div id="uploader-wrapper">

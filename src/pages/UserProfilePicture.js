@@ -46,7 +46,7 @@ class UserProfilePicture extends Component {
             title: `Vemos que no tienes pensado agregar una foto para
                     tu perfil. Esta es imprescindible para que tus clientes te reconozcan.`,
             message: '¿Deseas continuar así?',
-            buttons: [false, 'Si, continuar']}).then(cont => cont && this.uploadRedirect())
+            buttons: ['No', 'Si, continuar']}).then(cont => cont && this.uploadRedirect())
       } else {
          this.setState({ loading: true }, this.uploadRequest);
       };
@@ -61,7 +61,7 @@ class UserProfilePicture extends Component {
                   <h1>Selecciona una foto para tu perfil</h1>
                </div>
                <PictureUploader
-                  isloaded={this.state.picture}
+                  isloaded={this.state.picture ? true : false}
                   onUpload={this.uploadHandler} />
                <ButtonLoader
                   label="Continuar"

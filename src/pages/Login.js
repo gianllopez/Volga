@@ -36,6 +36,7 @@ class Login extends Component {
                if (data.verified_email) {
                   localStorage.setItem('user-token', data.token);
                   localStorage.setItem('uiprev', JSON.stringify(data.uiprev));
+                  window.location = '/';
                } else {
                   ModalDisplayer({
                      type: 'CUSTOM',
