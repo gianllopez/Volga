@@ -33,7 +33,10 @@ class Login extends Component {
          this.setState({ loading: true });
          api.post('/login', this.state.data)
             .then(({ data }) => {
-               if (!data.verified_email) {
+               if (data.verified_email) {
+                  localStorage.setItem('user-token', data.token);
+                  localStorage.setItem('uiprev', JSON.stringify(data.uiprev));
+               } else {
                   ModalDisplayer({
                      type: 'CUSTOM',
                      title: 'Esta cuenta no ha verificado su correo',
