@@ -89,3 +89,15 @@
       margin-top: 0 !important;
    }
 }
+
+@media (max-width: 768px) {
+   .product-page {
+      height: calc(100vh - 75px);
+   }   
+   #pp-product-info {
+      flex: 1;
+   }
+   #pp-product-info > div {
+      height: calc(100% - 20px);
+   }
+}
