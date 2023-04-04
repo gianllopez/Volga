@@ -9,3 +9,5 @@ products from other users. Here i take the power of the social networks comunica
 Volga uses the following technologies and the best, **¡VOLGA IS OPEN SOURCE!**
 - ReactJS - Maybe the best frontend library nowaday.
 - Django - The Python web framework. The REST API is super fast and secure.
+### Side note:
+> Este proyecto fue desarrollado hace mucho tiempo y, desde entonces, he mejorado significativamente mis habilidades técnicas. Si deseas verificar mi progreso, te invito a revisar algunos de mis repositorios más recientes.
